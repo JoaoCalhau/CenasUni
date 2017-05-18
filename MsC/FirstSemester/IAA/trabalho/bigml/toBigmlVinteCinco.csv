@@ -1,0 +1,26 @@
+DiasDeFolga,Chamar Amigo,Disponibilidade,Desconto,NovaDisponibilidade,MaoDeObra,Encomenda
+QuarQuin,Nao,Imediata,Metade,Imediata,EmFalta,Encaminhada
+SegTer,Nao,Imediata,Normal,Imediata,Suficiente,Encaminhada
+QuarQuin,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada
+QuinSex,Nao,TresDias,Normal,CincoDias,Suficiente,Encaminhada
+SegTer,Nao,TresDias,Normal,TresDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada
+QuinSex,Nao,TresDias,Normal,TresDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Normal,TresDias,EmFalta,Extraviada
+TerQuar,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada
+TerQuar,Sim,Imediata,Metade,TresDias,Suficiente,Encaminhada
+SegTer,Sim,Imediata,Normal,Imediata,Suficiente,Extraviada
+QuinSex,Nao,Imediata,Normal,Imediata,Suficiente,Encaminhada
+SegTer,Sim,Imediata,Normal,Imediata,Suficiente,Encaminhada
+TerQuar,Nao,Imediata,Normal,Imediata,Suficiente,Encaminhada
+QuarQuin,Sim,TresDias,Normal,CincoDias,EmFalta,Encaminhada
+QuinSex,Nao,TresDias,Metade,TresDias,Suficiente,Encaminhada
+TerQuar,Nao,Imediata,Normal,Imediata,Suficiente,Encaminhada
+SegTer,Nao,Imediata,Normal,Imediata,Suficiente,Encaminhada
+QuinSex,Sim,TresDias,Metade,CincoDias,EmFalta,Encaminhada
+QuarQuin,Nao,TresDias,Metade,TresDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Metade,CincoDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Metade,TresDias,Suficiente,Encaminhada
+QuinSex,Nao,TresDias,Normal,TresDias,Suficiente,Encaminhada
+QuarQuin,Sim,TresDias,Metade,TresDias,Suficiente,Encaminhada

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network6" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="DiasDeFolga">
+			<state id="SegTer" />
+			<state id="TerQuar" />
+			<state id="QuarQuin" />
+			<state id="QuinSex" />
+			<probabilities>0.3976620404091891 0.1638162371569631 0.1992759681559838 0.239245754277864</probabilities>
+		</cpt>
+		<cpt id="Disponibilidade">
+			<state id="Imediata" />
+			<state id="TresDias" />
+			<probabilities>0.3645851212881919 0.6354148787118081</probabilities>
+		</cpt>
+		<cpt id="Desconto">
+			<state id="Normal" />
+			<state id="Metade" />
+			<probabilities>0.6838611861171134 0.3161388138828866</probabilities>
+		</cpt>
+		<cpt id="MaoDeObra">
+			<state id="Suficiente" />
+			<state id="EmFalta" />
+			<parents>Desconto</parents>
+			<probabilities>0.8845488802970632 0.1154511197029367 0.7574245541838134 0.2425754458161866</probabilities>
+		</cpt>
+		<cpt id="Encomenda">
+			<state id="Encaminhada" />
+			<state id="Extraviada" />
+			<probabilities>0.9200076658425484 0.07999233415745159</probabilities>
+		</cpt>
+		<cpt id="ChegarAtrasado">
+			<state id="Atrasado" />
+			<state id="NaoAtrasado" />
+			<parents>MaoDeObra Encomenda</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="NovaDisponibilidade">
+			<state id="Imediata" />
+			<state id="TresDias" />
+			<state id="CincoDias" />
+			<parents>Disponibilidade Desconto</parents>
+			<probabilities>0.9939736148394258 0.006026385160574234 1.045169123486817e-19 0.522546897546637 0.4774531024531424 2.203634815145114e-13 2.103486725951063e-20 0.8077280175118168 0.1922719824881833 8.763349471749507e-15 0.6671181058235544 0.3328818941764368</probabilities>
+		</cpt>
+	</nodes>
+	<cases>
+		<case name="Case0001">
+			<evidence node="DiasDeFolga" state="QuarQuin" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="EmFalta" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+		<case name="Case0002">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0003">
+			<evidence node="DiasDeFolga" state="QuarQuin" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0004">
+			<evidence node="DiasDeFolga" state="QuinSex" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="CincoDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0005">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0006">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0007">
+			<evidence node="DiasDeFolga" state="QuinSex" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0008">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="EmFalta" />
+			<evidence node="Encomenda" state="Extraviada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0009">
+			<evidence node="DiasDeFolga" state="TerQuar" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0010">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0011">
+			<evidence node="DiasDeFolga" state="TerQuar" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+		<case name="Case0012">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Extraviada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0013">
+			<evidence node="DiasDeFolga" state="QuinSex" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0014">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0015">
+			<evidence node="DiasDeFolga" state="TerQuar" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0016">
+			<evidence node="DiasDeFolga" state="QuarQuin" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="EmFalta" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="CincoDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0017">
+			<evidence node="DiasDeFolga" state="QuinSex" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+		<case name="Case0018">
+			<evidence node="DiasDeFolga" state="TerQuar" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0019">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="Imediata" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="Imediata" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0020">
+			<evidence node="DiasDeFolga" state="QuinSex" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="EmFalta" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="CincoDias" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+		<case name="Case0021">
+			<evidence node="DiasDeFolga" state="QuarQuin" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+		<case name="Case0022">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="CincoDias" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+		<case name="Case0023">
+			<evidence node="DiasDeFolga" state="SegTer" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+		<case name="Case0024">
+			<evidence node="DiasDeFolga" state="QuinSex" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Normal" />
+		</case>
+		<case name="Case0025">
+			<evidence node="DiasDeFolga" state="QuarQuin" />
+			<evidence node="Disponibilidade" state="TresDias" />
+			<evidence node="MaoDeObra" state="Suficiente" />
+			<evidence node="Encomenda" state="Encaminhada" />
+			<evidence node="NovaDisponibilidade" state="TresDias" />
+			<evidence node="Desconto" state="Metade" />
+		</case>
+	</cases>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.621.1 ACADEMIC" name="Network6" faultnameformat="nodestate">
+			<node id="DiasDeFolga">
+				<name>Dias de Folga</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>309 483 458 571</position>
+			</node>
+			<node id="Disponibilidade">
+				<name>Disponibilidade</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>670 284 805 367</position>
+			</node>
+			<node id="MaoDeObra">
+				<name>Mao de Obra</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>746 135 887 212</position>
+			</node>
+			<node id="Encomenda">
+				<name>Encomenda</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>942 484 1083 571</position>
+			</node>
+			<node id="ChegarAtrasado">
+				<name>Chegar Atrasado</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>752 491 881 563</position>
+			</node>
+			<node id="NovaDisponibilidade">
+				<name>Nova Disponibilidade</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>504 286 627 364</position>
+			</node>
+			<node id="Desconto">
+				<name>Desconto</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>505 136 626 211</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

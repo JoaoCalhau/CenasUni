@@ -1,0 +1,15 @@
+var real x;
+
+proc p(real y)
+[
+  x = x * y;
+]
+
+proc main()
+[
+  x = 1.5;
+
+  p(3);
+
+  print x;
+]

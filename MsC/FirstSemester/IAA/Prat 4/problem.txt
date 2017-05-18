@@ -1,0 +1,12 @@
+M: Relva molhada
+C: Chuva
+A: Aspersor
+N:Nuvens
+
+P(A=true | N=true) = 0.1
+P(A=true | N=false) = 0.8
+P(N=true) = 0.3
+P(C=true | N=true) = 0.8
+P(C=true | N=false) = 0.1
+P(M=true | C=true) = 1
+P(M=false | A=true) = 0.01

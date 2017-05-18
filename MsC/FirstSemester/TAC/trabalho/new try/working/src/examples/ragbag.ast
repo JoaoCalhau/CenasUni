@@ -1,0 +1,187 @@
+(var (id "global1" var int) (int_literal 32): int)
+
+(var (id "global2" var int) nil)
+
+(var (id "gbool" var bool) true: bool)
+
+(fun "p" [(arg "which" int)]
+  (body [] [
+      (print (id "which" arg int): int)
+      (if
+        (eq (id "which" arg int): int (int_literal 1): int): bool [
+          (print true: bool)
+          (print (eq (int_literal 1): int (int_literal 1): int): bool)
+          (print (ne (int_literal 1): int (int_literal 2): int): bool)
+          (print (lt (int_literal 1): int (int_literal 2): int): bool)
+          (print (le (int_literal 4): int (int_literal 5): int): bool)
+          (print (gt (int_literal 3): int (inv (int_literal 4): int): int): bool)
+          (print (ge (int_literal 9): int (int_literal 9): int): bool)
+          (print (not (gt (int_literal 1): int (int_literal 2): int): bool): bool)
+          (if
+            true: bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (eq (int_literal 1): int (int_literal 1): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (ne (int_literal 1): int (int_literal 2): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (lt (int_literal 1): int (int_literal 2): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (le (int_literal 4): int (int_literal 5): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (gt (int_literal 3): int (inv (int_literal 4): int): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (ge (int_literal 9): int (int_literal 9): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (not (gt (int_literal 1): int (int_literal 2): int): bool): bool 
+            (print true: bool) 
+            (print false: bool))
+        ] [
+          (print false: bool)
+          (print (eq (int_literal 1): int (int_literal 0): int): bool)
+          (print (ne (int_literal 3): int (int_literal 3): int): bool)
+          (print (lt (int_literal 3): int (int_literal 1): int): bool)
+          (print (le (int_literal 8): int (int_literal 3): int): bool)
+          (print (gt (int_literal 3): int (int_literal 3): int): bool)
+          (print (ge (int_literal 4): int (int_literal 8): int): bool)
+          (if
+            false: bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (eq (int_literal 1): int (int_literal 0): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (ne (int_literal 3): int (int_literal 3): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (lt (int_literal 3): int (int_literal 1): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (le (int_literal 8): int (int_literal 3): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (gt (int_literal 3): int (int_literal 3): int): bool 
+            (print true: bool) 
+            (print false: bool))
+          (if
+            (ge (int_literal 4): int (int_literal 8): int): bool 
+            (print true: bool) 
+            (print false: bool))
+        ])
+    ]
+    nil))
+
+(fun "or" []
+  (body [] [
+      (if
+        (or false: bool false: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+      (if
+        (or false: bool true: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+      (if
+        (or true: bool false: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+      (if
+        (or true: bool true: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+    ]
+    nil))
+
+(fun "and" []
+  (body [] [
+      (if
+        (and false: bool false: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+      (if
+        (and false: bool true: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+      (if
+        (and true: bool false: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+      (if
+        (and true: bool true: bool): bool 
+        (print true: bool) 
+        (print false: bool))
+    ]
+    nil))
+
+(fun "f" [(arg "k" int)]
+  (body [] 
+    nil
+    (plus (id "k" arg int): int (int_literal 1): int): int))
+
+(fun "q" []
+  (body [
+      (var (id "local" local int) (int_literal 0): int)
+    ] 
+    (while
+      (lt (id "local" local int): int (int_literal 2): int): bool [
+        (call "p" [(id "local" local int): int])
+        (assign (id "local" local int) (call "f" [(id "local" local int): int]): int)
+      ])
+    nil))
+
+(fun "r" [(arg "arg" int)]
+  (body [] [
+      (assign (id "arg" arg int) (plus (id "arg" arg int): int (id "global2" var int): int): int)
+      (assign (id "global1" var int) (id "arg" arg int): int)
+    ]
+    nil))
+
+(fun "arith" []
+  (body [] [
+      (print (eq (int_literal 33): int (plus (int_literal 3): int (int_literal 30): int): int): bool)
+      (print (eq (int_literal 33): int (times (int_literal 3): int (int_literal 11): int): int): bool)
+      (print (eq (int_literal 33): int (minus (int_literal 40): int (int_literal 7): int): int): bool)
+      (print (eq (int_literal 33): int (div (int_literal 99): int (int_literal 3): int): int): bool)
+      (print (eq (int_literal 33): int (mod (int_literal 67): int (int_literal 34): int): int): bool)
+      (print (eq (int_literal 33): int (inv (inv (int_literal 33): int): int): int): bool)
+    ]
+    nil))
+
+(fun "main" []
+  (body [
+      (var (id "local" local int) (int_literal 34): int)
+    ] [
+      (call "q" [])
+      (print (int_literal 2): int)
+      (call "or" [])
+      (print (int_literal 3): int)
+      (call "and" [])
+      (print (int_literal 4): int)
+      (call "arith" [])
+      (print (int_literal 5): int)
+      (assign (id "global2" var int) (int_literal 33): int)
+      (print (eq (plus (id "global1" var int): int (int_literal 1): int): int (id "global2" var int): int): bool)
+      (print (eq (plus (id "global1" var int): int (id "local" local int): int): int (times (int_literal 2): int (id "global2" var int): int): int): bool)
+      (call "r" [(id "global2" var int): int])
+      (print (eq (times (id "global2" var int): int (int_literal 2): int): int (id "global1" var int): int): bool)
+      (print (eq (int_literal 14): int (plus (call "f" [(int_literal 1): int]): int (plus (call "f" [(int_literal 2): int]): int (plus (call "f" [(int_literal 3): int]): int (call "f" [(int_literal 4): int]): int): int): int): int): bool)
+    ]
+    nil))

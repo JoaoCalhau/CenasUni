@@ -1,0 +1,11 @@
+DiasDeFolga,Chamar Amigo,Disponibilidade,Desconto,NovaDisponibilidade,MaoDeObra,Encomenda
+QuarQuin,Nao,Imediata,Metade,Imediata,EmFalta,Encaminhada
+SegTer,Nao,Imediata,Normal,Imediata,Suficiente,Encaminhada
+QuarQuin,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada
+QuinSex,Nao,TresDias,Normal,CincoDias,Suficiente,Encaminhada
+SegTer,Nao,TresDias,Normal,TresDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada
+QuinSex,Nao,TresDias,Normal,TresDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Normal,TresDias,EmFalta,Extraviada
+TerQuar,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada
+SegTer,Sim,TresDias,Normal,TresDias,Suficiente,Encaminhada

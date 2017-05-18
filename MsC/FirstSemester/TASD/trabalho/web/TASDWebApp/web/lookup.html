@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LookUp a Name</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+    </head>
+    <body>
+         <ul>
+            <li><a href="index.html"><font size="5">Menu</font></a></li>
+            <li><a class="active" href="#LookUp"><font size="5">LookUp</font></a></li>
+            <li><a href="newname.html"><font size="5">Create</font></a></li>
+        </ul>
+        <div Style="margin-left:25%; padding:1px 16px; height: 1000px">
+            <h1 align="center">Please insert the name you wish to look up</h1>
+            <form name="LookUpOne" action="LookUpOne" method="post">
+                Unique ID:<p><input type="text" name="uniqueid" size="40"></p>
+                <p><input type="submit" value="procede"></p>
+            </form>
+            <h1 align="center">Or would you rather lookup all the registered names?</h1>
+            <form name="LookUpAll" action="LookUpAll" method="get">
+                <p><input type="submit" value="procede"></p>
+            </form>
+        </div>
+    </body>
+</html>

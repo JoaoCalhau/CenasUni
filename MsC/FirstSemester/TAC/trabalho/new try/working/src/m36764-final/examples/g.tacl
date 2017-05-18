@@ -1,0 +1,12 @@
+fun real g(int n)
+[
+  var real s = 0;
+
+  while (n >= 1)
+    [
+      s = s + n;
+      n = n - 1;
+    ]
+
+  ^ s
+]

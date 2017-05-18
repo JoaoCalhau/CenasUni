@@ -1,0 +1,28 @@
+1.10
+	a. With a multi-core CPU, each core can do it's own thing.
+	   With a GPU, we can have hundreds or thousands of cores running hundreds or thousands of threads at once, but they cant run different code on each thread concurrently due to their architecture.
+
+	b. Until recently, everyone was trying to shrink the size of the hardware and get faster CPU clock times to increase the speed of a single core. Multi-core processors were quite expensive but nowadays we can produce cheaper multi-core processors and this all happened really fast. Until 5 or 6 years ago everyone had a single (at max 2) core processor and so most of the code was not written to be optimized with parallel processing.
+
+	c. Code needs to be written iwith the thought of parallel processing in mind, because that's the way processor evolution is going now, and if we don't make use of that option we're just wasting multi-core processors potential.
+
+	d. An SSD does functionally everything a hard drive does, but data is stored on interconnected flash memory chips that retain the data even when there is no power present. These flash memory chips are of a different type than the ones used in USB thumb drives, and are typically faster and more reliable.
+
+	e. At first we connected our computers with ethernet. Then InfiniBand started to dominate in HPC. Now with RDMA readilu available, we are starting to see a shift back to ethernet for many systems. This is the reason ethernet and InfiniBand are dominating the HPC market, because instead of passing packets through the operating system, data transfers are done directly memory to memory, which requires no work from the CPUs.
+
+1.15
+	a. DoS is an attempt to make a machine or network resource unavailable to its intended users.
+
+	b. Trojan Horse is any malicious program used to hack into a computer by misleading users of its true potential.
+
+	c. Network worm is a malware program that replicate itself in order to spread to other computers.
+
+	d. Service Spoofing is a situation in which one person or progam successfully masquerades as another by falsifying data.
+
+	e. Authorization is the function of specifying access rights to certain resources.
+
+	f. Authentication is the ac of comfirming the thruth of an attribute of a single pice of data.
+
+	g. Data Integrity is the maintenance of data over its entire life-cycle, implementation and usage on any system that stores, processes or retrieves data.
+
+	h. Confidentiality involves a sot of rules or a promisse that limits access or places restrictions on certain types of information.

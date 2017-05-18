@@ -1,0 +1,17 @@
+Using python 2.7
+
+Problem 1:
+
+	python Utility.py
+	python graph.py
+
+Note: 
+	Commands can be run in no specific order. 
+	The first command will output a .csv file named utility.csv
+	The second command will output a .csv file named graph.csv
+	These files were used for graph making with aid of LibreOffice for the graphs 
+	showed in the report 
+
+Problem 2:
+
+	python viterbi.py

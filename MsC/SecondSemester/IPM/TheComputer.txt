@@ -1,0 +1,24 @@
+Lab Class #2: The Computer
+
+1.
+	1.1. The keyboard supports text input, the mouse however supports cursor manipulation through 
+	movement of the mouse and pressure of the buttons it has. There are applications that make use of 
+	other sensors like a touchscreen or a joystick. The keyboard is more suited to handwriting while 
+	the mouse is more suited for 2D movement on the screen. These areas are what users on a computer 
+	normaly do, be it writing a text, playing a game or simply browsing the internet.
+
+	1.2. I'd need to know to what area it would be used because depending on the area certain 
+	positioning of keys are better and make the job easier.
+
+
+2. It has to do with the speed of processing, because this problem can seriously affect the user 
+inteface. However, nowadays designers tend to assum efast processors, and make interfaces more and 
+more complicated.
+
+3. A good input method for blind people nowadays would be a voice recognition software while the output device would be sounds when a certain action has been completed. The voice recognition input method would solve the havin to type something without beeing able to see the keyboard (or if the keyboard in in braille, it wouldreduce the learning curve and facilitate it's use), while the sound output would negate the fact that the user couldn't see what was happening in the computer screen.
+
+4. It's a scientific law that predicts that the time required to rapidly move to a target area is a function of the ratio between the distance to the target and the width of the target.
+
+5. Voice recognition, eye tracking, dataglove, sound.
+
+6. On a game console we have various forms of input, like a controller, a camera or even a motion tracker controller. In each of these, the type of input is differen. In the controller we have joysticks and buttons (and on more modern ones even a gyroscope) which generate movement on the screen and actions through button pressing. They all suit the activity that is gaming because in a game the things we do most is quick actions and movement and having a joystick that directly moves our character the way we want and having buttons that are close to that joystick that allows us to take action quickly if something happens in-game that we where not expecting. Of course this all depends on the type of video game we're playing, if it is an RPG I agree that a controller is far more intuitive and easy to use than a keyboard and mouse, however if the game is a FPS it's far more easier to use a keyboard and a mouse to move the camera and shoot because we have much more precision and control.

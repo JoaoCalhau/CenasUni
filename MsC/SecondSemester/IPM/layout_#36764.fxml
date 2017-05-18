@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar layoutY="-2.0" prefHeight="32.0" prefWidth="600.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As" />
+                  <MenuItem mnemonicParsing="false" text="Open File" />
+                  <MenuItem mnemonicParsing="false" text="Print" />
+                  <MenuItem mnemonicParsing="false" text="Print Preview" />
+                  <MenuItem mnemonicParsing="false" text="Close Copy" />
+                  <MenuItem mnemonicParsing="false" text="Open Copy of File" />
+                  <MenuItem mnemonicParsing="false" text="Open Copy of File" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Mail">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Open Mail" />
+                  <MenuItem mnemonicParsing="false" text="Send mail" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Clear" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" text="Go To" />
+                  <MenuItem mnemonicParsing="false" text="Go Back" />
+                  <MenuItem mnemonicParsing="false" text="Repeat Edit" />
+               </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Page">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="Page Setup" />
+                  <MenuItem mnemonicParsing="false" text="View Page" />
+                  <MenuItem mnemonicParsing="false" text="Position on Page" />
+                  <MenuItem mnemonicParsing="false" text="Add Page Break" />
+                  <MenuItem mnemonicParsing="false" text="Repaginate" />
+                  <MenuItem mnemonicParsing="false" text="Table" />
+                  <MenuItem mnemonicParsing="false" text="See Table of Contents" />
+                  <MenuItem mnemonicParsing="false" text="Glossary" />
+                  <MenuItem mnemonicParsing="false" text="Insert Graphic" />
+                  <MenuItem mnemonicParsing="false" text="Insert Index Entry" />
+                  <MenuItem mnemonicParsing="false" text="Renumber Pages" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Text">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Find Word" />
+                  <MenuItem mnemonicParsing="false" text="Change Word" />
+                  <MenuItem mnemonicParsing="false" text="Change Font" />
+                  <MenuItem mnemonicParsing="false" text="Plain Text" />
+                  <MenuItem mnemonicParsing="false" text="Bold Text" />
+                  <MenuItem mnemonicParsing="false" text="Italic Text" />
+                  <MenuItem mnemonicParsing="false" text="Underline" />
+                  <MenuItem mnemonicParsing="false" text="Increase Point Size" />
+                  <MenuItem mnemonicParsing="false" text="Decrease Point Size" />
+                  <MenuItem mnemonicParsing="false" text="Check Spelling" />
+                  <MenuItem mnemonicParsing="false" text="View index" />
+                  <MenuItem mnemonicParsing="false" text="Count Words" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Preferences">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Character Style" />
+                  <MenuItem mnemonicParsing="false" text="Format Paragraph" />
+                  <MenuItem mnemonicParsing="false" text="Lay Out Document" />
+                  <MenuItem mnemonicParsing="false" text="Show Alternative Document" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</Pane>

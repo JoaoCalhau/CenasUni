@@ -1,0 +1,15 @@
+Distributed - Cluster
+			- Cloud
+
+Parallel - GPU
+		 - Multicore
+		 - Hybrid
+
+Services - Storage
+		 - Compute (Virt.)
+
+
+Stages:
+	- dev.
+	- eval -> performance: raw and scaling
+	- report (12 to 20 pages)

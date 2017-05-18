@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Eletricidade" dynamic="plate">
+			<state id="Falha" />
+			<state id="NFalha" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Agua" dynamic="plate">
+			<state id="Derrama" />
+			<state id="NDerrama" />
+			<probabilities>0.4 0.6</probabilities>
+		</cpt>
+		<cpt id="Disco" dynamic="plate">
+			<state id="DFalha" />
+			<state id="DNFalha" />
+			<parents>Eletricidade Agua</parents>
+			<probabilities>0.7 0.3 0.4 0.6 0.9 0.1 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="PersonalComputer" dynamic="plate">
+			<state id="Liga" />
+			<state id="NLiga" />
+			<parents>Disco</parents>
+			<probabilities>0.1 0.9 1 0</probabilities>
+		</cpt>
+	</nodes>
+	<dynamic numslices="3">
+		<cpt id="Disco" order="1">
+			<parents>Disco</parents>
+			<probabilities>0.8 0.2 0.7 0.3 0.5 0.5 0.4 0.6 0.95 0.05000000000000004 0.9 0.1 0.05 0.9500000000000001 0.01 0.99</probabilities>
+		</cpt>
+	</dynamic>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.621.1 ACADEMIC" name="Semana2" faultnameformat="nodestate">
+			<plate leftwidth="120" rightwidth="120">137 80 855 466</plate>
+			<node id="Eletricidade">
+				<name>Eletricidade</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>342 130 437 198</position>
+			</node>
+			<node id="Agua">
+				<name>Agua</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>480 129 578 196</position>
+			</node>
+			<node id="Disco">
+				<name>Disco</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>413 261 516 327</position>
+			</node>
+			<node id="PersonalComputer">
+				<name>PC</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>420 384 509 451</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

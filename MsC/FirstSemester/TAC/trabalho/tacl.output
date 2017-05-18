@@ -1,0 +1,1653 @@
+Terminals unused in grammar
+
+   ERROR
+
+
+State 124 conflicts: 2 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: global_declarations
+
+    2 global_declarations: fun_decl global_declarations
+    3                    | fun_decl
+    4                    | var_decl global_declarations
+    5                    | var_decl
+
+    6 fun_decl: OPPAR FUN IDENTIFIER OPRPAR formal_args CLRPAR body CLPAR
+
+    7 var_decl: OPPAR VAR OPPAR identifier CLPAR expressions CLPAR
+
+    8 formal_args: OPPAR ARG IDENTIFIER type CLPAR formal_args
+    9            | %empty
+
+   10 body: OPPAR BODY OPRPAR declarations CLRPAR statements expressions CLPAR
+
+   11 identifier: ID IDENTIFIER kind type
+
+   12 kind: VAR
+   13     | LOCAL
+   14     | ARG
+
+   15 type: INT
+   16     | REAL
+   17     | BOOL
+
+   18 declarations: declaration declarations
+   19             | %empty
+
+   20 statements: statement statements
+   21           | statement
+
+   22 expressions: expression expressions
+   23            | expression
+
+   24 declaration: var_decl
+
+   25 statement: OPPAR assign CLPAR
+   26          | OPPAR fun_call CLPAR
+   27          | OPPAR print CLPAR
+   28          | OPPAR conditional CLPAR
+   29          | OPPAR loop CLPAR
+   30          | compound
+   31          | NIL
+
+   32 assign: ASSIGN OPPAR identifier CLPAR expression
+
+   33 fun_call: CALL IDENTIFIER OPRPAR expressions CLRPAR
+
+   34 print: PRINT expression
+
+   35 conditional: IF expression statement statement
+
+   36 loop: WHILE expression statement
+
+   37 compound: OPRPAR statements CLRPAR
+
+   38 expression: OPPAR annotated_expressions CLPAR COLON type
+   39           | TRUE COLON type
+   40           | FALSE COLON type
+   41           | NIL
+
+   42 annotated_expressions: OR expression expression
+   43                      | AND expression expression
+   44                      | EQ expression expression
+   45                      | NE expression expression
+   46                      | LT expression expression
+   47                      | LE expression expression
+   48                      | GT expression expression
+   49                      | GE expression expression
+   50                      | PLUS expression expression
+   51                      | MINUS expression expression
+   52                      | TIMES expression expression
+   53                      | DIV expression expression
+   54                      | MOD expression expression
+   55                      | NOT expression expression
+   56                      | INV expression expression
+   57                      | identifier
+   58                      | I_LITERAL INT_LITERAL
+   59                      | R_LITERAL REAL_LITERAL
+   60                      | fun_call
+   61                      | toreal
+
+   62 toreal: TOREAL annotated_expressions
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+FUN (258) 6
+VAR (259) 7 12
+INT (260) 15
+REAL (261) 16
+BOOL (262) 17
+IDENTIFIER (263) 6 8 11 33
+COLON (264) 38 39 40
+OPPAR (265) 6 7 8 10 25 26 27 28 29 32 38
+CLPAR (266) 6 7 8 10 25 26 27 28 29 32 38
+OPRPAR (267) 6 10 33 37
+CLRPAR (268) 6 10 33 37
+NIL (269) 31 41
+ID (270) 11
+LOCAL (271) 13
+ARG (272) 8 14
+BODY (273) 10
+ASSIGN (274) 32
+CALL (275) 33
+PRINT (276) 34
+IF (277) 35
+WHILE (278) 36
+TRUE (279) 39
+FALSE (280) 40
+TOREAL (281) 62
+I_LITERAL (282) 58
+R_LITERAL (283) 59
+INT_LITERAL (284) 58
+REAL_LITERAL (285) 59
+OR (286) 42
+AND (287) 43
+EQ (288) 44
+NE (289) 45
+LT (290) 46
+LE (291) 47
+GT (292) 48
+GE (293) 49
+PLUS (294) 50
+MINUS (295) 51
+TIMES (296) 52
+DIV (297) 53
+MOD (298) 54
+NOT (299) 55
+INV (300) 56
+ERROR (301)
+
+
+Nonterminals, with rules where they appear
+
+$accept (47)
+    on left: 0
+program (48)
+    on left: 1, on right: 0
+global_declarations (49)
+    on left: 2 3 4 5, on right: 1 2 4
+fun_decl (50)
+    on left: 6, on right: 2 3
+var_decl (51)
+    on left: 7, on right: 4 5 24
+formal_args (52)
+    on left: 8 9, on right: 6 8
+body (53)
+    on left: 10, on right: 6
+identifier (54)
+    on left: 11, on right: 7 32 57
+kind (55)
+    on left: 12 13 14, on right: 11
+type (56)
+    on left: 15 16 17, on right: 8 11 38 39 40
+declarations (57)
+    on left: 18 19, on right: 10 18
+statements (58)
+    on left: 20 21, on right: 10 20 37
+expressions (59)
+    on left: 22 23, on right: 7 10 22 33
+declaration (60)
+    on left: 24, on right: 18
+statement (61)
+    on left: 25 26 27 28 29 30 31, on right: 20 21 35 36
+assign (62)
+    on left: 32, on right: 25
+fun_call (63)
+    on left: 33, on right: 26 60
+print (64)
+    on left: 34, on right: 27
+conditional (65)
+    on left: 35, on right: 28
+loop (66)
+    on left: 36, on right: 29
+compound (67)
+    on left: 37, on right: 30
+expression (68)
+    on left: 38 39 40 41, on right: 22 23 32 34 35 36 42 43 44 45 46
+    47 48 49 50 51 52 53 54 55 56
+annotated_expressions (69)
+    on left: 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59
+    60 61, on right: 38 62
+toreal (70)
+    on left: 62, on right: 61
+
+
+State 0
+
+    0 $accept: . program $end
+
+    OPPAR  shift, and go to state 1
+
+    program              go to state 2
+    global_declarations  go to state 3
+    fun_decl             go to state 4
+    var_decl             go to state 5
+
+
+State 1
+
+    6 fun_decl: OPPAR . FUN IDENTIFIER OPRPAR formal_args CLRPAR body CLPAR
+    7 var_decl: OPPAR . VAR OPPAR identifier CLPAR expressions CLPAR
+
+    FUN  shift, and go to state 6
+    VAR  shift, and go to state 7
+
+
+State 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 8
+
+
+State 3
+
+    1 program: global_declarations .
+
+    $default  reduce using rule 1 (program)
+
+
+State 4
+
+    2 global_declarations: fun_decl . global_declarations
+    3                    | fun_decl .
+
+    OPPAR  shift, and go to state 1
+
+    $default  reduce using rule 3 (global_declarations)
+
+    global_declarations  go to state 9
+    fun_decl             go to state 4
+    var_decl             go to state 5
+
+
+State 5
+
+    4 global_declarations: var_decl . global_declarations
+    5                    | var_decl .
+
+    OPPAR  shift, and go to state 1
+
+    $default  reduce using rule 5 (global_declarations)
+
+    global_declarations  go to state 10
+    fun_decl             go to state 4
+    var_decl             go to state 5
+
+
+State 6
+
+    6 fun_decl: OPPAR FUN . IDENTIFIER OPRPAR formal_args CLRPAR body CLPAR
+
+    IDENTIFIER  shift, and go to state 11
+
+
+State 7
+
+    7 var_decl: OPPAR VAR . OPPAR identifier CLPAR expressions CLPAR
+
+    OPPAR  shift, and go to state 12
+
+
+State 8
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+State 9
+
+    2 global_declarations: fun_decl global_declarations .
+
+    $default  reduce using rule 2 (global_declarations)
+
+
+State 10
+
+    4 global_declarations: var_decl global_declarations .
+
+    $default  reduce using rule 4 (global_declarations)
+
+
+State 11
+
+    6 fun_decl: OPPAR FUN IDENTIFIER . OPRPAR formal_args CLRPAR body CLPAR
+
+    OPRPAR  shift, and go to state 13
+
+
+State 12
+
+    7 var_decl: OPPAR VAR OPPAR . identifier CLPAR expressions CLPAR
+
+    ID  shift, and go to state 14
+
+    identifier  go to state 15
+
+
+State 13
+
+    6 fun_decl: OPPAR FUN IDENTIFIER OPRPAR . formal_args CLRPAR body CLPAR
+
+    OPPAR  shift, and go to state 16
+
+    $default  reduce using rule 9 (formal_args)
+
+    formal_args  go to state 17
+
+
+State 14
+
+   11 identifier: ID . IDENTIFIER kind type
+
+    IDENTIFIER  shift, and go to state 18
+
+
+State 15
+
+    7 var_decl: OPPAR VAR OPPAR identifier . CLPAR expressions CLPAR
+
+    CLPAR  shift, and go to state 19
+
+
+State 16
+
+    8 formal_args: OPPAR . ARG IDENTIFIER type CLPAR formal_args
+
+    ARG  shift, and go to state 20
+
+
+State 17
+
+    6 fun_decl: OPPAR FUN IDENTIFIER OPRPAR formal_args . CLRPAR body CLPAR
+
+    CLRPAR  shift, and go to state 21
+
+
+State 18
+
+   11 identifier: ID IDENTIFIER . kind type
+
+    VAR    shift, and go to state 22
+    LOCAL  shift, and go to state 23
+    ARG    shift, and go to state 24
+
+    kind  go to state 25
+
+
+State 19
+
+    7 var_decl: OPPAR VAR OPPAR identifier CLPAR . expressions CLPAR
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expressions  go to state 30
+    expression   go to state 31
+
+
+State 20
+
+    8 formal_args: OPPAR ARG . IDENTIFIER type CLPAR formal_args
+
+    IDENTIFIER  shift, and go to state 32
+
+
+State 21
+
+    6 fun_decl: OPPAR FUN IDENTIFIER OPRPAR formal_args CLRPAR . body CLPAR
+
+    OPPAR  shift, and go to state 33
+
+    body  go to state 34
+
+
+State 22
+
+   12 kind: VAR .
+
+    $default  reduce using rule 12 (kind)
+
+
+State 23
+
+   13 kind: LOCAL .
+
+    $default  reduce using rule 13 (kind)
+
+
+State 24
+
+   14 kind: ARG .
+
+    $default  reduce using rule 14 (kind)
+
+
+State 25
+
+   11 identifier: ID IDENTIFIER kind . type
+
+    INT   shift, and go to state 35
+    REAL  shift, and go to state 36
+    BOOL  shift, and go to state 37
+
+    type  go to state 38
+
+
+State 26
+
+   38 expression: OPPAR . annotated_expressions CLPAR COLON type
+
+    ID         shift, and go to state 14
+    CALL       shift, and go to state 39
+    TOREAL     shift, and go to state 40
+    I_LITERAL  shift, and go to state 41
+    R_LITERAL  shift, and go to state 42
+    OR         shift, and go to state 43
+    AND        shift, and go to state 44
+    EQ         shift, and go to state 45
+    NE         shift, and go to state 46
+    LT         shift, and go to state 47
+    LE         shift, and go to state 48
+    GT         shift, and go to state 49
+    GE         shift, and go to state 50
+    PLUS       shift, and go to state 51
+    MINUS      shift, and go to state 52
+    TIMES      shift, and go to state 53
+    DIV        shift, and go to state 54
+    MOD        shift, and go to state 55
+    NOT        shift, and go to state 56
+    INV        shift, and go to state 57
+
+    identifier             go to state 58
+    fun_call               go to state 59
+    annotated_expressions  go to state 60
+    toreal                 go to state 61
+
+
+State 27
+
+   41 expression: NIL .
+
+    $default  reduce using rule 41 (expression)
+
+
+State 28
+
+   39 expression: TRUE . COLON type
+
+    COLON  shift, and go to state 62
+
+
+State 29
+
+   40 expression: FALSE . COLON type
+
+    COLON  shift, and go to state 63
+
+
+State 30
+
+    7 var_decl: OPPAR VAR OPPAR identifier CLPAR expressions . CLPAR
+
+    CLPAR  shift, and go to state 64
+
+
+State 31
+
+   22 expressions: expression . expressions
+   23            | expression .
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    $default  reduce using rule 23 (expressions)
+
+    expressions  go to state 65
+    expression   go to state 31
+
+
+State 32
+
+    8 formal_args: OPPAR ARG IDENTIFIER . type CLPAR formal_args
+
+    INT   shift, and go to state 35
+    REAL  shift, and go to state 36
+    BOOL  shift, and go to state 37
+
+    type  go to state 66
+
+
+State 33
+
+   10 body: OPPAR . BODY OPRPAR declarations CLRPAR statements expressions CLPAR
+
+    BODY  shift, and go to state 67
+
+
+State 34
+
+    6 fun_decl: OPPAR FUN IDENTIFIER OPRPAR formal_args CLRPAR body . CLPAR
+
+    CLPAR  shift, and go to state 68
+
+
+State 35
+
+   15 type: INT .
+
+    $default  reduce using rule 15 (type)
+
+
+State 36
+
+   16 type: REAL .
+
+    $default  reduce using rule 16 (type)
+
+
+State 37
+
+   17 type: BOOL .
+
+    $default  reduce using rule 17 (type)
+
+
+State 38
+
+   11 identifier: ID IDENTIFIER kind type .
+
+    $default  reduce using rule 11 (identifier)
+
+
+State 39
+
+   33 fun_call: CALL . IDENTIFIER OPRPAR expressions CLRPAR
+
+    IDENTIFIER  shift, and go to state 69
+
+
+State 40
+
+   62 toreal: TOREAL . annotated_expressions
+
+    ID         shift, and go to state 14
+    CALL       shift, and go to state 39
+    TOREAL     shift, and go to state 40
+    I_LITERAL  shift, and go to state 41
+    R_LITERAL  shift, and go to state 42
+    OR         shift, and go to state 43
+    AND        shift, and go to state 44
+    EQ         shift, and go to state 45
+    NE         shift, and go to state 46
+    LT         shift, and go to state 47
+    LE         shift, and go to state 48
+    GT         shift, and go to state 49
+    GE         shift, and go to state 50
+    PLUS       shift, and go to state 51
+    MINUS      shift, and go to state 52
+    TIMES      shift, and go to state 53
+    DIV        shift, and go to state 54
+    MOD        shift, and go to state 55
+    NOT        shift, and go to state 56
+    INV        shift, and go to state 57
+
+    identifier             go to state 58
+    fun_call               go to state 59
+    annotated_expressions  go to state 70
+    toreal                 go to state 61
+
+
+State 41
+
+   58 annotated_expressions: I_LITERAL . INT_LITERAL
+
+    INT_LITERAL  shift, and go to state 71
+
+
+State 42
+
+   59 annotated_expressions: R_LITERAL . REAL_LITERAL
+
+    REAL_LITERAL  shift, and go to state 72
+
+
+State 43
+
+   42 annotated_expressions: OR . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 73
+
+
+State 44
+
+   43 annotated_expressions: AND . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 74
+
+
+State 45
+
+   44 annotated_expressions: EQ . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 75
+
+
+State 46
+
+   45 annotated_expressions: NE . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 76
+
+
+State 47
+
+   46 annotated_expressions: LT . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 77
+
+
+State 48
+
+   47 annotated_expressions: LE . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 78
+
+
+State 49
+
+   48 annotated_expressions: GT . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 79
+
+
+State 50
+
+   49 annotated_expressions: GE . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 80
+
+
+State 51
+
+   50 annotated_expressions: PLUS . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 81
+
+
+State 52
+
+   51 annotated_expressions: MINUS . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 82
+
+
+State 53
+
+   52 annotated_expressions: TIMES . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 83
+
+
+State 54
+
+   53 annotated_expressions: DIV . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 84
+
+
+State 55
+
+   54 annotated_expressions: MOD . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 85
+
+
+State 56
+
+   55 annotated_expressions: NOT . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 86
+
+
+State 57
+
+   56 annotated_expressions: INV . expression expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 87
+
+
+State 58
+
+   57 annotated_expressions: identifier .
+
+    $default  reduce using rule 57 (annotated_expressions)
+
+
+State 59
+
+   60 annotated_expressions: fun_call .
+
+    $default  reduce using rule 60 (annotated_expressions)
+
+
+State 60
+
+   38 expression: OPPAR annotated_expressions . CLPAR COLON type
+
+    CLPAR  shift, and go to state 88
+
+
+State 61
+
+   61 annotated_expressions: toreal .
+
+    $default  reduce using rule 61 (annotated_expressions)
+
+
+State 62
+
+   39 expression: TRUE COLON . type
+
+    INT   shift, and go to state 35
+    REAL  shift, and go to state 36
+    BOOL  shift, and go to state 37
+
+    type  go to state 89
+
+
+State 63
+
+   40 expression: FALSE COLON . type
+
+    INT   shift, and go to state 35
+    REAL  shift, and go to state 36
+    BOOL  shift, and go to state 37
+
+    type  go to state 90
+
+
+State 64
+
+    7 var_decl: OPPAR VAR OPPAR identifier CLPAR expressions CLPAR .
+
+    $default  reduce using rule 7 (var_decl)
+
+
+State 65
+
+   22 expressions: expression expressions .
+
+    $default  reduce using rule 22 (expressions)
+
+
+State 66
+
+    8 formal_args: OPPAR ARG IDENTIFIER type . CLPAR formal_args
+
+    CLPAR  shift, and go to state 91
+
+
+State 67
+
+   10 body: OPPAR BODY . OPRPAR declarations CLRPAR statements expressions CLPAR
+
+    OPRPAR  shift, and go to state 92
+
+
+State 68
+
+    6 fun_decl: OPPAR FUN IDENTIFIER OPRPAR formal_args CLRPAR body CLPAR .
+
+    $default  reduce using rule 6 (fun_decl)
+
+
+State 69
+
+   33 fun_call: CALL IDENTIFIER . OPRPAR expressions CLRPAR
+
+    OPRPAR  shift, and go to state 93
+
+
+State 70
+
+   62 toreal: TOREAL annotated_expressions .
+
+    $default  reduce using rule 62 (toreal)
+
+
+State 71
+
+   58 annotated_expressions: I_LITERAL INT_LITERAL .
+
+    $default  reduce using rule 58 (annotated_expressions)
+
+
+State 72
+
+   59 annotated_expressions: R_LITERAL REAL_LITERAL .
+
+    $default  reduce using rule 59 (annotated_expressions)
+
+
+State 73
+
+   42 annotated_expressions: OR expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 94
+
+
+State 74
+
+   43 annotated_expressions: AND expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 95
+
+
+State 75
+
+   44 annotated_expressions: EQ expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 96
+
+
+State 76
+
+   45 annotated_expressions: NE expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 97
+
+
+State 77
+
+   46 annotated_expressions: LT expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 98
+
+
+State 78
+
+   47 annotated_expressions: LE expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 99
+
+
+State 79
+
+   48 annotated_expressions: GT expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 100
+
+
+State 80
+
+   49 annotated_expressions: GE expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 101
+
+
+State 81
+
+   50 annotated_expressions: PLUS expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 102
+
+
+State 82
+
+   51 annotated_expressions: MINUS expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 103
+
+
+State 83
+
+   52 annotated_expressions: TIMES expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 104
+
+
+State 84
+
+   53 annotated_expressions: DIV expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 105
+
+
+State 85
+
+   54 annotated_expressions: MOD expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 106
+
+
+State 86
+
+   55 annotated_expressions: NOT expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 107
+
+
+State 87
+
+   56 annotated_expressions: INV expression . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 108
+
+
+State 88
+
+   38 expression: OPPAR annotated_expressions CLPAR . COLON type
+
+    COLON  shift, and go to state 109
+
+
+State 89
+
+   39 expression: TRUE COLON type .
+
+    $default  reduce using rule 39 (expression)
+
+
+State 90
+
+   40 expression: FALSE COLON type .
+
+    $default  reduce using rule 40 (expression)
+
+
+State 91
+
+    8 formal_args: OPPAR ARG IDENTIFIER type CLPAR . formal_args
+
+    OPPAR  shift, and go to state 16
+
+    $default  reduce using rule 9 (formal_args)
+
+    formal_args  go to state 110
+
+
+State 92
+
+   10 body: OPPAR BODY OPRPAR . declarations CLRPAR statements expressions CLPAR
+
+    OPPAR  shift, and go to state 111
+
+    $default  reduce using rule 19 (declarations)
+
+    var_decl      go to state 112
+    declarations  go to state 113
+    declaration   go to state 114
+
+
+State 93
+
+   33 fun_call: CALL IDENTIFIER OPRPAR . expressions CLRPAR
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expressions  go to state 115
+    expression   go to state 31
+
+
+State 94
+
+   42 annotated_expressions: OR expression expression .
+
+    $default  reduce using rule 42 (annotated_expressions)
+
+
+State 95
+
+   43 annotated_expressions: AND expression expression .
+
+    $default  reduce using rule 43 (annotated_expressions)
+
+
+State 96
+
+   44 annotated_expressions: EQ expression expression .
+
+    $default  reduce using rule 44 (annotated_expressions)
+
+
+State 97
+
+   45 annotated_expressions: NE expression expression .
+
+    $default  reduce using rule 45 (annotated_expressions)
+
+
+State 98
+
+   46 annotated_expressions: LT expression expression .
+
+    $default  reduce using rule 46 (annotated_expressions)
+
+
+State 99
+
+   47 annotated_expressions: LE expression expression .
+
+    $default  reduce using rule 47 (annotated_expressions)
+
+
+State 100
+
+   48 annotated_expressions: GT expression expression .
+
+    $default  reduce using rule 48 (annotated_expressions)
+
+
+State 101
+
+   49 annotated_expressions: GE expression expression .
+
+    $default  reduce using rule 49 (annotated_expressions)
+
+
+State 102
+
+   50 annotated_expressions: PLUS expression expression .
+
+    $default  reduce using rule 50 (annotated_expressions)
+
+
+State 103
+
+   51 annotated_expressions: MINUS expression expression .
+
+    $default  reduce using rule 51 (annotated_expressions)
+
+
+State 104
+
+   52 annotated_expressions: TIMES expression expression .
+
+    $default  reduce using rule 52 (annotated_expressions)
+
+
+State 105
+
+   53 annotated_expressions: DIV expression expression .
+
+    $default  reduce using rule 53 (annotated_expressions)
+
+
+State 106
+
+   54 annotated_expressions: MOD expression expression .
+
+    $default  reduce using rule 54 (annotated_expressions)
+
+
+State 107
+
+   55 annotated_expressions: NOT expression expression .
+
+    $default  reduce using rule 55 (annotated_expressions)
+
+
+State 108
+
+   56 annotated_expressions: INV expression expression .
+
+    $default  reduce using rule 56 (annotated_expressions)
+
+
+State 109
+
+   38 expression: OPPAR annotated_expressions CLPAR COLON . type
+
+    INT   shift, and go to state 35
+    REAL  shift, and go to state 36
+    BOOL  shift, and go to state 37
+
+    type  go to state 116
+
+
+State 110
+
+    8 formal_args: OPPAR ARG IDENTIFIER type CLPAR formal_args .
+
+    $default  reduce using rule 8 (formal_args)
+
+
+State 111
+
+    7 var_decl: OPPAR . VAR OPPAR identifier CLPAR expressions CLPAR
+
+    VAR  shift, and go to state 7
+
+
+State 112
+
+   24 declaration: var_decl .
+
+    $default  reduce using rule 24 (declaration)
+
+
+State 113
+
+   10 body: OPPAR BODY OPRPAR declarations . CLRPAR statements expressions CLPAR
+
+    CLRPAR  shift, and go to state 117
+
+
+State 114
+
+   18 declarations: declaration . declarations
+
+    OPPAR  shift, and go to state 111
+
+    $default  reduce using rule 19 (declarations)
+
+    var_decl      go to state 112
+    declarations  go to state 118
+    declaration   go to state 114
+
+
+State 115
+
+   33 fun_call: CALL IDENTIFIER OPRPAR expressions . CLRPAR
+
+    CLRPAR  shift, and go to state 119
+
+
+State 116
+
+   38 expression: OPPAR annotated_expressions CLPAR COLON type .
+
+    $default  reduce using rule 38 (expression)
+
+
+State 117
+
+   10 body: OPPAR BODY OPRPAR declarations CLRPAR . statements expressions CLPAR
+
+    OPPAR   shift, and go to state 120
+    OPRPAR  shift, and go to state 121
+    NIL     shift, and go to state 122
+
+    statements  go to state 123
+    statement   go to state 124
+    compound    go to state 125
+
+
+State 118
+
+   18 declarations: declaration declarations .
+
+    $default  reduce using rule 18 (declarations)
+
+
+State 119
+
+   33 fun_call: CALL IDENTIFIER OPRPAR expressions CLRPAR .
+
+    $default  reduce using rule 33 (fun_call)
+
+
+State 120
+
+   25 statement: OPPAR . assign CLPAR
+   26          | OPPAR . fun_call CLPAR
+   27          | OPPAR . print CLPAR
+   28          | OPPAR . conditional CLPAR
+   29          | OPPAR . loop CLPAR
+
+    ASSIGN  shift, and go to state 126
+    CALL    shift, and go to state 39
+    PRINT   shift, and go to state 127
+    IF      shift, and go to state 128
+    WHILE   shift, and go to state 129
+
+    assign       go to state 130
+    fun_call     go to state 131
+    print        go to state 132
+    conditional  go to state 133
+    loop         go to state 134
+
+
+State 121
+
+   37 compound: OPRPAR . statements CLRPAR
+
+    OPPAR   shift, and go to state 120
+    OPRPAR  shift, and go to state 121
+    NIL     shift, and go to state 122
+
+    statements  go to state 135
+    statement   go to state 124
+    compound    go to state 125
+
+
+State 122
+
+   31 statement: NIL .
+
+    $default  reduce using rule 31 (statement)
+
+
+State 123
+
+   10 body: OPPAR BODY OPRPAR declarations CLRPAR statements . expressions CLPAR
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expressions  go to state 136
+    expression   go to state 31
+
+
+State 124
+
+   20 statements: statement . statements
+   21           | statement .
+
+    OPPAR   shift, and go to state 120
+    OPRPAR  shift, and go to state 121
+    NIL     shift, and go to state 122
+
+    OPPAR     [reduce using rule 21 (statements)]
+    NIL       [reduce using rule 21 (statements)]
+    $default  reduce using rule 21 (statements)
+
+    statements  go to state 137
+    statement   go to state 124
+    compound    go to state 125
+
+
+State 125
+
+   30 statement: compound .
+
+    $default  reduce using rule 30 (statement)
+
+
+State 126
+
+   32 assign: ASSIGN . OPPAR identifier CLPAR expression
+
+    OPPAR  shift, and go to state 138
+
+
+State 127
+
+   34 print: PRINT . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 139
+
+
+State 128
+
+   35 conditional: IF . expression statement statement
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 140
+
+
+State 129
+
+   36 loop: WHILE . expression statement
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 141
+
+
+State 130
+
+   25 statement: OPPAR assign . CLPAR
+
+    CLPAR  shift, and go to state 142
+
+
+State 131
+
+   26 statement: OPPAR fun_call . CLPAR
+
+    CLPAR  shift, and go to state 143
+
+
+State 132
+
+   27 statement: OPPAR print . CLPAR
+
+    CLPAR  shift, and go to state 144
+
+
+State 133
+
+   28 statement: OPPAR conditional . CLPAR
+
+    CLPAR  shift, and go to state 145
+
+
+State 134
+
+   29 statement: OPPAR loop . CLPAR
+
+    CLPAR  shift, and go to state 146
+
+
+State 135
+
+   37 compound: OPRPAR statements . CLRPAR
+
+    CLRPAR  shift, and go to state 147
+
+
+State 136
+
+   10 body: OPPAR BODY OPRPAR declarations CLRPAR statements expressions . CLPAR
+
+    CLPAR  shift, and go to state 148
+
+
+State 137
+
+   20 statements: statement statements .
+
+    $default  reduce using rule 20 (statements)
+
+
+State 138
+
+   32 assign: ASSIGN OPPAR . identifier CLPAR expression
+
+    ID  shift, and go to state 14
+
+    identifier  go to state 149
+
+
+State 139
+
+   34 print: PRINT expression .
+
+    $default  reduce using rule 34 (print)
+
+
+State 140
+
+   35 conditional: IF expression . statement statement
+
+    OPPAR   shift, and go to state 120
+    OPRPAR  shift, and go to state 121
+    NIL     shift, and go to state 122
+
+    statement  go to state 150
+    compound   go to state 125
+
+
+State 141
+
+   36 loop: WHILE expression . statement
+
+    OPPAR   shift, and go to state 120
+    OPRPAR  shift, and go to state 121
+    NIL     shift, and go to state 122
+
+    statement  go to state 151
+    compound   go to state 125
+
+
+State 142
+
+   25 statement: OPPAR assign CLPAR .
+
+    $default  reduce using rule 25 (statement)
+
+
+State 143
+
+   26 statement: OPPAR fun_call CLPAR .
+
+    $default  reduce using rule 26 (statement)
+
+
+State 144
+
+   27 statement: OPPAR print CLPAR .
+
+    $default  reduce using rule 27 (statement)
+
+
+State 145
+
+   28 statement: OPPAR conditional CLPAR .
+
+    $default  reduce using rule 28 (statement)
+
+
+State 146
+
+   29 statement: OPPAR loop CLPAR .
+
+    $default  reduce using rule 29 (statement)
+
+
+State 147
+
+   37 compound: OPRPAR statements CLRPAR .
+
+    $default  reduce using rule 37 (compound)
+
+
+State 148
+
+   10 body: OPPAR BODY OPRPAR declarations CLRPAR statements expressions CLPAR .
+
+    $default  reduce using rule 10 (body)
+
+
+State 149
+
+   32 assign: ASSIGN OPPAR identifier . CLPAR expression
+
+    CLPAR  shift, and go to state 152
+
+
+State 150
+
+   35 conditional: IF expression statement . statement
+
+    OPPAR   shift, and go to state 120
+    OPRPAR  shift, and go to state 121
+    NIL     shift, and go to state 122
+
+    statement  go to state 153
+    compound   go to state 125
+
+
+State 151
+
+   36 loop: WHILE expression statement .
+
+    $default  reduce using rule 36 (loop)
+
+
+State 152
+
+   32 assign: ASSIGN OPPAR identifier CLPAR . expression
+
+    OPPAR  shift, and go to state 26
+    NIL    shift, and go to state 27
+    TRUE   shift, and go to state 28
+    FALSE  shift, and go to state 29
+
+    expression  go to state 154
+
+
+State 153
+
+   35 conditional: IF expression statement statement .
+
+    $default  reduce using rule 35 (conditional)
+
+
+State 154
+
+   32 assign: ASSIGN OPPAR identifier CLPAR expression .
+
+    $default  reduce using rule 32 (assign)

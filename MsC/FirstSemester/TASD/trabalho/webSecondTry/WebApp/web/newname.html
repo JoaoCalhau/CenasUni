@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create a new Name</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+    </head>
+    <body>
+         <ul>
+            <li><a href="index.html"><font size="5">Menu</font></a></li>
+            <li><a href="lookup.html"><font size="5">LookUp</font></a></li>
+            <li><a class="active" href="#NewName"><font size="5">Create</font></a></li>
+        </ul>
+        <div Style="margin-left:25%; padding:1px 16px; height: 1000px">
+            <h1 align="center">Please insert the Nickname</h1>
+            <form name="NewNameId" action="NewNameId" method="POST">
+                Unique ID:<p><input type="text" name="uniqueid" size="40"></p>
+                <p><input type="submit" value="procede"></p>
+            </form>
+            <h1 align="center">Please insert the Nickname and First Name</h1>
+            <form name="NewNameFirst" action="NewNameFirst" method="PUT">
+                Unique ID:<p><input type="text" name="uniqueid" size="40"></p>
+                First Name:<p><input type="text" name="first" size="40"></p>
+                <p><input type="submit" value="procede"></p>
+            </form>
+            <h1 align="center">Please insert the Nickname, First Name and Last Name</h1>
+            <form name="NewNameLast" action="NewNameLast" method="PUT">
+                Unique ID:<p><input type="text" name="uniqueid" size="40"></p>
+                First Name:<p><input type="text" name="first" size="40"></p>
+                Last Name:<p><input type="text" name="last" size="40"></p>
+                <p><input type="submit" value="procede"></p>
+            </form>
+            
+        </div>
+    </body>
+</html>

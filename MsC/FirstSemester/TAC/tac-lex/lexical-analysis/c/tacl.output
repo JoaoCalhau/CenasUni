@@ -1,0 +1,1923 @@
+Terminals unused in grammar
+
+   ERROR
+
+
+State 127 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: global_declarations
+
+    2 global_declarations: fundef global_declarations
+    3                    | fundef
+    4                    | procdef global_declarations
+    5                    | procdef
+    6                    | decl global_declarations
+    7                    | decl
+
+    8 fundef: FUN type ID OPPAR formal_args CLPAR fun_body
+
+    9 procdef: PROC ID OPPAR formal_args CLPAR proc_body
+
+   10 type: INT
+   11     | REAL
+   12     | BOOL
+
+   13 formal_args: type ID more_formal_args
+   14            | %empty
+
+   15 more_formal_args: COMMA type ID more_formal_args
+   16                 | %empty
+
+   17 proc_body: OPRPAR body CLRPAR
+
+   18 fun_body: EQSIGN expression SEMICOLON
+   19         | OPRPAR body RETURN expression CLRPAR
+
+   20 body: decls statements
+
+   21 decls: decl decls
+   22      | %empty
+
+   23 statements: statement statements
+   24           | %empty
+
+   25 statement: afect
+   26          | call
+   27          | print
+   28          | loop
+   29          | conditional
+   30          | compound
+
+   31 decl: VAR type ID EQSIGN expression SEMICOLON
+   32     | VAR type ID SEMICOLON
+
+   33 afect: ID EQSIGN expression SEMICOLON
+
+   34 call: function_call SEMICOLON
+
+   35 print: PRINT expression SEMICOLON
+
+   36 loop: WHILE OPPAR expression CLPAR statement
+
+   37 conditional: IF OPPAR expression CLPAR statement
+   38            | IF OPPAR expression CLPAR statement ELSE statement
+
+   39 compound: OPRPAR statements CLRPAR
+
+   40 function_call: ID OPPAR actual_args CLPAR
+
+   41 actual_args: expression more_actual_args
+   42            | %empty
+
+   43 more_actual_args: COMMA expression more_actual_args
+   44                 | %empty
+
+   45 expression: expression OR expression
+   46           | expression AND expression
+   47           | expression compare_op expression
+   48           | expression PLUS expression
+   49           | expression MINUS expression
+   50           | expression MULT expression
+   51           | expression DIV expression
+   52           | expression MOD expression
+   53           | NOT expression
+   54           | MINUS expression
+   55           | atomic_expression
+
+   56 atomic_expression: ID
+   57                  | literal
+   58                  | function_call
+   59                  | OPPAR expression CLPAR
+
+   60 compare_op: EQ
+   61           | NE
+   62           | LT
+   63           | LE
+   64           | GT
+   65           | GE
+
+   66 literal: INT_LITERAL
+   67        | BOOL_LITERAL
+   68        | REAL_LITERAL
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+FUN (258) 8
+INT (259) 10
+REAL (260) 11
+BOOL (261) 12
+EQSIGN (262) 18 31 33
+COMMA (263) 15 43
+SEMICOLON (264) 18 31 32 33 34 35
+OPPAR (265) 8 9 36 37 38 40 59
+CLPAR (266) 8 9 36 37 38 40 59
+OPRPAR (267) 17 19 39
+CLRPAR (268) 17 19 39
+VAR (269) 31 32
+PROC (270) 9
+RETURN (271) 19
+PRINT (272) 35
+IF (273) 37 38
+ELSE (274) 38
+WHILE (275) 36
+INT_LITERAL (276) 66
+REAL_LITERAL (277) 68
+BOOL_LITERAL (278) 67
+ID (279) 8 9 13 15 31 32 33 40 56
+OR (280) 45
+AND (281) 46
+EQ (282) 60
+NE (283) 61
+LT (284) 62
+LE (285) 63
+GT (286) 64
+GE (287) 65
+PLUS (288) 48
+MINUS (289) 49 54
+MULT (290) 50
+DIV (291) 51
+MOD (292) 52
+NOT (293) 53
+ERROR (294)
+
+
+Nonterminals, with rules where they appear
+
+$accept (40)
+    on left: 0
+program (41)
+    on left: 1, on right: 0
+global_declarations (42)
+    on left: 2 3 4 5 6 7, on right: 1 2 4 6
+fundef (43)
+    on left: 8, on right: 2 3
+procdef (44)
+    on left: 9, on right: 4 5
+type (45)
+    on left: 10 11 12, on right: 8 13 15 31 32
+formal_args (46)
+    on left: 13 14, on right: 8 9
+more_formal_args (47)
+    on left: 15 16, on right: 13 15
+proc_body (48)
+    on left: 17, on right: 9
+fun_body (49)
+    on left: 18 19, on right: 8
+body (50)
+    on left: 20, on right: 17 19
+decls (51)
+    on left: 21 22, on right: 20 21
+statements (52)
+    on left: 23 24, on right: 20 23 39
+statement (53)
+    on left: 25 26 27 28 29 30, on right: 23 36 37 38
+decl (54)
+    on left: 31 32, on right: 6 7 21
+afect (55)
+    on left: 33, on right: 25
+call (56)
+    on left: 34, on right: 26
+print (57)
+    on left: 35, on right: 27
+loop (58)
+    on left: 36, on right: 28
+conditional (59)
+    on left: 37 38, on right: 29
+compound (60)
+    on left: 39, on right: 30
+function_call (61)
+    on left: 40, on right: 34 58
+actual_args (62)
+    on left: 41 42, on right: 40
+more_actual_args (63)
+    on left: 43 44, on right: 41 43
+expression (64)
+    on left: 45 46 47 48 49 50 51 52 53 54 55, on right: 18 19 31 33
+    35 36 37 38 41 43 45 46 47 48 49 50 51 52 53 54 59
+atomic_expression (65)
+    on left: 56 57 58 59, on right: 55
+compare_op (66)
+    on left: 60 61 62 63 64 65, on right: 47
+literal (67)
+    on left: 66 67 68, on right: 57
+
+
+State 0
+
+    0 $accept: . program $end
+
+    FUN   shift, and go to state 1
+    VAR   shift, and go to state 2
+    PROC  shift, and go to state 3
+
+    program              go to state 4
+    global_declarations  go to state 5
+    fundef               go to state 6
+    procdef              go to state 7
+    decl                 go to state 8
+
+
+State 1
+
+    8 fundef: FUN . type ID OPPAR formal_args CLPAR fun_body
+
+    INT   shift, and go to state 9
+    REAL  shift, and go to state 10
+    BOOL  shift, and go to state 11
+
+    type  go to state 12
+
+
+State 2
+
+   31 decl: VAR . type ID EQSIGN expression SEMICOLON
+   32     | VAR . type ID SEMICOLON
+
+    INT   shift, and go to state 9
+    REAL  shift, and go to state 10
+    BOOL  shift, and go to state 11
+
+    type  go to state 13
+
+
+State 3
+
+    9 procdef: PROC . ID OPPAR formal_args CLPAR proc_body
+
+    ID  shift, and go to state 14
+
+
+State 4
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 15
+
+
+State 5
+
+    1 program: global_declarations .
+
+    $default  reduce using rule 1 (program)
+
+
+State 6
+
+    2 global_declarations: fundef . global_declarations
+    3                    | fundef .
+
+    FUN   shift, and go to state 1
+    VAR   shift, and go to state 2
+    PROC  shift, and go to state 3
+
+    $default  reduce using rule 3 (global_declarations)
+
+    global_declarations  go to state 16
+    fundef               go to state 6
+    procdef              go to state 7
+    decl                 go to state 8
+
+
+State 7
+
+    4 global_declarations: procdef . global_declarations
+    5                    | procdef .
+
+    FUN   shift, and go to state 1
+    VAR   shift, and go to state 2
+    PROC  shift, and go to state 3
+
+    $default  reduce using rule 5 (global_declarations)
+
+    global_declarations  go to state 17
+    fundef               go to state 6
+    procdef              go to state 7
+    decl                 go to state 8
+
+
+State 8
+
+    6 global_declarations: decl . global_declarations
+    7                    | decl .
+
+    FUN   shift, and go to state 1
+    VAR   shift, and go to state 2
+    PROC  shift, and go to state 3
+
+    $default  reduce using rule 7 (global_declarations)
+
+    global_declarations  go to state 18
+    fundef               go to state 6
+    procdef              go to state 7
+    decl                 go to state 8
+
+
+State 9
+
+   10 type: INT .
+
+    $default  reduce using rule 10 (type)
+
+
+State 10
+
+   11 type: REAL .
+
+    $default  reduce using rule 11 (type)
+
+
+State 11
+
+   12 type: BOOL .
+
+    $default  reduce using rule 12 (type)
+
+
+State 12
+
+    8 fundef: FUN type . ID OPPAR formal_args CLPAR fun_body
+
+    ID  shift, and go to state 19
+
+
+State 13
+
+   31 decl: VAR type . ID EQSIGN expression SEMICOLON
+   32     | VAR type . ID SEMICOLON
+
+    ID  shift, and go to state 20
+
+
+State 14
+
+    9 procdef: PROC ID . OPPAR formal_args CLPAR proc_body
+
+    OPPAR  shift, and go to state 21
+
+
+State 15
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+State 16
+
+    2 global_declarations: fundef global_declarations .
+
+    $default  reduce using rule 2 (global_declarations)
+
+
+State 17
+
+    4 global_declarations: procdef global_declarations .
+
+    $default  reduce using rule 4 (global_declarations)
+
+
+State 18
+
+    6 global_declarations: decl global_declarations .
+
+    $default  reduce using rule 6 (global_declarations)
+
+
+State 19
+
+    8 fundef: FUN type ID . OPPAR formal_args CLPAR fun_body
+
+    OPPAR  shift, and go to state 22
+
+
+State 20
+
+   31 decl: VAR type ID . EQSIGN expression SEMICOLON
+   32     | VAR type ID . SEMICOLON
+
+    EQSIGN     shift, and go to state 23
+    SEMICOLON  shift, and go to state 24
+
+
+State 21
+
+    9 procdef: PROC ID OPPAR . formal_args CLPAR proc_body
+
+    INT   shift, and go to state 9
+    REAL  shift, and go to state 10
+    BOOL  shift, and go to state 11
+
+    $default  reduce using rule 14 (formal_args)
+
+    type         go to state 25
+    formal_args  go to state 26
+
+
+State 22
+
+    8 fundef: FUN type ID OPPAR . formal_args CLPAR fun_body
+
+    INT   shift, and go to state 9
+    REAL  shift, and go to state 10
+    BOOL  shift, and go to state 11
+
+    $default  reduce using rule 14 (formal_args)
+
+    type         go to state 25
+    formal_args  go to state 27
+
+
+State 23
+
+   31 decl: VAR type ID EQSIGN . expression SEMICOLON
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 36
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 24
+
+   32 decl: VAR type ID SEMICOLON .
+
+    $default  reduce using rule 32 (decl)
+
+
+State 25
+
+   13 formal_args: type . ID more_formal_args
+
+    ID  shift, and go to state 39
+
+
+State 26
+
+    9 procdef: PROC ID OPPAR formal_args . CLPAR proc_body
+
+    CLPAR  shift, and go to state 40
+
+
+State 27
+
+    8 fundef: FUN type ID OPPAR formal_args . CLPAR fun_body
+
+    CLPAR  shift, and go to state 41
+
+
+State 28
+
+   59 atomic_expression: OPPAR . expression CLPAR
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 42
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 29
+
+   66 literal: INT_LITERAL .
+
+    $default  reduce using rule 66 (literal)
+
+
+State 30
+
+   68 literal: REAL_LITERAL .
+
+    $default  reduce using rule 68 (literal)
+
+
+State 31
+
+   67 literal: BOOL_LITERAL .
+
+    $default  reduce using rule 67 (literal)
+
+
+State 32
+
+   40 function_call: ID . OPPAR actual_args CLPAR
+   56 atomic_expression: ID .
+
+    OPPAR  shift, and go to state 43
+
+    $default  reduce using rule 56 (atomic_expression)
+
+
+State 33
+
+   54 expression: MINUS . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 44
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 34
+
+   53 expression: NOT . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 45
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 35
+
+   58 atomic_expression: function_call .
+
+    $default  reduce using rule 58 (atomic_expression)
+
+
+State 36
+
+   31 decl: VAR type ID EQSIGN expression . SEMICOLON
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    SEMICOLON  shift, and go to state 46
+    OR         shift, and go to state 47
+    AND        shift, and go to state 48
+    EQ         shift, and go to state 49
+    NE         shift, and go to state 50
+    LT         shift, and go to state 51
+    LE         shift, and go to state 52
+    GT         shift, and go to state 53
+    GE         shift, and go to state 54
+    PLUS       shift, and go to state 55
+    MINUS      shift, and go to state 56
+    MULT       shift, and go to state 57
+    DIV        shift, and go to state 58
+    MOD        shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 37
+
+   55 expression: atomic_expression .
+
+    $default  reduce using rule 55 (expression)
+
+
+State 38
+
+   57 atomic_expression: literal .
+
+    $default  reduce using rule 57 (atomic_expression)
+
+
+State 39
+
+   13 formal_args: type ID . more_formal_args
+
+    COMMA  shift, and go to state 61
+
+    $default  reduce using rule 16 (more_formal_args)
+
+    more_formal_args  go to state 62
+
+
+State 40
+
+    9 procdef: PROC ID OPPAR formal_args CLPAR . proc_body
+
+    OPRPAR  shift, and go to state 63
+
+    proc_body  go to state 64
+
+
+State 41
+
+    8 fundef: FUN type ID OPPAR formal_args CLPAR . fun_body
+
+    EQSIGN  shift, and go to state 65
+    OPRPAR  shift, and go to state 66
+
+    fun_body  go to state 67
+
+
+State 42
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+   59 atomic_expression: OPPAR expression . CLPAR
+
+    CLPAR  shift, and go to state 68
+    OR     shift, and go to state 47
+    AND    shift, and go to state 48
+    EQ     shift, and go to state 49
+    NE     shift, and go to state 50
+    LT     shift, and go to state 51
+    LE     shift, and go to state 52
+    GT     shift, and go to state 53
+    GE     shift, and go to state 54
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 43
+
+   40 function_call: ID OPPAR . actual_args CLPAR
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    $default  reduce using rule 42 (actual_args)
+
+    function_call      go to state 35
+    actual_args        go to state 69
+    expression         go to state 70
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 44
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+   54           | MINUS expression .
+
+    $default  reduce using rule 54 (expression)
+
+    compare_op  go to state 60
+
+
+State 45
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+   53           | NOT expression .
+
+    $default  reduce using rule 53 (expression)
+
+    compare_op  go to state 60
+
+
+State 46
+
+   31 decl: VAR type ID EQSIGN expression SEMICOLON .
+
+    $default  reduce using rule 31 (decl)
+
+
+State 47
+
+   45 expression: expression OR . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 71
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 48
+
+   46 expression: expression AND . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 72
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 49
+
+   60 compare_op: EQ .
+
+    $default  reduce using rule 60 (compare_op)
+
+
+State 50
+
+   61 compare_op: NE .
+
+    $default  reduce using rule 61 (compare_op)
+
+
+State 51
+
+   62 compare_op: LT .
+
+    $default  reduce using rule 62 (compare_op)
+
+
+State 52
+
+   63 compare_op: LE .
+
+    $default  reduce using rule 63 (compare_op)
+
+
+State 53
+
+   64 compare_op: GT .
+
+    $default  reduce using rule 64 (compare_op)
+
+
+State 54
+
+   65 compare_op: GE .
+
+    $default  reduce using rule 65 (compare_op)
+
+
+State 55
+
+   48 expression: expression PLUS . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 73
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 56
+
+   49 expression: expression MINUS . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 74
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 57
+
+   50 expression: expression MULT . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 75
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 58
+
+   51 expression: expression DIV . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 76
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 59
+
+   52 expression: expression MOD . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 77
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 60
+
+   47 expression: expression compare_op . expression
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 78
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 61
+
+   15 more_formal_args: COMMA . type ID more_formal_args
+
+    INT   shift, and go to state 9
+    REAL  shift, and go to state 10
+    BOOL  shift, and go to state 11
+
+    type  go to state 79
+
+
+State 62
+
+   13 formal_args: type ID more_formal_args .
+
+    $default  reduce using rule 13 (formal_args)
+
+
+State 63
+
+   17 proc_body: OPRPAR . body CLRPAR
+
+    VAR  shift, and go to state 2
+
+    $default  reduce using rule 22 (decls)
+
+    body   go to state 80
+    decls  go to state 81
+    decl   go to state 82
+
+
+State 64
+
+    9 procdef: PROC ID OPPAR formal_args CLPAR proc_body .
+
+    $default  reduce using rule 9 (procdef)
+
+
+State 65
+
+   18 fun_body: EQSIGN . expression SEMICOLON
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 83
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 66
+
+   19 fun_body: OPRPAR . body RETURN expression CLRPAR
+
+    VAR  shift, and go to state 2
+
+    $default  reduce using rule 22 (decls)
+
+    body   go to state 84
+    decls  go to state 81
+    decl   go to state 82
+
+
+State 67
+
+    8 fundef: FUN type ID OPPAR formal_args CLPAR fun_body .
+
+    $default  reduce using rule 8 (fundef)
+
+
+State 68
+
+   59 atomic_expression: OPPAR expression CLPAR .
+
+    $default  reduce using rule 59 (atomic_expression)
+
+
+State 69
+
+   40 function_call: ID OPPAR actual_args . CLPAR
+
+    CLPAR  shift, and go to state 85
+
+
+State 70
+
+   41 actual_args: expression . more_actual_args
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    COMMA  shift, and go to state 86
+    OR     shift, and go to state 47
+    AND    shift, and go to state 48
+    EQ     shift, and go to state 49
+    NE     shift, and go to state 50
+    LT     shift, and go to state 51
+    LE     shift, and go to state 52
+    GT     shift, and go to state 53
+    GE     shift, and go to state 54
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    $default  reduce using rule 44 (more_actual_args)
+
+    more_actual_args  go to state 87
+    compare_op        go to state 60
+
+
+State 71
+
+   45 expression: expression . OR expression
+   45           | expression OR expression .
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    AND    shift, and go to state 48
+    EQ     shift, and go to state 49
+    NE     shift, and go to state 50
+    LT     shift, and go to state 51
+    LE     shift, and go to state 52
+    GT     shift, and go to state 53
+    GE     shift, and go to state 54
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    $default  reduce using rule 45 (expression)
+
+    compare_op  go to state 60
+
+
+State 72
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   46           | expression AND expression .
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    EQ     shift, and go to state 49
+    NE     shift, and go to state 50
+    LT     shift, and go to state 51
+    LE     shift, and go to state 52
+    GT     shift, and go to state 53
+    GE     shift, and go to state 54
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    $default  reduce using rule 46 (expression)
+
+    compare_op  go to state 60
+
+
+State 73
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   48           | expression PLUS expression .
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    MULT  shift, and go to state 57
+    DIV   shift, and go to state 58
+    MOD   shift, and go to state 59
+
+    $default  reduce using rule 48 (expression)
+
+    compare_op  go to state 60
+
+
+State 74
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   49           | expression MINUS expression .
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    MULT  shift, and go to state 57
+    DIV   shift, and go to state 58
+    MOD   shift, and go to state 59
+
+    $default  reduce using rule 49 (expression)
+
+    compare_op  go to state 60
+
+
+State 75
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   50           | expression MULT expression .
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    $default  reduce using rule 50 (expression)
+
+    compare_op  go to state 60
+
+
+State 76
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   51           | expression DIV expression .
+   52           | expression . MOD expression
+
+    $default  reduce using rule 51 (expression)
+
+    compare_op  go to state 60
+
+
+State 77
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+   52           | expression MOD expression .
+
+    $default  reduce using rule 52 (expression)
+
+    compare_op  go to state 60
+
+
+State 78
+
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   47           | expression compare_op expression .
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    $default  reduce using rule 47 (expression)
+
+    compare_op  go to state 60
+
+
+State 79
+
+   15 more_formal_args: COMMA type . ID more_formal_args
+
+    ID  shift, and go to state 88
+
+
+State 80
+
+   17 proc_body: OPRPAR body . CLRPAR
+
+    CLRPAR  shift, and go to state 89
+
+
+State 81
+
+   20 body: decls . statements
+
+    OPRPAR  shift, and go to state 90
+    PRINT   shift, and go to state 91
+    IF      shift, and go to state 92
+    WHILE   shift, and go to state 93
+    ID      shift, and go to state 94
+
+    $default  reduce using rule 24 (statements)
+
+    statements     go to state 95
+    statement      go to state 96
+    afect          go to state 97
+    call           go to state 98
+    print          go to state 99
+    loop           go to state 100
+    conditional    go to state 101
+    compound       go to state 102
+    function_call  go to state 103
+
+
+State 82
+
+   21 decls: decl . decls
+
+    VAR  shift, and go to state 2
+
+    $default  reduce using rule 22 (decls)
+
+    decls  go to state 104
+    decl   go to state 82
+
+
+State 83
+
+   18 fun_body: EQSIGN expression . SEMICOLON
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    SEMICOLON  shift, and go to state 105
+    OR         shift, and go to state 47
+    AND        shift, and go to state 48
+    EQ         shift, and go to state 49
+    NE         shift, and go to state 50
+    LT         shift, and go to state 51
+    LE         shift, and go to state 52
+    GT         shift, and go to state 53
+    GE         shift, and go to state 54
+    PLUS       shift, and go to state 55
+    MINUS      shift, and go to state 56
+    MULT       shift, and go to state 57
+    DIV        shift, and go to state 58
+    MOD        shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 84
+
+   19 fun_body: OPRPAR body . RETURN expression CLRPAR
+
+    RETURN  shift, and go to state 106
+
+
+State 85
+
+   40 function_call: ID OPPAR actual_args CLPAR .
+
+    $default  reduce using rule 40 (function_call)
+
+
+State 86
+
+   43 more_actual_args: COMMA . expression more_actual_args
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 107
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 87
+
+   41 actual_args: expression more_actual_args .
+
+    $default  reduce using rule 41 (actual_args)
+
+
+State 88
+
+   15 more_formal_args: COMMA type ID . more_formal_args
+
+    COMMA  shift, and go to state 61
+
+    $default  reduce using rule 16 (more_formal_args)
+
+    more_formal_args  go to state 108
+
+
+State 89
+
+   17 proc_body: OPRPAR body CLRPAR .
+
+    $default  reduce using rule 17 (proc_body)
+
+
+State 90
+
+   39 compound: OPRPAR . statements CLRPAR
+
+    OPRPAR  shift, and go to state 90
+    PRINT   shift, and go to state 91
+    IF      shift, and go to state 92
+    WHILE   shift, and go to state 93
+    ID      shift, and go to state 94
+
+    $default  reduce using rule 24 (statements)
+
+    statements     go to state 109
+    statement      go to state 96
+    afect          go to state 97
+    call           go to state 98
+    print          go to state 99
+    loop           go to state 100
+    conditional    go to state 101
+    compound       go to state 102
+    function_call  go to state 103
+
+
+State 91
+
+   35 print: PRINT . expression SEMICOLON
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 110
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 92
+
+   37 conditional: IF . OPPAR expression CLPAR statement
+   38            | IF . OPPAR expression CLPAR statement ELSE statement
+
+    OPPAR  shift, and go to state 111
+
+
+State 93
+
+   36 loop: WHILE . OPPAR expression CLPAR statement
+
+    OPPAR  shift, and go to state 112
+
+
+State 94
+
+   33 afect: ID . EQSIGN expression SEMICOLON
+   40 function_call: ID . OPPAR actual_args CLPAR
+
+    EQSIGN  shift, and go to state 113
+    OPPAR   shift, and go to state 43
+
+
+State 95
+
+   20 body: decls statements .
+
+    $default  reduce using rule 20 (body)
+
+
+State 96
+
+   23 statements: statement . statements
+
+    OPRPAR  shift, and go to state 90
+    PRINT   shift, and go to state 91
+    IF      shift, and go to state 92
+    WHILE   shift, and go to state 93
+    ID      shift, and go to state 94
+
+    $default  reduce using rule 24 (statements)
+
+    statements     go to state 114
+    statement      go to state 96
+    afect          go to state 97
+    call           go to state 98
+    print          go to state 99
+    loop           go to state 100
+    conditional    go to state 101
+    compound       go to state 102
+    function_call  go to state 103
+
+
+State 97
+
+   25 statement: afect .
+
+    $default  reduce using rule 25 (statement)
+
+
+State 98
+
+   26 statement: call .
+
+    $default  reduce using rule 26 (statement)
+
+
+State 99
+
+   27 statement: print .
+
+    $default  reduce using rule 27 (statement)
+
+
+State 100
+
+   28 statement: loop .
+
+    $default  reduce using rule 28 (statement)
+
+
+State 101
+
+   29 statement: conditional .
+
+    $default  reduce using rule 29 (statement)
+
+
+State 102
+
+   30 statement: compound .
+
+    $default  reduce using rule 30 (statement)
+
+
+State 103
+
+   34 call: function_call . SEMICOLON
+
+    SEMICOLON  shift, and go to state 115
+
+
+State 104
+
+   21 decls: decl decls .
+
+    $default  reduce using rule 21 (decls)
+
+
+State 105
+
+   18 fun_body: EQSIGN expression SEMICOLON .
+
+    $default  reduce using rule 18 (fun_body)
+
+
+State 106
+
+   19 fun_body: OPRPAR body RETURN . expression CLRPAR
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 116
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 107
+
+   43 more_actual_args: COMMA expression . more_actual_args
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    COMMA  shift, and go to state 86
+    OR     shift, and go to state 47
+    AND    shift, and go to state 48
+    EQ     shift, and go to state 49
+    NE     shift, and go to state 50
+    LT     shift, and go to state 51
+    LE     shift, and go to state 52
+    GT     shift, and go to state 53
+    GE     shift, and go to state 54
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    $default  reduce using rule 44 (more_actual_args)
+
+    more_actual_args  go to state 117
+    compare_op        go to state 60
+
+
+State 108
+
+   15 more_formal_args: COMMA type ID more_formal_args .
+
+    $default  reduce using rule 15 (more_formal_args)
+
+
+State 109
+
+   39 compound: OPRPAR statements . CLRPAR
+
+    CLRPAR  shift, and go to state 118
+
+
+State 110
+
+   35 print: PRINT expression . SEMICOLON
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    SEMICOLON  shift, and go to state 119
+    OR         shift, and go to state 47
+    AND        shift, and go to state 48
+    EQ         shift, and go to state 49
+    NE         shift, and go to state 50
+    LT         shift, and go to state 51
+    LE         shift, and go to state 52
+    GT         shift, and go to state 53
+    GE         shift, and go to state 54
+    PLUS       shift, and go to state 55
+    MINUS      shift, and go to state 56
+    MULT       shift, and go to state 57
+    DIV        shift, and go to state 58
+    MOD        shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 111
+
+   37 conditional: IF OPPAR . expression CLPAR statement
+   38            | IF OPPAR . expression CLPAR statement ELSE statement
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 120
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 112
+
+   36 loop: WHILE OPPAR . expression CLPAR statement
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 121
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 113
+
+   33 afect: ID EQSIGN . expression SEMICOLON
+
+    OPPAR         shift, and go to state 28
+    INT_LITERAL   shift, and go to state 29
+    REAL_LITERAL  shift, and go to state 30
+    BOOL_LITERAL  shift, and go to state 31
+    ID            shift, and go to state 32
+    MINUS         shift, and go to state 33
+    NOT           shift, and go to state 34
+
+    function_call      go to state 35
+    expression         go to state 122
+    atomic_expression  go to state 37
+    literal            go to state 38
+
+
+State 114
+
+   23 statements: statement statements .
+
+    $default  reduce using rule 23 (statements)
+
+
+State 115
+
+   34 call: function_call SEMICOLON .
+
+    $default  reduce using rule 34 (call)
+
+
+State 116
+
+   19 fun_body: OPRPAR body RETURN expression . CLRPAR
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    CLRPAR  shift, and go to state 123
+    OR      shift, and go to state 47
+    AND     shift, and go to state 48
+    EQ      shift, and go to state 49
+    NE      shift, and go to state 50
+    LT      shift, and go to state 51
+    LE      shift, and go to state 52
+    GT      shift, and go to state 53
+    GE      shift, and go to state 54
+    PLUS    shift, and go to state 55
+    MINUS   shift, and go to state 56
+    MULT    shift, and go to state 57
+    DIV     shift, and go to state 58
+    MOD     shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 117
+
+   43 more_actual_args: COMMA expression more_actual_args .
+
+    $default  reduce using rule 43 (more_actual_args)
+
+
+State 118
+
+   39 compound: OPRPAR statements CLRPAR .
+
+    $default  reduce using rule 39 (compound)
+
+
+State 119
+
+   35 print: PRINT expression SEMICOLON .
+
+    $default  reduce using rule 35 (print)
+
+
+State 120
+
+   37 conditional: IF OPPAR expression . CLPAR statement
+   38            | IF OPPAR expression . CLPAR statement ELSE statement
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    CLPAR  shift, and go to state 124
+    OR     shift, and go to state 47
+    AND    shift, and go to state 48
+    EQ     shift, and go to state 49
+    NE     shift, and go to state 50
+    LT     shift, and go to state 51
+    LE     shift, and go to state 52
+    GT     shift, and go to state 53
+    GE     shift, and go to state 54
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 121
+
+   36 loop: WHILE OPPAR expression . CLPAR statement
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    CLPAR  shift, and go to state 125
+    OR     shift, and go to state 47
+    AND    shift, and go to state 48
+    EQ     shift, and go to state 49
+    NE     shift, and go to state 50
+    LT     shift, and go to state 51
+    LE     shift, and go to state 52
+    GT     shift, and go to state 53
+    GE     shift, and go to state 54
+    PLUS   shift, and go to state 55
+    MINUS  shift, and go to state 56
+    MULT   shift, and go to state 57
+    DIV    shift, and go to state 58
+    MOD    shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 122
+
+   33 afect: ID EQSIGN expression . SEMICOLON
+   45 expression: expression . OR expression
+   46           | expression . AND expression
+   47           | expression . compare_op expression
+   48           | expression . PLUS expression
+   49           | expression . MINUS expression
+   50           | expression . MULT expression
+   51           | expression . DIV expression
+   52           | expression . MOD expression
+
+    SEMICOLON  shift, and go to state 126
+    OR         shift, and go to state 47
+    AND        shift, and go to state 48
+    EQ         shift, and go to state 49
+    NE         shift, and go to state 50
+    LT         shift, and go to state 51
+    LE         shift, and go to state 52
+    GT         shift, and go to state 53
+    GE         shift, and go to state 54
+    PLUS       shift, and go to state 55
+    MINUS      shift, and go to state 56
+    MULT       shift, and go to state 57
+    DIV        shift, and go to state 58
+    MOD        shift, and go to state 59
+
+    compare_op  go to state 60
+
+
+State 123
+
+   19 fun_body: OPRPAR body RETURN expression CLRPAR .
+
+    $default  reduce using rule 19 (fun_body)
+
+
+State 124
+
+   37 conditional: IF OPPAR expression CLPAR . statement
+   38            | IF OPPAR expression CLPAR . statement ELSE statement
+
+    OPRPAR  shift, and go to state 90
+    PRINT   shift, and go to state 91
+    IF      shift, and go to state 92
+    WHILE   shift, and go to state 93
+    ID      shift, and go to state 94
+
+    statement      go to state 127
+    afect          go to state 97
+    call           go to state 98
+    print          go to state 99
+    loop           go to state 100
+    conditional    go to state 101
+    compound       go to state 102
+    function_call  go to state 103
+
+
+State 125
+
+   36 loop: WHILE OPPAR expression CLPAR . statement
+
+    OPRPAR  shift, and go to state 90
+    PRINT   shift, and go to state 91
+    IF      shift, and go to state 92
+    WHILE   shift, and go to state 93
+    ID      shift, and go to state 94
+
+    statement      go to state 128
+    afect          go to state 97
+    call           go to state 98
+    print          go to state 99
+    loop           go to state 100
+    conditional    go to state 101
+    compound       go to state 102
+    function_call  go to state 103
+
+
+State 126
+
+   33 afect: ID EQSIGN expression SEMICOLON .
+
+    $default  reduce using rule 33 (afect)
+
+
+State 127
+
+   37 conditional: IF OPPAR expression CLPAR statement .
+   38            | IF OPPAR expression CLPAR statement . ELSE statement
+
+    ELSE  shift, and go to state 129
+
+    ELSE      [reduce using rule 37 (conditional)]
+    $default  reduce using rule 37 (conditional)
+
+
+State 128
+
+   36 loop: WHILE OPPAR expression CLPAR statement .
+
+    $default  reduce using rule 36 (loop)
+
+
+State 129
+
+   38 conditional: IF OPPAR expression CLPAR statement ELSE . statement
+
+    OPRPAR  shift, and go to state 90
+    PRINT   shift, and go to state 91
+    IF      shift, and go to state 92
+    WHILE   shift, and go to state 93
+    ID      shift, and go to state 94
+
+    statement      go to state 130
+    afect          go to state 97
+    call           go to state 98
+    print          go to state 99
+    loop           go to state 100
+    conditional    go to state 101
+    compound       go to state 102
+    function_call  go to state 103
+
+
+State 130
+
+   38 conditional: IF OPPAR expression CLPAR statement ELSE statement .
+
+    $default  reduce using rule 38 (conditional)

@@ -1,0 +1,24 @@
+create function getReligion(varchar(15), varchar(15))
+	returns varchar(15) as $$
+		select religiao
+		from alunos
+		where nome = $1 and apelido = $2;
+	$$ language sql;
+
+create function getNumberAlunosMasc(varchar(15))
+	returns integer as $$
+		select count(sexo)
+		from alunos
+		where religiao = $1 and sexo = 'M';
+	$$ language sql;
+
+
+create index religiao_idx on alunos (nome, apelido);
+
+create index sexo_count_idx on alunos (sexo, religiao);
+
+select religiao from alunos where nome = 'pedro' and apelido = 'silva';
+
+select count(sexo) from alunos where sexo = 'masculino' and religiao = 'protestante';
+
+create index nota_count_idx on alunos (nota);

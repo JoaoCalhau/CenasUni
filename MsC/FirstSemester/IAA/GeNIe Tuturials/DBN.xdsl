@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Chuva">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_1">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_1">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_1</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_2">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_1</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_2">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_2</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_3">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_2</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_3">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_3</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_4">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_3</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_4">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_4</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_5">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_4</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_5">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_5</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_6">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_5</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_6">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_6</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_7">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_6</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_7">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_7</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_8">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_7</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_8">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_8</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Chuva_9">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_8</parents>
+			<probabilities>0.7 0.3 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="ChapeuChuva_9">
+			<state id="T" />
+			<state id="F" />
+			<parents>Chuva_9</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.621.1 ACADEMIC" name="Network1 unrolled" faultnameformat="nodestate">
+			<node id="Chuva">
+				<name>Chuva</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>219 100 318 158</position>
+			</node>
+			<node id="ChapeuChuva">
+				<name>ChapeuChuva</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>212 203 325 272</position>
+			</node>
+			<textbox>
+				<caption>Step00</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>190 297 229 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step01</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>550 297 589 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step02</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>910 297 949 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step03</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>1270 297 1309 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step04</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>1630 297 1669 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step05</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>1990 297 2029 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step06</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>2350 297 2389 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step07</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>2710 297 2749 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step08</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>3070 297 3109 312</position>
+			</textbox>
+			<textbox>
+				<caption>Step09</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>3430 297 3469 312</position>
+			</textbox>
+			<node id="Chuva_1">
+				<name>Chuva (t=1)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>579 120 678 178</position>
+			</node>
+			<node id="ChapeuChuva_1">
+				<name>ChapeuChuva (t=1)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>572 223 685 292</position>
+			</node>
+			<node id="Chuva_2">
+				<name>Chuva (t=2)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>939 100 1038 158</position>
+			</node>
+			<node id="ChapeuChuva_2">
+				<name>ChapeuChuva (t=2)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>932 203 1045 272</position>
+			</node>
+			<node id="Chuva_3">
+				<name>Chuva (t=3)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1299 120 1398 178</position>
+			</node>
+			<node id="ChapeuChuva_3">
+				<name>ChapeuChuva (t=3)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1292 223 1405 292</position>
+			</node>
+			<node id="Chuva_4">
+				<name>Chuva (t=4)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1659 100 1758 158</position>
+			</node>
+			<node id="ChapeuChuva_4">
+				<name>ChapeuChuva (t=4)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1652 203 1765 272</position>
+			</node>
+			<node id="Chuva_5">
+				<name>Chuva (t=5)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>2019 120 2118 178</position>
+			</node>
+			<node id="ChapeuChuva_5">
+				<name>ChapeuChuva (t=5)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>2012 223 2125 292</position>
+			</node>
+			<node id="Chuva_6">
+				<name>Chuva (t=6)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>2379 100 2478 158</position>
+			</node>
+			<node id="ChapeuChuva_6">
+				<name>ChapeuChuva (t=6)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>2372 203 2485 272</position>
+			</node>
+			<node id="Chuva_7">
+				<name>Chuva (t=7)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>2739 120 2838 178</position>
+			</node>
+			<node id="ChapeuChuva_7">
+				<name>ChapeuChuva (t=7)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>2732 223 2845 292</position>
+			</node>
+			<node id="Chuva_8">
+				<name>Chuva (t=8)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>3099 100 3198 158</position>
+			</node>
+			<node id="ChapeuChuva_8">
+				<name>ChapeuChuva (t=8)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>3092 203 3205 272</position>
+			</node>
+			<node id="Chuva_9">
+				<name>Chuva (t=9)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>3459 120 3558 178</position>
+			</node>
+			<node id="ChapeuChuva_9">
+				<name>ChapeuChuva (t=9)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>3452 223 3565 292</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

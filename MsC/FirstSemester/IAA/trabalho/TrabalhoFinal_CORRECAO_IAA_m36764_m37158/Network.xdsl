@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="DiasdeFolga">
+			<state id="SegTer" />
+			<state id="TerQuar" />
+			<state id="QuarQuin" />
+			<state id="QuinSex" />
+			<probabilities>0.25 0.26 0.23 0.26</probabilities>
+		</cpt>
+		<decision id="Desconto">
+			<state id="Sim" />
+			<state id="Nao" />
+		</decision>
+		<cpt id="Disp">
+			<state id="Imediata" />
+			<state id="TresDias" />
+			<probabilities>0.47 0.53</probabilities>
+		</cpt>
+		<cpt id="MaoDeObra">
+			<state id="Suficiente" />
+			<state id="EmFalta" />
+			<parents>Desconto</parents>
+			<probabilities>0.844444444 0.155555556 0.883870968 0.116129032</probabilities>
+		</cpt>
+		<cpt id="Encomenda">
+			<state id="Encaminhada" />
+			<state id="Extraviada" />
+			<probabilities>0.945 0.055</probabilities>
+		</cpt>
+		<cpt id="ChegarAtraz">
+			<state id="Atrasado" />
+			<state id="NaoAtrasado" />
+			<parents>MaoDeObra Encomenda</parents>
+			<probabilities>0 1 1 0 1 0 1 0</probabilities>
+		</cpt>
+		<cpt id="NovaDisp">
+			<state id="Imediata" />
+			<state id="TresDias" />
+			<state id="CincoDias" />
+			<parents>Desconto Disp</parents>
+			<probabilities>0.727272727 0.272727273 0 0 0.739130435 0.260869565 0.902777778 0.097222222 0 0 0.927710843 0.07228915700000001</probabilities>
+		</cpt>
+		<decision id="ChamarAmigo">
+			<state id="Sim" />
+			<state id="Nao" />
+			<parents>DiasdeFolga ChegarAtraz NovaDisp</parents>
+		</decision>
+		<utility id="Utility">
+			<parents>DiasdeFolga ChamarAmigo Desconto NovaDisp ChegarAtraz</parents>
+			<utilities>60 60 60 60 80 80 110 110 110 110 130 130 70 50 70 70 70 70 120 100 120 120 120 120 60 60 60 60 80 80 110 110 110 110 130 130 50 50 70 70 70 70 100 100 120 120 120 120 60 60 60 60 80 80 110 110 110 110 130 130 50 70 70 50 70 70 100 120 120 100 120 120 60 60 60 60 80 80 110 110 110 110 130 130 70 70 50 50 70 70 120 120 100 100 120 120</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.621.1 ACADEMIC" name="Network1" faultnameformat="nodestate">
+			<node id="DiasdeFolga">
+				<name>Dias de Folga</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>309 483 458 571</position>
+			</node>
+			<node id="ChamarAmigo">
+				<name>Chamar Amigo</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>494 489 640 569</position>
+			</node>
+			<node id="Disp">
+				<name>Disponibilidade</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>670 284 805 367</position>
+			</node>
+			<node id="MaoDeObra">
+				<name>Mao de Obra</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>746 135 887 212</position>
+			</node>
+			<node id="Encomenda">
+				<name>Encomenda</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>942 484 1083 571</position>
+			</node>
+			<node id="Desconto">
+				<name>Desconto</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>499 138 631 208</position>
+			</node>
+			<node id="Utility">
+				<name>Utility</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>346 285 422 364</position>
+			</node>
+			<node id="ChegarAtraz">
+				<name>Chegar Atrasado</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>752 491 881 563</position>
+			</node>
+			<node id="NovaDisp">
+				<name>Nova Disponibilidade</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>504 286 627 364</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,8 @@
+1. Descreve o tempo que o utilizador demora a seleccionar um alvo no ecrã, esse tempo é dado por a + b * log2 (D/ S + 1), em que D é a distancia até ao alvo, S é o tamanho do alvo e a e b são constantes determinadas empiricamente. O que podemos tirar desta lei, para o design de interfaces é que os alvos devem ser o maiores possivel e a distancias a esses alvos devem ser o mais pequenas possiveis.
+
+2. Recall é o processo de reproduzir informação de memória, enquanto que Recognition é 
+simplesmente reconhecer que já vimos essa informação em algum sitio antes.
+
+3. Podemos adicionar rewards ao nosso design de interfaces em forma de surpresas que despertam alegria, inspiração ou iluminação. Ao despertar estas emoções positivas nos utilizadores estamos a fazer com que a nossa interface seja mais agradavél de usar. As surpresas funcionam melhor quando são respostas a uma interação do utilizador, ou quando complementam a viagem do utilizador.
+
+5. Um lapso, é quando se faz uma ação com a intenção certa mas que acaba por se fazer mal, pode ser causado por falta de atenção. Um erro é quando se faz uma ação com a intenção errada, pode ser causado por uma compreensão errada de um modelo mental, que acaba por diferir do sistema atual.

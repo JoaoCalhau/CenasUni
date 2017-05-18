@@ -1,0 +1,30 @@
+var int n;
+var int fib;		# missing `var'
+
+# returns i1 - i2
+fun int sub(int i1, int i2) = i1 - i2;		# missing ;
+
+# computes the nth Fibonacci number
+fun int fibonacci(int n)			# missing return type
+[
+  var int r;
+
+  if (n < 2)
+    r = 1;
+  else
+    r = fibonacci(n - 1) + fibonacci(sub(n, 2));	# missing )
+
+  ^ r			# missing return value
+]
+
+proc main()
+[
+  n = 26;
+  fib = fibonacci(n);
+
+  # all three should print the same
+  print fib;
+  print fibonacci(14 + 3 * 4);
+  print 121393;
+]
+# missing closing ]

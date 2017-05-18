@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Eletricidade">
+			<state id="Falha" />
+			<state id="NFalha" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Agua">
+			<state id="Derrama" />
+			<state id="NDerrama" />
+			<probabilities>0.4 0.6</probabilities>
+		</cpt>
+		<cpt id="Disco">
+			<state id="DFalha" />
+			<state id="DNFalha" />
+			<parents>Eletricidade Agua</parents>
+			<probabilities>0.7 0.3 0.4 0.6 0.9 0.1 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="PersonalComputer">
+			<state id="Liga" />
+			<state id="NLiga" />
+			<parents>Disco</parents>
+			<probabilities>0.1 0.9 1 0</probabilities>
+		</cpt>
+		<cpt id="Eletricidade_1">
+			<state id="Falha" />
+			<state id="NFalha" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Agua_1">
+			<state id="Derrama" />
+			<state id="NDerrama" />
+			<probabilities>0.4 0.6</probabilities>
+		</cpt>
+		<cpt id="Disco_1">
+			<state id="DFalha" />
+			<state id="DNFalha" />
+			<parents>Eletricidade_1 Agua_1 Disco</parents>
+			<probabilities>0.8 0.2 0.7 0.3 0.5 0.5 0.4 0.6 0.95 0.05000000000000004 0.9 0.1 0.05 0.9500000000000001 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="PersonalComputer_1">
+			<state id="Liga" />
+			<state id="NLiga" />
+			<parents>Disco_1</parents>
+			<probabilities>0.1 0.9 1 0</probabilities>
+		</cpt>
+		<cpt id="Eletricidade_2">
+			<state id="Falha" />
+			<state id="NFalha" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Agua_2">
+			<state id="Derrama" />
+			<state id="NDerrama" />
+			<probabilities>0.4 0.6</probabilities>
+		</cpt>
+		<cpt id="Disco_2">
+			<state id="DFalha" />
+			<state id="DNFalha" />
+			<parents>Eletricidade_2 Agua_2 Disco_1</parents>
+			<probabilities>0.8 0.2 0.7 0.3 0.5 0.5 0.4 0.6 0.95 0.05000000000000004 0.9 0.1 0.05 0.9500000000000001 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="PersonalComputer_2">
+			<state id="Liga" />
+			<state id="NLiga" />
+			<parents>Disco_2</parents>
+			<probabilities>0.1 0.9 1 0</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.621.1 ACADEMIC" name="Semana2 unrolled" faultnameformat="nodestate">
+			<node id="Eletricidade">
+				<name>Eletricidade</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>342 132 437 200</position>
+			</node>
+			<node id="Agua">
+				<name>Agua</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>480 129 578 196</position>
+			</node>
+			<node id="Disco">
+				<name>Disco</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>413 261 516 327</position>
+			</node>
+			<node id="PersonalComputer">
+				<name>PC</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>420 384 509 451</position>
+			</node>
+			<textbox>
+				<caption>Step0</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>366 476 398 491</position>
+			</textbox>
+			<textbox>
+				<caption>Step1</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>844 476 876 491</position>
+			</textbox>
+			<textbox>
+				<caption>Step2</caption>
+				<font color="696969" name="Arial" size="7" />
+				<position>1322 476 1354 491</position>
+			</textbox>
+			<node id="Eletricidade_1">
+				<name>Eletricidade (t=1)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>820 150 915 218</position>
+			</node>
+			<node id="Agua_1">
+				<name>Agua (t=1)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>958 149 1056 216</position>
+			</node>
+			<node id="Disco_1">
+				<name>Disco (t=1)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>891 281 994 347</position>
+			</node>
+			<node id="PersonalComputer_1">
+				<name>PC (t=1)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>898 404 987 471</position>
+			</node>
+			<node id="Eletricidade_2">
+				<name>Eletricidade (t=2)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1298 130 1393 198</position>
+			</node>
+			<node id="Agua_2">
+				<name>Agua (t=2)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1436 129 1534 196</position>
+			</node>
+			<node id="Disco_2">
+				<name>Disco (t=2)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1369 261 1472 327</position>
+			</node>
+			<node id="PersonalComputer_2">
+				<name>PC (t=2)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="7" />
+				<position>1376 384 1465 451</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

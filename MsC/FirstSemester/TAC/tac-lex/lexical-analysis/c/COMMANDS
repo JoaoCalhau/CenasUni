@@ -1,0 +1,29 @@
+== You may run the following commands, if you do not have `make'
+
+1. build the parser (all the parser does is calling the tokeniser)
+
+bison -d tacl.y
+
+2. build the tokeniser
+
+flex tacl.lex
+
+3. compile the TACL pre-compiler
+
+gcc -Wall tacl.tab.c lex.yy.c -o tacl -lfl
+
+4. run the tokeniser
+
+* perform lexical analysis on code introduced on the terminal
+
+./tacl
+
+* perform lexical analysis of the examples given
+
+./tacl < ../examples/twice.tacl
+
+./tacl < ../examples/fibonacci.tacl
+
+./tacl < ../examples/errors.tacl
+
+./tacl < ../examples/full-a.tacl

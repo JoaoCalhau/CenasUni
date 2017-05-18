@@ -1,0 +1,3 @@
+(var (id "a" var int) (int_literal 0): int)
+(var (id "b" var int) nil)
+(var (id "c" var int) (int_literal 1): int)

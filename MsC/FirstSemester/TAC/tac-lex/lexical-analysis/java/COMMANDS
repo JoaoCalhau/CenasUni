@@ -1,0 +1,30 @@
+== You may run the following commands, if you do not have `make'
+
+1. build the parser (all the parser does is calling the tokeniser)
+
+cup -parser Tacl -nosummary tacl.cup
+
+2. build the tokeniser
+
+jflex -q tacl.lex
+
+3. compile the TACL pre-compiler
+   (ignore the messages regarding non used terminals)
+
+javac -classpath /usr/share/java/cup.jar: Tacl.java Yylex.java
+
+4. run the tokeniser
+
+* perform lexical analysis on code introduce on the terminal
+
+java -classpath /usr/share/java/cup.jar: Tacl
+
+* perform lexical analysis of the examples given
+
+java -classpath /usr/share/java/cup.jar: Tacl < ../examples/twice.tacl
+
+java -classpath /usr/share/java/cup.jar: Tacl < ../examples/fibonacci.tacl
+
+java -classpath /usr/share/java/cup.jar: Tacl < ../examples/errors.tacl
+
+java -classpath /usr/share/java/cup.jar: Tacl < ../examples/full-a.tacl

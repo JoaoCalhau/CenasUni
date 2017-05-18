@@ -1,0 +1,63 @@
+# exercise the parser
+
+var real PI = 3.1416;
+
+fun real perim(real r) = 2 * PI * r;
+
+fun real area(real r) [ ^ PI * square(r) ]
+
+fun real square(real x) = x * x;
+
+# returns twice n
+fun int twice(int n) = 2 * n;
+
+# just loop and loop and loop and ... stop
+proc loop(int t)
+[
+  var bool end = t == 0;
+
+  if (end)
+    []		# do nothing
+  else
+    [
+      print t;
+      loop(t - 1);
+    ]
+]
+
+# a parameterless procedure
+proc noargs()
+[
+  if (xtra)
+    [
+      xtra = !xtra;
+      noargs();
+    ]
+  else
+    []		# yeah, right
+
+  while (xtra)
+    print PI;
+]
+
+var bool xtra;
+
+# prints some stuff
+proc main()
+[
+  var int n = 14;
+
+  while (n < 100)
+    [
+      n = twice(twice(n));
+
+      print n;
+    ]
+
+  if (n > 200 && n < 500)
+    print perim(1);
+  else
+    print area(12.3);
+
+  xtra = true; noargs();
+]

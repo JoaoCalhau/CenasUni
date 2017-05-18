@@ -1,0 +1,14 @@
+fun int fibonacci(int n)
+[
+  var int r;
+  var bool c;
+
+  c = n == 0 || n == 1;
+
+  if (c)
+    r = n;
+  else
+    r = fibonacci(n - 1) + fibonacci(n - 2);
+
+  ^ r
+]

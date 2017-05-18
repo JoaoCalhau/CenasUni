@@ -1,0 +1,6 @@
+Comandos disponiveis:
+
+make - compila o programa, pronto para utilizar (para utilizar basta fazer 'tacl < ficheiro.ast' ou 'tacl < ficheiro.ast > ficheiro.ir')
+make run-n (em que n é um numero de 1 a 8, exemplos na pasta) - faz print do IR para a consola
+make run-save-n (em que n é um numero de 1 a 8) - faz print do IR para um ficheiro .ir na directoria results
+make clean ('limpa' os ficheiros de compilação e os ficheiros .ir na directoria results)

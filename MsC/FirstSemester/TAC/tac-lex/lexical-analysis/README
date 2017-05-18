@@ -1,0 +1,11 @@
+This is the starting point for building a tokeniser for TACL
+
+Contents of the directories
+
+  c - C version, uses flex and bison
+
+  java - Java version, uses jflex and cup
+
+  examples - examples of TACL programs (errors.tacl contains syntax errors)
+
+Reading the Parte 2 of the CCC and the tools' documentation is recommended

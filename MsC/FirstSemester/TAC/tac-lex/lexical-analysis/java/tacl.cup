@@ -1,0 +1,66 @@
+
+import java_cup.runtime.*;
+
+parser code {:
+  public static void main(String args[]) throws Exception {
+    Scanner scanner = new Yylex(System.in);
+    Symbol token;
+
+    // Just echo all tokens returned by yylex() to the terminal
+
+    System.out.println("== Tokens ==");
+
+    while ((token = scanner.next_token()) != null && token.sym != sym.EOF)
+      {
+	switch (token.sym)
+	  {
+	    case sym.FUN: System.out.println("FUN"); break;
+
+	    case sym.OPPAR: System.out.println("OPPAR"); break;
+	    case sym.CLPAR: System.out.println("CLPAR"); break;
+
+	    case sym.ID:
+	      System.out.println("ID(" + "..." + ")"); break;
+
+	    case sym.INT_LITERAL:
+	      System.out.println("INT_LITERAL(" + token.value + ")"); break;
+
+	    case sym.ERROR:
+	      System.out.println("* lexical error"); break;
+
+	    default:
+	      System.out.println("other token: " + token);
+	  }
+      }
+
+    System.exit(0);
+
+    if (token != null && token.sym == sym.EOF)
+      System.exit(0);
+    else
+      System.exit(1);
+  }
+
+  public void report_error(String message, Object error_info) {
+    Symbol info = (Symbol) error_info;
+
+    System.err.print(message + ": line " + (info.right + 1) + ": " );
+    System.err.println("unexpected token `" + info.value + "'");
+  }
+
+  public void report_fatal_error(String message, Object _) {
+    System.err.println(message);
+  }
+:} ;
+
+terminal FUN ;
+terminal OPPAR, CLPAR ;
+terminal ID ;
+terminal INT_LITERAL ;
+
+// ignore the `Terminal "ERROR" was declared but never used' warning
+terminal	ERROR ;		// for signalling lexical errors
+
+non terminal program ;
+
+program ::= ; // ...
