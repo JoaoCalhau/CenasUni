@@ -164,7 +164,7 @@ CREATE TRIGGER sum_holder_alter
 	AFTER INSERT ON finance_holder 
 	FOR EACH ROW EXECUTE PROCEDURE alter_sum_holder();
 
----------------------------------------------------------
+-------------------------------------------------------------------------------
 
 -- Funcao que determina se um aluno
 -- ja se encontra no projeto, se acabou ou se
@@ -195,7 +195,7 @@ CREATE TRIGGER holder_before_insert
 	BEFORE INSERT ON holder 
 	FOR EACH ROW EXECUTE PROCEDURE holder_status();
 
----------------------------------------------------------
+-------------------------------------------------------------------------------
 
 -- Funcao que inicializa os valores do somatorio de um aluno
 -- Para isso verificando dados como os meses que participa no projeto
@@ -238,7 +238,7 @@ CREATE TRIGGER sum_holder_reg
 	AFTER INSERT ON holder 
 	FOR EACH ROW EXECUTE PROCEDURE register_sum_holder();
 
----------------------------------------------------------
+-------------------------------------------------------------------------------
 
 -- Funcao que inicializa os valores do somatorio de um projeto
 CREATE FUNCTION register_sum_project() RETURNS trigger AS $$
@@ -258,7 +258,7 @@ CREATE TRIGGER sum_project_register
 	AFTER INSERT ON project 
 	FOR EACH ROW EXECUTE PROCEDURE register_sum_project();
 
----------------------------------------------------------
+-------------------------------------------------------------------------------
 
 -- Funcao que mostra um warning quando se pretende inserir
 -- um valor monetario maior que o valor disponivel
@@ -285,18 +285,23 @@ CREATE TRIGGER warn_user_over_value
 	FOR EACH ROW EXECUTE PROCEDURE warn_user();
 
 
-CREATE FUNCTION saldo_project() RETURNS TRIGGER AS $$
-	begin
-		-- actualizar o saldo com o balance da tabela sum_project
-		-- pcosts, scholarship, insurance, travel
+-------------------------------------------------------------------------------
 
+CREATE FUNCTION saldo_project() RETURNS TRIGGER AS $$
+	declare
+		total double precision;
+	begin
+		select sum(balance) into total from sum_project where project_name = new.project_name;
+
+		update project set saldo = total where project_name = new.project_name;
+
+		return null;
 	end;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER update_saldo_project
 	AFTER UPDATE ON sum_project
 	FOR EACH ROW EXECUTE PROCEDURE saldo_project();
-
 
 -- INSERTS -- 
 
@@ -320,3 +325,5 @@ insert into holder values('fusion', 1, 779, 'Asia->EU', 'MsC', 'Pakistan', null,
 
 insert into finance_holder values(612, '2017-05-15', 'orcamento', 'orcamento da viagem', 'travel', 99.5);
 insert into finance_holder values(779, '2017-05-15', 'pagamento', 'pagamento da bolsa',	'scholarship', 8000);
+
+insert into finance_project values('fusion', '2017-05-18', 2000.6);
