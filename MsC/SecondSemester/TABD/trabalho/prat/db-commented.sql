@@ -285,6 +285,19 @@ CREATE TRIGGER warn_user_over_value
 	FOR EACH ROW EXECUTE PROCEDURE warn_user();
 
 
+CREATE FUNCTION saldo_project() RETURNS TRIGGER AS $$
+	begin
+		-- actualizar o saldo com o balance da tabela sum_project
+		-- pcosts, scholarship, insurance, travel
+
+	end;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_saldo_project
+	AFTER UPDATE ON sum_project
+	FOR EACH ROW EXECUTE PROCEDURE saldo_project();
+
+
 -- INSERTS -- 
 
 insert into project values('fusion', '2017-01-01', '2017-02-02', 0, 'Cenas', 'cenas@cenas.cenas', 'Coisas', 'coisas@coisas.coisas');
