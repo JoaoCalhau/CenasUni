@@ -1,0 +1,70 @@
+Managing the behaviour of people working in teams
+
+The basic behaviours in the project-management method are not new. These behaviours can be 
+easily remembered with the help of an acronym, COST:
+	- C: Customer focus
+	- O: Ownership
+	- S: System for planning leading and controlling work
+	- T: Teamwork
+
+Customer:
+	- One's first opportunity to produce defective work is to misunderstand the customer's 
+	needs or to err in communicating with the costumer.
+
+	- By improving costumer communications and relations, reworks and costly changes made 
+	during project execution are reduced, and project quality increses.
+
+	- All treatments of the management of quality begin with customer satisfaction and being 
+	close to one's customers.
+
+	- In this method, project teams are simple extenstions of their customers' needs.
+
+Ownership:
+	- It is universally true that the greater the participation of the team members who will 
+	do the work is in establishing the project objectives, the stronger will be the team 
+	members' attachement and sense of ownership of that work.
+
+	- The stronger their sense of ownership is, the more likely it will be that project 
+	objectives are met.
+
+System:
+	- The project-management system consists of behaviors in three functional areas:
+		- planning
+		- leading
+		- controlling
+
+	- Planning:
+		- When planning the work of a team, appropriate planning behaviors can be created 
+		using 5 basic management tools, which are:
+			- project objectives
+			- work-breakdown structure
+			- project organization
+			- project schedule
+			- project-performance baseline (budget)
+
+	- Leading:
+		- There are 3 very important and basic behaviors that constitute projecy leadership:
+			- communicating
+			- team building
+			- empowerment
+
+	- Control
+		- The control system consists in 3 behaviors:
+			- measuring
+			- evaluating
+			- acting
+
+Teamwork:
+	- Project teams builds quality into its service to customers by permitting the sharing of 
+	the ideas and the views of the project-team members. The sharing of ideas and views adds 
+	technical value to the project.
+
+	- A balance of styles across a company does not appear to be normal; rather, unbalance 
+	appears to be the norm. A lack of balance in problem-solving styles is natural, because 
+	people tend to pursue work situations in accordance with their preferences.
+
+	- A highly interactive crossfunctional project team creates a balance in the 
+	problem-solving style of the team as a whole. By providing project-team members with 
+	greater opportunity to interact with each other, to build networks of alliances with one 
+	another, and to spend time together, not only is technical value added, but also fewer 
+	mistakes are made, quality is improved, and risk is reduced.

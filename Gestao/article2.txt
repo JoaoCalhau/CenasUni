@@ -1,0 +1,62 @@
+The role of project management in achieving project success
+
+A project can be considered to be the achievement of a specific objective, which involves a 
+series of activities and tasks which consume resources. It has to be completed whithin a set 
+specification, having definite start and end dates.
+Project management can be defined as the process of controlling the achievement of the project
+objectives.
+
+Success of a project is dependent on having: (according to Morris and Hugh)
+	- a realistic goal
+	- competition
+	- client satisfaction
+	- a definite goal
+	- profitability
+	- third parties
+	- market availiability
+	- the implementation process
+	- the perceived value of the project
+
+The factors which may cause the project management to fail to achieve it's goal includes:
+	- inadequate basis for project
+	- wrong person as project manager
+	- top management unsupportive
+	- inadequately defined tasks
+	- lack of project management techniques
+	- management techniques mis-used
+	- project closedown not planned
+	- lack of commitment to project
+
+The completion of a project requires input from a variety of groups including client, the 
+prohect team, the parent organization, the producer and the end user. Each party has a role in 
+defining and determining success. They all have specific tasks and responsabilities they must 
+fulfil in order to achieve success.
+The client is expected to be the main party concerned about the success of the project in the 
+long term.
+The user is the group or individual who makes use of the completed project or product.
+The parent organisation will be involved in the project by providing resources.
+The project team will shape the implementation of the project.
+
+The overlap between project and project management:
+	- Confusion between the two can be caused by 3 factors:
+		- Time frame
+		- Confusion of Objectives
+		- Ease of measurement
+
+	- The confusion above, however, can be avoided by an improved appreciation of the role of 
+	project management within the project.
+
+	- The life time of a project has 6 stages:
+		- Conception
+		- Planning
+		- Production
+		- Handover
+		- Utilisation
+		- Closedown
+
+	- Throughout this process the project performance can be assessed in one of 3 ways:
+		- The implementation
+		- Perceived values
+		- Client satisfaction
+
+	

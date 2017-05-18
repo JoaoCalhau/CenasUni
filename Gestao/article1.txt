@@ -1,0 +1,67 @@
+The "real" success factors on projects:
+
+Question 1: What factors are critical to project management success?
+
+	- On-time performance factors:
+		- adequacy of company-wide education on the concepts of risk management
+		- maturity of an organizatio's processes for assigning ownership of risks
+		- adequacy with which a visible risk register is maintained
+		- adequacy of an up-to-date risk management plan
+		- adequacy of documentation of organisational responsabilies on the project
+		- keep project duration as far below 3 years as possible
+
+	- Cost performance factors:
+		- Allow changes to scope only through a mature scope change control process
+		- Maintain the integrity of the performance measurement baseline
+
+Question 2: What factors are critical to success on an individual project?
+	
+	- Delivering project success is necessarily more difficult than delivering project 
+	management success
+
+	- The existence of an effective benefits delivery and management process that involves the 
+	mutual co-operation of project management and line management functions
+
+Question 3: What factors lead to consistently successful projects?
+
+	- Portfolio and programme management practices taht allow the enterprise to resource fully
+	a suite of projects that are throughtfully and dynamically matched to the corporate 
+	strategy and business objectives.
+
+	- A suite of project, programme and portfolio metrics that provides direct "line of sight" 
+	feedback on current project performance, and anticipated future success, so that the 
+	project , portfolio and corporate decisions can be aligned.
+
+	- An effective means of "learning from experience" on projects, that combines explicit 
+	knowledge with tacit knowledge in a way that encourages people to learn and to embed that 
+	learning into continuous improvement of project management processes and practices.
+
+
+How project success and corporate success are linked:
+	
+	- General corporate strategy:
+		- Successful Business process Reengineering projects can lead directly to improve 
+		competitiveness.
+		- Successful corporate restructuring or merger/aquisition projects can lead directly 
+		to enchanced shareholder value.
+
+	- Business operations:
+		- If the business is essentially project-based then successful project performance 
+		translates directly into an improved bottom-line.
+		- If the business is operations-based, then successful projects to support or to 
+		improve operations lead indirectly to improved bottom-line performance.
+
+	- Research and development:
+		- Successful research projects and development projects lead to a maximised return on 
+		R&D spend, leading directly to the creation of new streams of operating revenue.
+		- Successful development projects improve time to market, and can enhance competitive 
+		position, product sales or product margins.
+
+	- IT/IS development:
+		-Successful IT/IS projects deliver improved financial benefits and/or reduced wastage 
+		of aborted projects.
+
+	- Facilities provision and management:
+		- Successful projects to design, procure and construct new capital assets can enhance 
+		time to market, return on investment, reduced operating costs or some combination of 
+		all three.
