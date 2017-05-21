@@ -287,6 +287,7 @@ CREATE TRIGGER warn_user_over_value
 
 -------------------------------------------------------------------------------
 
+-- Funcao que atualiza o valor atual do saldo de um projecto
 CREATE FUNCTION saldo_project() RETURNS TRIGGER AS $$
 	declare
 		total double precision;
@@ -299,6 +300,8 @@ CREATE FUNCTION saldo_project() RETURNS TRIGGER AS $$
 	end;
 $$ LANGUAGE plpgsql;
 
+-- Trigger que executa funcao anterior
+-- depois de se fazer update ao somatorio do projecto
 CREATE TRIGGER update_saldo_project
 	AFTER UPDATE ON sum_project
 	FOR EACH ROW EXECUTE PROCEDURE saldo_project();
