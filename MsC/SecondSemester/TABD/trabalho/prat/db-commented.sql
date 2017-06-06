@@ -313,15 +313,15 @@ insert into project values('fusion', '2017-01-01', '2017-02-02', 0, 'Cenas', 'ce
 insert into scholarship values('fusion', 'UG', 1000);
 insert into scholarship values('fusion', 'O-UG', 1000);
 insert into scholarship values('fusion', 'MsC', 1000);
-insert into scholarship values('fusion', 'Doc', 1000);
-insert into scholarship values('fusion', 'Doc-10', 1000);
-insert into scholarship values('fusion', 'posdoc', 1000);
-insert into scholarship values('fusion', 'staff', 1000);
+insert into scholarship values('fusion', 'Doc', 1500);
+insert into scholarship values('fusion', 'Doc-10', 1500);
+insert into scholarship values('fusion', 'posdoc', 1800);
+insert into scholarship values('fusion', 'staff', 2500);
 
 insert into pcosts values('fusion', int4range(0, 10), 0);
-insert into pcosts values('fusion', int4range(10, 20), 0);
-insert into pcosts values('fusion', int4range(20, 27), 0);
-insert into pcosts values('fusion', int4range(27, null), 0);
+insert into pcosts values('fusion', int4range(10, 20), 3000);
+insert into pcosts values('fusion', int4range(20, 27), 6000);
+insert into pcosts values('fusion', int4range(27, null), 9000);
 
 insert into holder values('fusion',	1, 612, 'Asia->EU', 'MsC', 'Bangladesh', null, '2014-12-06', '2015-11-28', 1, 'MD Sajib Ahmed', 10, 'm', 'jack6148@gmail.com', 'United International University', 'computer sciences', 'Mobilidade', 'Teresa Gonçalves', 'tcg@uevora.pt', 'f', 'f', 'f', 'f');
 insert into holder values('fusion', 1, 779, 'Asia->EU', 'MsC', 'Pakistan', null, '2014-11-29', null, 2, 'MD Fahad Israr', 10, 'm', 'fahad_israr@hotmail.com', 'University of Peshawar', 'economics', 'Regular', 'Miguel Rocha de Sousa', null, 'f', 'f', 'f', 'f');
