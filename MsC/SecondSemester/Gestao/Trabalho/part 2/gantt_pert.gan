@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="gestao" company="" webLink="http://" view-date="2017-05-01" view-index="1" gantt-divider-location="386" resource-divider-location="380" version="2.8.4" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="gestao" company="" webLink="http://" view-date="2017-06-01" view-index="2" gantt-divider-location="386" resource-divider-location="380" version="2.8.4" locale="en_US">
     <description/>
     <view zooming-state="default:8" id="gantt-chart">
         <field id="tpd3" name="Name" width="196" order="0"/>
@@ -159,7 +159,10 @@
         <task id="50" name="Junção BD" color="#8cb6ce" meeting="false" start="2017-11-30" duration="10" complete="0" expand="true">
             <depend id="52" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="52" name="Junção Interface" color="#8cb6ce" meeting="false" start="2017-12-18" duration="10" complete="0" expand="true"/>
+        <task id="52" name="Junção Interface" color="#8cb6ce" meeting="false" start="2017-12-18" duration="10" complete="0" expand="true">
+            <depend id="53" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="53" name="Testes" color="#8cb6ce" meeting="false" start="2018-01-03" duration="20" complete="0" expand="true"/>
     </tasks>
     <resources>
         <resource id="0" name="João Calhau" function="Default:1" contacts="" phone=""/>
@@ -170,11 +173,13 @@
     <allocations>
         <allocation task-id="4" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="5" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="53" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="5" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
         <allocation task-id="34" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="50" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="52" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="4" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="53" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
         <allocation task-id="0" resource-id="2" function="SoftwareDevelopment:5" responsible="true" load="100.0"/>
         <allocation task-id="1" resource-id="2" function="SoftwareDevelopment:5" responsible="true" load="100.0"/>
         <allocation task-id="2" resource-id="2" function="SoftwareDevelopment:5" responsible="true" load="100.0"/>
@@ -183,6 +188,7 @@
         <allocation task-id="50" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
         <allocation task-id="52" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
         <allocation task-id="2" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="53" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>
