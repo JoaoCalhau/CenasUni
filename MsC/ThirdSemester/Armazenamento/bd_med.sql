@@ -1,3 +1,20 @@
+drop owned by john;
+
+CREATE TABLE laboratorio(
+	nome_laboratorio text,
+	telefone text,
+	fax text,
+	email text,
+	morada text,
+	localidade text,
+	concelho text,
+	distrito text,
+	pais text,
+	latitude_laboratorio text,
+	longitude_laboratorio text,
+	primary key(nome_laboratorio)
+);
+
 CREATE TABLE medicamento(
 	composicao text,
 	nome_medicamento text,
@@ -53,21 +70,6 @@ CREATE TABLE farmacia(
 	primary key(latitude_farmacia, longitude_farmacia)
 );
 
-CREATE TABLE laboratorio(
-	nome_laboratorio text,
-	telefone text,
-	fax text,
-	email text,
-	morada text,
-	localidade text,
-	concelho text,
-	distrito text,
-	pais text,
-	latitude_laboratorio text,
-	longitude_laboratorio text,
-	primary key(nome_laboratorio)
-);
-
 CREATE TABLE medico(
 	nome_medico text,
 	numero_cedula text,
@@ -101,10 +103,7 @@ CREATE TABLE paciente(
 	numero_utente_saude text,
 	nome_subsistema text,
 	numero_subsistema text,
-	primary key(numero_utente_saude),
-	foreign key(nome_subsistema, numero_subsistema) references subsistema_saude(nome_subsistema, numero_subsistema)
-		on delete cascade
-		on update cascade
+	primary key(numero_utente_saude)
 );
 
 CREATE TABLE receita(
