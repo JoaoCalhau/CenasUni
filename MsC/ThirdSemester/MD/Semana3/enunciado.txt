@@ -1,0 +1,56 @@
+Lab - Discretization
+Data d1.csv
+
+Load  ‘d1.csv’ data, if you want you can convert tham into arff.
+
+Visualize data in a 2D diagram with class A e B, notice if the two classes are clearly separeted.
+
+Apply ZeroRule  and OneRule. Observe the resulting rule and compare with  2D diagram 
+
+Does the rule corresponds to the information you observed in the 2D diagram ?
+
+Apply J48. Observe the performance and the resulting tree.
+
+Does the tree corresponds to the information you observed in the 2D diagram ?
+
+Notice that this rules depend on just one attribute at a time  (comparisons "bigger than", "less than ", ....)
+
+Do you consider that the  classes will be easely classified with this kind ("bigger than", "less than ", ....) of attributes ?
+
+J48 does an attribute  transformation (X and Y)into nominal or logical ones  (e.g. Attribute_X <= 6.4  OR  Attribute_Y <= 2.5). This transformations can be done using  the discretization method or creating attributes.
+
+Apply  discretization: Pre-process / Filter / (filter/unsupervised/attribute) Discretize into 3 classes (Bins=3). Observe the discretized intervals.
+
+How this intervals adjust to the spatial class distribution ?
+
+Notice that this division intervals correspond to (and only to) vertical and horizontal frontier lines.
+
+You may add new attributes which result from expressions using  Pre-process / Filter / (filter/unsupervised/attribute) AddExpression or MathExpression (see manual or e.g. http://weka.wikispaces.com/Using+the+MathExpression+filter )
+
+Introduce new atributtes substituting X and Y. For example, in three attributes for  X<3.0, X>6.0 and  Y<2.5, or else any other values that you consider more adequated (observe 2D diagram).
+
+Apply J48 with the new atributes  (only the new ones, so delet the older ones). Observe the performance and the resulting tree.
+
+Can you keep the performance ?
+==============================================
+Data d2.csv
+
+load data ‘d2.csv’ and visualize data.
+
+How would you define approximately the frontier between classes ?
+
+Apply ZeroRule and  OneRule, and  observe the results.
+
+Apply J48. Observe the performance and the decision tree.
+
+How would you justify the resulting performance and complexity of the decision tree?
+
+Apply some discretization of attributes, e.g. in classes, and  aplique J48, observe the tree and the performance.
+
+How complexity and performance changed ?
+
+Substitute  attributes X and Y by one that says if the point is above or below the frontier line. e.g. For a diagonal use a comparasion:   new_attribute=X-K*Y (where K is a constant)
+
+Apply J48. Observe the performance and the tree.
+
+Q: How does the complexity and the performance changed ? which would be the best attributes to maximixe performance, and what should to minimize complexity ? Submit an answer to the course forum.
