@@ -1,0 +1,5 @@
+@Loops1
+
+For `Int \j = 5; --j
+	`Bool \cond = j
+While cond

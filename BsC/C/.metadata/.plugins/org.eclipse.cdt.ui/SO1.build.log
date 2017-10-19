@@ -1,0 +1,19 @@
+15:29:58 **** Incremental Build of configuration Debug for project SO1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o fork.o "..\\fork.c" 
+..\fork.c:10:6: warning: return type of 'main' is not 'int' [-Wmain]
+ void main(void) {
+      ^
+..\fork.c: In function 'main':
+..\fork.c:13:2: warning: implicit declaration of function 'fork' [-Wimplicit-function-declaration]
+  pid = fork();
+  ^
+gcc -o SO1.exe forkTest.o fork.o 
+forkTest.o: In function `forkTest':
+C:\Users\Joao\Desktop\Cenas\C\SO1\Debug/../forkTest.c:10: undefined reference to `fork'
+fork.o: In function `main':
+C:\Users\Joao\Desktop\Cenas\C\SO1\Debug/../fork.c:13: undefined reference to `fork'
+collect2.exe: error: ld returned 1 exit status
+
+15:29:59 Build Finished (took 473ms)
+

@@ -1,0 +1,65 @@
+Se o utilizador inserir NICK
+vê o se só inseriu NICK (len= 1) e dá erro porque precisa de mais cenas
+
+se o len= 2, inseriu NICK e o nick que quer
+ 		1.vê se o nick tá na lista de nicks sem registar, se encontrar boolean1 fica a TRUE
+ 		
+ 		2.vê se o nick tá na lista de nicks registados, se encontrar boolean2 fica a TRUE
+ 		
+ 		3.vê se o sock está em alguma das listas, ou seja ja tinha dado nick antes pa alguma das listas na sessão atual, caso encontre, o tuplotemp fica com esse valor, no caso de achar na lista sem registar o tuplo fica com 2 argumentos (sock, nick), mas se achar o sock na lista registados fica tuplo com 4 argumentos(sock, nick, pass, mail)
+
+ 		4.depois dos ciclos for, vai ver nos ifs o seguinte:
+ 		
+ 		5. se boleano1 é porque o nick ta na lista nao registados
+ 		
+ 		6. se boleano2 é porque o nick ta na lista registados (em ambos casos dá erro, mas diferente!)
+ 		
+ 		7. como sao elifs, se fez anterior nem ve estes (see calhau, i learn something! XD)
+ 		
+ 		8. se boleano3, é porque nick nao tá a ser utilizado, mas o socket sim, ou seja, nesta sessao um gajo com nick sem tar registado pode mudar o nick, daí que remove o tuplo da lista normal e mete lá o dele.
+ 		
+ 		9. se o boleano4 é porque o nick nao tá a ser utilizado, mas o socket sim, como está naquele socket na lista registados, o gajo pode mudar o nick, até porque o prof nao pede nada nisso, porque ele diz NICKCHANGE <oldnickname> <newnickname>
+ 		nao diz nada do tipo (tem de fazer login pa mudar o nome), e como tá a ligar-se do mesmo sitio (mesmo socket), deixa-se mudar (nao sei como fazer isso no login).
+ 		POR EXEMPLO: tu registas-te aqui e fazes login e sais, se voltares a ligar-te noutra altura, o teu socket é outro, n consegues mudar o nick, MAS ao fazeres login, ou seja, dares o nick certo e a pass certa, mudas o socket para o que estás no momento e a partir dai acedes aqui para mudar a pass, portanto acho que isto que fiz makes sense.
+
+ 		10. se o teu sock nao tiver em nenhuma lista, nem o nick que queres, podes registalo na lista dos nicks simples
+
+
+se o len= 3, inseriu NICK e o nick que quer
+
+	1. Vê se o nick está na lista dos registados, porque é suposto isto ser tipo login
+
+	2. se encontra o nick igual, boleano1 fica a true
+
+	3. se encontra a pass e é igual, boleano2 fica a false, caso nao encontre o boleano2 fica a true
+
+	4. se boleano1 = false é porque no ciclo for nao chegou a um nome igual e entao err nick, pois devia tar lá o nick pa ele poder fazer login (nao sei se funciona 5* pois n fiz a cena de registar ainda)
+
+	5. se boleano2 = true, é porque encontrou nicks iguais mas password errada
+
+	6. como funciona com ifs e elifs, o que acontece é, caso nao encontre nicks iguais, o boleano1 continua a false como definido lá em cima e faz que é nao ter o nick guardado,
+	caso encontre nicks iguais, boleano1 fica a true, e depois se a pass for igual, boleano2 fica a false (diz que o nick ta ok, poruqe deu para fazer login) e como boleano1= true e boleano2=false nao entra em nenhum elif ou if
+
+	CASO a password teja errada, viu isso porque boleano1 é verdade, nicks iguais, mas password errada faz com que boleano2= true, entra no elif em baixo
+
+	NO CASO DE boleano= true, e boleano2 = false, foi o caso sucesso, mas como pode estar a fazer login de outro socket, que é mais provavel pa fazer login, entao faz-se update ao socket, para isso usando o REMOVE para apagar o nick e a informaçao da lista dos nicksregistados, usando o tuplotemp, e assim guarda-se na lista do tipo
+	(sock, tuplotemp[1], tuplotemp[2],tuplotemp[3]), em que sock é o novo socket, e o resto é por ter feito um bom login.
+
+	NOTA 2: caso dê 1 nick que se encontra na lista dos nicks nao registados por exemplo, n o encontra o nick nos registados, logo é porque o nick está errado é o caso do boleano1
+
+
+	LOGO O QUE FAZ SENTIDO É:
+	 no caso de inserir NICK <nickname> ele quer ter um nick que nao exista em lado nenhum
+	 no caso de inserir NICK <nickname> <password> ele quer que ja teja registado e tem do achar lá e tem de dar a password bem e o nick tmb
+
+
+
+ASSIM: Os nicks ficou tudo feito, faltando apenas uma coisa que é a mensagem a informar os utilizadores como o nick foi alterado, de resto penso que esteja bem :) 
+
+Podes tentar fazer a cena de registar os gajos e isso, já agora testa o que fiz, e tens 2 cenas pos testes
+
+PRINTLISTA
+PRINTNOME
+
+ESPERO QUE GOSTES! XD e depois diz qq coisa :)
+

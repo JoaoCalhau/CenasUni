@@ -1,0 +1,37 @@
+public class Inputs {
+	int vencedor;
+	String key;
+	JogoDoGalo item;
+	int count;
+	
+	public Inputs(JogoDoGalo j) {
+		this.item = j;
+		this.key = Builder(j.hashcode());
+		vencedor = j.vencedor();
+		this.count = 0;
+	}
+	
+	public String Builder(int n) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("");
+		sb.append(n);
+		String s = sb.toString();
+		return s;
+	}
+
+	public JogoDoGalo getItem() {
+		return this.item;
+	}
+	
+	public String getKey() {
+		return this.key;
+	}
+	
+	public int getVencedor() {
+		return this.vencedor;
+	}
+	
+	public void incrementCount() {
+		count++;
+	}
+}

@@ -1,0 +1,43 @@
+@Tuple0.Ya
+// with C++ output
+
+,0
+0,1,2,3
+`Int,`Int Pair, Other
+Pair = 0, 1
+`Int Sum = Pair.A + Pair.B
+Other = Pair
+
+/* C++
+class Tuple0 { public:
+	int A
+	int B
+	Tuple0(){}
+	Tuple0(int a, int b){ A = a; B = b; }
+	Tuple0* AssignTo(int* a, int* b){ *a = A; *b = B; ;Return this; }
+}
+class TupleAssign_int_int { public:
+	int* A
+	int* B
+	TupleAssign_int_int(int* a, int* b){ A = a; B = b; }
+	Tuple0& Assign(Tuple0& right){ *A = right.A; *B = right.B; ;Return *this; }
+}
+Tuple0 Pair
+Tuple0 Other
+Pair.Assign(Tuple0(0, 1))
+int Sum = Pair.A + Pair.B
+Other.Assign(Pair)
+*/
+
+// most complex example
+`Int X, Y
+X,Y
+X,Y = Y,X
+X,Y = (Y,X = X,Y)
+X,Y = Y,X = X,Y
+
+/* C++
+int X
+int Y
+Tuple0(Y, X).AssignTo(&X, &Y)
+*/

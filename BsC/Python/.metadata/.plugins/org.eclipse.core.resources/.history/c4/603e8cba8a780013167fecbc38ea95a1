@@ -1,0 +1,16 @@
+'''
+Created on 08/01/2014
+
+@author: Joao
+'''
+
+D=dict()
+D[1]='merde'
+for i in range(3):
+    if D[i] in D:
+        D[i].append('shit')
+    else:
+        if D[i] not in D:
+            D[i]='merda'
+
+print(D)

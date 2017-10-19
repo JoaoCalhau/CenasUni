@@ -1,0 +1,13 @@
+\select@language {portuguese}
+\contentsline {section}{\numberline {1}Objectivo}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Como \IeC {\'e} que este objectivo vai ser atingido?}{3}{subsection.1.1}
+\contentsline {section}{\numberline {2}Descri\IeC {\c c}\IeC {\~a}o}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Esquema}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Convers\IeC {\~a}o da imagem para formato RGB}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}O procedimento}{6}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}O .data segment}{6}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}O .text segment}{7}{subsubsection.2.3.2}
+\contentsline {subsection}{\numberline {2.4}Convers\IeC {\~a}o de formato .GRAY para formato .jpg (exemplo)}{13}{subsection.2.4}
+\contentsline {section}{\numberline {3}Curiosidades}{14}{section.3}
+\contentsline {section}{\numberline {4}Conclus\IeC {\~a}o}{15}{section.4}
+\contentsline {section}{\numberline {5}Bibiografia}{16}{section.5}

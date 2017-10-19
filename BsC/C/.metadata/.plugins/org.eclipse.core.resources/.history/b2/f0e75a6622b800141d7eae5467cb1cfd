@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+#define MAX_SIZE 50000
+
+int pesquisaL(int vector[], int number, int size) {
+	int n = number, i;
+
+	for (i=0; i<size; i++) {
+		if (vector[i] == n)
+			break;
+	}
+
+	if (i == size)
+		return -1;
+	else
+		return i;
+}
+
+int pesquisaB(int vector[], int number, int size) {
+	int i, n=number;
+	int m = size/2;
+
+	if (n == m)
+		return m-1;
+	else if (n < m) {
+		for (i=0; i<m; i++)
+			if (vector[i] == n)
+				break;
+	} else {
+		for (i=m+1; i<size; i++)
+			if (vector[i] == n)
+				break;
+	}
+
+	if (i == m || i == size)
+		return -1;
+	else
+		return i;
+}
+
+int pesquisaR(int vector[], int number, int size) {
+	int i, n=number;
+	int m=size/2;
+
+	if (n < m)
+
+}
+
+int main() {
+	int v[MAX_SIZE], i, pL, pB, pR;
+
+	for (i=0; i<MAX_SIZE; i++)
+		v[i]=i+1;
+
+
+	pL=pesquisaL(v, 40000, MAX_SIZE);
+	pB=pesquisaB(v, 40000, MAX_SIZE);
+	//pR=pesquisaR(v, 40000, MAX_SIZE);
+
+	printf("--Pesquisa Linear--\n");
+	if (pL == -1)
+		printf("Elemento não encontrado\n");
+	else
+		printf("Elemento encotrado na posição: %d\n", pL);
+
+	printf("\n");
+	printf("--Pesquisa Binária--\n");
+	if (pB == -1)
+		printf("Elemento não encontrado\n");
+	else
+		printf("Elemento encontrado na posição: %d\n", pB);
+
+	printf("\n");
+	printf("--Pesquisa Recursiva--\n");
+	if (pR == -1)
+		printf("Elemento não encontrado\n");
+	else
+		printf("Elemento encontrado na posição: %d\n", pR);
+
+	return 0;
+}

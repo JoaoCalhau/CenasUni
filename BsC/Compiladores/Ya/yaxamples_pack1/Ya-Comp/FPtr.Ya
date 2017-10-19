@@ -1,0 +1,15 @@
+@FPtr.Ya
+
+Int() Counter()
+	`Int count=0; 
+	`Int inc(){ ;Return ++count; }
+	Return inc; 
+
+`Int()*() Counter
+	`Int count = 0
+	`Int() inc = ++count; // experimental
+	`Int() inc { ;Return ++count; } // does the same
+	Return inc
+
+// ѕо мне такое не может работать т.к. Counter возвращает ф котора€ юзает блок которого уже нет после ;Return inc
+// Looks like it cannot work because Counter returns f which uses block that does not exist after ;Return inc

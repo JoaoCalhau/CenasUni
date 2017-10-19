@@ -1,0 +1,12 @@
+\BOOKMARK [1][-]{section.1}{Objectivo}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Como \351 que este objectivo vai ser atingido?}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Descri\347\343o}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Esquema}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Convers\343o da imagem para formato RGB}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{O procedimento}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.3.1}{O .data segment}{subsection.2.3}% 7
+\BOOKMARK [3][-]{subsubsection.2.3.2}{O .text segment}{subsection.2.3}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Convers\343o de formato .GRAY para formato .jpg \(exemplo\)}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Curiosidades}{}% 10
+\BOOKMARK [1][-]{section.4}{Conclus\343o}{}% 11
+\BOOKMARK [1][-]{section.5}{Bibiografia}{}% 12

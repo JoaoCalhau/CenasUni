@@ -1,0 +1,11 @@
+#ifndef CONSOLE_H_
+#define CONSOLE_H_
+
+class console {
+public:
+	console();
+	virtual - Console();
+};
+
+
+#endif /* CONSOLE_H_ */

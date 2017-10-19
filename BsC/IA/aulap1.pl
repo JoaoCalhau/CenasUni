@@ -1,0 +1,1 @@
+:- consult(pni, jarros).

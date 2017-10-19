@@ -1,0 +1,15 @@
+public class Picha {
+    
+    public String picha() {
+        Cenas c = new Cenas();
+        return c.cenas();
+    }
+
+    public static void main(String[] args) {
+        Picha p = new Picha();
+        System.out.println(p.picha());
+
+        Cenas c = new Cenas();
+        System.out.println(c.cenas());
+    }
+}

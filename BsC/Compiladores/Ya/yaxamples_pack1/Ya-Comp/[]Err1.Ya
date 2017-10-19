@@ -1,0 +1,43 @@
+@ArrayErr1.Ya; // Arrays: `item[], `item[^], `item[=], `item[+]
+// 13 Dec
+
+\%requ `=
+	``* ``* a = ``* b
+\%requ `== 
+	`Bool ``* a == ``* b
+	`Bool ``* a != ``* b
+		Return !! a == b; // for != here is also the implementation. Really it's need to require that the implementation is the same as here defined, but probably it's not that good. Open question.
+
+\`item : %requ `= `==; // this should be read so: type `item must be so that it satisfies requirements for `= and `==
+
+// below: signs after `item is 1 lexema, i.e. [] [^] [=] [+] are lexemas, not groups of lexemas
+\`item[]; // [] - cut of another array. Array
+\`item[^]; // [^] - allocated array with no length change. Move on =. ArrayR
+\`item[=]; // [=] - allocated array with no length change. Copy on =. ArrayL
+\`item[+]; // [+] - full-featured array with length change support. ArrayA
+
+`No(`item[]* ar) ArrayItemsDestroy
+`No(`No^* area) MemFree
+`No(`Char[]* dest, `Char-[]-* src) ArrayCAllocCopy; // free dest before it used
+
+\`item[] // cut of another array. no alloc-dealloc
+	`Char[]*() b
+		Return _ `Char[]*
+	`item* Min, Max
+
+`Int+(`item-[]-* _) Size
+	Return Max `Char* - Min `Char*
+`Int+(`item-[]-* _) Length
+	Return Max - Min
+
+\`item[^]
+	`item[] __ C
+
+	`No(`item[]-* src) AllocCopy
+		ArrayCAllocCopy(b(), src.b())
+	`Make(`item[^]-* s) Move
+		ArrayCAllocCopy(b(), s.b())
+	`Make(`item[+]-* s) Move
+		ArrayAShrinkMove(b(), s `Char[+])
+	`item[^]* = `item[=]-* s
+		ArrayCAllocCopy(b(), s.b()); ;Return _

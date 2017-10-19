@@ -1,0 +1,7 @@
+@ExSimple03
+
+`Int* PI
+PI++ ;PI--
+*PI++ ;*PI--
+++*PI ;--*PI
+++*PI++ ;--*PI--

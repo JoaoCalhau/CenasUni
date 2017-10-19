@@ -1,0 +1,6 @@
+@OpsStrange.Ya
+
+`Int `Char[]* str
+	Return 5
+`Int `Char[]* str(`Int skip)
+	Return skip

@@ -1,0 +1,76 @@
+// Error saving+accounting
+@Ya/Erra.Ya; // 14 Jan, 13 Mar
+
+%C `No(`Char-+-* format; `No^[] ...) printf
+`Char[^](`Char[] format; `No^[]* tail) StrPutV
+`No bug()
+`No(`Int err; `Char[] message; `Char[] format; `No^[]* tail) ErrFullRaiseDirect
+
+\`ErraType enum `Int+:8
+	eFatal, eErr, eWarn, eMess,
+
+\`ErraItem
+	`ErraType Type
+	`Char[] At
+	`Char[=] Description Desc ErrDesc
+
+	`Make Make(`ErraType type; `Char[^]* desc; `Char[] at; )
+		Type = type; At = at; Desc = desc
+	`Char[] Kind
+		Switch Type
+			eFatal { ;Return "fatal error"; }
+			eErr { ;Return "error"; }
+			eWarn { ;Return "warning"; }
+			eMess { ;Return "message"; }
+			Else { bug(); /*;Return 0;*/ }
+	`No Print
+		printf("%s: %s;\n%.*s;\n"; Kind(); Description; At); // incorrect for C printf
+
+`Int+ ErraNFatal =0, ErraNGo =0, ErraNWarn =0
+`ErraItem[+] Erras(100)
+//`ErraItem[+] Erras
+`Int EErra = 101; // ;) //ErrDef(EErra; "Error in program for compiling")
+`Char* ErraAt_ =0
+`Int ErraOffset
+
+`No(`ErraType type; `Char[] mess; `No^[] tail;) ErraV
+`No(`Char* at;) ErraAt // called from user. specifies where is the error
+	ErraAt_ = at
+`Char[] ErraFindWhere; // must be implemented by user. need to compute current source line and ;Return it
+
+`No ErraFatal(`Char[] mess; `No^ ...;) // raise exception
+	++ErraNFatal; ErraV(eFatal; mess; ...;)
+`No Erra(`Char[] mess; `No^ ...;) // prints+saves error but execution continues
+	++ErraNGo; ErraV(eErr; mess, ...;)
+`No ErraWarn(`Char[] mess; `No^ ...;)
+	++ErraNWarn; ErraV(eWarn; mess; ...;)
+`No ErraV(`ErraType type; `Char[] mess; `No^[] tail;)
+	`Char[] at = ErraFindWhere
+	//(at.Length < 160)!
+	ErraAt_ = 0
+	//`ErraItem* e = new(Erras.New()) ErraItem(type, StrPutV(mess, tail), at)
+	`ErraItem* e; //= ErraItem(type; StrPutV(mess; tail); at)
+	If at
+		printf("Error: %s at column %d;\n%.*s;\n"; e->Description; ErraOffset; at)
+	Else
+		printf("Error: %s;\n"; e->Description)
+	If(type == eFatal)
+		ErrFullRaiseDirect(EErra; 0; e->Description; 0); 
+
+// To use it write Erra??Assert(cond; ("format", extra args))
+`item(`item mustBeTrue; `Char[] mess; `No^* tail;) ErraFatalAssert
+	If !!mustBeTrue
+		ErraV(eFatal; mess; tail)
+	Return mustBeTrue
+`item(`item mustBeTrue; `Char[] mess; `No^* tail;) ErraErrAssert
+	If !!mustBeTrue
+		ErraV(eErr; mess; tail)
+	Return mustBeTrue
+`item(`item mustBeTrue; `Char[] mess; `No^* tail;) ErraErrAssert
+	If !!mustBeTrue
+		ErraV(eWarn; mess; tail)
+	Return mustBeTrue
+
+`No ErraInit {}
+`No ErraTerm
+	//Erras.Free()

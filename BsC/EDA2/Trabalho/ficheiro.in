@@ -1,0 +1,12 @@
+CC cestoum
+CC cestoum
+CC cesdois
+CC 00seste
+IC cesto11 0123456789 3 99.99
+IC cestoum 0123456789 3 99.99
+IC cestoum 0000000000 2 0.10
+RC cesto01 3333333333 1
+RC cestoum 3333333333 1
+RC cestoum 0123456789 5
+RC cestoum 0123456789 1
+RC cestoum 0000000000 2

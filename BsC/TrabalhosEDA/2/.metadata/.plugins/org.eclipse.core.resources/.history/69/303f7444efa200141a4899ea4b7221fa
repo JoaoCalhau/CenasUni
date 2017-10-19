@@ -1,0 +1,9 @@
+public class JogAcaso{
+	public JogAcaso() {
+	}
+	
+  //faz uma jogada aleatorio sobre o tabuleiro t
+	public void joga(JogoDoGalo t){
+		
+	}
+}

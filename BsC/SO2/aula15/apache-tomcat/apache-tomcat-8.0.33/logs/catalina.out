@@ -1,0 +1,92 @@
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.33
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 18 2016 20:31:49 UTC
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.33.0
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_91\jre
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_91-b14
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33/conf/logging.properties
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\endorsed
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\temp
+16-May-2016 09:22:26.544 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.8.0_91\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\Skype\Phone;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk1.8.0_91\bin;C:\Cygwin\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Cygwin\usr\local\gprolog-1.4.4\bin;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\PostgreSQL\9.5\scripts;C:\Program Files\PostgreSQL\9.5\bin;C:\Maven\apache-maven-3.3.9\bin;C:\Program Files\Java\jdk1.8.0_91;C:\Users\joaoc\AppData\Local\Programs\Python\Python35\Scripts;C:\Users\joaoc\AppData\Local\Programs\Python\Python35;C:\Cygwin\bin;C:\Cygwin\usr\local\gprolog-1.4.4\bin;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\PostgreSQL\9.5\scripts;C:\Program Files\PostgreSQL\9.5\bin;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Maven\apache-maven-3.3.9\bin;.
+16-May-2016 09:22:26.645 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:22:26.691 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+16-May-2016 09:22:26.691 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:22:26.691 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+16-May-2016 09:22:26.691 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 414 ms
+16-May-2016 09:22:26.707 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+16-May-2016 09:22:26.707 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.33
+16-May-2016 09:22:26.723 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\docs
+16-May-2016 09:22:26.923 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\docs has finished in 200 ms
+16-May-2016 09:22:26.923 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\examples
+16-May-2016 09:22:27.196 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\examples has finished in 273 ms
+16-May-2016 09:22:27.196 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\host-manager
+16-May-2016 09:22:27.213 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\host-manager has finished in 17 ms
+16-May-2016 09:22:27.213 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\manager
+16-May-2016 09:22:27.230 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\manager has finished in 17 ms
+16-May-2016 09:22:27.230 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\ROOT
+16-May-2016 09:22:27.243 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\ROOT has finished in 13 ms
+16-May-2016 09:22:27.245 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:22:27.250 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:22:27.252 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 548 ms
+16-May-2016 09:26:53.903 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+16-May-2016 09:26:53.903 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:26:53.954 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:26:54.019 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+16-May-2016 09:26:54.035 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:26:54.051 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:26:54.088 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:26:54.088 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.33
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 18 2016 20:31:49 UTC
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.33.0
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_91\jre
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_91-b14
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33/conf/logging.properties
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\endorsed
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33
+16-May-2016 09:27:16.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\temp
+16-May-2016 09:27:16.665 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.8.0_91\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\Skype\Phone;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk1.8.0_91\bin;C:\Cygwin\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Cygwin\usr\local\gprolog-1.4.4\bin;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\PostgreSQL\9.5\scripts;C:\Program Files\PostgreSQL\9.5\bin;C:\Maven\apache-maven-3.3.9\bin;C:\Program Files\Java\jdk1.8.0_91;C:\Users\joaoc\AppData\Local\Programs\Python\Python35\Scripts;C:\Users\joaoc\AppData\Local\Programs\Python\Python35;C:\Cygwin\bin;C:\Cygwin\usr\local\gprolog-1.4.4\bin;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\PostgreSQL\9.5\scripts;C:\Program Files\PostgreSQL\9.5\bin;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Maven\apache-maven-3.3.9\bin;.
+16-May-2016 09:27:16.765 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:27:16.827 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+16-May-2016 09:27:16.827 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:27:16.827 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+16-May-2016 09:27:16.827 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 433 ms
+16-May-2016 09:27:16.845 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+16-May-2016 09:27:16.845 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.33
+16-May-2016 09:27:16.849 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\docs
+16-May-2016 09:27:17.081 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\docs has finished in 232 ms
+16-May-2016 09:27:17.081 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\examples
+16-May-2016 09:27:17.328 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\examples has finished in 247 ms
+16-May-2016 09:27:17.328 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\host-manager
+16-May-2016 09:27:17.351 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\host-manager has finished in 23 ms
+16-May-2016 09:27:17.351 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\manager
+16-May-2016 09:27:17.366 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\manager has finished in 15 ms
+16-May-2016 09:27:17.366 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\ROOT
+16-May-2016 09:27:17.382 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Cenas\SO2\aula15\apache-tomcat\apache-tomcat-8.0.33\webapps\ROOT has finished in 16 ms
+16-May-2016 09:27:17.382 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:27:17.382 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:27:17.382 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 559 ms
+16-May-2016 09:38:34.476 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+16-May-2016 09:38:34.476 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:38:34.526 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:38:34.591 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+16-May-2016 09:38:34.626 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:38:34.629 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+16-May-2016 09:38:34.629 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+16-May-2016 09:38:34.629 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

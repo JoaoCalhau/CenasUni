@@ -1,0 +1,19 @@
+@ArrayTest0.Ya
+
+#template !=
+	//`* `* a = `* b
+#template !==
+	//`Bool `* a == `* b
+	//`Bool `* a != `* b
+	//	;Return !! a == b; // for != here is also the implementation. Really it's need to require that the implementation is the same as here defined, but probably it's not that good. Open question.
+
+!= !== `item; // this should be read so: type `item must be so that it satisfies requirements for != and !==
+
+!any `item[] // cut of another array. no alloc-dealloc
+	`item* Min, Max
+
+!any `item[^]
+	`item[] _ C
+
+	`No(`item[]-* src) AllocCopy
+		

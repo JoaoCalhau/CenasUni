@@ -1,0 +1,50 @@
+import java.util.Random;
+
+public class JogInteli{
+	
+	Jogadores O;
+	Jogadas jg1, jg2, jg3, jg4;
+	int jogada;
+	
+
+	public JogInteli(){
+		O = new Jogadores(2, "O");
+		jogada=0;
+	}
+	//prepara-se para um novo jogo, i.e. prepara-se para registar os tabuleiros do jogo que se vai iniciar
+	//deve ser chamado quando um novo jogo vai comecar
+	//deve registar qual o jogador que JogInteli (X ou O)
+	public void novoJogo(int jogador){
+		jogada=0;
+		if(jogador==1) {
+		}else if(jogador==2) {
+			jg1 = new Jogadas();
+			jg2 = new Jogadas();
+			jg3 = new Jogadas();
+			jg4 = new Jogadas();
+		}
+	}
+
+	//faz uma jogada baseada na experiencia passada, devendo ser escolhido o movimento com maior % de ganhos
+	//#ganhou/(#ganhou+#perdeu+#empatou), em caso de empate decida-se aleatoriamnte
+	public void joga(JogoDoGalo t){
+		jogada++;
+		double ratio=-1;
+		JogoDoGalo c = t.clone();
+		
+	}
+	//dado que terminal uma configuracao em que o jogo acabou as configuracoes que constituem todas as
+	//Jogadores do jogo devem ser registadas como respondentes a voitoria, empate ou derrota
+	public void acabou(JogoDoGalo terminal){
+	}
+
+	// numero de vezes que a configuracao t foi vista
+	public int numeroDeVezesVisto(JogoDoGalo t){
+		return 0;
+	}
+	// retorna todas as configuracoes que foram Jogadores apos a configuracao t
+	public JogoDoGalo[] sucessores(JogoDoGalo t){
+		return new JogoDoGalo[4];
+	}
+
+}

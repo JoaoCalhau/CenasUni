@@ -1,0 +1,6 @@
+@WithErr.Ya; // Test for error in 'With'
+
+`Int i
+
+With i
+	i = 0

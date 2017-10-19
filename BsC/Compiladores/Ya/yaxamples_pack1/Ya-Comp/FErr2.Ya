@@ -1,0 +1,10 @@
+@FErr2.Ya
+
+`Char[]* B()
+B(), B()
+//;`Char[]*,`Char[] hr
+//;"100",0
+//;`No(`Int) F
+//;F("100")
+
+ArrayCAllocCopy(b(), s.b());

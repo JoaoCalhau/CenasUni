@@ -1,0 +1,8 @@
+@StatDouble.Ya
+
+`statement Fur(`newvars pre; `Bool cond; `No^ inc) `semiblock body
+	#
+		If
+			`
+				For pre; cond; inc
+					body

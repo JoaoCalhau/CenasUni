@@ -1,0 +1,8 @@
+@FVoidNoreturn.Ya
+
+`No F()
+	Return
+
+`NoReturn G()
+	1
+	// here is err: func returns while it cannot

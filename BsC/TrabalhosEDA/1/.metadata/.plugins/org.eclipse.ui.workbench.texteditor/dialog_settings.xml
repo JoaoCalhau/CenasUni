@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="257" key="DIALOG_WIDTH"/>
+		<item value="117" key="DIALOG_Y_ORIGIN"/>
+		<item value="972" key="DIALOG_X_ORIGIN"/>
+		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="var" key="selection"/>
+		<list key="findhistory">
+			<item value="mult"/>
+			<item value="var"/>
+			<item value="System.out.println"/>
+			<item value="size"/>
+			<item value="Animais"/>
+			<item value="Nada()"/>
+			<item value="Pexe()"/>
+			<item value="tubaralho(starveTime())"/>
+		</list>
+		<list key="replacehistory">
+			<item value="var"/>
+			<item value="temp"/>
+			<item value="Oceano"/>
+			<item value="Animais(0)"/>
+			<item value="Animais(2)"/>
+			<item value="Animais(1, starveTime())"/>
+			<item value="oceano"/>
+			<item value="height2"/>
+		</list>
+	</section>
+</section>

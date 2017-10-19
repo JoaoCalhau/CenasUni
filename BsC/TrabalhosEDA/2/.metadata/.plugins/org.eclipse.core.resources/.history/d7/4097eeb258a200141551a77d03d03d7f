@@ -1,0 +1,43 @@
+public class JogoDoGalo{
+	public Jogadas[][] jogoDoGalo;
+
+	//[][x]-Coluna [x][]-linha
+	public JogoDoGalo(){
+		jogoDoGalo = new Jogadas[3][3];
+		for (int linha=0;linha<3;linha++) {
+			for (int coluna=0;coluna<3;coluna++) {
+				jogoDoGalo[linha][coluna]=null;
+			}
+		}
+	}
+	//diz quem ganhou o jogo
+	public int vencedor(){
+		return 0;
+	}
+
+	//retorna o codigo hash do objecto
+	public int hashcode(){
+		return 0;
+	}
+
+	public boolean acabou(){
+		return true;
+	}
+	//faz uma jogada na celula indicada se esta vazia, se nao esta vazia retorna false
+	boolean joga(int row, int col){
+		if (jogoDoGalo[row][col] == null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	//retorna o movimento actual na localiza�cao dada, i.e qual o jogador naquela posi�cao
+	int jogador(int row, int col){
+		jogoDoGalo.
+	}
+
+	//retorna reperesenta�cao em String do tabuleiro
+	public String toString(){
+		return "tabuleiro";
+	}
+}

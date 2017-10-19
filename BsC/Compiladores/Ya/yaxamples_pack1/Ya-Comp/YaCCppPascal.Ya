@@ -1,0 +1,17 @@
+@YaCCppPascal
+
+%Ya `Int Ya()
+%C `Int C
+%C++ `Int Cpp
+%Pascal `Int Pascal
+%Pascal %Ya `Int YaPascal()
+
+%Windows `Int Windows
+%Posix `Int Posix
+%Unix `Int Unix
+%Linux `Int Linux
+%MacOSX `Int MacOSX
+`Int i
+
+C = 1
+i = Ya()

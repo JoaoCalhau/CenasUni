@@ -1,0 +1,22 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Canal {
+	
+	public static void read() {
+		
+		Scanner in = new Scanner(System.in);
+		String input = in.nextLine();
+		
+		try(BufferdReader br = new BufferedReader(new FileReader(input + ".txt"))) {
+			
+		} catch(IOException e) {
+			
+		}
+		
+	}
+	
+	public static void main(String[] agrs) {
+		read();
+	}
+}

@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int my_strlen(char c[]) {
+	int i = 0;
+
+	while (c[i] != '\0')
+		i++;
+
+	return i;
+}
+
+int main() {
+	char s[], c=' ';
+	int end;
+
+	printf("Input the string: \n");
+	scanf("%s\n", &s);
+	printf("Do you wish to continue?\n");
+	scanf("%d\n", end);
+	while(end == 0) {
+		s[my_strlen(s)] = ' ';
+		printf("Enter the String: \n");
+		scanf("%s\n", &s);
+	}
+
+	printf("The String: ");
+	puts(s);
+	printf("\n");
+
+}

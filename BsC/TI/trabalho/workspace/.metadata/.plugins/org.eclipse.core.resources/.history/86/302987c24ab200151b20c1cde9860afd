@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static String word;
+	
+	public static void read() {
+		
+		String in;
+		Scanner scan = new Scanner(System.in);
+		in = scan.nextLine();
+		scan.close();
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(in + ".txt"))) {
+			
+			String line = br.readLine();
+
+			word = line;
+		} catch(IOException e) {
+			System.out.println("Ficheiro invalido");
+		}
+	}
+	
+	public static void main(String[] args) {
+		read();
+		
+		List<Integer> l = LZW.compress(word);
+		System.out.println(l.toString());
+		
+		String s = LZW.decompress(l);
+		if(s.compareTo(word) == 0)
+			System.out.println(true);
+		else
+			System.out.println(false);
+		
+	}
+}

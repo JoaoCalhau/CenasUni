@@ -1,0 +1,10 @@
+'''
+Created on 08/01/2014
+
+@author: Joao
+'''
+
+L=[(1,2),(2,2),(3,2)]
+D={}
+D.update({'A':L})
+print(D)

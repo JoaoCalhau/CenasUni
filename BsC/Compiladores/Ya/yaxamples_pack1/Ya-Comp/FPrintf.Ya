@@ -1,0 +1,16 @@
+@FPrintf
+// Test for funcs with ... arg. And for `No^
+
+//`No^* VoidUp
+
+`Int(`Char-[] format; `No^-[]* tail;) vprintf
+
+`Int(`Char-[] format; `No^-[] ...;) printf
+	Return vprintf(format, ...)
+
+/*
+int vprintf(Array<char const> format, Array<int const>* tail)
+int printf(Array<char const> format, Array<int const> tail, ...){ // на выход выдает так - массив для ... cформирован, но ... присутствуют т.к. аргументов переменное число
+	Return vprintf(format, &tail)
+}
+*/

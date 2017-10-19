@@ -1,0 +1,27 @@
+@Loops
+
+// For
+For `Int \sum = 0, \i = 10; i; --i
+	sum += i
+For `Int \i = 10; i { sum += i; --i }
+For `Int \i = 10; i { sum += i-- }
+
+// For While
+For i -= 10; `Bool \cond = i < 0
+	sum -= i++
+While cond && sum < 20
+For; i < 10
+	sum += i++
+While sum < 20
+For { ;7 } While 1
+For `Int \j = 5; --j
+	`Bool \cond = j
+While cond
+For `Int \j = 5 { ;--j } While j
+
+// new var in cond
+For; `Bool \cond = i < 30 { ;++i } While i < 30
+For; ++i { ;`Bool \cond = i < 40 } While cond
+
+For
+	If !!j { ;Break }

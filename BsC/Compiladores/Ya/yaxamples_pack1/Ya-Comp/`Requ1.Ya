@@ -1,0 +1,43 @@
+@Ya/!#1
+
+// !s definitions
+// #template !constr `type  means that `type is for templ args
+// each such line defines both !constr and `type
+#template !any {} // no requirements. It also specify `any as the type that correspond to the defined requirements
+!any `some; // новый тип на который условий нет
+
+#template !_= // now first Real definition of requirements - !_= reqiures that assignment must exist for defined type. Here _= is ident, in Ya any ident starting with _ could use any signs
+	`some* `some* a = `some* b
+#template !_== `_== // now second Real definition of requirements - !_== reqiures that == and != comparisons must exist for defined type
+	`Bool `_== * a == `_== * b
+	`Bool `_== * a != `_== * b
+		Return -(a == b); // for != here is also the implementation. Really it's need to require that the implementation is the same as here defined, but probably it's not that good. Open question.
+#template !_<==> !_== // i.e. !_<==> is !_== + smth Else - here I use the ability to write some definitions one after another, that means that all they must be required.
+		`_<==> // !_<==> reqiures that all 6 comparisons must be implemented for defined type
+	`Bool `_<==> * a > `_<==> * b
+	`Bool `_<==> * a < `_<==> * b
+	`Bool `_<==> * a >= `_<==> * b
+		Return -(a < b); // for >= is also given the implementation
+	`Bool `_<==> * a <= `_<==> * b
+		Return -(a > b); // and for <=
+
+// very simple examples of use ! and ` - here the definitions of types are started
+!_= !_== `item; // this should be read so: type `item must be so that it satisfies requirements for !_= and !_==
+#parent !parent `parent {} // `parent is used to specify inheritance - it's written not the same way as in C++
+
+!any `Array(`item) // it's first type - for now I did not specify all the methods just because I wanted to write simple and short example
+	`item* Min, Max; // but data fields are here - theay are pointers on first item (Min) and after the last item (Max)
+	// Examples are based on my library - I never used STL or other libraries, only mine - just because it's enough and it was interesting to write a library.
+	// `Array does not own the data in it - it's only the cut (part) of another array
+
+!any `ArrayA(`item) // ArrayA allows to add new elements to array. In Real library between Array and ArrayA there are 2 more arrays that own the data but not appendable.
+	#parent `Array(`item) C; // it's my way to specify inheritance - not as ': public AnotherType' but as a field. The name of the field is also useful when required to use the parent.
+	`item* End; // another field is used for appendability
+	// I added `ArrayA to show inheritance.
+
+// now template function
+`item(`_<==> * a, `_<==> * b) max // template max(a, b) - args are `compare, i.e. comparable
+	If a > b
+		Return a
+	Else
+		Return b

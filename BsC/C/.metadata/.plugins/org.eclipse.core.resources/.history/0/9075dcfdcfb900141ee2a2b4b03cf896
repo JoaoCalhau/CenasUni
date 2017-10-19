@@ -1,0 +1,12 @@
+#ifndef KONSOLE_H_
+#define KONSOLE_H_
+
+class Konsole
+{	// Konsole für Standardio initialisieren und beenden.
+// Klasse als Variable im Hauptprogramm anlegen
+public:
+Console();
+virtual ~Console();
+};
+
+#endif /*CONSOLE_H_*/

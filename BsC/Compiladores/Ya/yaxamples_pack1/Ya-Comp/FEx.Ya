@@ -1,0 +1,7 @@
+@FEx.Ya
+
+`Int Sum(`Int a, b;) = a + b
+`Int Some(`Int a, b;) = Sum(a,  5) * b
+
+`Int A = Sum(5, 10)
+`Int B = Some(7, -2)

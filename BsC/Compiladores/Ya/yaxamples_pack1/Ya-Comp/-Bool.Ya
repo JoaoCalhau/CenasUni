@@ -1,0 +1,7 @@
+﻿@-Bool.Ya
+
+`No \Test
+	`Bool \Is = Yes
+	Is = No
+	True ;False
+	Is = 0

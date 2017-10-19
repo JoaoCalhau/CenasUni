@@ -1,0 +1,26 @@
+@LL1/Keyword.Ya; // Prepare of keywords
+// 13 Oct, 12 Oct
+
+Use @Ya/LL1
+Use @Gen/Crc32
+
+\`YKeyword
+	`Make(`Char[] kw, `LLex lex)
+		verify(Keyword = kw)
+		Lex = lex
+
+	`Char[] Keyword
+	`Crc32 Crc
+	`LLex Lex
+
+`Crc32(`YKeyword[]) YKeywordsPrepare // compute Crcs and compute `Crc32 startValue
+	For `Int+ loop = 0; loop < 10; ++loop
+		`Crc32 start = rand() ^ rand()<<16
+		// make keys and check that they are different. Through cache
+		`Bool[`Crc32] hash(keywords.Length)
+		foreach `YKeyword eye in keywords
+			`Crc32 key = eye.Crc = Crc32Compute(eye.Keyword, start)
+			If hash[key] // found, i.e. this start is bad
+				continue foreach ;For
+			hash[key] = true
+		Return start; // all are different

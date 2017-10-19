@@ -1,0 +1,5 @@
+﻿@`V1
+
+`Int \X, `Int* \PX // definition of vs of different tys in 1 stat
+PX = X
+X = PX

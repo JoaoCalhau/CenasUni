@@ -1,0 +1,15 @@
+@ArrayErr2.Ya; // 13 Dec
+
+\%requ `=
+//	;``* ``* a = ``* b
+
+\`item : %requ `=; // this should be read so: type `item must be so that it satisfies requirements for `= and `==
+
+\`item[+]; // [+] - full-featured array with length change support. ArrayA
+
+`No(`Int, `Char[+]* src) ArrayAShrinkMove
+
+\`item[] // cut of another array. no alloc-dealloc
+	`Make(`item[]-* s) Move
+		//ArrayAShrinkMove(b(), s `Char[+])
+		ArrayAShrinkMove(0, s `Char[+])

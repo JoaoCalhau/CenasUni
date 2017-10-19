@@ -1,0 +1,10 @@
+@Closures.Ya
+
+`Int(`Int a, `Int b, `Int c) F
+
+`Int(`Int a, `Int b)~(`Int c) Clo
+	Return F(a, b+1, c)
+
+`Int(`Char[][] args) main
+	`Int(`Int a, `Int b)* f = Clo(0)
+	f(1, 2);

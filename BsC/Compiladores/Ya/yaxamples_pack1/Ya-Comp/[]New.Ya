@@ -1,0 +1,201 @@
+// Arrays: `item[], `item[^], `item[=], `item[+]
+// 13 Aug-Mar
+
+@Array.Ya
+
+`Int+- ArrayMaxSize = 80000000h; // const, can't be changed
+
+\`=
+	`* `* a = `* b
+\`==
+	`Bool `* a == `* b
+	`Bool `* a != `* b
+		Return !! a == b; // for != here is also the implementation. Really it's need to require that the implementation is the same as here defined, but probably it's not that good. Open question.
+
+// `item becomes #template because it has requirements. Bad. Really it's required to write 'template' here, maybe !template != !== `item
+// also not good, better write #template != !== `item
+!= !== `item; // this should be read so: type `item must be so that it satisfies requirements for `= and `==
+
+// below: signs after `item is 1 lexema, i.e. [] [^] [=] [+] are lexemas, not groups of lexemas
+\`item[]; // [] - cut of another array. Array==Array
+\`item[^]; // [^] - allocated array with no length change. Move on =. ArrayR
+\`item[=]; // [=] - allocated array with no length change. Copy on =. ArrayL
+\`item[+]; // [+] - full-featured array with length change support. ArrayA
+
+`No(`item[]* ar) ArrayItemsDestroy
+`No(`No^* area) MemFree
+`No(`Char[]* dest, `Char-[]-* src) ArrayCAllocCopy; // free dest before it used
+
+\`item[] // cut of another array. no alloc-dealloc
+	//`Bool // cast to `Bool - пока не работает
+	//	;Return Min && Max > Min
+	`Destroy Null_ // не знаю можно ли делать одновременно и конструктор и деструтктор одноименными
+		Min = Max = 0
+	`Make Null
+		Min = Max = 0
+	//`(`destroy|`make)() Null // вот как хотелось бы это писать
+	//	Min = Max = 0
+	`Make(`item* min, `item* max) Set
+		Min = min
+		Max = max
+	`Make(`item* min, `Int nItems) Set
+		Min = min; Max = min + nItems
+	`Make(`item[]* ar) Set
+		Min = ar.Min
+		Max = ar.Max
+	`Bool() FreeIf
+		If Min
+			ArrayItemsDestroy(_)
+			MemFree(Min)
+			Min = Max = 0
+			Return true
+		Else
+			Return false
+	//`item* [`Int index] { ;Return Min + index; }
+	`item*() Last /*const*/ { _ *!; ;Return Max - 1; }
+	//`item* * { ;Return Min; }
+	//`item[]* ++ { ++Min; ;Return _; }
+	//`item[]* -- { --Min; ;Return _; }
+	`Char[]*() b
+		Return _ `Char[]*
+	`Char-[]*() b
+		Return _ `Char-[]*
+
+	`item* Min, Max
+
+`Int+(`item-[]-* _) Size
+	Return Max `Char* - Min `Char*
+	`item-[]-* n = _; // test. Надо узнать правильно ли выдаст выход - подозреваю лишний & перед _
+`Int+(`item-[]-* _) Length
+	Return Max - Min
+
+`No(`Char[]* dest, `Char[+]* src) ArrayAShrinkMove; // remove - it's test
+
+\`item[^]
+	`item[] __ C
+
+	`No(`item[]-* src) AllocCopy
+		ArrayCAllocCopy(b(), src.b())
+	`Destroy() Free
+		FreeIf()
+	`Make() Null{}
+	`Make(`item[] s) Copy
+		Min = 0
+		AllocCopy(s)
+	`Make(`item[^]* s) Move
+		FreeIf()
+		Min = 0
+		Move(s)
+	`Make(`item[^]-* s) Move
+		Min = 0
+		ArrayCAllocCopy(b(), s.b())
+	`Make(`item[+]-* s) Move
+		Min = 0
+		ArrayAShrinkMove(b(), s `Char[+])
+	`Make(`item* allocedMin, `item* allocedMax) Set
+		Min = allocedMin; Max = allocedMax
+	`Make(`item[] ...) Set
+		AllocCopy(...)
+	`item[^]* = `item[] s
+		AllocCopy(s); ;Return _
+	`item[^]* = `item[^]* s
+		Move(s); ;Return _
+	`item[^]* = `item[=]-* s
+		ArrayCAllocCopy(b(), s.b()); ;Return _
+	`item[^]* = `item[+]* s
+		ArrayAShrinkMove(b(), s `Char[+]*); ;Return _
+
+\`item[=]
+	`item[^] __ R
+
+	`Make() Null {}
+	`Make(`item[] s) Copy
+		Min = 0
+		AllocCopy(s)
+	`Make(`item[^]* s) Move
+		FreeIf()
+		Min = 0
+		Move(s)
+
+	`Make(`Int+ size) Alloc; // не могу сделать реализацию из-за sizeof
+	//	Min = `item* MemAlloc(sizeof(item) * size)
+	//	Max = Min + size
+	//`make Copy(`item[] s);// : `item[^](s){}
+	//`make Move(`item[^] s);// : `item[^](s){}
+	//`make Copy(`item[=]- s);// : `item[^](s){}
+	//`make Copy(`item[+] s);// : `item[^](s){}
+
+`No(`Char[+]* a, `Int+ newAlloSize) ArrayARealloc
+`No(`Char[+]* a, `Int+ newSize, `Int+ itemSize) ArrayASetSize
+`Char*(`Char[+]* a, `Int+ deltaSize, `Int+ itemSize) ArrayAChange
+`Bool(`Char[+]-* a) ArrayAIsMaxFull
+`No(`Char[]* dest, `Char[+]* src) ArrayAShrinkMove
+`No(`Char[+]* dest, `Char[+]* src) ArrayAMove
+`No(`Char[]* dest, `Char[]* src) ArrayAAdd
+
+\`item[+]
+	`item[=] __ L
+	`item* End; // end of allocated area; please don't change
+	// if End == 0 then the data in array is not owned by it, and should not be freed on destr
+
+	`Destroy FreeIf
+		If !! End { Min = 0; } // to prevent free in case of ArrayA = Array
+	`Make Null { End = 0; }
+	`Make(`Int+ allocLength) Init
+	//	End = `item* (- `Int allocLength*sizeof(`item)); /*Realloc(allocLength);*/ }
+	`Make(`item[]-* s) Copy;// : `item[=(s){ End = Max; }
+	`Make(`item[^]* s) Move;// : `item[=(s){ End = Max; }
+	`Make(`item[=]-* s) Copy;// : `item[=(s){ End = Max; }
+	`Make(`item[+]* s) Move;// { ArrayAMove(b(), s.b()); }
+/*
+	ArrayA(item* allocedMin, item* allocedMax){ Min = allocedMin; End = Max = allocedMax; }
+	//ArrayA& operator = (Array<item> s){ AllocCopy(s); End = Max; ;Return *this; }
+	//ArrayA& operator = (Array<item> s){ Set(s); End = 0; ;Return *this; }
+	ArrayA& operator = (items& src){ FreeIf(); Set(src); End = 0; ;Return *this; }
+	ArrayA& operator = (itemsR& s){ ArrayCMove(b(), s.b()); End = Max; ;Return *this; }
+	ArrayA& operator = (const itemsL& s){ AllocCopy(s); End = Max; ;Return *this; }
+	ArrayA& operator = (itemsA& s){ ArrayAMove(b(), s.b()); ;Return *this; }
+	void Realloc(uint newAllocLength){ ArrayARealloc(b(), newAllocLength * sizeof(item)); }
+	void Alloc(uint length = 0){ assert(!IsAlloced()); Realloc(length); }
+	void Shrink(){ // reallocate to squize unused items
+		Realloc(Length(*this)); }
+	uint GetMaxLength() const { ;Return (End - Min) `Int+; }
+	uint CompuMaxLength() const { // compute max MaxLength that could be allocated
+		Return ArrayMaxSize / sizeof(item); }
+	void Free(){ Array<item>::Free(); End = 0; }
+	void FreeIf(){ Array<item>::FreeIf(); End = 0; }
+	void SetLength(uint length){
+		destroyDeltaIf(length - Length(*this)); ArrayASetSize(b(), (ulong)length * sizeof(item), sizeof(item)); }
+	item* Change(int deltaLength); // increase/decrease length
+	item* ChangeCut(int deltaLength){ // increase/decrease length
+		destroyDeltaIf(deltaLength)
+		Return (Pitem)ArrayAChange(b(), (long)deltaLength * sizeof(item), sizeof(item)); }
+	item& New()
+	`Bool IsMaxFull() const { ;Return ArrayAIsMaxFull(b()); }
+	void MoveFrom(itemsA& src){ ArrayAMove(b(), src.b()); }
+	void Move(itemsA& src){ MoveFrom(src); }
+	void Add(items& src){ ArrayAAdd(b(), src.b()); }
+	void Add(itemsA& src){ ArrayAAdd(b(), src.b()); }
+	itemsA& operator += (items& src){ Add(src); ;Return *this; }
+	void operator += (item src){ New() = src; }
+	itemsR Ret(){
+		items ret = items(_*)
+		Min = Max = 0
+		Return	ret
+	}
+	void Include(item& i){ new(New()) item(i); }
+
+protected:
+	RcharsA b(){ ;Return *PcharsA(this); }
+	RCcharsA b() const { ;Return *PCcharsA(this); }
+
+private: // not supported ops
+	// all Move/Copy/Alloc are prohibited
+	//void Move(Array& src)
+	//void AllocCopy(const Array& src)
+	void AllocSize(ulong size)
+	void Copy(Array& src)
+	void destroyDeltaIf(int deltaLength){
+		If(deltaLength < 0) ArrayItemsDestroy(Array<item>(Max + deltaLength, Max)); }
+*/
+

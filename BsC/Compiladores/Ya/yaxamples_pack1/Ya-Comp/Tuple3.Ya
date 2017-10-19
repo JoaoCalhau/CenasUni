@@ -1,0 +1,4 @@
+@Tuple3.Ya
+
+`Int,`Int Pair = (0, 1)
+Pair = (0, 1); // err: right operand is not a tuple but just int

@@ -1,0 +1,33 @@
+'''
+Created on 07/01/2014
+
+@author: Joao
+'''
+
+def verificação(vila, linha, coluna):
+    return (linha>=2 and coluna>=2 and linha<len(vila) and coluna<len(vila[linha]))
+
+def FindPath(vila, Identificador, linha, coluna):
+    caminhos=[]
+    FindPath2(vila, Identificador, linha, coluna, linha, coluna, caminhos, [])
+    return caminhos
+
+def FindPath2(vila, Identificador, linha, coluna,  InicioLinha, InicioColuna, caminhos, stack):
+    if vila[linha][coluna]=='#':
+        return
+    stack.append((linha, coluna))
+    if vila[linha][coluna]=='.' or (linha==InicioLinha and coluna==InicioColuna):
+        UltimoValor=vila[linha][coluna]
+        vila[linha][coluna]='#'
+        for index in direcções: #percorrer os caminhos
+            while (verificação(vila, linha, coluna)==True):
+                FindPath(vila, Identificador, linha+index[0], coluna+index[1], InicioLinha, InicioColuna)
+        vila[linha][coluna]=UltimoValor
+    elif vila[linha][coluna]==Identificador: #Para saber qual é o caminho
+        caminhos.append(list(stack))
+        DCaminhos.update({Identificador:caminhos})
+    stack.pop()
+    
+    
+direcções=[(1,0),(-1,0),(0,1),(0,-1)] #as varias direcções para percorrer
+DCaminhos={} #dicionário com os caminhos

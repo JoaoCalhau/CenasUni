@@ -1,0 +1,33 @@
+public class Teste {
+	public static void main(String[] args) {
+		//RunLengthEncoding cenas = new RunLengthEncoding(4, 5, 3);
+		//System.out.println(cenas.Lista.toString());
+		int[] runTypes = {0, 1, 2, 0, 1};
+		int[] runLengths = {2, 5, 3, 1, 1};
+		RunLengthEncoding cenas2 = new RunLengthEncoding(3, 4, 3, runTypes, runLengths);
+		System.out.println(cenas2.Lista.toString());
+		/*cenas2.restartRuns();
+		System.out.println(cenas2.nextRun());
+		System.out.println(cenas2.nextRun());
+		System.out.println(cenas2.nextRun());
+		System.out.println(cenas2.nextRun());
+		System.out.println(cenas2.nextRun());
+		System.out.println(cenas2.nextRun());
+		cenas2.restartRuns();
+		System.out.println(cenas2.nextRun());*/
+		/*String cenas = "S3,5";
+		String s = cenas.substring(0, 1);
+		String p = cenas.substring(3);
+		System.out.println(cenas + " || " + s + " || " + p);*/
+		cenas2.toOcean();
+		//String s = "S3,5";
+		//System.out.println(s.substring(1, 3));
+		for (int y=0;y<4;y++)
+			for (int x=0;x<3;x++) {
+				System.out.println(cenas2.toOcean().oceano[x][y].getType());
+			}
+		RunLengthEncoding cenas3 = new RunLengthEncoding(cenas2.toOcean());
+		System.out.println(cenas3.Lista.toString());
+	}
+
+}

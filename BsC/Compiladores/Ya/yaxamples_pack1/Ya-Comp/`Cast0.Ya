@@ -1,0 +1,5 @@
+@`Cast0.Ya
+
+`Int \i
+`Char \c = i `Char
+`Int \d = i + c `Int-+

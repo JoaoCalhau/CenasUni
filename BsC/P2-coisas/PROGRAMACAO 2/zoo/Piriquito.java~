@@ -1,0 +1,3 @@
+public class Piriquito extends Ave implements Doméstico{
+  
+}

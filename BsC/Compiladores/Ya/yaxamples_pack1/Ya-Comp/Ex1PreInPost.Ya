@@ -1,0 +1,27 @@
+// Test for expressions: right processing of priorities and priorities by spacing
+// 13 Dec - 12 Dec
+
+@Ex1PreInPost.Ya
+
+`No \Test
+	// std C priorities
+	1 + 2 * 3 + 4
+	1 * 2 + 3 * 4
+
+	// priorities by spacing
+	1 * 2+3 * 4
+	1 + 2*3 + 4
+	1*2 + 3*4
+	1+ 2  *  3 +4
+	1*  2 + 3  *4
+	1+ 2  *  3 +4
+	1*  2 + 3  *4
+
+	//+-num
+	2 - - -1
+	2 - - +1
+
+	// pre post
+	!!1
+	!1
+

@@ -1,0 +1,61 @@
+public class ProjectGalo {
+	JogAcaso jogAcaso;
+	JogInteli jogInteli;
+	HashTable table;
+	int countWins;
+	
+	public ProjectGalo() {
+		jogAcaso = new JogAcaso();
+		jogInteli = new JogInteli();
+		table = new HashTable(11);
+	}
+	
+	public void play(int numJogos) {
+		while (numJogos>1) {
+			numJogos--;
+			JogoDoGalo jogo = new JogoDoGalo();
+			jogInteli.novoJogo(jogInteli.O.getJogador());
+			int count = 9;
+			while (count>2 || jogo.acabou()) {
+				count--;
+				jogAcaso.joga(jogo);
+				jogInteli.joga(jogo);
+			}
+			if (jogo.vencedor()==1) {countWins++;}
+			Inputs item = (Inputs) table.get(Builder(jogo.hashcode()));
+			if (item.getItem().hashcode() == jogo.hashcode()) {
+				table.remove(Builder(jogo.hashcode()));
+				item.incrementCount();
+				table.put(Builder(jogo.hashcode()), item);
+			}else {
+				table.put(Builder(jogo.hashcode()), new Inputs(jogo));
+			}
+		}
+		relatorioFinal();
+	}
+	
+	public String Builder(int n) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("");
+		sb.append(n);
+		String s = sb.toString();
+		return s;
+	}
+	
+	public void relatorioFinal() {
+		int winsInteli=100-countWins;
+		System.out.println("Relatorio final:");
+		System.out.println("");
+		System.out.println("Número de slots: "+table.size());
+		System.out.println("Número de entradas: "+table.capacity());
+		System.out.println("Factor de Carga: "+table.loadFactor());
+		System.out.println("Número de colisões: "+table.colisoes());
+		System.out.println("JogAcaso ganhou "+countWins+" vezes");
+		System.out.println("JogInteli ganhou "+winsInteli+" vezes");
+	}
+	
+	public static void main(String[] args) {
+		ProjectGalo jogo = new ProjectGalo();
+		jogo.play(100);
+	}
+}

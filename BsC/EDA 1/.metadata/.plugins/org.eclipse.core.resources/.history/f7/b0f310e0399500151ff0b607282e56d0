@@ -1,0 +1,7 @@
+
+public class cenasTesteCenas {
+	public static void main(String[] args) {
+		ABP<CenasTeste> cenas = new ABP<CenasTeste>();
+		
+	}
+}

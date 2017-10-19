@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int my_strlen(char c[]) {
+	int i = 0;
+
+	while (c[i] != '\0')
+		i++;
+
+	return i;
+}
+
+int main() {
+	setvbuf(stdout, NULL, _IONBF, 0); //Windows buffer problems
+	setvbuf(stderr, NULL, _IONBF, 0); //(On linux works fine, can remove these 2 lines)
+
+	char s[512];
+	int end=0, len=0;
+
+	printf("Input the string: \n");
+	gets(s);
+	printf("Do you wish to continue?\n");
+	scanf("%d", &end);
+	while(end == 0) {
+		len = my_strlen(s);
+		printf("Enter the String: \n");
+		gets(s);
+		printf("Do you wish to continue? ");
+		scanf("%d", &end);
+	}
+
+	len = my_strlen(s);
+	printf("The String: ");
+	puts(s);
+	printf("Has a length of %d", len);
+
+	return 0;
+}

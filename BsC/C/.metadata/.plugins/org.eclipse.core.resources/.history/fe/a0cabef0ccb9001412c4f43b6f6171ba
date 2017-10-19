@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int my_strlen(char c[]) {
+	int i = 0;
+
+	while (c[i] != '\0')
+		i++;
+
+	return i;
+}
+
+int main() {
+	stbuf(stdout, NULL);
+	char s[512];
+	int end=0;
+
+	printf("Input the string: \n");
+	scanf("%s", s);
+	printf("Do you wish to continue?\n");
+	fflush( stdout );
+	scanf("%d", end);
+	while(end == 0) {
+		s[my_strlen(s)] = ' ';
+		printf("Enter the String: \n");
+		fflush( stdout );
+		gets(s);
+	}
+
+	printf("The String: ");
+	puts(s);
+	printf(" has a %d length.", my_strlen(s));
+
+	return 0;
+}

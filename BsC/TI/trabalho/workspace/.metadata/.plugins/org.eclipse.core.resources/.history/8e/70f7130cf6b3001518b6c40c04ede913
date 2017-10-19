@@ -1,0 +1,371 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class tresATres {
+	
+	static int total = 0;
+	static int total3 = 0;
+
+	//total A
+	static int totalAAA = 0;
+	static int totalAAC = 0;
+	static int totalAAG = 0;
+	static int totalAAT = 0;
+
+	static int totalACA = 0;
+	static int totalACC = 0;
+	static int totalACG = 0;
+	static int totalACT = 0;
+
+	static int totalAGA = 0;
+	static int totalAGC = 0;
+	static int totalAGG = 0;
+	static int totalAGT = 0;
+
+	static int totalATA = 0;
+	static int totalATC = 0;
+	static int totalATG = 0;
+	static int totalATT = 0;
+
+	//totalC
+	static int totalCAA = 0;
+	static int totalCAC = 0;
+	static int totalCAG = 0;
+	static int totalCAT = 0;
+
+	static int totalCCA = 0;
+	static int totalCCC = 0;
+	static int totalCCG = 0;
+	static int totalCCT = 0;
+
+	static int totalCGA = 0;
+	static int totalCGC = 0;
+	static int totalCGG = 0;
+	static int totalCGT = 0;
+
+	static int totalCTA = 0;
+	static int totalCTC = 0;
+	static int totalCTG = 0;
+	static int totalCTT = 0;
+
+
+	//total G
+	static int totalGAA = 0;
+	static int totalGAC = 0;
+	static int totalGAG = 0;
+	static int totalGAT = 0;
+
+	static int totalGCA = 0;
+	static int totalGCC = 0;
+	static int totalGCG = 0;
+	static int totalGCT = 0;
+
+	static int totalGGA = 0;
+	static int totalGGC = 0;
+	static int totalGGG = 0;
+	static int totalGGT = 0;
+
+	static int totalGTA = 0;
+	static int totalGTC = 0;
+	static int totalGTG = 0;
+	static int totalGTT = 0;
+
+
+	//total T
+	static int totalTAA = 0;
+	static int totalTAC = 0;
+	static int totalTAG = 0;
+	static int totalTAT = 0;
+
+	static int totalTCA = 0;
+	static int totalTCC = 0;
+	static int totalTCG = 0;
+	static int totalTCT = 0;
+
+	static int totalTGA = 0;
+	static int totalTGC = 0;
+	static int totalTGG = 0;
+	static int totalTGT = 0;
+
+	static int totalTTA = 0;
+	static int totalTTC = 0;
+	static int totalTTG = 0;
+	static int totalTTT = 0;
+
+
+	public static String read() {
+
+		Scanner sc = new Scanner(System.in);
+		String in = sc.nextLine();
+		sc.close();
+
+		try(BufferedReader br = new BufferedReader(new FileReader(in + ".txt"))) {
+
+			String s = br.readLine();
+
+			return s;
+
+		} catch(IOException e) {
+			System.out.println("Wrong file...");
+		}
+		return null;
+	}
+
+
+	public static void calc(String s) {
+		
+		for(int i = 0; i < s.length()-1; i+=3) {
+			if(s.charAt(i) == 'A') {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						totalAAA++;
+					else if(s.charAt(i+2) == 'C')
+						totalAAC++;
+					else if(s.charAt(i+2) == 'G')
+						totalAAG++;
+					else
+						totalAAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						totalACA++;
+					else if(s.charAt(i+2) == 'C')
+						totalACC++;
+					else if(s.charAt(i+2) == 'G')
+						totalACG++;
+					else
+						totalACT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						totalAGA++;
+					else if(s.charAt(i+2) == 'C')
+						totalAGC++;
+					else if(s.charAt(i+2) == 'G')
+						totalAGG++;
+					else
+						totalAGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						totalATA++;
+					else if(s.charAt(i+2) == 'C')
+						totalATC++;
+					else if(s.charAt(i+2) == 'G')
+						totalATG++;
+					else
+						totalATT++;
+				}
+			} else if(s.charAt(i) == 'C') {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						totalCAA++;
+					else if(s.charAt(i+2) == 'C')
+						totalCAC++;
+					else if(s.charAt(i+2) == 'G')
+						totalCAG++;
+					else
+						totalCAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						totalCCA++;
+					else if(s.charAt(i+2) == 'C')
+						totalCCC++;
+					else if(s.charAt(i+2) == 'G')
+						totalCCG++;
+					else
+						totalCCT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						totalCGA++;
+					else if(s.charAt(i+2) == 'C')
+						totalCGC++;
+					else if(s.charAt(i+2) == 'G')
+						totalCGG++;
+					else
+						totalCGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						totalCTA++;
+					else if(s.charAt(i+2) == 'C')
+						totalCTC++;
+					else if(s.charAt(i+2) == 'G')
+						totalCTG++;
+					else
+						totalCTT++;
+				}
+			} else if(s.charAt(i) == 'G') {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						totalGAA++;
+					else if(s.charAt(i+2) == 'C')
+						totalGAC++;
+					else if(s.charAt(i+2) == 'G')
+						totalGAG++;
+					else
+						totalGAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						totalGCA++;
+					else if(s.charAt(i+2) == 'C')
+						totalGCC++;
+					else if(s.charAt(i+2) == 'G')
+						totalGCG++;
+					else
+						totalGCT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						totalGGA++;
+					else if(s.charAt(i+2) == 'C')
+						totalGGC++;
+					else if(s.charAt(i+2) == 'G')
+						totalGGG++;
+					else
+						totalGGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						totalGTA++;
+					else if(s.charAt(i+2) == 'C')
+						totalGTC++;
+					else if(s.charAt(i+2) == 'G')
+						totalGTG++;
+					else
+						totalGTT++;
+				}
+			} else {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						totalTAA++;
+					else if(s.charAt(i+2) == 'C')
+						totalTAC++;
+					else if(s.charAt(i+2) == 'G')
+						totalTAG++;
+					else
+						totalTAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						totalTCA++;
+					else if(s.charAt(i+2) == 'C')
+						totalTCC++;
+					else if(s.charAt(i+2) == 'G')
+						totalTCG++;
+					else
+						totalTCT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						totalTGA++;
+					else if(s.charAt(i+2) == 'C')
+						totalTGC++;
+					else if(s.charAt(i+2) == 'G')
+						totalTGG++;
+					else
+						totalTGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						totalTTA++;
+					else if(s.charAt(i+2) == 'C')
+						totalTTC++;
+					else if(s.charAt(i+2) == 'G')
+						totalTTG++;
+					else
+						totalTTT++;
+				}
+			}
+			total3++;
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		calc(read());
+		
+		total = total3*3;
+		
+		System.out.println("Totais :");
+		System.out.println("Total de letras: " + total + "\n");
+		System.out.println("Total por bloco: " + total3 + "\n");
+		
+		//prints A's
+		System.out.println("Total AAA: " + totalAAA);
+		System.out.println("TOtal AAC: " + totalAAC);
+		System.out.println("Total AAG: " + totalAAG);
+		System.out.println("Total AAT: " + totalAAT + "\n");
+		
+		System.out.println("Total ACA: " + totalACA);
+		System.out.println("TOtal ACC: " + totalACC);
+		System.out.println("Total ACG: " + totalACG);
+		System.out.println("Total ACT: " + totalACT + "\n");
+		
+		System.out.println("Total AGA: " + totalAGA);
+		System.out.println("TOtal AGC: " + totalAGC);
+		System.out.println("Total AGG: " + totalAGG);
+		System.out.println("Total AGT: " + totalAGT + "\n");
+		
+		System.out.println("Total ATA: " + totalATA);
+		System.out.println("TOtal ATC: " + totalATC);
+		System.out.println("Total ATG: " + totalATG);
+		System.out.println("Total ATT: " + totalATT + "\n");
+		
+		//Prints C's
+		System.out.println("Total CAA: " + totalAAA);
+		System.out.println("TOtal CAC: " + totalAAC);
+		System.out.println("Total CAG: " + totalAAG);
+		System.out.println("Total CAT: " + totalAAT + "\n");
+		
+		System.out.println("Total CCA: " + totalACA);
+		System.out.println("TOtal CCC: " + totalACC);
+		System.out.println("Total CCG: " + totalACG);
+		System.out.println("Total CCT: " + totalACT + "\n");
+		
+		System.out.println("Total CGA: " + totalAGA);
+		System.out.println("TOtal CGC: " + totalAGC);
+		System.out.println("Total CGG: " + totalAGG);
+		System.out.println("Total CGT: " + totalAGT + "\n");
+		
+		System.out.println("Total CTA: " + totalATA);
+		System.out.println("TOtal CTC: " + totalATC);
+		System.out.println("Total CTG: " + totalATG);
+		System.out.println("Total CTT: " + totalATT + "\n");
+		
+		
+		//Prints G's
+		System.out.println("Total GAA: " + totalAAA);
+		System.out.println("TOtal GAC: " + totalAAC);
+		System.out.println("Total GAG: " + totalAAG);
+		System.out.println("Total GAT: " + totalAAT + "\n");
+		
+		System.out.println("Total GCA: " + totalACA);
+		System.out.println("TOtal GCC: " + totalACC);
+		System.out.println("Total GCG: " + totalACG);
+		System.out.println("Total GCT: " + totalACT + "\n");
+		
+		System.out.println("Total GGA: " + totalAGA);
+		System.out.println("TOtal GGC: " + totalAGC);
+		System.out.println("Total GGG: " + totalAGG);
+		System.out.println("Total GGT: " + totalAGT + "\n");
+		
+		System.out.println("Total GTA: " + totalATA);
+		System.out.println("TOtal GTC: " + totalATC);
+		System.out.println("Total GTG: " + totalATG);
+		System.out.println("Total GTT: " + totalATT + "\n");
+		
+		
+		//Totais T's
+		System.out.println("Total TAA: " + totalAAA);
+		System.out.println("TOtal TAC: " + totalAAC);
+		System.out.println("Total TAG: " + totalAAG);
+		System.out.println("Total TAT: " + totalAAT + "\n");
+		
+		System.out.println("Total TCA: " + totalACA);
+		System.out.println("TOtal TCC: " + totalACC);
+		System.out.println("Total TCG: " + totalACG);
+		System.out.println("Total TCT: " + totalACT + "\n");
+		
+		System.out.println("Total TGA: " + totalAGA);
+		System.out.println("TOtal TGC: " + totalAGC);
+		System.out.println("Total TGG: " + totalAGG);
+		System.out.println("Total TGT: " + totalAGT + "\n");
+		
+		System.out.println("Total TTA: " + totalATA);
+		System.out.println("TOtal TTC: " + totalATC);
+		System.out.println("Total TTG: " + totalATG);
+		System.out.println("Total TTT: " + totalATT + "\n");
+	}
+}

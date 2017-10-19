@@ -1,0 +1,39 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\.metadata\.plugins\org.eclipse.core.resources\.projects\Trabalho P1 (novo)\com.python.pydev.analysis\v2_indexcache
+Main|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\Trabalho P1 (novo)\Main.py
+Algorithm|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\Trabalho P1 (novo)\Algorithm.py
+Inputs|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\Trabalho P1 (novo)\Inputs.py
+Bfs|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\Trabalho P1 (novo)\Bfs.py
+-- END DISKCACHE
+-- START DICTIONARY
+4
+1=Main
+3=Algorithm
+4=Inputs
+2=Bfs
+-- END DICTIONARY
+-- START TREE 1
+18
+D|1|D!11@
+DR|1|DR!11@
+L|1|L!11@
+a|1|a!11@
+b|1|b!11@
+bac|1|backtrace!18@
+bfs|1|bfs!18@
+dir|1|dirs!27@
+get|2|get_linha!34@get_coluna!34@
+hab|1|habitantes!34@
+imp|1|ImprimirVila!34@
+ins|1|insert!34@
+isv|1|isValid!26@
+mai|1|main!34@
+mat|1|matrix!34@
+pos|1|posicoes_vila!34@
+vil|1|vila!11@
+viz|2|Vizinhos!26@Vizinhos2!26@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

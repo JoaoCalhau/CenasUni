@@ -1,0 +1,12 @@
+﻿@HelloWorld.Ya // each module starts by specifying it's name which is file name. Module names are @...s, sigil @ is used for not confusing modules with ids, types... 
+
+// Operators are started by sigil ; and ; at the end of operator removed
+Use @Std/StdIo // std C headers are rewritten for Ya. Here is used 'Std/StdIo.Ya', .Ya extension is added if extension not specified
+// ;Use @C/stdio.h // it's for the case of using 'printf'. All std C headers are in C/...
+
+`Int Main `Char[][] args // function args are written without (). Types are sigilled with `, like `Int. All standard types are capitalized: `Int `Char `Bool `Void
+	`Char[] name = args.Length > 1 Then args[1] Else "World" // '... Then ... Else ...' and '... ? ... : ...' are the same and both Ok
+	Print ///0st arg is empty and thus by default is StdOut. Use of default arg is Ok even if next args are specified; "Hello, %s!\n" ///it's format, like in 'printf'; name
+	// params are written by separating them by ';'. If some param is not written then default value is used. If not written and no default value than it's an error
+	// ;printf "Hello, %.*s!\n"; Size name; &*name // `Char[] strings are not 0 terminated, so %.*s format specifier is required. Size ... is size in bytes; &*name is address of 0's char
+	Return 0

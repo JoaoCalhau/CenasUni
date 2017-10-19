@@ -1,0 +1,13 @@
+﻿@FFactorial
+
+`Int_number+(`Int+ n) Factorial // iterative
+	For `Int_number+ r = 1; n >= 1; --n
+		r *= n
+	Return r
+
+`Int_number+(`Int+ n) Factorial // recursive
+	If n <= 1
+		Return 1
+	Return n * Factorial(n -1); // bad to write n * Factorial(--n) cause unknown the order of * operands
+
+// 2 funcs with the same args are Ok cause the compiler could choose better func by testing

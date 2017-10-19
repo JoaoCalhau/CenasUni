@@ -1,0 +1,415 @@
+import java.util.*;
+
+public class LZW {
+	static String A = "00";
+	static String C = "01";
+	static String G = "10";
+	static String T = "11";
+	static int errors = 0;
+
+
+	public static List<Integer> compress(String word) {
+		int size = 18;
+		Map<String, Integer> d = new HashMap<String, Integer>();
+		
+		d.put("AA", 1);
+		d.put("AC", 2);
+		d.put("AG", 3);
+		d.put("AT", 4);
+		
+		d.put("CA", 5);
+		d.put("CC", 6);
+		d.put("CG", 7);
+		d.put("CT", 8);
+		
+		d.put("GA", 10);
+		d.put("GC", 11);
+		d.put("GG", 12);
+		d.put("GT", 13);
+		
+		d.put("TA", 14);
+		d.put("TC", 15);
+		d.put("TG", 16);
+		d.put("TT", 17);
+		
+		String s1 = "";
+		List<Integer> lista = new ArrayList<Integer>();
+		
+		for(int i = 0; i < word.length(); i+=2) {
+			String toAdd = s1 + word.charAt(i) + word.charAt(i+1);
+			
+			if(d.containsKey(toAdd))
+				s1 = toAdd;
+			else {
+				lista.add(d.get(s1));
+				d.put(toAdd, size++);
+				s1 = "" + word.charAt(i) + word.charAt(i+1);
+			}
+		}
+		
+		if(!s1.equals(""))
+			lista.add(d.get(s1));
+		
+		return lista;
+		
+		/*
+		int size = 5;
+		Map<String, Integer> d = new HashMap<String, Integer>();
+
+		d.put("A", 1);
+		d.put("C", 2);
+		d.put("G", 3);
+		d.put("T", 4);
+
+		String s1 = "";
+		List<Integer> lista = new ArrayList<Integer>();
+
+		for (char c : word.toCharArray()) {
+			String toAdd = s1 + c;
+
+			if (d.containsKey(toAdd))
+				s1 = toAdd;
+			else {
+				lista.add(d.get(s1));
+				d.put(toAdd, size++);
+				s1 = "" + c;
+			}
+		}
+
+		if (!s1.equals(""))
+			lista.add(d.get(s1));
+
+		return lista;*/
+	}
+
+	public static String decompress(List<Integer> li) {
+
+		int size = 18;
+		Map<Integer, String> d = new HashMap<Integer, String>();
+		
+		d.put(1, "AA");
+		d.put(2, "AC");
+		d.put(3, "AG");
+		d.put(4, "AT");
+		
+		d.put(5, "CA");
+		d.put(6, "CC");
+		d.put(7, "CG");
+		d.put(8, "CT");
+		
+		d.put(10, "GA");
+		d.put(11, "GC");
+		d.put(12, "GG");
+		d.put(13, "GT");
+		
+		d.put(14, "TA");
+		d.put(15, "TC");
+		d.put(16, "TG");
+		d.put(17, "TT");
+		
+		int atual = li.get(0);
+		int prox;
+		String output = d.get(atual);
+		
+		for(int i = 0; i < li.size()-1; i++) {
+			prox = li.get(i+1);
+			
+			if(size == prox) {
+				d.put(size++, d.get(atual) + d.get(atual).substring(0, 1));
+				output += d.get(prox);
+				atual = prox;
+			} else if(d.containsKey(prox)) {
+				d.put(size++, d.get(atual) + d.get(prox).substring(0, 1));
+				output += d.get(prox);
+				atual = prox;
+			} else {
+				errors++;
+				continue;
+			}
+		}
+		
+		return output;
+		/*
+		int size = 5;
+		Map<Integer, String> d = new HashMap<Integer, String>();
+
+		d.put(1, "A");
+		d.put(2, "C");
+		d.put(3, "G");
+		d.put(4, "T");
+
+		
+		int atual = li.get(0);
+		int prox;
+		String output = d.get(atual);
+
+		for(int i = 0; i < li.size()-1; i++) {
+			prox = li.get(i+1);
+
+				if(size == prox) {
+					d.put(size++, d.get(atual) + d.get(atual).substring(0, 1));
+					output += d.get(prox);
+					atual = prox;
+				} else if(d.containsKey(prox)){
+					d.put(size++, d.get(atual) + d.get(prox).substring(0, 1));
+					output += d.get(prox);
+					atual = prox;
+				} else {
+					errors++;
+					continue;
+				}
+		}
+
+		return output;
+
+		 */
+	}
+
+	public static List<String> toCode(List<Integer> li) {
+
+		List<String> lista = new ArrayList<String>();
+
+		for(int i = 0; i < li.size(); i++) {
+			StringBuffer sb = new StringBuffer();
+			int code = li.get(i);
+			String binary = Integer.toBinaryString(code);
+
+			if(i > 2047) { // max word size 12 bits
+
+				if(binary.length() == 1)
+					sb.append("00000000000" + binary);
+				else if(binary.length() == 2)
+					sb.append("0000000000" + binary);
+				else if(binary.length() == 3)
+					sb.append("000000000" + binary);
+				else if(binary.length() == 4)
+					sb.append("00000000" + binary);
+				else if(binary.length() == 5)
+					sb.append("0000000" + binary);
+				else if(binary.length() == 6)
+					sb.append("000000" + binary);
+				else if(binary.length() == 7)
+					sb.append("00000" + binary);
+				else if(binary.length() == 8)
+					sb.append("0000" + binary);
+				else if(binary.length() == 9)
+					sb.append("000" + binary);
+				else if(binary.length() == 10)
+					sb.append("00" + binary);
+				else if(binary.length() == 11)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			} else if( i > 1023) { // max word size 11 bits
+
+				if(binary.length() == 1)
+					sb.append("0000000000" + binary);
+				else if(binary.length() == 2)
+					sb.append("000000000" + binary);
+				else if(binary.length() == 3)
+					sb.append("00000000" + binary);
+				else if(binary.length() == 4)
+					sb.append("0000000" + binary);
+				else if(binary.length() == 5)
+					sb.append("000000" + binary);
+				else if(binary.length() == 6)
+					sb.append("00000" + binary);
+				else if(binary.length() == 7)
+					sb.append("0000" + binary);
+				else if(binary.length() == 8)
+					sb.append("000" + binary);
+				else if(binary.length() == 9)
+					sb.append("00" + binary);
+				else if(binary.length() == 10)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			} else if(i > 511) { // max word size 10 bits
+
+				if(binary.length() == 1)
+					sb.append("000000000" + binary);
+				else if(binary.length() == 2)
+					sb.append("00000000" + binary);
+				else if(binary.length() == 3)
+					sb.append("0000000" + binary);
+				else if(binary.length() == 4)
+					sb.append("000000" + binary);
+				else if(binary.length() == 5)
+					sb.append("00000" + binary);
+				else if(binary.length() == 6)
+					sb.append("0000" + binary);
+				else if(binary.length() == 7)
+					sb.append("000" + binary);
+				else if(binary.length() == 8)
+					sb.append("00" + binary);
+				else if(binary.length() == 9)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			} else if(i > 255) { // max word size 9 bits
+
+				if(binary.length() == 1)
+					sb.append("00000000" + binary);
+				else if(binary.length() == 2)
+					sb.append("0000000" + binary);
+				else if(binary.length() == 3)
+					sb.append("000000" + binary);
+				else if(binary.length() == 4)
+					sb.append("00000" + binary);
+				else if(binary.length() == 5)
+					sb.append("0000" + binary);
+				else if(binary.length() == 6)
+					sb.append("000" + binary);
+				else if(binary.length() == 7)
+					sb.append("00" + binary);
+				else if(binary.length() == 8)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			} else if(i > 127) { // max word size 8 bits
+
+				if(binary.length() == 1)
+					sb.append("0000000" + binary);
+				else if(binary.length() == 2)
+					sb.append("000000" + binary);
+				else if(binary.length() == 3)
+					sb.append("00000" + binary);
+				else if(binary.length() == 4)
+					sb.append("0000" + binary);
+				else if(binary.length() == 5)
+					sb.append("000" + binary);
+				else if(binary.length() == 6)
+					sb.append("00" + binary);
+				else if(binary.length() == 7)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			} else if(i > 63) { // max word size 7 bits
+
+				if(binary.length() == 1)
+					sb.append("000000" + binary);
+				else if(binary.length() == 2)
+					sb.append("00000" + binary);
+				else if(binary.length() == 3)
+					sb.append("0000" + binary);
+				else if(binary.length() == 4)
+					sb.append("000" + binary);
+				else if(binary.length() == 5)
+					sb.append("00" + binary);
+				else if(binary.length() == 6)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			} else if(i > 31) { // max word size 6 bits
+
+				if(binary.length() == 1)
+					sb.append("00000" + binary);
+				else if(binary.length() == 2)
+					sb.append("0000" + binary);
+				else if(binary.length() == 3)
+					sb.append("000" + binary);
+				else if(binary.length() == 4)
+					sb.append("00" + binary);
+				else if(binary.length() == 5)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			} else { // max word size 5 bits
+
+				if(binary.length() == 1)
+					sb.append("0000" + binary);
+				else if(binary.length() == 2)
+					sb.append("000" + binary);
+				else if(binary.length() == 3)
+					sb.append("00" + binary);
+				else if(binary.length() == 4)
+					sb.append("0" + binary);
+				else
+					sb.append(binary);
+
+			}
+
+
+			lista.add(sb.toString());
+		}
+
+		return lista;
+	}
+
+	public static List<Integer> decode(List<String> ls) {
+		List<Integer> lista = new ArrayList<Integer>();
+
+		for(int i = 0; i < ls.size(); i++)
+			lista.add(Integer.parseInt(ls.get(i), 2));
+
+		return lista;
+	}
+
+	public static String append(List<String> ls) {
+		StringBuffer sb = new StringBuffer();
+
+		for(int i = 0; i < ls.size(); i++)
+			sb.append(ls.get(i));
+
+		return sb.toString();
+	}
+
+	public static List<String> unappend(String s) {
+		List<String> lista = new ArrayList<String>();
+		int i = 0;
+		int change = 0;
+
+		while(i < s.length()) {
+
+			if(lista.size() == 32)
+				change = 32;
+			else if(lista.size() == 64)
+				change = 64;
+			else if(lista.size() == 128)
+				change = 128;
+			else if(lista.size() == 256)
+				change = 256;
+			else if(lista.size() == 512)
+				change = 512;
+			else if(lista.size() == 1024)
+				change = 1024;
+			else if(lista.size() == 2048)
+				change = 2048;
+
+			if(change == 2048) {
+				lista.add(s.substring(i, i+12));
+				i+=12;
+			} else if(change == 1024) {
+				lista.add(s.substring(i, i+11));
+				i+=11;
+			} else if(change == 512) {
+				lista.add(s.substring(i, i+10));
+				i+=10;
+			} else if(change == 256) {
+				lista.add(s.substring(i, i+9));
+				i+=9;
+			} else if(change == 128) {
+				lista.add(s.substring(i, i+8));
+				i+=8;
+			} else if(change == 64) {
+				lista.add(s.substring(i, i+7));
+				i+=7;
+			} else if(change == 32) {
+				lista.add(s.substring(i, i+6));
+				i+=6;
+			} else {
+				lista.add(s.substring(i, i+5));
+				i+=5;
+			}
+		}
+
+		return lista;
+	}
+}

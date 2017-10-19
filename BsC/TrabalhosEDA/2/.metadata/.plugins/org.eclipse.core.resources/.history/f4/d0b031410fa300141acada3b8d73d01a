@@ -1,0 +1,25 @@
+public class Inputs {
+	JogoDoGalo item;
+	int count;
+	
+	public Inputs(JogoDoGalo j) {
+		this.item = j;
+		this.count = 0;
+	}
+
+	public JogoDoGalo getItem() {
+		return this.item;
+	}
+	
+	public String getKey() {
+		return this.key;
+	}
+	
+	public int getVencedor() {
+		return this.vencedor;
+	}
+	
+	public void incrementCount() {
+		this.count++;
+	}
+}

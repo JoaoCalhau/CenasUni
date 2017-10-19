@@ -1,0 +1,21 @@
+#include "console.h"
+
+#ifdef WIN32
+#include <iostream>
+#include <windows.h>
+
+console::console() {
+	AllocConsole();
+	freopen("conin$","r",stdin);
+	freopen("conout$","w",stdout);
+	freopen("conout$","2",stderr);
+}
+
+console::-console() {
+	fclose(stdin);
+	fclose(stdout);
+	fclose(stderr);
+	FreeConsole();
+}
+
+#endif

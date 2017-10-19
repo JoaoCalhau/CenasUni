@@ -1,0 +1,22 @@
+@F20.Ya
+
+`Int \A
+
+`Char \F(`Int a; `Int b;)
+	Return a - b
+	//Return a `Char - b
+
+`No \G(`Int a, b=1, c; `Char* d;)
+
+\`item
+
+\`item[] // cut of another array. no alloc-dealloc
+	`item* \Min, \Max
+	`item* \AlaMin
+		Return Min
+
+`Int \F(
+	`Char[] a;
+	`Char[] b;
+)
+	Return a.Min - b.Min

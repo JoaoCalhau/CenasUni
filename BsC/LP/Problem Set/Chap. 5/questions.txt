@@ -1,0 +1,23 @@
+5 - Quando á variaveis globais presentes nos programas.
+
+6 - a. i. sub1
+	   ii. sub1
+	   iii. main
+
+	b. i. sub1
+	   ii. sub1
+	   iii. sub1
+
+8 - in sub1:
+		a, y, z (sub1); x (main)
+	in sub2:
+		a, b, z (sub2); y (sub1); x (main)
+	in sub3
+		a, x, w (sub3); y, z (main)
+
+11 - a. a (main); b (fun1); c (fun2); d, e, f (fun3)
+	 b. a (main); b, c (fun1); d, e, f (fun3)
+	 c. a (main); e, f (fun3); b, c, d (fun1)
+	 d. a (main); e, f (fun3); b, c, d (fun1)
+	 e. a (main); b (fun1); d, f (fun3); c, d, e (fun2)
+	 f. a (main); f (fun3); e (fun2); b, c, d (fun1)

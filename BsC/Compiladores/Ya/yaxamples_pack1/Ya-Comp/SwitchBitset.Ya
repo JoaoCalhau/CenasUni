@@ -1,0 +1,43 @@
+@SwitchBitset
+// 0. Обьявить новый способ определять типы вида bitset - при помощи задания нового синтаксиса
+// 1. сделать новый оператор аля switch, который для таких типов  вызывает соответствующие подходящие секции, всего несколько секций.
+// 2. Обьявить один такой тип bitset, который описывает %lala: %lang, %public-like, %soft, %inline %outline.
+//    Заметим что значения этого типа хранятся в `Int-подобном чем-то, т.е. занимают слово или даже байт если влезет.
+// 3. переменную этого типа и присваивания с изменением переменной-переменных
+// 4. аля switch с вариантами
+
+\!bitset
+	( Type Ident+
+		'{'
+		( Accessibility acc ( '=' Expr expr )? )+<",">
+		'}'
+	)+
+
+// дальше надо описать как тип описывается - эээ, причем описание с циклами и возможно новыми нетерминалами
+// как описывать пока не знаю потому не пишу, начав с примера на обьявление !bitset типа
+
+// описание при помощи как бы определенного !bitset
+!bitset `Percent
+	`Int+:3 Lang
+		%Undef, %Ya, %C, %C++, %Pascal
+	`Int+:2 Accessability
+		%public, %protected, %private
+	`Bool:1 IsSoft
+		%soft = true
+	`Int+:2 How Implementation
+		%compile_defined, %outline, %inline
+
+// использование определенного типа `Percent
+`Percent lang = %Ya
+`Percent acc = %private %soft
+`Percent inline = %inline
+`Percent z = lang+acc+inline
+
+// ala switch
+bitset_switch lang
+	%Ya { type.Signs |= pYa; }
+	%C { type.Signs |= pC; }
+	%C++ { type.Signs |= pCpp; }
+	%Pascal { type.Signs |= pPascal; }
+	%public { type.Signs |= pPublic; }
+в таком стиле

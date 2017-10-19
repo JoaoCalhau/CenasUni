@@ -1,0 +1,91 @@
+<<<Capital, Tempo e Juro>>>
+
+Capital (C) é a quantidade de moeda cedida pelo seu proprietário a outrem, por um determinado período de tempo,
+acordado entre as partes.
+Tempo (t) é o prazo durante o qual o capital é aplicado ou cedido.
+Juro (J) é o rendimento proveniente de um capital cedido ou aplicado por um dado período de tempo.
+Taxa de Juro (i) é o acréscimo sofrido por uma unidade de capital, aplicada durante uma unidade de tempo.
+
+<<<Valor Actual e valor Acumulado>>>
+
+Valor Actual (Co) é o capital no início do período.
+
+Valor Acumulado (Ct) é o capital no fim do período (Ct = Co + J)
+
+<<<Actualização e Capitalização>>>
+
+Capitalização é o processo de acréscimo que um capital sofre ao longo do tempo, ou seja, é o processo que leva à
+formação do juro.
+
+Actualização é o processo que corresponde a uma redução do valor do capital durante um determinado espaço de tempo.
+
+<<<Regimes de capitalização>>>
+
+Regime de Juro Simples (RJS)
+
+Os juros são dados apenas em função do tempo. Ou seja, para o mesmo capital inicial, o juro produzido é constante em
+cada unidade de tempo, dado que os juros são retirados do processo de capitalização após o seu vencimento.
+
+Regime Juro Composto (RJC)
+
+Os juros são dados em função do tempo e do capital. Ou seja, além do capital inicial o juro vencido em cada unidade
+de tempo passa imediatamente a vencer juros nas unidades de tempo posteriores.
+
+<<<Taxas euqivalentes>>>
+
+Duas taxas, i (taxa deo período maior) e i' (taxa do período menor), referentes a períodos diferentes, dizem-se
+equivalentes, quando aplicadas a um mesmo capital produzirem, durante o mesmo prazo de tempo, o mesmo valor
+acumulado.
+
+<<<Equivalência de Capitais>>>
+
+Dois capitais dizem-se equivalentes num dado momento, quando as somas dos seus valores actuais, dos capitais que
+compôem cada um dos conjuntos, forem iguais.
+
+TAEL (taxa anual efectica líquida) - taxa de juro paga ao cliente depois de descontadas comissões e imposto
+TAEG (taxa anual de encargos efectiva global) - taxa de juro que o cliente paga e que engloba as despesas para
+cobrança dos reembolsos, encargos fiscais e despesas de concesão dos empréstimos
+
+<<<Definição de Rendas>>>
+
+RENDA - conjunto de capitais vencíveis em momentos equidistantes.
+TERMO DA RENDA - cada um dos capitas da renda.
+PERÍODO DA REDA - espaço de tempo que decorre entre dois termos consecutivos.
+ORIGEM DA RENDA - momento que se situa um período antes do vencimento do 1º termo
+MOMENTO DE REFERÊNCIA - momento em que a renda se inicia
+
+<<<Clasificação das Rendas>>>
+
+Quando à certeza dos seus vencimentos:
+- CERTA - quando os seus vencimentos não dependem de qualquer factor aleatório
+- INCERTA ou ALEATÓRIA - quando existe essa dependência
+
+QuanTO à sua duração:
+- TEMPORÁRIA - quando tem um número finito de termos
+- INFINITA ou PERPÉTUA - quando possui um número infinito de termos
+
+Quanto à data de referência dos valores atuais:
+- IMEDIATA - quando a data de referência do valor atual coincide com o início da renda
+- DIFERIDA - quando a data de referência do valor atual é anterior ao início da renda
+
+Quanto à relação entre o período da taxa de juro e o período da renda:
+- INTEIRAS - quando o período da taxa e o período da renda coincidem
+- FRACCIONADAS - quando o período da taxa não coincide com o período da renda
+
+Rendas Relativamente aos valores dos TERMOS DA RENDA:
+- CONSTATES - quando os termos são todos iguais
+- VARIÁVEIS - quando os termos são diferentes
+
+Quanto à forma de vencimento:
+- ANTECIPADOS - quando os termos se vencem no início de cada período da renda
+- POSTECIPADOS - quando os termos se vencem no final de cada período da renda
+
+<<<Conceito de amortização>>>
+
+Amortização ou reembolso é o proesso mediante o qual se extingue gradualmente o montante do capital do empréstimo,
+por meio de uma série de pagamentos.
+
+Prestação = Juros + Reembolso do capital
+
+PERÍODO DE CARÊNCIA ou de DIFERIMENTO DO CAPITAL é o período durante o qual só se pagam os juros sobre o capital
+emprestado não se fazendo reembolsos.

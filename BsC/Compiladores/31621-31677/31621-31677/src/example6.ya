@@ -1,0 +1,14 @@
+factrec (n: int) : int {
+  a,b: int;
+
+  if n == 1 then { b = 1; }
+  else {
+    a = n - 1;
+    b = n * factrec(a);
+  };
+  return b;
+};
+
+main () : void {
+  print(factrec(3));
+};  

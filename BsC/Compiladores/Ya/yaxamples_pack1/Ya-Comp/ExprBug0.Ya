@@ -1,0 +1,5 @@
+@ExprBug0.Ya
+//2 `Int; // works
+-2 `Int*
+//(-(2)) `Int; // works
+//-(2) `Int*

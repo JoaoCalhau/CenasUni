@@ -1,0 +1,75 @@
+// Error saving+accounting
+// 13 Oct, 12 Nov,Feb
+@LL1/Erra.Ya
+
+Use @Gen/Str, @Gen/Array, @Gen/Err
+Use @Ya/Lex, @Ya/Erra, @Ya/Put, @Gen/Trace
+
+\`LLexa
+\`LLex enum `Int+:8
+\`ErraType enum `Int+:8
+	eNo, eFatal, eErr, eWarn, eMess, eEnd
+
+\`ErraItem
+	`ErraType Type
+	`Char[] At
+	`Char[^] Description
+
+	`Make(`ErraType type; `Char[^] desc; `Char[] at)
+		Type = type; At = at; Description = desc
+	`Char[] Kind
+		Switch Type
+			eFatal { ;Return "fatal error"; }
+			eErr { ;Return "error"; }
+			eWarn { ;Return "warning"; }
+			eMess { ;Return "message"; }
+			Else { bug(); }
+	`No(`Int+ n) Print
+
+`No(`ErraType type; `Char[] mess; `valist tail) ErraV
+`No(`ErraType type; `Char[] description, ...) Erra
+`No(`Char[] mess, ...) ErraFatal
+	ErraV(eFatal, mess, valistTail(mess))
+`No ErraErr(`Char[] mess, ...){ // prints+saves error but execution continues
+	ErraV(eErr, mess, valistTail(mess))
+`No ErraWarn(`Char[]  mess, ...){
+	ErraV(eWarn, mess, valistTail(mess))
+`No ErraMess(`Char[] mess, ...){
+	ErraV(eMess, mess, valistTail(mess))
+
+// To use it write Erra??Assert(cond, ("format", extra args))
+#define ErraFatalAssert(a, b) (a ? a : (ErraFatal b,0))
+#define ErraErrAssert(a, b) (a ? a : (ErraErr b,0))
+#define ErraWarnAssert(a, b) (a ? a : (ErraWarn b,0))
+#define ErraMessAssert(a, b) (a ? a : (ErraMess b,0))
+
+`item(`item mustBeTrue; `Char[] description, ...) %inline ErraVerify
+	ErraErrAssert(mustBeTrue, (description, valistTail(description)))
+	Return mustBeTrue
+
+`No ErraAt(char* at); // specify where the error
+`No ErraAt(uchar* at); // specify where the error
+Str ErraFindWhere(); // need to compute current source line and ;Return it
+`No ErrasPut()
+`No ErraLexasPrint(LLexas& lexas)
+`No ErraInit(LLexas& lexes, LLex curlyClose, LLexas*& lexas)
+`No ErraTerm()
+
+`ErraItem[+] Erras(100)
+ErrDef(EErra, "Error in program for compiling"); // ???
+`Int ErraOffset
+`LLexa[]* ErraLexes
+`LLexa[]** ErraAllLexas
+`LLex ErraCurlyClose
+`Char* ErraAt_ = 0
+`Int+[eEnd] ErraN = { 0 }; // [eEnd] not impl, = {0} not impl
+
+void ErraInit(LLexas& lexes, LLex curlyClose, LLexas*& lexas){
+	verify(ErraLexes = &lexes)
+	verify(ErraAllLexas = &lexas)
+	ErraCurlyClose = curlyClose
+	Erras.Alloc()
+}
+void ErraTerm(){
+	Erras.Free()
+}

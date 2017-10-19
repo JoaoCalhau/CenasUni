@@ -1,0 +1,45 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\.metadata\.plugins\org.eclipse.core.resources\.projects\TrabalhoP1\com.python.pydev.analysis\v2_indexcache
+Main|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\TrabalhoP1\Main.py
+Net|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\TrabalhoP1\Net.py
+Algorithm|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\TrabalhoP1\Algorithm.py
+Inputs|0|C:\Users\Joao\Desktop\Cenas\Python(Eclipse)\TrabalhoP1\Inputs.py
+-- END DISKCACHE
+-- START DICTIONARY
+4
+1=Main
+3=Algorithm
+2=Net
+4=Inputs
+-- END DICTIONARY
+-- START TREE 1
+24
+L|1|L!11@
+QQ|1|QQ!19@
+VQ|1|VQ!27@
+cam|2|CaminhoReal2!26@CaminhoReal!26@
+cha|1|Chaves!11@
+dca|1|DCaminhos!11@
+dir|2|direcções!27@dirs!19@
+f|1|f!11@
+fic|1|ficheiro!11@
+fin|4|findCover2!18@findCover!18@FindPath!26@FindPath2!26@
+get|4|get_linha!34@get_coluna!34@getPaths2!18@getPaths!18@
+hab|1|habitantes!34@
+imp|1|ImprimirVila!34@
+ins|1|insert!34@
+int|2|Intersect!26@intersects!18@
+isv|1|isValid!18@
+mai|1|main!34@
+mat|1|matrix!34@
+opç|1|Opção!11@
+pos|1|posições_vila!34@
+sol|1|solução!11@
+ver|1|verificação!26@
+vil|1|vila!11@
+y|1|y!11@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

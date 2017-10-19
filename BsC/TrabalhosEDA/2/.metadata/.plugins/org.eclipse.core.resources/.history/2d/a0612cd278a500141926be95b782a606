@@ -1,0 +1,27 @@
+public class Jogadas {
+	JogoDoGalo jg1, jg2, jg3, jg4;
+	
+	public Jogadas(JogoDoGalo j, int n) {
+		if (n==1) {
+			this.jg1=j;
+		}else if (n==2) {
+			this.jg2=j;
+		}else if (n==3) {
+			this.jg3=j;
+		}else {
+			this.jg4=j;
+		}
+	}
+	
+	public JogoDoGalo getJogadas(int n) {
+		if (n==1) {
+			return jg1;
+		}else if (n==2) {
+			return jg2;
+		}else if (n==3) {
+			return jg3;
+		}else {
+			return jg4;
+		}
+	}
+}

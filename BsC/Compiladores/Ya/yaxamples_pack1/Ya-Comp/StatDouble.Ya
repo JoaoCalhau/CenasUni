@@ -1,0 +1,15 @@
+@StatDouble
+
+#`Bool DoSmth = false
+
+`statement Fur `semiblock body
+	#;If DoSmth
+		`
+			For ; true; 5
+				7
+	Else
+		`
+			0
+				
+Fur(`Int i = 5; i;)
+	--i

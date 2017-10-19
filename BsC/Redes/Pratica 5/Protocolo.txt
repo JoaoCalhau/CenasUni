@@ -1,0 +1,25 @@
+Protocolo para sistema de chat multi-utilizador
+
+1. Nickname
+
+Cada utilizador vai ter um nickname diferente, a fim de evitar os conflitos de utilizadores com nomes iguais. O nome vai ter ainda um tamanho maximo e um tamanho minimo.
+
+2. Canal Global
+
+Depois de logar todos os utilizadores irão mandar mensagem para o canal global por defeito.
+
+3. Mensagens Privadas
+
+O utilizador poderá escolher mandar mensagens privadas a outro utilizador, via um canal privado.
+
+4. Saida do Chat
+
+Para fazer logout o utilizador deve apenas escrever no chat "quit message", esteja este num canal privado ou no canal global.
+
+5. Notificações
+
+Cada vez que um utilizador faz log out, log in ou muda de chat será gerada uma mensagem. Quando o utilizador sai do chat global é gerada uma mensagem do género "Utilizador ... saiu do chat", quando o utilizador entra no chat é gerada uma mensagem do género "Utilizador ... entrou no chat".
+
+6. Listagens
+
+No lado direito do chat haverá sempre uma listagem (de scroll down) com todos os utilizadores logados nesse canal (seja ele publico ou privado).

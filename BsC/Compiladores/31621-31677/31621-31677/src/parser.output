@@ -1,0 +1,2576 @@
+Terminals unused in grammar
+
+   POINT
+
+
+Grammar
+
+    0 $accept: input $end
+
+    1 input: %empty
+    2      | decls
+
+    3 decls: decls decl
+    4      | decl
+
+    5 decl: decl1 ENDOFSTM
+
+    6 idstype: ID DOUBLEQUOTE type
+    7        | ID DOUBLEQUOTE type COMMA idstype
+
+    8 decl1: ids DOUBLEQUOTE type
+    9      | ids DOUBLEQUOTE type ASSIGN exp
+   10      | ID LPAR RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   11      | ID LPAR idstype RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   12      | DEFINE ID ID
+
+   13 ids: ID
+   14    | ID COMMA ids
+
+   15 id: ID
+
+   16 type: INT
+   17     | FLOAT
+   18     | BOOL
+   19     | VOID
+   20     | STRING
+   21     | type LPARR exp RPARR
+
+   22 exp: LPAR exp RPAR
+   23    | id ASSIGN exp
+   24    | funcao
+   25    | exp ADD exp
+   26    | exp SUB exp
+   27    | exp MUL exp
+   28    | exp DIV exp
+   29    | exp MOD exp
+   30    | exp EXPOENT exp
+   31    | SUB exp
+   32    | exp EQUAL exp
+   33    | exp DIFF exp
+   34    | exp AND exp
+   35    | exp OR exp
+   36    | NOT exp
+   37    | exp LESSOREQUAL exp
+   38    | exp LESS exp
+   39    | exp GREATEROREQUAL exp
+   40    | exp GREATER exp
+   41    | id
+   42    | BOOL_LIT
+   43    | INT_LIT
+   44    | FLOAT_LIT
+   45    | STRING_LIT
+   46    | type LPARR exp RPARR
+
+   47 funcao: ID LPAR funcao RPAR
+   48       | ID LPAR mix RPAR
+   49       | ID LPAR idstype RPAR
+
+   50 mix: lits
+   51    | ids
+
+   52 lits: lit
+   53     | lit COMMA lits
+
+   54 lit: INT_LIT
+   55    | BOOL_LIT
+   56    | FLOAT_LIT
+   57    | STRING_LIT
+   58    | type LPARR exp RPARR
+
+   59 corpo: stats
+
+   60 stats: stat stats
+   61      | stat
+
+   62 stat: decl
+   63     | exp ENDOFSTM
+   64     | RETURN exp ENDOFSTM
+   65     | IF exp THEN LCHAV corpo RCHAV ENDOFSTM
+   66     | IF exp THEN LCHAV corpo RCHAV ELSE LCHAV corpo RCHAV ENDOFSTM
+   67     | WHILE exp DO LCHAV corpo RCHAV ENDOFSTM
+   68     | BREAK ENDOFSTM
+   69     | NEXT ENDOFSTM
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+ID (258) 6 7 10 11 12 13 14 15 47 48 49
+INT_LIT (259) 43 54
+BOOL_LIT (260) 42 55
+FLOAT_LIT (261) 44 56
+STRING_LIT (262) 45 57
+INT (263) 16
+FLOAT (264) 17
+BOOL (265) 18
+VOID (266) 19
+STRING (267) 20
+LPAR (268) 10 11 22 47 48 49
+RPAR (269) 10 11 22 47 48 49
+LPARR (270) 21 46 58
+RPARR (271) 21 46 58
+LCHAV (272) 10 11 65 66 67
+RCHAV (273) 10 11 65 66 67
+EQUAL (274) 32
+LESSOREQUAL (275) 37
+LESS (276) 38
+DIFF (277) 33
+GREATER (278) 40
+GREATEROREQUAL (279) 39
+POINT (280)
+BREAK (281) 68
+WHILE (282) 67
+DO (283) 67
+NEXT (284) 69
+SUB (285) 26 31
+ADD (286) 25
+MUL (287) 27
+DIV (288) 28
+MOD (289) 29
+AND (290) 34
+OR (291) 35
+NOT (292) 36
+EXPOENT (293) 30
+IF (294) 65 66
+THEN (295) 65 66
+ELSE (296) 66
+DEFINE (297) 12
+RETURN (298) 64
+ENDOFSTM (299) 5 63 64 65 66 67 68 69
+DOUBLEQUOTE (300) 6 7 8 9 10 11
+COMMA (301) 7 14 53
+ASSIGN (302) 9 23
+
+
+Nonterminals, with rules where they appear
+
+$accept (48)
+    on left: 0
+input (49)
+    on left: 1 2, on right: 0
+decls (50)
+    on left: 3 4, on right: 2 3
+decl (51)
+    on left: 5, on right: 3 4 62
+idstype (52)
+    on left: 6 7, on right: 7 11 49
+decl1 (53)
+    on left: 8 9 10 11 12, on right: 5
+ids (54)
+    on left: 13 14, on right: 8 9 14 51
+id (55)
+    on left: 15, on right: 23 41
+type (56)
+    on left: 16 17 18 19 20 21, on right: 6 7 8 9 10 11 21 46 58
+exp (57)
+    on left: 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39
+    40 41 42 43 44 45 46, on right: 9 21 22 23 25 26 27 28 29 30 31
+    32 33 34 35 36 37 38 39 40 46 58 63 64 65 66 67
+funcao (58)
+    on left: 47 48 49, on right: 24 47
+mix (59)
+    on left: 50 51, on right: 48
+lits (60)
+    on left: 52 53, on right: 50 53
+lit (61)
+    on left: 54 55 56 57 58, on right: 52 53
+corpo (62)
+    on left: 59, on right: 10 11 65 66 67
+stats (63)
+    on left: 60 61, on right: 59 60
+stat (64)
+    on left: 62 63 64 65 66 67 68 69, on right: 60 61
+
+
+State 0
+
+    0 $accept: . input $end
+
+    ID      shift, and go to state 1
+    DEFINE  shift, and go to state 2
+
+    $default  reduce using rule 1 (input)
+
+    input  go to state 3
+    decls  go to state 4
+    decl   go to state 5
+    decl1  go to state 6
+    ids    go to state 7
+
+
+State 1
+
+   10 decl1: ID . LPAR RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   11      | ID . LPAR idstype RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   13 ids: ID .
+   14    | ID . COMMA ids
+
+    LPAR   shift, and go to state 8
+    COMMA  shift, and go to state 9
+
+    $default  reduce using rule 13 (ids)
+
+
+State 2
+
+   12 decl1: DEFINE . ID ID
+
+    ID  shift, and go to state 10
+
+
+State 3
+
+    0 $accept: input . $end
+
+    $end  shift, and go to state 11
+
+
+State 4
+
+    2 input: decls .
+    3 decls: decls . decl
+
+    ID      shift, and go to state 1
+    DEFINE  shift, and go to state 2
+
+    $default  reduce using rule 2 (input)
+
+    decl   go to state 12
+    decl1  go to state 6
+    ids    go to state 7
+
+
+State 5
+
+    4 decls: decl .
+
+    $default  reduce using rule 4 (decls)
+
+
+State 6
+
+    5 decl: decl1 . ENDOFSTM
+
+    ENDOFSTM  shift, and go to state 13
+
+
+State 7
+
+    8 decl1: ids . DOUBLEQUOTE type
+    9      | ids . DOUBLEQUOTE type ASSIGN exp
+
+    DOUBLEQUOTE  shift, and go to state 14
+
+
+State 8
+
+   10 decl1: ID LPAR . RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   11      | ID LPAR . idstype RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+
+    ID    shift, and go to state 15
+    RPAR  shift, and go to state 16
+
+    idstype  go to state 17
+
+
+State 9
+
+   14 ids: ID COMMA . ids
+
+    ID  shift, and go to state 18
+
+    ids  go to state 19
+
+
+State 10
+
+   12 decl1: DEFINE ID . ID
+
+    ID  shift, and go to state 20
+
+
+State 11
+
+    0 $accept: input $end .
+
+    $default  accept
+
+
+State 12
+
+    3 decls: decls decl .
+
+    $default  reduce using rule 3 (decls)
+
+
+State 13
+
+    5 decl: decl1 ENDOFSTM .
+
+    $default  reduce using rule 5 (decl)
+
+
+State 14
+
+    8 decl1: ids DOUBLEQUOTE . type
+    9      | ids DOUBLEQUOTE . type ASSIGN exp
+
+    INT     shift, and go to state 21
+    FLOAT   shift, and go to state 22
+    BOOL    shift, and go to state 23
+    VOID    shift, and go to state 24
+    STRING  shift, and go to state 25
+
+    type  go to state 26
+
+
+State 15
+
+    6 idstype: ID . DOUBLEQUOTE type
+    7        | ID . DOUBLEQUOTE type COMMA idstype
+
+    DOUBLEQUOTE  shift, and go to state 27
+
+
+State 16
+
+   10 decl1: ID LPAR RPAR . DOUBLEQUOTE type LCHAV corpo RCHAV
+
+    DOUBLEQUOTE  shift, and go to state 28
+
+
+State 17
+
+   11 decl1: ID LPAR idstype . RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+
+    RPAR  shift, and go to state 29
+
+
+State 18
+
+   13 ids: ID .
+   14    | ID . COMMA ids
+
+    COMMA  shift, and go to state 9
+
+    $default  reduce using rule 13 (ids)
+
+
+State 19
+
+   14 ids: ID COMMA ids .
+
+    $default  reduce using rule 14 (ids)
+
+
+State 20
+
+   12 decl1: DEFINE ID ID .
+
+    $default  reduce using rule 12 (decl1)
+
+
+State 21
+
+   16 type: INT .
+
+    $default  reduce using rule 16 (type)
+
+
+State 22
+
+   17 type: FLOAT .
+
+    $default  reduce using rule 17 (type)
+
+
+State 23
+
+   18 type: BOOL .
+
+    $default  reduce using rule 18 (type)
+
+
+State 24
+
+   19 type: VOID .
+
+    $default  reduce using rule 19 (type)
+
+
+State 25
+
+   20 type: STRING .
+
+    $default  reduce using rule 20 (type)
+
+
+State 26
+
+    8 decl1: ids DOUBLEQUOTE type .
+    9      | ids DOUBLEQUOTE type . ASSIGN exp
+   21 type: type . LPARR exp RPARR
+
+    LPARR   shift, and go to state 30
+    ASSIGN  shift, and go to state 31
+
+    $default  reduce using rule 8 (decl1)
+
+
+State 27
+
+    6 idstype: ID DOUBLEQUOTE . type
+    7        | ID DOUBLEQUOTE . type COMMA idstype
+
+    INT     shift, and go to state 21
+    FLOAT   shift, and go to state 22
+    BOOL    shift, and go to state 23
+    VOID    shift, and go to state 24
+    STRING  shift, and go to state 25
+
+    type  go to state 32
+
+
+State 28
+
+   10 decl1: ID LPAR RPAR DOUBLEQUOTE . type LCHAV corpo RCHAV
+
+    INT     shift, and go to state 21
+    FLOAT   shift, and go to state 22
+    BOOL    shift, and go to state 23
+    VOID    shift, and go to state 24
+    STRING  shift, and go to state 25
+
+    type  go to state 33
+
+
+State 29
+
+   11 decl1: ID LPAR idstype RPAR . DOUBLEQUOTE type LCHAV corpo RCHAV
+
+    DOUBLEQUOTE  shift, and go to state 34
+
+
+State 30
+
+   21 type: type LPARR . exp RPARR
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 45
+    funcao  go to state 46
+
+
+State 31
+
+    9 decl1: ids DOUBLEQUOTE type ASSIGN . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 47
+    funcao  go to state 46
+
+
+State 32
+
+    6 idstype: ID DOUBLEQUOTE type .
+    7        | ID DOUBLEQUOTE type . COMMA idstype
+   21 type: type . LPARR exp RPARR
+
+    LPARR  shift, and go to state 30
+    COMMA  shift, and go to state 48
+
+    $default  reduce using rule 6 (idstype)
+
+
+State 33
+
+   10 decl1: ID LPAR RPAR DOUBLEQUOTE type . LCHAV corpo RCHAV
+   21 type: type . LPARR exp RPARR
+
+    LPARR  shift, and go to state 30
+    LCHAV  shift, and go to state 49
+
+
+State 34
+
+   11 decl1: ID LPAR idstype RPAR DOUBLEQUOTE . type LCHAV corpo RCHAV
+
+    INT     shift, and go to state 21
+    FLOAT   shift, and go to state 22
+    BOOL    shift, and go to state 23
+    VOID    shift, and go to state 24
+    STRING  shift, and go to state 25
+
+    type  go to state 50
+
+
+State 35
+
+   15 id: ID .
+   47 funcao: ID . LPAR funcao RPAR
+   48       | ID . LPAR mix RPAR
+   49       | ID . LPAR idstype RPAR
+
+    LPAR  shift, and go to state 51
+
+    $default  reduce using rule 15 (id)
+
+
+State 36
+
+   43 exp: INT_LIT .
+
+    $default  reduce using rule 43 (exp)
+
+
+State 37
+
+   42 exp: BOOL_LIT .
+
+    $default  reduce using rule 42 (exp)
+
+
+State 38
+
+   44 exp: FLOAT_LIT .
+
+    $default  reduce using rule 44 (exp)
+
+
+State 39
+
+   45 exp: STRING_LIT .
+
+    $default  reduce using rule 45 (exp)
+
+
+State 40
+
+   22 exp: LPAR . exp RPAR
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 52
+    funcao  go to state 46
+
+
+State 41
+
+   31 exp: SUB . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 53
+    funcao  go to state 46
+
+
+State 42
+
+   36 exp: NOT . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 54
+    funcao  go to state 46
+
+
+State 43
+
+   23 exp: id . ASSIGN exp
+   41    | id .
+
+    ASSIGN  shift, and go to state 55
+
+    $default  reduce using rule 41 (exp)
+
+
+State 44
+
+   21 type: type . LPARR exp RPARR
+   46 exp: type . LPARR exp RPARR
+
+    LPARR  shift, and go to state 56
+
+
+State 45
+
+   21 type: type LPARR exp . RPARR
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    RPARR           shift, and go to state 57
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+
+
+State 46
+
+   24 exp: funcao .
+
+    $default  reduce using rule 24 (exp)
+
+
+State 47
+
+    9 decl1: ids DOUBLEQUOTE type ASSIGN exp .
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+
+    $default  reduce using rule 9 (decl1)
+
+
+State 48
+
+    7 idstype: ID DOUBLEQUOTE type COMMA . idstype
+
+    ID  shift, and go to state 15
+
+    idstype  go to state 72
+
+
+State 49
+
+   10 decl1: ID LPAR RPAR DOUBLEQUOTE type LCHAV . corpo RCHAV
+
+    ID          shift, and go to state 73
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    BREAK       shift, and go to state 74
+    WHILE       shift, and go to state 75
+    NEXT        shift, and go to state 76
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+    IF          shift, and go to state 77
+    DEFINE      shift, and go to state 2
+    RETURN      shift, and go to state 78
+
+    decl    go to state 79
+    decl1   go to state 6
+    ids     go to state 7
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 80
+    funcao  go to state 46
+    corpo   go to state 81
+    stats   go to state 82
+    stat    go to state 83
+
+
+State 50
+
+   11 decl1: ID LPAR idstype RPAR DOUBLEQUOTE type . LCHAV corpo RCHAV
+   21 type: type . LPARR exp RPARR
+
+    LPARR  shift, and go to state 30
+    LCHAV  shift, and go to state 84
+
+
+State 51
+
+   47 funcao: ID LPAR . funcao RPAR
+   48       | ID LPAR . mix RPAR
+   49       | ID LPAR . idstype RPAR
+
+    ID          shift, and go to state 85
+    INT_LIT     shift, and go to state 86
+    BOOL_LIT    shift, and go to state 87
+    FLOAT_LIT   shift, and go to state 88
+    STRING_LIT  shift, and go to state 89
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+
+    idstype  go to state 90
+    ids      go to state 91
+    type     go to state 92
+    funcao   go to state 93
+    mix      go to state 94
+    lits     go to state 95
+    lit      go to state 96
+
+
+State 52
+
+   22 exp: LPAR exp . RPAR
+   25    | exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    RPAR            shift, and go to state 97
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+
+
+State 53
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   31    | SUB exp .
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 31 (exp)
+
+
+State 54
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   36    | NOT exp .
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 36 (exp)
+
+
+State 55
+
+   23 exp: id ASSIGN . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 98
+    funcao  go to state 46
+
+
+State 56
+
+   21 type: type LPARR . exp RPARR
+   46 exp: type LPARR . exp RPARR
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 99
+    funcao  go to state 46
+
+
+State 57
+
+   21 type: type LPARR exp RPARR .
+
+    $default  reduce using rule 21 (type)
+
+
+State 58
+
+   32 exp: exp EQUAL . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 100
+    funcao  go to state 46
+
+
+State 59
+
+   37 exp: exp LESSOREQUAL . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 101
+    funcao  go to state 46
+
+
+State 60
+
+   38 exp: exp LESS . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 102
+    funcao  go to state 46
+
+
+State 61
+
+   33 exp: exp DIFF . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 103
+    funcao  go to state 46
+
+
+State 62
+
+   40 exp: exp GREATER . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 104
+    funcao  go to state 46
+
+
+State 63
+
+   39 exp: exp GREATEROREQUAL . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 105
+    funcao  go to state 46
+
+
+State 64
+
+   26 exp: exp SUB . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 106
+    funcao  go to state 46
+
+
+State 65
+
+   25 exp: exp ADD . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 107
+    funcao  go to state 46
+
+
+State 66
+
+   27 exp: exp MUL . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 108
+    funcao  go to state 46
+
+
+State 67
+
+   28 exp: exp DIV . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 109
+    funcao  go to state 46
+
+
+State 68
+
+   29 exp: exp MOD . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 110
+    funcao  go to state 46
+
+
+State 69
+
+   34 exp: exp AND . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 111
+    funcao  go to state 46
+
+
+State 70
+
+   35 exp: exp OR . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 112
+    funcao  go to state 46
+
+
+State 71
+
+   30 exp: exp EXPOENT . exp
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 113
+    funcao  go to state 46
+
+
+State 72
+
+    7 idstype: ID DOUBLEQUOTE type COMMA idstype .
+
+    $default  reduce using rule 7 (idstype)
+
+
+State 73
+
+   10 decl1: ID . LPAR RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   11      | ID . LPAR idstype RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   13 ids: ID .
+   14    | ID . COMMA ids
+   15 id: ID .
+   47 funcao: ID . LPAR funcao RPAR
+   48       | ID . LPAR mix RPAR
+   49       | ID . LPAR idstype RPAR
+
+    LPAR   shift, and go to state 114
+    COMMA  shift, and go to state 9
+
+    DOUBLEQUOTE  reduce using rule 13 (ids)
+    $default     reduce using rule 15 (id)
+
+
+State 74
+
+   68 stat: BREAK . ENDOFSTM
+
+    ENDOFSTM  shift, and go to state 115
+
+
+State 75
+
+   67 stat: WHILE . exp DO LCHAV corpo RCHAV ENDOFSTM
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 116
+    funcao  go to state 46
+
+
+State 76
+
+   69 stat: NEXT . ENDOFSTM
+
+    ENDOFSTM  shift, and go to state 117
+
+
+State 77
+
+   65 stat: IF . exp THEN LCHAV corpo RCHAV ENDOFSTM
+   66     | IF . exp THEN LCHAV corpo RCHAV ELSE LCHAV corpo RCHAV ENDOFSTM
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 118
+    funcao  go to state 46
+
+
+State 78
+
+   64 stat: RETURN . exp ENDOFSTM
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 119
+    funcao  go to state 46
+
+
+State 79
+
+   62 stat: decl .
+
+    $default  reduce using rule 62 (stat)
+
+
+State 80
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+   63 stat: exp . ENDOFSTM
+
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+    ENDOFSTM        shift, and go to state 120
+
+
+State 81
+
+   10 decl1: ID LPAR RPAR DOUBLEQUOTE type LCHAV corpo . RCHAV
+
+    RCHAV  shift, and go to state 121
+
+
+State 82
+
+   59 corpo: stats .
+
+    $default  reduce using rule 59 (corpo)
+
+
+State 83
+
+   60 stats: stat . stats
+   61      | stat .
+
+    ID          shift, and go to state 73
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    BREAK       shift, and go to state 74
+    WHILE       shift, and go to state 75
+    NEXT        shift, and go to state 76
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+    IF          shift, and go to state 77
+    DEFINE      shift, and go to state 2
+    RETURN      shift, and go to state 78
+
+    $default  reduce using rule 61 (stats)
+
+    decl    go to state 79
+    decl1   go to state 6
+    ids     go to state 7
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 80
+    funcao  go to state 46
+    stats   go to state 122
+    stat    go to state 83
+
+
+State 84
+
+   11 decl1: ID LPAR idstype RPAR DOUBLEQUOTE type LCHAV . corpo RCHAV
+
+    ID          shift, and go to state 73
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    BREAK       shift, and go to state 74
+    WHILE       shift, and go to state 75
+    NEXT        shift, and go to state 76
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+    IF          shift, and go to state 77
+    DEFINE      shift, and go to state 2
+    RETURN      shift, and go to state 78
+
+    decl    go to state 79
+    decl1   go to state 6
+    ids     go to state 7
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 80
+    funcao  go to state 46
+    corpo   go to state 123
+    stats   go to state 82
+    stat    go to state 83
+
+
+State 85
+
+    6 idstype: ID . DOUBLEQUOTE type
+    7        | ID . DOUBLEQUOTE type COMMA idstype
+   13 ids: ID .
+   14    | ID . COMMA ids
+   47 funcao: ID . LPAR funcao RPAR
+   48       | ID . LPAR mix RPAR
+   49       | ID . LPAR idstype RPAR
+
+    LPAR         shift, and go to state 51
+    DOUBLEQUOTE  shift, and go to state 27
+    COMMA        shift, and go to state 9
+
+    $default  reduce using rule 13 (ids)
+
+
+State 86
+
+   54 lit: INT_LIT .
+
+    $default  reduce using rule 54 (lit)
+
+
+State 87
+
+   55 lit: BOOL_LIT .
+
+    $default  reduce using rule 55 (lit)
+
+
+State 88
+
+   56 lit: FLOAT_LIT .
+
+    $default  reduce using rule 56 (lit)
+
+
+State 89
+
+   57 lit: STRING_LIT .
+
+    $default  reduce using rule 57 (lit)
+
+
+State 90
+
+   49 funcao: ID LPAR idstype . RPAR
+
+    RPAR  shift, and go to state 124
+
+
+State 91
+
+   51 mix: ids .
+
+    $default  reduce using rule 51 (mix)
+
+
+State 92
+
+   21 type: type . LPARR exp RPARR
+   58 lit: type . LPARR exp RPARR
+
+    LPARR  shift, and go to state 125
+
+
+State 93
+
+   47 funcao: ID LPAR funcao . RPAR
+
+    RPAR  shift, and go to state 126
+
+
+State 94
+
+   48 funcao: ID LPAR mix . RPAR
+
+    RPAR  shift, and go to state 127
+
+
+State 95
+
+   50 mix: lits .
+
+    $default  reduce using rule 50 (mix)
+
+
+State 96
+
+   52 lits: lit .
+   53     | lit . COMMA lits
+
+    COMMA  shift, and go to state 128
+
+    $default  reduce using rule 52 (lits)
+
+
+State 97
+
+   22 exp: LPAR exp RPAR .
+
+    $default  reduce using rule 22 (exp)
+
+
+State 98
+
+   23 exp: id ASSIGN exp .
+   25    | exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 23 (exp)
+
+
+State 99
+
+   21 type: type LPARR exp . RPARR
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+   46    | type LPARR exp . RPARR
+
+    RPARR           shift, and go to state 129
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+
+
+State 100
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   32    | exp EQUAL exp .
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    SUB      shift, and go to state 64
+    ADD      shift, and go to state 65
+    MUL      shift, and go to state 66
+    DIV      shift, and go to state 67
+    MOD      shift, and go to state 68
+    AND      shift, and go to state 69
+    OR       shift, and go to state 70
+    EXPOENT  shift, and go to state 71
+
+    $default  reduce using rule 32 (exp)
+
+
+State 101
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   37    | exp LESSOREQUAL exp .
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    SUB      shift, and go to state 64
+    ADD      shift, and go to state 65
+    MUL      shift, and go to state 66
+    DIV      shift, and go to state 67
+    MOD      shift, and go to state 68
+    AND      shift, and go to state 69
+    OR       shift, and go to state 70
+    EXPOENT  shift, and go to state 71
+
+    $default  reduce using rule 37 (exp)
+
+
+State 102
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   38    | exp LESS exp .
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    SUB      shift, and go to state 64
+    ADD      shift, and go to state 65
+    MUL      shift, and go to state 66
+    DIV      shift, and go to state 67
+    MOD      shift, and go to state 68
+    AND      shift, and go to state 69
+    OR       shift, and go to state 70
+    EXPOENT  shift, and go to state 71
+
+    $default  reduce using rule 38 (exp)
+
+
+State 103
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   33    | exp DIFF exp .
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    SUB      shift, and go to state 64
+    ADD      shift, and go to state 65
+    MUL      shift, and go to state 66
+    DIV      shift, and go to state 67
+    MOD      shift, and go to state 68
+    AND      shift, and go to state 69
+    OR       shift, and go to state 70
+    EXPOENT  shift, and go to state 71
+
+    $default  reduce using rule 33 (exp)
+
+
+State 104
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+   40    | exp GREATER exp .
+
+    SUB      shift, and go to state 64
+    ADD      shift, and go to state 65
+    MUL      shift, and go to state 66
+    DIV      shift, and go to state 67
+    MOD      shift, and go to state 68
+    AND      shift, and go to state 69
+    OR       shift, and go to state 70
+    EXPOENT  shift, and go to state 71
+
+    $default  reduce using rule 40 (exp)
+
+
+State 105
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   39    | exp GREATEROREQUAL exp .
+   40    | exp . GREATER exp
+
+    SUB      shift, and go to state 64
+    ADD      shift, and go to state 65
+    MUL      shift, and go to state 66
+    DIV      shift, and go to state 67
+    MOD      shift, and go to state 68
+    AND      shift, and go to state 69
+    OR       shift, and go to state 70
+    EXPOENT  shift, and go to state 71
+
+    $default  reduce using rule 39 (exp)
+
+
+State 106
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   26    | exp SUB exp .
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 26 (exp)
+
+
+State 107
+
+   25 exp: exp . ADD exp
+   25    | exp ADD exp .
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 25 (exp)
+
+
+State 108
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   27    | exp MUL exp .
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 27 (exp)
+
+
+State 109
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   28    | exp DIV exp .
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 28 (exp)
+
+
+State 110
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   29    | exp MOD exp .
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 29 (exp)
+
+
+State 111
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   34    | exp AND exp .
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 34 (exp)
+
+
+State 112
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   35    | exp OR exp .
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 35 (exp)
+
+
+State 113
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   30    | exp EXPOENT exp .
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+
+    $default  reduce using rule 30 (exp)
+
+
+State 114
+
+   10 decl1: ID LPAR . RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   11      | ID LPAR . idstype RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   47 funcao: ID LPAR . funcao RPAR
+   48       | ID LPAR . mix RPAR
+   49       | ID LPAR . idstype RPAR
+
+    ID          shift, and go to state 85
+    INT_LIT     shift, and go to state 86
+    BOOL_LIT    shift, and go to state 87
+    FLOAT_LIT   shift, and go to state 88
+    STRING_LIT  shift, and go to state 89
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    RPAR        shift, and go to state 16
+
+    idstype  go to state 130
+    ids      go to state 91
+    type     go to state 92
+    funcao   go to state 93
+    mix      go to state 94
+    lits     go to state 95
+    lit      go to state 96
+
+
+State 115
+
+   68 stat: BREAK ENDOFSTM .
+
+    $default  reduce using rule 68 (stat)
+
+
+State 116
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+   67 stat: WHILE exp . DO LCHAV corpo RCHAV ENDOFSTM
+
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    DO              shift, and go to state 131
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+
+
+State 117
+
+   69 stat: NEXT ENDOFSTM .
+
+    $default  reduce using rule 69 (stat)
+
+
+State 118
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+   65 stat: IF exp . THEN LCHAV corpo RCHAV ENDOFSTM
+   66     | IF exp . THEN LCHAV corpo RCHAV ELSE LCHAV corpo RCHAV ENDOFSTM
+
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+    THEN            shift, and go to state 132
+
+
+State 119
+
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+   64 stat: RETURN exp . ENDOFSTM
+
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+    ENDOFSTM        shift, and go to state 133
+
+
+State 120
+
+   63 stat: exp ENDOFSTM .
+
+    $default  reduce using rule 63 (stat)
+
+
+State 121
+
+   10 decl1: ID LPAR RPAR DOUBLEQUOTE type LCHAV corpo RCHAV .
+
+    $default  reduce using rule 10 (decl1)
+
+
+State 122
+
+   60 stats: stat stats .
+
+    $default  reduce using rule 60 (stats)
+
+
+State 123
+
+   11 decl1: ID LPAR idstype RPAR DOUBLEQUOTE type LCHAV corpo . RCHAV
+
+    RCHAV  shift, and go to state 134
+
+
+State 124
+
+   49 funcao: ID LPAR idstype RPAR .
+
+    $default  reduce using rule 49 (funcao)
+
+
+State 125
+
+   21 type: type LPARR . exp RPARR
+   58 lit: type LPARR . exp RPARR
+
+    ID          shift, and go to state 35
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 135
+    funcao  go to state 46
+
+
+State 126
+
+   47 funcao: ID LPAR funcao RPAR .
+
+    $default  reduce using rule 47 (funcao)
+
+
+State 127
+
+   48 funcao: ID LPAR mix RPAR .
+
+    $default  reduce using rule 48 (funcao)
+
+
+State 128
+
+   53 lits: lit COMMA . lits
+
+    INT_LIT     shift, and go to state 86
+    BOOL_LIT    shift, and go to state 87
+    FLOAT_LIT   shift, and go to state 88
+    STRING_LIT  shift, and go to state 89
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+
+    type  go to state 92
+    lits  go to state 136
+    lit   go to state 96
+
+
+State 129
+
+   21 type: type LPARR exp RPARR .
+   46 exp: type LPARR exp RPARR .
+
+    LPARR     reduce using rule 21 (type)
+    $default  reduce using rule 46 (exp)
+
+
+State 130
+
+   11 decl1: ID LPAR idstype . RPAR DOUBLEQUOTE type LCHAV corpo RCHAV
+   49 funcao: ID LPAR idstype . RPAR
+
+    RPAR  shift, and go to state 137
+
+
+State 131
+
+   67 stat: WHILE exp DO . LCHAV corpo RCHAV ENDOFSTM
+
+    LCHAV  shift, and go to state 138
+
+
+State 132
+
+   65 stat: IF exp THEN . LCHAV corpo RCHAV ENDOFSTM
+   66     | IF exp THEN . LCHAV corpo RCHAV ELSE LCHAV corpo RCHAV ENDOFSTM
+
+    LCHAV  shift, and go to state 139
+
+
+State 133
+
+   64 stat: RETURN exp ENDOFSTM .
+
+    $default  reduce using rule 64 (stat)
+
+
+State 134
+
+   11 decl1: ID LPAR idstype RPAR DOUBLEQUOTE type LCHAV corpo RCHAV .
+
+    $default  reduce using rule 11 (decl1)
+
+
+State 135
+
+   21 type: type LPARR exp . RPARR
+   25 exp: exp . ADD exp
+   26    | exp . SUB exp
+   27    | exp . MUL exp
+   28    | exp . DIV exp
+   29    | exp . MOD exp
+   30    | exp . EXPOENT exp
+   32    | exp . EQUAL exp
+   33    | exp . DIFF exp
+   34    | exp . AND exp
+   35    | exp . OR exp
+   37    | exp . LESSOREQUAL exp
+   38    | exp . LESS exp
+   39    | exp . GREATEROREQUAL exp
+   40    | exp . GREATER exp
+   58 lit: type LPARR exp . RPARR
+
+    RPARR           shift, and go to state 140
+    EQUAL           shift, and go to state 58
+    LESSOREQUAL     shift, and go to state 59
+    LESS            shift, and go to state 60
+    DIFF            shift, and go to state 61
+    GREATER         shift, and go to state 62
+    GREATEROREQUAL  shift, and go to state 63
+    SUB             shift, and go to state 64
+    ADD             shift, and go to state 65
+    MUL             shift, and go to state 66
+    DIV             shift, and go to state 67
+    MOD             shift, and go to state 68
+    AND             shift, and go to state 69
+    OR              shift, and go to state 70
+    EXPOENT         shift, and go to state 71
+
+
+State 136
+
+   53 lits: lit COMMA lits .
+
+    $default  reduce using rule 53 (lits)
+
+
+State 137
+
+   11 decl1: ID LPAR idstype RPAR . DOUBLEQUOTE type LCHAV corpo RCHAV
+   49 funcao: ID LPAR idstype RPAR .
+
+    DOUBLEQUOTE  shift, and go to state 34
+
+    $default  reduce using rule 49 (funcao)
+
+
+State 138
+
+   67 stat: WHILE exp DO LCHAV . corpo RCHAV ENDOFSTM
+
+    ID          shift, and go to state 73
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    BREAK       shift, and go to state 74
+    WHILE       shift, and go to state 75
+    NEXT        shift, and go to state 76
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+    IF          shift, and go to state 77
+    DEFINE      shift, and go to state 2
+    RETURN      shift, and go to state 78
+
+    decl    go to state 79
+    decl1   go to state 6
+    ids     go to state 7
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 80
+    funcao  go to state 46
+    corpo   go to state 141
+    stats   go to state 82
+    stat    go to state 83
+
+
+State 139
+
+   65 stat: IF exp THEN LCHAV . corpo RCHAV ENDOFSTM
+   66     | IF exp THEN LCHAV . corpo RCHAV ELSE LCHAV corpo RCHAV ENDOFSTM
+
+    ID          shift, and go to state 73
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    BREAK       shift, and go to state 74
+    WHILE       shift, and go to state 75
+    NEXT        shift, and go to state 76
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+    IF          shift, and go to state 77
+    DEFINE      shift, and go to state 2
+    RETURN      shift, and go to state 78
+
+    decl    go to state 79
+    decl1   go to state 6
+    ids     go to state 7
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 80
+    funcao  go to state 46
+    corpo   go to state 142
+    stats   go to state 82
+    stat    go to state 83
+
+
+State 140
+
+   21 type: type LPARR exp RPARR .
+   58 lit: type LPARR exp RPARR .
+
+    LPARR     reduce using rule 21 (type)
+    $default  reduce using rule 58 (lit)
+
+
+State 141
+
+   67 stat: WHILE exp DO LCHAV corpo . RCHAV ENDOFSTM
+
+    RCHAV  shift, and go to state 143
+
+
+State 142
+
+   65 stat: IF exp THEN LCHAV corpo . RCHAV ENDOFSTM
+   66     | IF exp THEN LCHAV corpo . RCHAV ELSE LCHAV corpo RCHAV ENDOFSTM
+
+    RCHAV  shift, and go to state 144
+
+
+State 143
+
+   67 stat: WHILE exp DO LCHAV corpo RCHAV . ENDOFSTM
+
+    ENDOFSTM  shift, and go to state 145
+
+
+State 144
+
+   65 stat: IF exp THEN LCHAV corpo RCHAV . ENDOFSTM
+   66     | IF exp THEN LCHAV corpo RCHAV . ELSE LCHAV corpo RCHAV ENDOFSTM
+
+    ELSE      shift, and go to state 146
+    ENDOFSTM  shift, and go to state 147
+
+
+State 145
+
+   67 stat: WHILE exp DO LCHAV corpo RCHAV ENDOFSTM .
+
+    $default  reduce using rule 67 (stat)
+
+
+State 146
+
+   66 stat: IF exp THEN LCHAV corpo RCHAV ELSE . LCHAV corpo RCHAV ENDOFSTM
+
+    LCHAV  shift, and go to state 148
+
+
+State 147
+
+   65 stat: IF exp THEN LCHAV corpo RCHAV ENDOFSTM .
+
+    $default  reduce using rule 65 (stat)
+
+
+State 148
+
+   66 stat: IF exp THEN LCHAV corpo RCHAV ELSE LCHAV . corpo RCHAV ENDOFSTM
+
+    ID          shift, and go to state 73
+    INT_LIT     shift, and go to state 36
+    BOOL_LIT    shift, and go to state 37
+    FLOAT_LIT   shift, and go to state 38
+    STRING_LIT  shift, and go to state 39
+    INT         shift, and go to state 21
+    FLOAT       shift, and go to state 22
+    BOOL        shift, and go to state 23
+    VOID        shift, and go to state 24
+    STRING      shift, and go to state 25
+    LPAR        shift, and go to state 40
+    BREAK       shift, and go to state 74
+    WHILE       shift, and go to state 75
+    NEXT        shift, and go to state 76
+    SUB         shift, and go to state 41
+    NOT         shift, and go to state 42
+    IF          shift, and go to state 77
+    DEFINE      shift, and go to state 2
+    RETURN      shift, and go to state 78
+
+    decl    go to state 79
+    decl1   go to state 6
+    ids     go to state 7
+    id      go to state 43
+    type    go to state 44
+    exp     go to state 80
+    funcao  go to state 46
+    corpo   go to state 149
+    stats   go to state 82
+    stat    go to state 83
+
+
+State 149
+
+   66 stat: IF exp THEN LCHAV corpo RCHAV ELSE LCHAV corpo . RCHAV ENDOFSTM
+
+    RCHAV  shift, and go to state 150
+
+
+State 150
+
+   66 stat: IF exp THEN LCHAV corpo RCHAV ELSE LCHAV corpo RCHAV . ENDOFSTM
+
+    ENDOFSTM  shift, and go to state 151
+
+
+State 151
+
+   66 stat: IF exp THEN LCHAV corpo RCHAV ELSE LCHAV corpo RCHAV ENDOFSTM .
+
+    $default  reduce using rule 66 (stat)

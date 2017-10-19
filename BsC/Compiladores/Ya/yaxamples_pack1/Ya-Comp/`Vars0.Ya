@@ -1,0 +1,22 @@
+@`Vars0
+
+`Int \I
+`Int-* \P
+
+// synonim for int
+\`MyInt = `Int
+`MyInt \MI = 0
+MI = 1
+
+// simple fielded type
+\`Str
+	`Char* \Min, \Max
+
+	`No \Test(`_ \__; `Char* \s)
+		Min = Max = s
+	`Make Set(`_ \__, \from)
+		Min = from/Min
+		Max = from/Max
+
+`Str \Lala, \Bebe = Lala
+

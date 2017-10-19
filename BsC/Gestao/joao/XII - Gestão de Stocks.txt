@@ -1,0 +1,43 @@
+O que sao stocks?
+
+Conjunto de artigos mantidos em armazem para satisfazer a procura.
+
+Problemas de decisao na gestao de stocks?
+- Para que artigos devem ser mantidos stocks?
+- Quanto encomendar de cada vez?
+- Quando encomendar?
+- Que sistema de controlo de stocks deve ser utilizado?
+
+Razoes para deter stocks
+
+- Satisfacao da procura
+- Proteger contra a incerteza
+- Procura ciclica ou procura sazonal
+- Independencia face aos fornecedores
+- Independencia entre estagios de producao para evitar paragens de producao
+- Tirar partido de descontos de quantidades
+
+Procura dependente e procura independente
+
+Dependente - Procura de artigos para serem incluidos noutros produtos finais (procura interna).
+Independente - Procura de produtos finais ou de produtos acabados (procura externa).
+
+Os stocks e a gestao da qualidade total
+
+Para o consumidor a qualidade depende do facto do produto estar disponivel sempre que e solicitado.
+A gestao tradicional de stocks procura um compromisso entre o nivel do servico e os custos de inventario.
+
+Custo com os stocks
+- Custo de posse (custo de deter unidades do bem em stock por um periodo de tempo)
+- Custos de encomenda (custos relacionados com a colocacao, acompanhamento e recepcao das encomendas ou com a preparacao de novos lotes de produto)
+- Custos de rotura (custos associados a falta de stock)
+- Custos de aquisicao (custo associado a procura das mercadorias ou de produzir o produto)
+
+Sistemas de controlo de stocks
+
+Revisao Continua (quantidade fixa de encomenda)
+Revisao periodica (periodo fixo de revisao)
+Modelos deterministicos
+Modelos estoclasticos
+
+Modelo da quantidade optima de encomenda: Quantidade optima de encomenda que minimiza os custos dos stocks

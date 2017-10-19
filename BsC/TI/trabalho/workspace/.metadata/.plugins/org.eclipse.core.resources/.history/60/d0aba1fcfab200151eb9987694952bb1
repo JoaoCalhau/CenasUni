@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Canal {
+	
+	//static String word;
+	static double[] markov;
+	static String toTransform;
+	
+	/*
+	public static void read() {
+		
+		Scanner in = new Scanner(System.in);
+		String input = in.nextLine();
+		in.close();
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(input + ".txt"))) {
+
+			String s = br.readLine();
+			
+			word = s;
+			
+		} catch(IOException e) {
+			System.out.println("Wrong file...");
+		}
+	}
+	*/
+	
+	/*
+	public static void write() {
+		try(Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("bits-output.txt"), "UTF-8"))) {
+			
+			writer.write(word);
+			
+		}catch(IOException e) {}
+	}
+	*/
+	
+	public static void transformation(double[] matrix, String in) {
+		markov = matrix;
+	}
+	
+	
+	
+	public static void main(String[] agrs) {
+		transformation({1.00, 0.10, 0.00, 0.90}, "01");
+	}
+}

@@ -1,0 +1,105 @@
+//@Gen/Print.Ya
+@Print.Ya
+
+//;Use @Gen/IO
+Use @IO
+
+\`PrintFlag enum int+:8 { _pf0 pf0, _pf+, _pf-, _pf0 pf0, pf_ /* ' ' */, _pf# }
+\`PrintSize enum int+:8 { ps0 /*usual*/, psShort, psLong, ps64 }
+
+`Char[16] PrintNumberTableLow = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' }
+`Char[16] PrintNumberTableHi  = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' }
+
+\`PrintParams
+	`IOWritable* Out
+	`Char[] Format
+	`PrintSize Size
+	//`Char[16]* DigitToChar
+	//`Int+:8 Arity Radix
+	//`Bool IsSigned, MustBeE, IsBigE
+	`PrintFlag Flag
+	`Int+:8 Width, MinWidth
+	`Bool IsOk
+	`Int64+ StartLocation
+
+	`Make(`IOWritable* out, `Char[]* format) Init
+		Out = out
+		Format = format
+		IsOk = true; // by default
+		StartLocation = Out.Location
+	`(`Bool IsOk,`Int+ NBytesWritten)(`Bool isOk) Ret
+		Return (isOk && IsOk), Out.Location - StartLocation
+	//`Char ParsePercentParams // returns type: 'c' 's' 'i'... Returns 0 if bad format
+	`Int+ ParseFormatNumber
+		`Int+ n = 0
+		If *Format == '*'
+			n = *list++ `Int+; // use list item as `Int+
+		Else ;For; IsOk
+			Switch *Format++
+				'*' { IsOk = false; ;Return 0; } // error, like "%15*d" invalid format
+				'0'..'9' { n = n*10 + (case - '0'); }
+				Else { --Format; break for switch; } // end of number
+		Return n
+	`No(`Char[] str) PrintStr
+		For; str; ++str
+			out += *str
+		// Flag width minWidth not used yet
+	`No(`Int:64 number, `Char[16]* toChar = PrintNumberTableLow, `Int+:8 arity radix, `Bool isSigned) PrintInt
+		If isSigned && number < 0
+			*out += '-'
+			number = -number
+		`Char[+] t(16)
+		For; number; number /= arity
+			t += toChar*[number % arity]
+		If !!t
+			t += '0'; // ???
+		For char* eye = t.Max; --eye >= t.Min
+			*out += *eye
+		// Flag width minWidth not used yet
+	//`No(`Real number, `Bool mustBeE, isBigE) PrintReal
+`(`Bool IsOk,`Int+ NBytesWritten)(`IOWritable* out = StdOut, `Char-[] format, `No^[] list ...) Print
+	`PrintParams _(out, format)
+	For; Format
+		Switch *Format++
+			//0 // zeroes are allowed+outed
+			';\r'; // ;\r is skipped. But maybe should be outed also
+			Else { out += case; } // out cur char
+			'%'
+				Flag = pf0; // default
+				For // parse flags
+					Switch *Format++ // flag
+						'%' { out += case; break switch for switch; } // not a flag
+						'+' { Flag = _pf+; }
+						'-' { Flag = _pf-; }
+						' ' { Flag = _pf_; }
+						'#' { Flag = _pf#; }
+						'0' { Flag = _pf0; }
+						Else { --Format; break for switch; } // end of flags
+				Width = parseFormatNumber()
+				If(!!IsOk) break switch ;For
+				MinWidth = 0
+				If *Format == '.' // if precision
+					++Format
+					MinWidth = parseFormatNumber()
+					If(!!IsOk) break switch ;For
+				PrintSize size = ps0
+				Switch *Format++
+					'h' { size = psShort; }
+					'l' 'L' { size = psLong; }
+					'I' // only 'I64' allowed
+						;If !!*Format++ == '6' && !!*Format++ == '4'
+							;Return Ret(false)
+					Else { --Format; }
+				Switch *Format++ // now type
+					'c' { out += *list++ `Char; }
+					//'C' { out += *list++ `Char; } // MS specific. Should be supported yet wide chars are not supported yet
+					'd' 'i' { PrintInt(out, *list++ `Int,, 10, width, minWidth, true); } // signed decimal int
+					'u' { PrintInt(out, *list++ `Int,, 10, false); } // unsigned decimal int
+					'o' { PrintInt(out, *list++ `Int,, 8, false); } // unsigned octal int
+					'x' { PrintInt(out, *list++ `Int, PrintNumberTableLow, 16, false); } // unsigned hex int 'abcdef'
+					'X' { PrintInt(out, *list++ `Int, PrintNumberTableHi, 16, false); } // unsigned hex int 'ABCDEF'
+					's' { PrintStr(out, *list++ `Char[]); } // `Char[]
+					//'S' // MS specific. Should be supported yet wide chars are not supported
+					'e' 'E' 'f' 'g' 'G' { PrintReal(out, *list++ `Real, mustBeE, isBigE); notImplemented(); } // `Real. Will not support for first
+					Else { ;Return Ret(false); }
+	Return Ret(IsOk)

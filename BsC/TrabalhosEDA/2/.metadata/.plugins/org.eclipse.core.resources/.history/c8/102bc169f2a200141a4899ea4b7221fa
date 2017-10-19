@@ -1,0 +1,57 @@
+public class JogoDoGalo{
+	public Jogadas[][] jogoDoGalo;
+	public int vencedor;
+
+	//[][x]-Coluna [x][]-linha
+	public JogoDoGalo(){
+		jogoDoGalo = new Jogadas[3][3];
+		for (int linha=0;linha<3;linha++) {
+			for (int coluna=0;coluna<3;coluna++) {
+				jogoDoGalo[linha][coluna]=null;
+			}
+		}
+	}
+	//diz quem ganhou o jogo
+	public int vencedor(){
+		return 0;
+	}
+
+	//retorna o codigo hash do objecto
+	public int hashcode(){
+		return 0;
+	}
+
+	public boolean acabou(){
+		if (diagonais() || linhas() || colunas()) {return true;}
+		else {return false;}
+	}
+	//faz uma jogada na celula indicada se esta vazia, se nao esta vazia retorna false
+	boolean joga(int row, int col){
+			if (jogoDoGalo[row][col] == null) {return true;}
+			else {return false;}
+	}
+	//retorna o movimento actual na localiza�cao dada, i.e qual o jogador naquela posi�cao
+	int jogador(int row, int col){
+		return jogoDoGalo[row][col].getJogador();
+	}
+	
+	public boolean diagonais() {
+		if (jogoDoGalo[0][0].getJogador()==jogoDoGalo[1][1].getJogador() && jogoDoGalo[0][0].getJogador()==jogoDoGalo[2][2].getJogador()) {
+			vencedor = jogoDoGalo[0][0].getJogador();
+			return true;
+		}else if (jogoDoGalo[0][0].getJogador()==2 && jogoDoGalo[1][1].getJogador()==2 && jogoDoGalo[2][2].getJogador()==2) {
+			vencedor = jogoDoGalo[0][0].getJogador();
+		}
+	}
+	
+	public boolean linhas() {
+	}
+	
+	public boolean colunas() {
+	}
+	
+	//retorna reperesenta�cao em String do tabuleiro
+	public String toString(){
+		return "tabuleiro";
+	}
+}

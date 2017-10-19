@@ -1,0 +1,14 @@
+@TestInOutArgs.Ya
+
+`Int<- In
+`Int<-- InNoEffects
+`Int<() InFunc
+`Int<-> InOut
+`Int-> Out
+
+`Int<-* PIn
+`Int<->* PInOut
+`Int->* POut
+
+`No F(`Int<- in, `Int<-> inOut, `Int-> out)
+`No G(`Int<-* in, `Int<->* inOut, `Int->* out); // 3 errs

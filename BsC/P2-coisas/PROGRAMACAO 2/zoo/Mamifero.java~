@@ -1,0 +1,4 @@
+public class Mamifero extends Animal{
+  int ama;
+  
+}

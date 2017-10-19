@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Adicionar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Adicionar Questionario</div>
+        <p></p>
+        <form name="ServletDelete" action="ServletDelete" method="post">
+        Insira o nome que quer no questionario: <input type="text" name="adicionarcenas" size="40">
+        <p></p>
+        Questao 1: <input type="text" name="questao1" size="100">
+        <p></p>
+        Questao 2: <input type="text" name="questao2" size="100">
+        <p></p>
+        Questao 3: <input type="text" name="questao3" size="100">
+        <p></p>
+        Questao 4: <input type="text" name="questao4" size="100">
+        <p></p>
+        Questao 5: <input type="text" name="questao5" size="100">
+        <input type="submit" value="proceder">
+        </form>
+        <p></p>
+        <button onclick="goBack()">Back to the past now</button>
+        <script>
+            function goBack(){
+                window.history.back();
+            }
+        </script>
+    </body>
+</html>

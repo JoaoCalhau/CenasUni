@@ -1,0 +1,10 @@
+@ClassCase.Ya
+
+!some `Str cased
+	`* `* = Str* s
+	
+!some `StrC : %case `Str
+!some `StrR : %case `Str
+!some `StrL : `StrR, %case `Str
+!some `StrA : `StrL, %case `Str
+	

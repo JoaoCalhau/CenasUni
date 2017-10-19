@@ -1,0 +1,6 @@
+@VarsSimple.Ya // Simple test for vars and their ;Use
+
+!`Int k = 7
+!`Int i ii, j = 1
+ii = 0
+j = i

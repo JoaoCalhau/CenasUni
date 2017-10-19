@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int fibonacciR(int n) { //
+	if (n==0)
+		return 0;
+	else if (n==1)
+		return 1;
+	else
+		return (fibonacciR(n-1) + fibonacciR(n-2));
+
+int main() {
+	return 0;
+}

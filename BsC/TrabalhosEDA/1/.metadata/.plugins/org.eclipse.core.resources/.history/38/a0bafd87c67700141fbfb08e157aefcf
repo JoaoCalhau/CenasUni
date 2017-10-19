@@ -1,0 +1,14 @@
+public class Runs {
+	int runLength, runType, starveTime;
+	
+	public Runs(int runType, int runLength) {
+		this.runType = runType;
+		this.runLength = runLength;
+	}
+	
+	public Runs(int runType, int runLength, int starveTime) {
+		this.runType = runType;
+		this.runLength = runLength;
+		this.starveTime = starveTime;
+	}
+}

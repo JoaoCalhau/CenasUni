@@ -1,0 +1,12 @@
+@Ya/Assert!.Ya; // Test for assert as expr!
+
+0!
+`Int _+1 
+`Char* s
+_+1 = 1!
+s = s!
+
+\`Some {}
+
+`Some _
+_ !

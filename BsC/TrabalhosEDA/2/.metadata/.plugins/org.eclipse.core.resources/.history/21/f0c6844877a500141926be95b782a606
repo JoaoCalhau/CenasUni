@@ -1,0 +1,29 @@
+public class Jogadas {
+	JogoDoGalo item;
+	int countGames;
+	
+	public Jogadas() {
+		countGames=0;
+	}
+	
+	public Jogadas(JogoDoGalo j) {
+		this.item = j;
+		this.countGames = 1;
+	}
+
+	public JogoDoGalo getItem() {
+		return this.item;
+	}
+	
+	public void incrementCount() {
+		this.countGames++;
+	}
+	
+	public int getCount() {
+		return this.countGames;
+	}
+	
+	public void setItem(JogoDoGalo j) {
+		this.item = j;
+	}
+}

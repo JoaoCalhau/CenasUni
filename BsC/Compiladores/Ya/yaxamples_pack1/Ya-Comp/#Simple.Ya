@@ -1,0 +1,8 @@
+@#Simple.Ya
+
+`Int+ UintMax = 0FFFFFFFFh
+#
+	If UintMax == 0FFFFFFFFh $
+		`Int+ Lala
+	Else $
+		`Int+ Bebe

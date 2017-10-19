@@ -1,0 +1,12 @@
+@LoopsFor
+
+`Int _++ = 0
+For `Int i = 10; i; --i
+	_++ += i
+For `Int i = 10; i; --i
+	For i = 10; i; --i
+		_++ += i
+		5
+For ++i; i < 0; ++i
+	_++ -= i
+For ++i; i < 0; ++i 

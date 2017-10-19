@@ -1,0 +1,144 @@
+public RunLengthEncoding(Ocean sea) {
+	// Your solution here, but you should probably leave the following line
+	//   at the end.
+
+	//EDIÇAO PIMENTA
+
+	int testare=1;
+
+
+	Ocean OceanoRetornado=sea;
+	starveTimeMax=OceanoRetornado.starveTime();
+	this.tamanhoX=OceanoRetornado.width();
+	this.tamanhoY=OceanoRetornado.height();
+	int total=this.tamanhoX * this.tamanhoY-1;
+	teste= new DoublyLinkedList<ConjuntoAnimal>();
+	int mult=0;
+	ConjuntoAnimal tipoAnimal;
+
+	int tipoAnimais=0;
+	tipoAnimais=OceanoRetornado.cellContents(0, 0);
+	if (tipoAnimais==1){
+		teste.add(new ConjuntoAnimal(new Animal(1,OceanoRetornado.sharkFeeding(0, 0))));
+	}
+	if(tipoAnimais==0){
+		teste.add(new ConjuntoAnimal(new Animal(0)));
+	}
+	if(tipoAnimais==2){
+		teste.add(new ConjuntoAnimal(new Animal(2)));
+
+	}
+	ListIterator<ConjuntoAnimal>  listIterator2 = teste.iterator();
+	ConjuntoAnimal anterior;
+	anterior=listIterator2.next();
+	//System.out.println(anterior);
+
+	for (int r=0; r < tamanhoY; r++) {
+		for (int c=0; c < tamanhoX; c++){
+			if(r==0 && c==0){
+
+			}
+			else{
+				tipoAnimais=OceanoRetornado.cellContents(c, r);
+				if(tipoAnimais==anterior.getAnimal().getTipo()){
+					if(tipoAnimais==1){
+						int tubaraoFed=OceanoRetornado.sharkFeeding(c, r);
+						if (tubaraoFed==anterior.getStarve()){
+							anterior.aumentaQuant();
+							listIterator2.set(anterior);
+						}
+						else{
+							ConjuntoAnimal novo= new ConjuntoAnimal(new Animal(1,OceanoRetornado.sharkFeeding(c, r)));
+							teste.add(novo);
+							//System.out.println(novo+ " novo");
+							//System.out.println(teste);
+							//System.out.println(anterior + " anterior");
+							mult+=1;
+							listIterator2 = teste.iterator();
+							int var=mult;
+							while(var>0){
+								anterior=listIterator2.next();
+
+								var--;
+							}
+							//System.out.println(novo+ " novo");
+							//System.out.println(teste);
+							//System.out.println(anterior + " anterior");
+						}
+					}
+					if(tipoAnimais==2){
+						anterior.aumentaQuant();
+						listIterator2.set(anterior);
+					} 
+					if(tipoAnimais==0){
+						anterior.aumentaQuant();
+						listIterator2.set(anterior);
+
+					}
+				}
+				else{
+					if(tipoAnimais==1){
+						ConjuntoAnimal novo= new ConjuntoAnimal(new Animal(1,OceanoRetornado.sharkFeeding(c, r)));
+						teste.add(novo);
+						mult+=1;
+						listIterator2 = teste.iterator();
+						int var=mult;
+						while(var>=0){
+							//System.out.println(novo+ " novo");
+							//System.out.println(teste);
+							//System.out.println(anterior + " anterior");
+							anterior=listIterator2.next();
+
+							var--;
+						}
+						//System.out.println(novo+ " novo");
+						//System.out.println(teste);
+						//System.out.println(anterior + " anterior");
+					}
+					else{
+						ConjuntoAnimal novo= new ConjuntoAnimal(new Animal(tipoAnimais));
+						teste.add(novo);
+						mult+=1;
+						listIterator2 = teste.iterator();
+						int var=mult;
+						while(var>=0){
+							//System.out.println(novo+ " novo");
+							//System.out.println(teste);
+							//System.out.println(anterior + " anterior");
+							anterior=listIterator2.next();
+
+							var--;
+						}
+						//System.out.println(novo+ " novo");
+						//System.out.println(teste);
+						//System.out.println(anterior + " anterior");
+					}
+				}
+			}
+			//System.out.println(anterior);
+			//System.out.println(testare);
+			testare++;
+
+
+			/*if(tipoAnimais==0){
+		    			tipoAnimal=new ConjuntoAnimal(new Animal(0));
+		    		}
+		    		if(tipoAnimais==2){
+		    			tipoAnimal=new ConjuntoAnimal(new Animal(2));
+		    		}
+		    		if(tipoAnimais==1){
+		    			tipoAnimal=new ConjuntoAnimal(new Animal(1,OceanoRetornado.sharkFeeding(c, r)));
+
+		    		}
+
+			 */
+
+
+
+
+		}
+
+
+
+
+	}

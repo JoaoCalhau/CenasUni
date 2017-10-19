@@ -1,0 +1,17 @@
+@`Vars2.Ya
+
+\`Lala
+	//``* ``* a + ``* b; // pr as for orig a+a
+	//``* ``* a + %=++;  // pr as for ++
+
+//`Lala* `Lala* a + `Lala* b; // pr as for orig a+a
+//`Lala* `Lala* a + %=++;  // pr as for ++
+//`Lala* L
+
+`Lala `Lala a + `Lala b; // pr as for orig a+a
+`Lala `Lala a + %=++;  // pr as for ++
+`Lala L
+
+L+
+L+L
+L+L+; // should become L+(L+)

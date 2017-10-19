@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Canal {
+	
+	public static void read() {
+		
+		Scanner in = new Scanner(System.in);
+		String input = in.nextLine();
+		
+		System.out.println(input);
+		
+	}
+}

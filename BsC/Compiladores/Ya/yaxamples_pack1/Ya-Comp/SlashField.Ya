@@ -1,0 +1,13 @@
+// Test for classVar.Field classVar->Field
+@/Field.Ya // 13 Dec
+
+\`Fields
+	`Int I
+	`Int F(`Int =0)
+
+`Fields F
+F/I = 1
+F/I = F->F
+
+`Fields** P
+P/I = P/F

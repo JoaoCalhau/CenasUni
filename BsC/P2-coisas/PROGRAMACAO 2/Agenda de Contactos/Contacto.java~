@@ -1,0 +1,18 @@
+
+public class Contacto {
+  
+ String nome;
+ ArrayList<Integer> telefones = new ArrayList<Integer> ();
+ int telefone;
+ 
+ public Contacto(nome,telefone){
+   this.nome=nome;
+   this.telefone=telefone;
+ }
+ 
+ public Contacto_list(nome,list){
+   this.nome=nome;
+   this.ArrayList<Integer> telefones=list;
+ }
+  
+}

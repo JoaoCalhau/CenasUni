@@ -1,0 +1,7 @@
+@F12.Ya
+// returns tuple
+
+`Int,`Int \F(`Int a)
+	Return a,a
+
+F(F(0)/A)/B

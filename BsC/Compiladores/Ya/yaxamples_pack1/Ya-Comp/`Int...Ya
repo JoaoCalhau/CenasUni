@@ -1,0 +1,5 @@
+﻿@`Int...Ya
+
+`Int+.. \Range = 0..5;
+If Range/DoesInclude(5)
+	Range = 10..20

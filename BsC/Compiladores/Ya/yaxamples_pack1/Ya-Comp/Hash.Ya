@@ -1,0 +1,68 @@
+// Example Ya program for Ya code output in #
+// Ya/Hash.Ya
+// 12 Oct
+
+@Hash
+
+statement #for_(void|newvars #init; `Bool #cond; void #inc) statement #body {
+  `init
+  goto check
+loop:
+  `inc
+  `body
+check:
+	If(`cond) goto loop
+}
+statement #complex(void|newvars #init; `Bool #cond; void #inc) statement #body {
+  #;If(is newvars(init))
+    `init
+  Else
+    `init
+  goto check
+  for {{
+			`body
+			`inc
+		}
+check:
+	} ;For(`cond)
+}
+void f(int-* p){ // int const *
+  int i = p; // так можно
+	i = *p; // так тоже
+  *p = 0; // а так нельз€ т.к. int-
+	p = 0; // так нельз€ т.к. int* без ? и значит 0лем не бывает
+}
+void g(int~*? p){ // int var * | null
+  int i = p; // так можно
+	i = *p; // так тоже
+  *p = 0; // так тоже
+	p = 0; // так тоже т.к. ?
+}
+YLexa next { ;Return *++Lexes; } // функци€ без скобок
+void h(){ YLexa = next; } // как ей пользуютс€
+void hello(char-* hello = "Hello", char-* name = "World", char-* cr = ";\r;\n"){
+  printf("%s, %s%s", hello, name, cr)
+}
+void i(){
+  hello(, "Pavel"); // использование функции с default args: первый арг по умолчанию и третий тоже
+}
+void printNum(int|double v){
+  ;If(is int v)
+    printf("%d", int v); // int v - приведение к типу. ≈сли не привести - что попадет в стек?
+  Else
+    printf("%f", double v); // double v - приведение к типу
+}
+void j(){
+  printNum(0); // printNum(int)
+  printNum(0.); // printNum(double)
+}
+void hello(char-*? hello = 0, char-* name = "World", char-* cr = ";\r;\n"){
+  puts("" (hello Else "Hello") ", " name cr); // конкатенаци€ строк и не только строк. “акже hello Else "Hello" - если hello не false берет hello иначе "Hello"
+	// „то кажетс€ странным: а какой выходной тип? ƒолжен быть строковый класс, с вытекающими пробл типа деструктора и начального сборщика строки
+}
+void h(char*? hello){
+  printf("%s", hello Else "Hello")
+  char* text = "
+Hello World
+"; // разрешение на lf в строках. Ќе уверен что так хорошо. Ќо попробовать надо
+}

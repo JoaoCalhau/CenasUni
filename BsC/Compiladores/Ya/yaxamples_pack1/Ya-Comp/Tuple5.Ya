@@ -1,0 +1,18 @@
+@Tuple5.Ya; // with C++ output
+
+"",0
+0,1,2
+`Int,`Int Pair
+//debug
+`Int X, Y
+0,0
+0,0
+0,0
+0,0
+0,0
+0,0
+`Int Sum = Pair.A + Pair.B
+debug
+X,Y = 0,0
+//X,Y = 0,0
+//X,Y = 0,0

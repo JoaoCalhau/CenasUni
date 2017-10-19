@@ -1,0 +1,22 @@
+@Pointer.Ya
+
+`Char C = ';\n'
+`Char* Ptr = &C
+Ptr = &C
+Ptr = C&
+C = *Ptr
+C = Ptr*
+Ptr* + 1
+C = Ptr* + 1
+C = Ptr*5; // err
+/*
+unsigned char C = 10 /*0xA*/
+unsigned char* Ptr = &C
+Ptr = (&C)
+Ptr = (&C)
+C = (*Ptr)
+C = (*Ptr)
+(*Ptr) + 1 /*0x1*/
+C = ((*Ptr) + 1 /*0x1*/)
+C = (Ptr * 5 /*0x5*/)
+*/

@@ -1,0 +1,8 @@
+public class Picha {
+	
+	public String picha() {
+		//return "picha";
+		String c = "Cenas";
+		return c;
+	}
+}

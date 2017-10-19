@@ -1,0 +1,9 @@
+@FNamingArgs0.Ya
+// simple test for naming args
+
+`Int \F(`Int:= \x =10; `Int \a; `Int:= \y =20)
+	Return x+a+y
+
+F(1)
+F(y:=5; x:=7; 2)
+F(0; x:=1; y:=2)

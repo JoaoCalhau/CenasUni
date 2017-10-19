@@ -1,0 +1,15 @@
+﻿@ClassSimple.Ya
+
+\`A_?_ \`Хрю  \`Кря  // Кря should cause warn by '  ' before it; also test that it's Ok to write '  ' after the ty name ended
+	`Char* Min
+
+	`Make Null
+		Min = 0
+	`Destroy Null1
+		`_ this = __
+	`Char* AlaMin
+		Return Min
+
+`No F(`Кря* a, b)
+	`Char* aMin = a/Min
+	`Char* bMin = b/Min

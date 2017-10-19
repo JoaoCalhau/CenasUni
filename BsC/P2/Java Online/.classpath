@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Imports"/>
+	<classpathentry kind="src" path="DataTypes"/>
+	<classpathentry kind="src" path="Modifiers"/>
+	<classpathentry kind="src" path="ArithmeticOperators"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

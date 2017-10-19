@@ -1,0 +1,453 @@
+\documentclass[a4paper]{article}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{fixltx2e}
+\usepackage{hyperref}
+
+\title{1º Trabalho de Base de Dados}
+
+\author{João Calhau - 31621 \\ Ricardo Benedito - 31643}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introdução}
+
+Com este projecto de Base de Dados vimos desenvolver uma "amostra" de base de dados da Via Verde utilizando Algebra Relacional e PostgreSQL.
+
+\newpage
+
+\section{Exercicios propostos:}
+
+\subsection{Selecção e devida explicação da escolha das Chaves Primarias}
+
+Chaves Primarias:\\
+\\
+Tabela clienteViaVerde: IdViaVerde porque é único para cada cliente.\\
+Tabela clienteViaVerdePass: IdViaVerde porque o passaporte é único para cada cliente.\\
+Tabela clienteViaVerdeBi: IdviaVerde porque o número do Bi é único para cada cliente.\\
+Tabela clienteServico: NIF porque é único para cada cliente que fornece serviço.\\
+Tabela servico: IdLocal porque cada local tem um Id único.\\
+Tabela bomba: IdLocal porque cada local tem um Id único.\\
+Tabela ponte: IdLocal porque cada local tem um Id único.\\
+Tabela parque: IdLocal porque cada local tem um Id único.\\
+Tabela portagemAutoEstrada: (IdLocal, Saida) porque cada IdLocal, neste caso não é unico, visto que pode ter várias saidas.\\
+Tabela tem: IdLocalP porque o IdLocalP é único.\\
+Tabela cancelaParq: (idViaVerde, IdLocalP, DataD) porque dependendo da cancela ele pode entrar ou sair em diferentes momentos.\\
+Tabela passagemAE: (idViaVerde, DataD) porque o mesmo cliente pode passar varias vezes na mesma auto-estrada mas nunca á mesma hora e no mesmo dia.\\
+Tabela abastecimento: (idViaVerde, DataD) porque o mesmo cliente pode abastecer no mesmo sitio várias vezes, mas nunca na mesma hora e no mesmo dia.\\
+\\
+Chaves Estrangeiras:\\
+\\
+Tabela clienteViaVerde: Não tem\\
+Tabela clienteViaVerdePass: IdViaVerde de ClienteViaVerde\\
+Tabela ClienteViaVerdeBi: IdViaVerde de ClienteViaVerde\\
+Tabela clienteServico: Não tem\\
+Tabela servico: NIF de clienteServico
+Tabela bomba: IdLocal de servico\\
+Tabela ponte: IdLocal de servico\\
+Tabela parque: IdLocal de servico\\
+Tabela portagemAutoEstrada: IdLocal de Servico\\
+Tabela tem: IdLocal de servico\\
+Tabela cancelaParq: idViaVerde de ClienteViaVerde e idLocalP de tem\\
+Tabela passagemAE: idViaVerde de ClienteViaVerde e idLocalP de tem\\
+Tabela abastecimento: idViaVerde de ClienteViaVerde e idLocalP de tem\\
+
+\newpage
+
+\subsection{Criação da Base de Dados}
+
+CREATE TABLE clienteViaVerde (\\
+NIB INTEGER NOT NULL,\\
+NiF INTEGER NOT NULL,\\
+IdViaVerde INTEGER NOT NULL,\\
+Matricula VARCHAR(15),\\
+Nome CHAR(15),\\
+Morada VARCHAR(30),\\
+Cidade CHAR(10),\\
+PRIMARY KEY (IdViaVerde)\\
+);\\
+\\
+CREATE TABLE clienteViaVerdePass (\\
+IdViaVerde INTEGER NOT NULL,\\
+NPassp INTEGER NOT NULL,\\
+PRIMARY KEY (IdViaVerde),\\
+FOREIGN KEY (IdViaVerde) REFERENCES clienteViaVerde ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE clienteViaVerdeBi (\\
+IdViaVerde INTEGER NOT NULL,\\
+NPBi INTEGER NOT NULL,\\
+PRIMARY KEY (IdViaVerde),\\
+FOREIGN KEY (idViaverde) REFERENCES clienteViaVerde ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE clienteServico (\\
+NIF INTEGER NOT NULL,\\
+NIB INTEGER NOT NULL,\\
+Nome CHAR(16),\\
+Morada VARCHAR(30),\\
+Cidade CHAR(10),\\
+PRIMARY KEY (NIF)\\
+);\\
+\\
+CREATE TABLE servico (\\
+NIF INTEGER NOT NULL,\\
+IdLocal CHAR(15),\\
+NomeLocal CHAR(17),\\
+PRIMARY KEY (IdLocal),\\
+FOREIGN KEY (NIF) REFERENCES clienteServico ON DELETE RESTRICT\\
+);\\
+\\
+\newpage
+\noindent CREATE TABLE bomba (
+IdLocal CHAR(15),\\
+Cidade CHAR(10),\\
+Morada VARCHAR(30),\\
+PRIMARY KEY (IdLocal),\\
+FOREIGN KEY (IdLocal) REFERENCES servico ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE ponte (\\
+IdLocal CHAR(15),\\
+Valor INTEGER NOT NULL,\\
+PRIMARY KEY(IdLocal),\\
+FOREIGN KEY (IdLocal) REFERENCES servico ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE parque (\\
+IdLocal CHAR(15),\\
+ValorMinuto FLOAT NOT NULL,\\
+PRIMARY KEY (IdLocal),\\
+FOREIGN KEY (IdLocal) REFERENCES servico ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE portagemAutoEstrada (\\
+IdLocal CHAR(15),\\
+Km INTEGER NOT NULL CHECK(Km>0),\\
+Saida VARCHAR(10),\\
+Valor INTEGER NOT NULL CHECK(Valor>0),\\
+PRIMARY KEY (IdLocal, Saida),\\
+FOREIGN KEY (IdLocal) REFERENCES servico ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE tem (\\
+IdLocal CHAR(15),\\
+IdLocalP VARCHAR(20),\\
+PRIMARY KEY (IdLocalP),\\
+FOREIGN KEY (IdLocal) REFERENCES servico ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE cancelaParq (\\
+idViaVerde INTEGER NOT NULL,\\
+idLocalP VARCHAR(20),\\
+EntradaSaida VARCHAR(20),\\
+DataD TIMESTAMP,\\
+PRIMARY KEY (idViaverde, idLocalP, DataD),\\
+FOREIGN KEY (idViaVerde) REFERENCES clienteViaVerde,\\
+FOREIGN KEY (idLocalP) REFERENCES tem\\
+);\\
+\\
+\newpage
+\noindent CREATE TABLE passagemAE (
+idViaVerde INTEGER NOT NULL,\\
+idLocalP VARCHAR(20),\\
+DataD TIMESTAMP,\\
+PRIMARY KEY (idViaVerde, DataD),\\
+FOREIGN KEY (idViaVerde) REFERENCES clienteViaVerde ON DELETE RESTRICT,\\
+FOREIGN KEY (idLocalP) REFERENCES tem ON DELETE RESTRICT\\
+);\\
+\\
+CREATE TABLE abastecimento (\\
+idViaVerde INTEGER NOT NULL,\\
+idLocalP VARCHAR(20),\\
+DataD TIMESTAMP,\\
+Valor INTEGER NOT NULL CHECK(Valor>0),\\
+PRIMARY KEY (idViaVerde,DataD),\\
+FOREIGN KEY (idViaVerde) REFERENCES clienteViaVerde ON DELETE RESTRICT,\\
+FOREIGN KEY (idLocalP) REFERENCES tem ON DELETE RESTRICT\\
+);\\
+\\
+\newpage
+\subsection{Algebra Relacional  do Exercico 3}
+
+INSERT INTO clienteServico VALUES(123456789, 88888888 , 'Brisa', 'Rua da Seguradora 17', 'Lisboa'):\\
+CLienteServico $\leftarrow$ ClienteServico $\cup$ \{(123456789, 88888888 , 'Brisa', 'Rua da Seguradora 17', 'Lisboa')\}\\
+\\
+\\
+INSERT INTO servico VALUES(123456789, 'AE-A2', 'A2'):\\
+servico $\leftarrow$ servico $\cup$ \{(123456789, 'AE-A2', 'A2')\}\\
+\\
+servico $\leftarrow$ servico $\cup$ \{(123456789, 'AE-A1', 'A1')\}\\
+\\
+servico $\leftarrow$ servico $\cup$ \{(123456789, 'AE-A6', 'A6')\}\\
+\\
+\\
+INSERT INTO portagemAutoEstrada VALUES('AE-A2', 10, 'Evora', 3):\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A2', 10, 'Evora', 3)\}\\
+\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A2', 20, 'Beja', 3)\}\\
+\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A2', 30, 'Faro', 3)\}\\
+\\
+\\
+INSERT INTO tem VALUES('AE-A2', 'A2-Saida1'):\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A2', 'A2-Saida1')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A2', 'A2-Saida2')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A2', 'A2-Saida3')\}\\
+\\
+\\
+INSERT INTO portagemAutoEstrada VALUES('AE-A1', 17, 'Porto', 3):\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A1', 17, 'Porto', 3)\}\\
+\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A1', 27, 'Braga', 3)\}\\
+\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A1', 37, 'Guimaraes', 3)\}\\
+\\
+\\
+INSERT INTO tem VALUES('AE-A1', 'A1-Saida1'):\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A1', 'A1-Saida1')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A1', 'A1-Saida2')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A1', 'A1-Saida3')\}\\
+\\
+\\
+\newpage
+\noindent INSERT INTO portagemAutoEstrada VALUES('AE-A6', 11, 'Lisboa', 3):\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A6', 11, 'Lisboa', 3)\}\\
+\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A6', 21, 'Setubisal', 3)\}\\
+\\
+portagemAutoEstrada $\leftarrow$ portagemAutoEstrada $\cup$ \{('AE-A6', 31, 'Odemira', 3)\}\\
+\\
+\\
+INSERT INTO tem VALUES('AE-A6', 'A6-Saida1'):\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A6', 'A6-Saida1')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A6', 'A6-Saida2')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('AE-A6', 'A6-Saida3')\}\\
+\\
+\\
+INSERT INTO clienteServico VALUES(000641900, 71717171 , 'Galp', 'Rua da Gasolina 2', 'Sines'):\\
+clienteServico $\leftarrow$ clienteServico $\cup$ \{(000641900, 71717171 , 'Galp', 'Rua da Gasolina 2', 'Sines')\}\\
+\\
+\\
+INSERT INTO servico VALUES(000641900, 'B. Evora', 'Bomba Evora'):\\
+servico $\leftarrow$ servico $\cup$ \{(000641900, 'B. Evora', 'Bomba Evora')\}\\
+\\
+servico $\leftarrow$ servico $\cup$ \{(000641900, 'B. Grandola', 'Bomba Grandola')\}\\
+\\
+\\
+INSERT INTO bomba VALUES('B. Evora', 'Evora', 'Rua com Gasolina 99'):\\
+bomba $\leftarrow$ bomba $\cup$ \{('B. Evora', 'Evora', 'Rua com Gasolina 99')\}\\
+\\
+bomba $\leftarrow$ bomba $\cup$ \{('B. Grandola', 'Grandola', 'Rua sem Gasoleo 12')\}\\
+\\
+\\
+INSERT INTO tem VALUES('B. Evora', 'Evr-Gasolina'):\\
+tem $\leftarrow$ tem $\cup$ \{('B. Evora', 'Evr-Gasolina')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('B. Evora', 'Evr-Gasoleo')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('B. Grandola', 'Gr-Gasolina')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('B. Grandola', 'Gr-Gasoleo')\}\\
+\\
+\\
+INSERT INTO clienteServico VALUES(119087311, 62626262, 'LusoPonte', 'Travessa Sim 33', 'Lisboa'):\\
+clienteServico $\leftarrow$ clienteServico $\cup$ \{(119087311, 62626262, 'LusoPonte', 'Travessa Sim 33', 'Lisboa')\}\\
+\\
+\\
+INSERT INTO servico VALUES(119087311, 'Pt vG', 'Ponte V. Gama'):\\
+servico $\leftarrow$ servico $\cup$ \{(119087311, 'Pt vG', 'Ponte V. Gama')\}\\
+\\
+servico $\leftarrow$ servico $\cup$ \{(119087311, 'Pt 25', 'Ponte 25 Abril')\}\\
+\\
+\\
+INSERT INTO ponte VALUES('Pt vG', 2):\\
+ponte $\leftarrow$ ponte $\cup$ \{('Pt vG', 2)\}\\
+\\
+ponte $\leftarrow$ ponte $\cup$ \{('Pt 25', 1)\}\\
+\\
+\\
+INSERT INTO tem VALUES('Pt vG', 'PtVG-EntradaSul'):\\
+tem $\leftarrow$ tem $\cup$ \{('Pt vG', 'PtVG-EntradaSul')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pt vG', 'PtVG-SaidaSul')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pt vG', 'PtVG-EntradaNorte')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pt vG', 'PtVG-SaidaNorte')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pt 25', 'Pt25-EntradaSul')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pt 25', 'Pt25-SaidaSul')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pt 25', 'Pt25-EntradaNorte')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pt 25', 'Pt25-SaidaNorte')\}\\
+\\
+\\
+INSERT INTO clienteServico VALUES(223344319, 53535353, 'BragaParques', 'Beco da beca', 'Braga'):\\
+clienteServico $\leftarrow$ clienteServico $\cup$ \{(223344319, 53535353, 'BragaParques', 'Beco da beca', 'Braga')\}\\
+\\
+\\
+INSERT INTO servico VALUES(223344319, 'Pq Evr', 'Parque de Évora'):\\
+servico $\leftarrow$ servico $\cup$ \{(223344319, 'Pq Evr', 'Parque de Évora')\}\\
+\\
+servico $\leftarrow$ servico $\cup$ \{(223344319, 'Pq Lx', 'Parque de Lisboa')\}\\
+\\
+\\
+INSERT INTO parque VALUES('Pq Evr', 0.03):\\
+parque $\leftarrow$ parque $\cup$ \{('Pq Evr', 0.03)\}\\
+\\
+parque $\leftarrow$ parque $\cup$ \{('Pq Lx', 0.04)\}\\
+\\
+\\
+INSERT INTO tem VALUES('Pq Evr', 'PE-Ent1'):\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Evr', 'PE-Ent1')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Evr', 'PE-Ent2')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Evr', 'PE-Ent3')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Evr', 'PE-Said1')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Evr', 'PE-Said2')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Evr', 'PE-Said3')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Lx', 'PL-Ent1')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Lx', 'PL-Ent2')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Lx', 'PL-Ent3')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Lx', 'PL-Said1')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Lx', 'PL-Said2')\}\\
+\\
+tem $\leftarrow$ tem $\cup$ \{('Pq Lx', 'PL-Said3')\}\\
+\\
+\\
+INSERT INTO clienteViaVerde VALUES(776537221, 49494949, 123, '23-45-AA', 'Sr Silva', 'Rua do Revo 10', 'Évora'):\\
+clienteViaVerde $\leftarrow$ clienteViaVerde $\cup$ \{(776537221, 49494949, 123, '23-45-AA', 'Sr Silva', 'Rua do Revo 10', 'Évora')\}\\
+\\
+clienteViaVerde $\leftarrow$ clienteViaVerde $\cup$ \{(766418241, 18171615, 124, '22-45-AA', 'Sra Santos', 'Rua do ZéCarlos 23', 'Évora')\}\\
+\\
+clienteViaVerde $\leftarrow$ clienteViaVerde $\cup$ \{(760103103, 12332112, 125, '21-45-AA', 'Sr Gomes', 'Rua do Shimno 4', 'Évora')\}\\
+\\
+\\
+INSERT INTO cancelaParq VALUES(123, 'PL-Ent1', 'Entrada', '2014-10-12 18:33' ):\\
+cancelaParq $\leftarrow$ cancelaParq $\cup$ \{(123, 'PL-Ent1', 'Entrada', '2014-10-12 18:33' )\}\\
+\\
+cancelaParq $\leftarrow$ cancelaParq $\cup$ \{(123, 'PL-Said1', 'Saida', '2014-10-13 08:12' )\}\\
+\\
+cancelaParq $\leftarrow$ cancelaParq $\cup$ \{(124, 'PL-Ent2', 'Entrada', '2014-10-10 11:22' )\}\\
+\\
+cancelaParq $\leftarrow$ cancelaParq $\cup$ \{(124, 'PL-Said2', 'Saida', '2014-10-12 13:30' )\}\\
+\\
+\\
+\newpage
+\noindent INSERT INTO passagemAE VALUES(125, 'A2-Saida1', '2009-11-12 14:05' ):\\
+passagemAE $\leftarrow$ passagemAE $\cup$ \{(125, 'A2-Saida1', '2009-11-12 14:05' )\}\\
+\\
+passagemAE $\leftarrow$ passagemAE $\cup$ \{(125, 'A2-Saida2', '2009-11-12 15:00' )\}\\
+\\
+passagemAE $\leftarrow$ passagemAE $\cup$ \{(125, 'PtVG-EntradaSul', '2009-11-01 18:05')\}\\
+\\
+passagemAE $\leftarrow$ passagemAE $\cup$ \{(125, 'PtVG-SaidaNorte', '2009-11-01 18:15')\}\\
+\\
+passagemAE $\leftarrow$ passagemAE $\cup$ \{(125, 'Evr-Gasoleo', '2009-10-11 21:00', 50 )\}\\
+
+\newpage
+\subsection{Algebra Relacional Exercicio 5}
+
+\noindent a)
+\indent $\Pi$\textsubscript{nome} $\sigma$\textsubscript{clienteViaVerde.IdViaVerde=ClienteViaVerdePass.IdViaVerde}(clienteViaVerde X clienteViaVerdePass)\\
+\\
+\\
+\noindent b)
+\indent $\Pi$\textsubscript{matricula} $\sigma$\textsubscript{clienteViaVerde.IdViaVerde=abastecimento.IdViaVerde and tem.idlocal='B. Evora'}(clienteServico $\bowtie$ servico $\bowtie$ abastecimento $\bowtie$ tem X clienteViaVerde)\\
+\\
+\\
+\noindent c)
+\indent $\Pi$\textsubscript{matricula} $\sigma$\textsubscript{idLocalP='A2-Saida 2'}(clienteViaVerde $\bowtie$ passagemAE $\bowtie$ tem $\bowtie$ portagemAutoEstrada)\\
+\\
+\\
+\noindent d)
+\indent $\Pi$\textsubscript{idLocalP, DataD} $\sigma$\textsubscript{clienteViaVerde.idViaVerde='123'}(clienteViaVerde $\bowtie$ abastecimento $\bowtie$ ) $\cup$ (clienteViaVerde $\bowtie$ cancelaParq) $\cup$ (clienteViaVerde $\bowtie$ portagemAutoEstrada)\\
+\\
+\\
+\noindent e)\\
+a $\leftarrow$ g sum(DataD/60) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and cancelaParq.idViaVerde='123' and entradaSaida='Entrada'}\\(cancelaParq)\\
+b $\leftarrow$ g sum(DataD/60) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and cancelaParq.idViaVerde='123' and entradaSaida='Saida'}\\(cancelaParq)\\
+\\
+g sum(valor) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and clienteViaVerde='123'}(clienteViaVerde $\bowtie$ ponte $\bowtie$ tem $\bowtie$ passagemAE)\\ $\cup$\\ g sum(valor) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and clienteViaVerde.idViaVerde='123'}(clienteViaVerde $\bowtie$ portagemAutoEstrada $\bowtie$ tem $\bowtie$ passagemAE)\\ $\cup$\\ g sum(valor) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and clienteViaVerde.idViaVerde='123'}(clienteViaVerde $\bowtie$ abastecimento)\\ $\cup$\\ g sum((b-a)*valorMinuto) $\sigma$ (parque)\\
+\\
+\newpage
+\noindent f)\\
+a $\leftarrow$ g sum(DataD/60) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and cancelaParq.nome='Sr Gomes' and entradaSaida='Entrada'}\\(cancelaParq)\\
+b $\leftarrow$ g sum(DataD/60) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and cancelaParq.nome='Sr Gomes' and entradaSaida='Saida'}\\(cancelaParq)\\
+\\
+g sum(valor) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and clienteViaVerde.nome='Sr Gomes'}(clienteViaVerde $\bowtie$ ponte $\bowtie$ tem $\bowtie$ passagemAE)\\ $\cup$\\ g sum(valor) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and clienteViaVerde.nome='Sr Gomes'}(clienteViaVerde $\bowtie$ portagemAutoEstrada $\bowtie$ tem $\bowtie$ passagemAE)\\ $\cup$\\ g sum(valor) $\sigma$\textsubscript{DataD.mes=10 and DataD.ano=2014 and clienteViaVerde.nome='Sr Gomes'}(clienteViaVerde $\bowtie$ abastecimento)\\ $\cup$\\ g sum((b-a)*valorMinuto) $\sigma$ (parque)\\
+\\
+\\
+\noindent g)
+\indent $\Pi$\textsubscript{cliente.IdViaVerde, nome} $\sigma$\textsubscript{clienteViaVerde.idViaVerde=abastecimento.idViaVerde}(clienteViaVerde X abastecimento)\\
+\\
+\\
+\noindent h)
+\indent $\Pi$\textsubscript{cliente.IdViaVerde, nome} $\sigma$\textsubscript{clienteViaVerde.idViaVerde=cancelaParq.idViaVerde}(clienteViaVerde X cancelaParq)\\
+\\
+\\
+\noindent i)\\
+a $\leftarrow$ $\Pi$\textsubscript{DataD} $\sigma$\textsubscript{entradaSaida='Entrada'}(cancelaParq)\\
+b $\leftarrow$ $\Pi$\textsubscript{DataD} $\sigma$\textsubscript{entradaSaida='Saida'}(cancelaParq)\\
+\\
+$\Pi$\textsubscript{idViaVerde, nome} $\sigma$ (clienteViaVerde) $\cup$ (b-a)\\
+\\
+\\
+\noindent j)
+\indent g max(g count ($\Pi$\textsubscript{idViaVerde} $\sigma$\textsubscript{DataD=2014-\%}(passagemAE $\bowtie$ tem $\bowtie$ ponte))\\
+\\
+\\
+\noindent k)
+\indent idLocal g max( idLocal g count( $\Pi$\textsubscript{DataD, idViaVerde} $\sigma$\textsubscript{clienteServico.nome='Galp'}(clienteServico $\bowtie$ servico $\bowtie$ bomba $\bowtie$ tem $\bowtie$ abastecimento))\\
+\\
+\\
+\noindent l)
+\indent $\Pi$\textsubscript{nomeLocal, idViaVerde, saida, DataD, valor} $\sigma$\textsubscript{DataD.ano=2014}(servico $\bowtie$ portagemAutoEstrada $\bowtie$ tem $\bowtie$ passagemAE)\\
+\\
+\\
+\noindent m)
+\indent \\
+\\
+\newpage
+\noindent n)\\
+a $\leftarrow$ $\Pi$\textsubscript{passagemAE.idViaVerde, nome} $\sigma$\textsubscript{saida='Evora'}(clienteViaVerde $\bowtie$ passagemAE $\bowtie$ tem $\bowtie$ portagemAutoEstrada)\\
+b $\leftarrow$ $\Pi$\textsubscript{passagemAE.idViaVerde, nome} $\sigma$\textsubscript{saida='Beja'}(clienteViaVerde $\bowtie$ passagemAE $\bowtie$ tem $\bowtie$ portagemAutoEstrada)\\
+c $\leftarrow$ $\Pi$\textsubscript{passagemAE.idViaVerde, nome} $\sigma$\textsubscript{saida='Faro'}(clienteViaVerde $\bowtie$ passagemAE $\bowtie$ tem $\bowtie$ portagemAutoEstrada)\\
+\\
+(a $\cap$ b $\cap$ c)\\
+\\
+\\
+\noindent o)
+\indent $\Pi$\textsubscript{clienteViaVerde.idViaVerde, nome} $\sigma$(clienteViaVerde) \- $\Pi$\textsubscript{clienteViaVerde.idViaVerde, nome} $\sigma$(clienteViaVerde $\bowtie$ passagemAE $\bowtie$ tem $\bowtie$ ponte)\\
+\\
+\\
+\noindent p)
+\indent $\Pi$\textsubscript{nome} $\sigma$(clienteServico) - ($\Pi$\textsubscript{nome} $\sigma$\textsubscript{DataD.mes=09}(servico $\bowtie$ tem $\bowtie$ cancelaParq) $\cup$ $\Pi$\textsubscript{nome} $\sigma$\textsubscript{DataD.mes=09}(servico $\bowtie$ tem $\bowtie$ passagemAE) $\cup$ $\Pi$\textsubscript{nome} $\sigma$\textsubscript{DataD.mes=09}(servico $\bowtie$ tem $\bowtie$ abastecimento))\\
+\\
+\\
+\end{document}

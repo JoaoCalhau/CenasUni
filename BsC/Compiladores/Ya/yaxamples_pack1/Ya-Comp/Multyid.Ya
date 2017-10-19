@@ -1,0 +1,11 @@
+@Multyid.Ya
+
+!any `a `b = `Int*
+`a a
+`b b
+
+//`Int a
+`Int b c d, f g
+d = g
+f = c = b
+

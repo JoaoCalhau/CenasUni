@@ -1,0 +1,25 @@
+swot = Strengths,weaknesses,opportunities,threats(ameaças)
+
+Server para planejamento estrategico, recolhendo dados[ambiente interno(forca fraquesa) e externo(poprtunidades ameacas)] da empresa
+
+como é simples pode ser usado para qualquer tipo de analise de cenario.
+
+forca-vantagens internas da empresa em relacao aos concorrentes
+(Qualidade do produto,servico.)
+
+Fraqueza-desvantagens internas da empresa
+(altos custos de producao, ma imagem)
+
+oportunidades-aspectos externos que podem levar ao desenvolvimento
+(mudanca de gostos, falencias.)
+
+ameaças-aspectos externos negativos, riscos
+(novos concorrentes)
+
+pontos fortes e opor = estrategica ofensiva
+
+p fortes e ameaca = estrategia de confronto 
+
+p fracos e opor = estrategica de reforco para aproveitar a opert
+
+p fracos e ameacas = estrategia defensica

@@ -1,0 +1,28 @@
+@With.Ya; // Test for 'With'
+
+!any `Some
+	`Int _++
+	`Int() F
+		Return _++
+
+`Some* extra
+`Some* some
+extra._++
+extra.F()
+some._++
+some.F()
+
+With some
+	_++
+	F()
+	extra._++
+	extra.F()
+
+/* Must be on output
+{
+	some->_PlusPlus
+	some->F()
+	extra->_PlusPlus
+	extra->F()
+}
+*/

@@ -1,0 +1,12 @@
+public class Inputs {
+	int hashTabela;
+	int vencedor;
+	int key;
+	JogoDoGalo item;
+	
+	public Inputs(JogoDoGalo j) {
+		this.item=j;
+		
+	}
+
+}

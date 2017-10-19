@@ -1,0 +1,371 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class tresATres {
+	
+	static int Combinações = 0;
+	static int Combinações3 = 0;
+
+	//Combinações A
+	static int CombinaçõesAAA = 0;
+	static int CombinaçõesAAC = 0;
+	static int CombinaçõesAAG = 0;
+	static int CombinaçõesAAT = 0;
+
+	static int CombinaçõesACA = 0;
+	static int CombinaçõesACC = 0;
+	static int CombinaçõesACG = 0;
+	static int CombinaçõesACT = 0;
+
+	static int CombinaçõesAGA = 0;
+	static int CombinaçõesAGC = 0;
+	static int CombinaçõesAGG = 0;
+	static int CombinaçõesAGT = 0;
+
+	static int CombinaçõesATA = 0;
+	static int CombinaçõesATC = 0;
+	static int CombinaçõesATG = 0;
+	static int CombinaçõesATT = 0;
+
+	//CombinaçõesC
+	static int CombinaçõesCAA = 0;
+	static int CombinaçõesCAC = 0;
+	static int CombinaçõesCAG = 0;
+	static int CombinaçõesCAT = 0;
+
+	static int CombinaçõesCCA = 0;
+	static int CombinaçõesCCC = 0;
+	static int CombinaçõesCCG = 0;
+	static int CombinaçõesCCT = 0;
+
+	static int CombinaçõesCGA = 0;
+	static int CombinaçõesCGC = 0;
+	static int CombinaçõesCGG = 0;
+	static int CombinaçõesCGT = 0;
+
+	static int CombinaçõesCTA = 0;
+	static int CombinaçõesCTC = 0;
+	static int CombinaçõesCTG = 0;
+	static int CombinaçõesCTT = 0;
+
+
+	//Combinações G
+	static int CombinaçõesGAA = 0;
+	static int CombinaçõesGAC = 0;
+	static int CombinaçõesGAG = 0;
+	static int CombinaçõesGAT = 0;
+
+	static int CombinaçõesGCA = 0;
+	static int CombinaçõesGCC = 0;
+	static int CombinaçõesGCG = 0;
+	static int CombinaçõesGCT = 0;
+
+	static int CombinaçõesGGA = 0;
+	static int CombinaçõesGGC = 0;
+	static int CombinaçõesGGG = 0;
+	static int CombinaçõesGGT = 0;
+
+	static int CombinaçõesGTA = 0;
+	static int CombinaçõesGTC = 0;
+	static int CombinaçõesGTG = 0;
+	static int CombinaçõesGTT = 0;
+
+
+	//Combinações T
+	static int CombinaçõesTAA = 0;
+	static int CombinaçõesTAC = 0;
+	static int CombinaçõesTAG = 0;
+	static int CombinaçõesTAT = 0;
+
+	static int CombinaçõesTCA = 0;
+	static int CombinaçõesTCC = 0;
+	static int CombinaçõesTCG = 0;
+	static int CombinaçõesTCT = 0;
+
+	static int CombinaçõesTGA = 0;
+	static int CombinaçõesTGC = 0;
+	static int CombinaçõesTGG = 0;
+	static int CombinaçõesTGT = 0;
+
+	static int CombinaçõesTTA = 0;
+	static int CombinaçõesTTC = 0;
+	static int CombinaçõesTTG = 0;
+	static int CombinaçõesTTT = 0;
+
+
+	public static String read() {
+
+		Scanner sc = new Scanner(System.in);
+		String in = sc.nextLine();
+		sc.close();
+
+		try(BufferedReader br = new BufferedReader(new FileReader(in + ".txt"))) {
+
+			String s = br.readLine();
+
+			return s;
+
+		} catch(IOException e) {
+			System.out.println("Inexistent file...");
+		}
+		return null;
+	}
+
+
+	public static void calc(String s) {
+		
+		for(int i = 0; i < s.length()-1; i+=3) {
+			if(s.charAt(i) == 'A') {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesAAA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesAAC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesAAG++;
+					else
+						CombinaçõesAAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesACA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesACC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesACG++;
+					else
+						CombinaçõesACT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesAGA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesAGC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesAGG++;
+					else
+						CombinaçõesAGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesATA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesATC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesATG++;
+					else
+						CombinaçõesATT++;
+				}
+			} else if(s.charAt(i) == 'C') {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesCAA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesCAC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesCAG++;
+					else
+						CombinaçõesCAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesCCA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesCCC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesCCG++;
+					else
+						CombinaçõesCCT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesCGA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesCGC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesCGG++;
+					else
+						CombinaçõesCGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesCTA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesCTC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesCTG++;
+					else
+						CombinaçõesCTT++;
+				}
+			} else if(s.charAt(i) == 'G') {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesGAA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesGAC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesGAG++;
+					else
+						CombinaçõesGAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesGCA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesGCC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesGCG++;
+					else
+						CombinaçõesGCT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesGGA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesGGC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesGGG++;
+					else
+						CombinaçõesGGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesGTA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesGTC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesGTG++;
+					else
+						CombinaçõesGTT++;
+				}
+			} else {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesTAA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesTAC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesTAG++;
+					else
+						CombinaçõesTAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesTCA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesTCC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesTCG++;
+					else
+						CombinaçõesTCT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesTGA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesTGC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesTGG++;
+					else
+						CombinaçõesTGT++;
+				} else {
+					if(s.charAt(i+2) == 'A')
+						CombinaçõesTTA++;
+					else if(s.charAt(i+2) == 'C')
+						CombinaçõesTTC++;
+					else if(s.charAt(i+2) == 'G')
+						CombinaçõesTTG++;
+					else
+						CombinaçõesTTT++;
+				}
+			}
+			Combinações3++;
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		calc(read());
+		
+		Combinações = Combinações3*3;
+		
+		System.out.println("Totais :");
+		System.out.println("Combinações de letras: " + Combinações + "\n");
+		System.out.println("Combinações por bloco: " + Combinações3 + "\n");
+		
+		//prints A's
+		System.out.println("Combinações AAA: " + CombinaçõesAAA + "vezes, ou seja em: " + (float)CombinaçõesAAA/Combinações3);
+		System.out.println("Combinações AAC: " + CombinaçõesAAC + "vezes, ou seja em: " + (float)CombinaçõesAAC/Combinações3);
+		System.out.println("Combinações AAG: " + CombinaçõesAAG + "vezes, ou seja em: " + (float)CombinaçõesAAG/Combinações3);
+		System.out.println("Combinações AAT: " + CombinaçõesAAT + "vezes, ou seja em: " + (float)CombinaçõesAAT/Combinações3 + "\n");
+		
+		System.out.println("Combinações ACA: " + CombinaçõesACA + "vezes, ou seja em: " + (float)CombinaçõesACA/Combinações3);
+		System.out.println("Combinações ACC: " + CombinaçõesACC + "vezes, ou seja em: " + (float)CombinaçõesACC/Combinações3);
+		System.out.println("Combinações ACG: " + CombinaçõesACG + "vezes, ou seja em: " + (float)CombinaçõesACG/Combinações3);
+		System.out.println("Combinações ACT: " + CombinaçõesACT + "vezes, ou seja em: " + (float)CombinaçõesACT/Combinações3 + "\n");
+		
+		System.out.println("Combinações AGA: " + CombinaçõesAGA + "vezes, ou seja em: " + (float)CombinaçõesAGA/Combinações3);
+		System.out.println("Combinações AGC: " + CombinaçõesAGC + "vezes, ou seja em: " + (float)CombinaçõesAGC/Combinações3);
+		System.out.println("Combinações AGG: " + CombinaçõesAGG + "vezes, ou seja em: " + (float)CombinaçõesAGG/Combinações3);
+		System.out.println("Combinações AGT: " + CombinaçõesAGT + "vezes, ou seja em: " + (float)CombinaçõesAGT/Combinações3 + "\n");
+		
+		System.out.println("Combinações ATA: " + CombinaçõesATA + "vezes, ou seja em: " + (float)CombinaçõesATA/Combinações3);
+		System.out.println("Combinações ATC: " + CombinaçõesATC + "vezes, ou seja em: " + (float)CombinaçõesATC/Combinações3);
+		System.out.println("Combinações ATG: " + CombinaçõesATG + "vezes, ou seja em: " + (float)CombinaçõesATG/Combinações3);
+		System.out.println("Combinações ATT: " + CombinaçõesATT + "vezes, ou seja em: " + (float)CombinaçõesATT/Combinações3 + "\n");
+		
+		//Prints C's
+		System.out.println("Combinações CAA: " + CombinaçõesCAA + "vezes, ou seja em: " + (float)CombinaçõesCAA/Combinações3);
+		System.out.println("Combinações CAC: " + CombinaçõesCAC + "vezes, ou seja em: " + (float)CombinaçõesCAC/Combinações3);
+		System.out.println("Combinações CAG: " + CombinaçõesCAG + "vezes, ou seja em: " + (float)CombinaçõesCAG/Combinações3);
+		System.out.println("Combinações CAT: " + CombinaçõesCAT + "vezes, ou seja em: " + (float)CombinaçõesCAT/Combinações3 + "\n");
+		
+		System.out.println("Combinações CCA: " + CombinaçõesCCA + "vezes, ou seja em: " + (float)CombinaçõesCCA/Combinações3);
+		System.out.println("Combinações CCC: " + CombinaçõesCCC + "vezes, ou seja em: " + (float)CombinaçõesCCC/Combinações3);
+		System.out.println("Combinações CCG: " + CombinaçõesCCG + "vezes, ou seja em: " + (float)CombinaçõesCCG/Combinações3);
+		System.out.println("Combinações CCT: " + CombinaçõesCCT + "vezes, ou seja em: " + (float)CombinaçõesCCT/Combinações3 + "\n");
+		
+		System.out.println("Combinações CGA: " + CombinaçõesCGA + "vezes, ou seja em: " + (float)CombinaçõesCGA/Combinações3);
+		System.out.println("Combinações CGC: " + CombinaçõesCGC + "vezes, ou seja em: " + (float)CombinaçõesCGC/Combinações3);
+		System.out.println("Combinações CGG: " + CombinaçõesCGG + "vezes, ou seja em: " + (float)CombinaçõesCGG/Combinações3);
+		System.out.println("Combinações CGT: " + CombinaçõesCGT + "vezes, ou seja em: " + (float)CombinaçõesCGT/Combinações3 + "\n");
+		
+		System.out.println("Combinações CTA: " + CombinaçõesCTA + "vezes, ou seja em: " + (float)CombinaçõesCTA/Combinações3);
+		System.out.println("Combinações CTC: " + CombinaçõesCTC + "vezes, ou seja em: " + (float)CombinaçõesCTC/Combinações3);
+		System.out.println("Combinações CTG: " + CombinaçõesCTG + "vezes, ou seja em: " + (float)CombinaçõesCTG/Combinações3);
+		System.out.println("Combinações CTT: " + CombinaçõesCTT + "vezes, ou seja em: " + (float)CombinaçõesCTT/Combinações3 + "\n");
+		
+		
+		//Prints G's
+		System.out.println("Combinações GAA: " + CombinaçõesGAA + "vezes, ou seja em: " + (float)CombinaçõesGAA/Combinações3);
+		System.out.println("Combinações GAC: " + CombinaçõesGAC + "vezes, ou seja em: " + (float)CombinaçõesGAC/Combinações3);
+		System.out.println("Combinações GAG: " + CombinaçõesGAG + "vezes, ou seja em: " + (float)CombinaçõesGAG/Combinações3);
+		System.out.println("Combinações GAT: " + CombinaçõesGAT + "vezes, ou seja em: " + (float)CombinaçõesGAT/Combinações3 + "\n");
+		
+		System.out.println("Combinações GCA: " + CombinaçõesGCA + "vezes, ou seja em: " + (float)CombinaçõesGCA/Combinações3);
+		System.out.println("Combinações GCC: " + CombinaçõesGCC + "vezes, ou seja em: " + (float)CombinaçõesGCC/Combinações3);
+		System.out.println("Combinações GCG: " + CombinaçõesGCG + "vezes, ou seja em: " + (float)CombinaçõesGCG/Combinações3);
+		System.out.println("Combinações GCT: " + CombinaçõesGCT + "vezes, ou seja em: " + (float)CombinaçõesGCT/Combinações3 + "\n");
+		
+		System.out.println("Combinações GGA: " + CombinaçõesGGA + "vezes, ou seja em: " + (float)CombinaçõesGGA/Combinações3);
+		System.out.println("Combinações GGC: " + CombinaçõesGGC + "vezes, ou seja em: " + (float)CombinaçõesGGC/Combinações3);
+		System.out.println("Combinações GGG: " + CombinaçõesGGG + "vezes, ou seja em: " + (float)CombinaçõesGGG/Combinações3);
+		System.out.println("Combinações GGT: " + CombinaçõesGGT + "vezes, ou seja em: " + (float)CombinaçõesGGT/Combinações3 + "\n");
+		
+		System.out.println("Combinações GTA: " + CombinaçõesGTA + "vezes, ou seja em: " + (float)CombinaçõesGTA/Combinações3);
+		System.out.println("Combinações GTC: " + CombinaçõesGTC + "vezes, ou seja em: " + (float)CombinaçõesGTC/Combinações3);
+		System.out.println("Combinações GTG: " + CombinaçõesGTG + "vezes, ou seja em: " + (float)CombinaçõesGTG/Combinações3);
+		System.out.println("Combinações GTT: " + CombinaçõesGTT + "vezes, ou seja em: " + (float)CombinaçõesGTT/Combinações3 + "\n");
+		
+		
+		//Prints T's
+		System.out.println("Combinações TAA: " + CombinaçõesTAA + "vezes, ou seja em: " + (float)CombinaçõesTAA/Combinações3);
+		System.out.println("Combinações TAC: " + CombinaçõesTAC + "vezes, ou seja em: " + (float)CombinaçõesTAC/Combinações3);
+		System.out.println("Combinações TAG: " + CombinaçõesTAG + "vezes, ou seja em: " + (float)CombinaçõesTAG/Combinações3);
+		System.out.println("Combinações TAT: " + CombinaçõesTAT + "vezes, ou seja em: " + (float)CombinaçõesTAT/Combinações3 + "\n");
+
+		System.out.println("Combinações TCA: " + CombinaçõesTCA + "vezes, ou seja em: " + (float)CombinaçõesTCA/Combinações3);
+		System.out.println("Combinações TCC: " + CombinaçõesTCC + "vezes, ou seja em: " + (float)CombinaçõesTCC/Combinações3);
+		System.out.println("Combinações TCG: " + CombinaçõesTCG + "vezes, ou seja em: " + (float)CombinaçõesTCG/Combinações3);
+		System.out.println("Combinações TCT: " + CombinaçõesTCT + "vezes, ou seja em: " + (float)CombinaçõesTCT/Combinações3 + "\n");
+		
+		System.out.println("Combinações TGA: " + CombinaçõesTGA + "vezes, ou seja em: " + (float)CombinaçõesTGA/Combinações3);
+		System.out.println("Combinações TGC: " + CombinaçõesTGC + "vezes, ou seja em: " + (float)CombinaçõesTGC/Combinações3);
+		System.out.println("Combinações TGG: " + CombinaçõesTGG + "vezes, ou seja em: " + (float)CombinaçõesTGG/Combinações3);
+		System.out.println("Combinações TGT: " + CombinaçõesTGT + "vezes, ou seja em: " + (float)CombinaçõesTGT/Combinações3 + "\n");
+		
+		System.out.println("Combinações TTA: " + CombinaçõesTTA + "vezes, ou seja em: " + (float)CombinaçõesTTA/Combinações3);
+		System.out.println("Combinações TTC: " + CombinaçõesTTC + "vezes, ou seja em: " + (float)CombinaçõesTTC/Combinações3);
+		System.out.println("Combinações TTG: " + CombinaçõesTTG + "vezes, ou seja em: " + (float)CombinaçõesTTG/Combinações3);
+		System.out.println("Combinações TTT: " + CombinaçõesTTT + "vezes, ou seja em: " + (float)CombinaçõesTTT/Combinações3 + "\n");
+	}
+}

@@ -1,0 +1,11 @@
+@ClassSearchTest.Ya
+
+!any `Parent
+	`Char* Min, Max
+
+!any `Child
+	`Parent __ C
+	`No() Lala
+		Min
+	`No F
+		Lala()

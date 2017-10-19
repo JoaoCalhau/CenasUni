@@ -1,0 +1,46 @@
+'''
+Created on 09/01/2014
+
+@author: Joao
+'''
+dirs=[(1,0),(0,1),(-1,0),(0,-1)]
+
+def isValid(vila,linha,coluna):
+        return linha>=0 and coluna>=0 and linha<len(vila) and coluna<len(vila[linha])
+
+def Vizinhos(vila, node, linha, coluna):
+    Caminho=[]
+    Vizinhos2(vila, node, linha, coluna, Caminho, [], linha, coluna)
+    return Caminho
+
+def Vizinhos2(vila, node, linha, coluna, Caminho, CaminhoActual, initL, initC):
+        if vila[linha][coluna] == '#': return
+        CaminhoActual.append((linha,coluna))
+        if vila[linha][coluna] == '.' or (linha == initL and coluna == initC):
+                lastVal = vila[linha][coluna]
+                vila[linha][coluna] = '#'
+                for d in dirs:
+                        if not isValid(vila, linha+d[0], coluna+d[1]): continue
+                        Vizinhos2(vila, node, linha+d[0], coluna+d[1], Caminho, CaminhoActual, initL, initC)
+                vila[linha][coluna] = lastVal
+        elif vila[linha][coluna] == node:
+                Caminho.append(list(CaminhoActual))
+        CaminhoActual.pop()
+        
+
+if __name__ == "__main__":
+    f = open('7x7.txt', 'r')
+    Vila = []
+    for line in f:
+        L = list(line)
+        Vila.append(L[:len(L)-1])
+    paths = {}
+    print("[1] Generating paths...")
+    for linha in range(0,len(Vila)):
+        for coluna in range(0, len(Vila[linha])):
+                if Vila[linha][coluna] == '.': continue
+                if Vila[linha][coluna] in paths: continue
+                paths[Vila[linha][coluna]] = Vizinhos(Vila, Vila[linha][coluna], linha, coluna)
+                print(str(Vila[linha][coluna]) + " done") 
+    for k in list(paths.keys()):
+        print(str(k) + ": " + str(len(paths[k])))       

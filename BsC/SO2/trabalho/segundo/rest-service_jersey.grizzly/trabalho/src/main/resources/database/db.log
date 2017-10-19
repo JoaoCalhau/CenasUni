@@ -1,0 +1,7 @@
+/*C2*/SET SCHEMA PUBLIC
+CREATE TABLE questionarios(\u000a\u0009idQuest int,\u000a\u0009NomeQuest varchar(255),\u000a\u0009tamanhoQuest int,\u000a\u0009PRIMARY KEY(idQuest)\u000a)
+CREATE TABLE Perguntas(\u000a\u0009idQuest int,\u000a\u0009idPergunta int,\u000a\u0009NomePergunta varchar(255),\u000a\u0009total int,\u000a\u0009quantP int,\u000a\u0009PRIMARY KEY(idQuest, idPergunta),\u000a\u0009FOREIGN KEY(idQuest) REFERENCES questionarios(idQuest) ON DELETE CASCADE\u000a)
+CREATE TABLE QuantQuest(\u000a\u0009curr int,\u000a\u0009PRIMARY KEY(curr)\u000a)
+INSERT INTO QUANTQUEST VALUES(0)
+COMMIT
+DISCONNECT

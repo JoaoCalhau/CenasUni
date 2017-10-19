@@ -1,0 +1,25 @@
+'''
+Created on 09/01/2014
+
+@author: Joao
+'''
+dirs=[(1,0),(0,1),(-1,0),(0,-1)]
+
+def isValid(vila,linha,coluna):
+        return linha>=0 and coluna>=0 and linha<len(vila) and coluna<len(vila[linha])
+
+def Vizinhos(vila, PosiçãoI, PosiçãoF, linha, coluna):
+    CaminhoActual=[]
+    Vizinhos2(vila, PosiçãoI, PosiçãoF, CaminhoActual, linha, coluna, [])
+    return CaminhoActual
+
+def Vizinhos2(vila, PosiçãoI, PosiçãoF, CaminhoActual, linha, coluna, Lista): 
+    Lista.append((linha, coluna))
+    if ((linha, coluna)==PosiçãoI) or (vila[linha][coluna]=='()'):
+        UltimoValor=(linha, coluna)
+        for d in dirs:
+            if not (isValid(vila,linha+d[0], coluna+d[1])): continue
+            Vizinhos2(vila, PosiçãoI, PosiçãoF, CaminhoActual, linha+d[0], coluna+d[1], Lista)
+    elif UltimoValor==PosiçãoF:
+        CaminhoActual.append(list(Lista))
+        

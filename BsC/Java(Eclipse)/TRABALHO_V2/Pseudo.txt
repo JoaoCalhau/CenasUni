@@ -1,0 +1,42 @@
+50/50(Recebe A,B,C,D e R):
+		retorna(R + uma random das 3 diferentes de R)
+
+		
+Telefonema(Recebe A,B,C,D, R):
+	criar ArrayLvl1 (Arraylvl1 vai ter as 4 respostas + 4 vezes a resposta certa)
+	criar ArrayLvl2 (ArrayLvl2 vai ter as 4 respostas + 2 vezes a resposta certa)
+	criar Arraylvl3 (Arraylvl1 vai ter as 4 respostas)
+	if nivel = 1:
+		retorna ("Tenho quase a certeza que é a resposta " + random(elementos ArrayLvl1)) (Exemplo: [A,B,C,D,A,A,A,A])
+		else:
+		if nivel = 2:
+			retorna ("Acho que é a resposta " + random(elementos ArrayLvl2))
+			else:
+			if nivel = 3:
+				retorna ("Não tenho a certeza mas acho que é a resposta " +  random(elementos ArrayLvl3))
+	
+	
+Publico(Recebe A,B,C,D e R):
+	if nivel = 1:
+		(Sendo A a resposta certa, por exemplo)
+		random Ar = new Random(entre 60 e 75)
+		random Br = new Random(entre 0 e 100-Ar)
+		random Cr = new Random(entre 0 e 100-Ar-Br)
+		random Dr = new Random(entre 0 e 100-Ar-Br-Cr)
+		retorna("Votações: A "+Ar+" B- "+Br +" C- "+Cr+" D- "+Dr)
+		else:
+		if nivel = 2:
+			(Sendo A a resposta certa, por exemplo)
+			random Ar = new Random(entre 40 e 60)
+			random Br = new Random(entre 0 e 100-Ar)
+			random Cr = new Random(entre 0 e 100-Ar-Br)
+			random Dr = new Random(entre 0 e 100-Ar-Br-Cr)
+			retorna("Votações: A "+Ar+" B- "+Br +" C- "+Cr+" D- "+Dr)
+			else:
+			if nivel = 3:
+				(Sendo A a resposta certa, por exemplo)
+				random Ar = new Random(entre 20 e 40)
+				random Br = new Random(entre 20 e 40)
+				random Cr = new Random(entre 0 e 100-Ar-Br)
+				random Dr = new Random(entre 0 e 100-Ar-Br-Cr)
+				retorna("Votações: A "+Ar+" B- "+Br +" C- "+Cr+" D- "+Dr)

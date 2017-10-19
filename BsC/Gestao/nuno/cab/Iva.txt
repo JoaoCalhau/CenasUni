@@ -1,0 +1,8 @@
+IVA Liquidado - Iva recebido pela empresa, resultante das vendas de existência e de outros bens/serviços
+
+IVA Suportado - IVA Suportado em compras de bbens existentes/imobiliario/Serviços
+IVA Suportado - IVA Dedutivel e IVA Nao Dedutivel
+
+IVA dedutivel - com direito a reembolso ligado as despesas de produção
+
+IVA Apuramento = IVA Dedutivel - IVA Liquidado

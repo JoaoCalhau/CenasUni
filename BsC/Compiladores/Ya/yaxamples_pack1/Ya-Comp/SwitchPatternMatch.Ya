@@ -1,0 +1,11 @@
+@SwitchPatternMatch.Ya
+
+`Char[] str = "lala"
+
+Switch str
+	"bebe"
+		Print(, "bebe;\n")
+	/la.*/
+		Print(, "/la.*/;\n")
+	Else
+		0

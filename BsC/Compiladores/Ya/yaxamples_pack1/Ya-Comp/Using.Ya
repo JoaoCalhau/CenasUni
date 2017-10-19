@@ -1,0 +1,8 @@
+@Ya/Using
+
+Use; // test for warn
+Use @Ya/Expr
+
+Use @Ya/VarsSimple.Ya,
+		@../../S/Ya/Ya/Simplest,
+		@/S/Ya/Ya/Switch; //No module - err, used "C:/S/Ya/TestSw"; UpRoot="Ya/"; Root="C:/S/"

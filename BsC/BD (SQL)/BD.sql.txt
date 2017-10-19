@@ -1,0 +1,9 @@
+CREATE TABLE clienteViaVerde (
+NIB INTEGER CHECK(NIB>0) PRIMARY KEY,
+NiF INTEGER CHECK(NiF>0),
+IdViaVerde INTEGER CHECK(IdViaVerde>0),
+Matricula INTEGER CHECK(Matricua>0),
+Nome CHAR(15),
+Morada CHAR(30),
+Cidade CHAR(10)
+);

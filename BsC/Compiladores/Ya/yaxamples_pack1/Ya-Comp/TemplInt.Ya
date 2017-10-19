@@ -1,0 +1,7 @@
+@TemplInt.Ya
+
+\`Templ(`Int n)
+	`Make Init
+		Lala = n
+
+	`Int Lala

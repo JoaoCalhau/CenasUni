@@ -1,0 +1,6 @@
+@F10.Ya
+
+`Int \F(`Int a)
+	Return a
+
+F(1)

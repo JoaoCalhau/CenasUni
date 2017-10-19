@@ -1,0 +1,49 @@
+public class CartaoSuper{
+  private static int cartoes=1;
+  
+  private int num;
+  private float valor;
+  private String cliente="Sr(a)";
+  private Desconto[] desc=new Desconto[100]; 
+  int i=0;
+  
+  
+  public CartaoSuper(String n){
+    cliente=cliente + " "+ n;
+    valor=0f;
+    num=cartoes;
+    cartoes++;
+  }
+  
+  public void acumulaDesconto(float v){
+    Desconto d=new Desconto(v);
+    desc[i]=d;
+    i++;
+    
+  }
+  
+  public void actualizaSaldo(){
+    My_Data hoje=new My_Data();
+    int indice=i;
+    for(int k=0;k<i;k++){
+      if(hoje.maior(desc[k].data_valor)){
+        valor=desc[k].valor;
+        indice=k;
+        return ;
+      }
+    }
+    for(int j=indice;j<i;j++)
+      desc[j]=desc[j+1];
+      
+      
+  }
+  
+  public String toString(){
+    String s=cliente + "\n" + "saldo " + valor +"Û\n";
+    for (int k=0;k<i;k++)
+      s+=desc[k]+"\n";
+    return s;
+    
+  }
+  
+}

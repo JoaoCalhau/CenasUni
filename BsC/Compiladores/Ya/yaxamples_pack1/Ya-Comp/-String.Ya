@@ -1,0 +1,23 @@
+@-String
+
+`No \Test
+	""
+
+	";\Aabc;\CXYZ;\o10;\d10;\x10;\b10;"
+	"A;\r"
+	"abc"
+	"
+
+	xyz"
+	";\";\';\\;\r;\n;1\t;\b;\a;\f;\v"
+
+	"
+	abc"
+	"
+	x
+	y
+	z"
+
+	"""
+	Hello;\n
+	World"""

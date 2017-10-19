@@ -1,0 +1,6 @@
+18:37:28 **** Incremental Build of configuration Debug for project EDA2 ****
+Info: Internal Builder is used for build
+gcc -o EDA2.exe "Aula2\\Exercicio9.o" "Aula2\\Exercicio11.o" "Aula1\\Exercicio8.o" "Aula1\\Exercicio7.o" "Aula1\\Exercicio6.o" "Aula1\\Exercicio5.o" "Aula1\\Exercicio4.o" "Aula1\\Exercicio3.o" "Aula1\\Exercicio2.o" "Aula1\\Exercicio1.o" 
+Info: Nothing to build for EDA2
+Info: Nothing to build for EDA2
+Info: Nothing to build for EDA2

@@ -1,0 +1,11 @@
+@Enum1Bits.Ya; // 'bits'
+// 13 Nov
+
+\`IOOps bits
+	IORead, IOWrite, IOOpenRead, IOOpenWrite, IOLength, IOLocate
+
+`Int+ bits = IORead+IOLength
+If bits& IORead
+	If bits & IOLength
+		1!
+		

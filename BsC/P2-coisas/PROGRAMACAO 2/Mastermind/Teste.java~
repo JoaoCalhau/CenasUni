@@ -1,0 +1,11 @@
+public class Teste{
+  public static void main (String[] args){
+    seq1= new Sequencia(amarelo,verde,azul,vermelho);
+    System.out.priln(seq1);
+  
+  
+  
+  }
+  
+}
+ 

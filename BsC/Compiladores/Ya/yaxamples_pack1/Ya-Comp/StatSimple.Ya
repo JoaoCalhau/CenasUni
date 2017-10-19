@@ -1,0 +1,10 @@
+@StatSimple.Ya
+
+`statement Stat `semiblock body
+	body
+//	;If 1
+//		body
+
+Stat
+	Stat
+		`Int i = 1

@@ -1,0 +1,23 @@
+@Break
+
+//;Break // err
+
+For
+	Break For
+	Break For For // err
+	Break
+	7
+For 1-1
+For; 1
+	For; 1
+		Switch 7
+			7
+				Break Switch
+				Break For Switch
+				Break For For Switch
+				7
+			Else
+				7
+				Break For // err
+		7
+	7

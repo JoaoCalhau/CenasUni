@@ -1,0 +1,11 @@
+conceito Realixação de projecto com capacidade de gerar receitas num futuro proximo de modo a comprar as despesas.
+
+-Devem ser liquidos de impostos sobre resultados.
+-Devem ser incrementais – apenas os cash flows do projecto devem ser considerados.
+-Devem ser consistentes com a taxa de desconto
+
+Plano de financiamento consiste na descricao e escalonamento ao longo da vida util do projecto
+
+cash-flow = fluxo de caixa = cash-inflow - cash-outflow
+cash-inflow = recebe durante um periodo de tempo
+cash-outflow = o que se paga 

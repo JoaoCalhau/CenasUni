@@ -1,0 +1,27 @@
+@Gen/Mem.Ya; // Memory allocator with support for kinds of allocation
+// 13 Oct, May-Apr, 98 Mar, 97 Oct
+
+\`MemAllocator
+	%virtual `No*(`Int+ size) Alloc = 0
+	%virtual `No(`No* data) Free = 0
+
+#include "Gen/MemNormal.Hpp"
+#include "Gen/MemForever.Hpp"
+
+`No*(`Int+ size, `MemAllocator& = MemNormal_) MemAlloc
+`No*(`No* data, `Int+ newSize, `MemAllocator& = MemNormal_) MemRealloc
+`No(`No* data) MemFree
+%inline `No(`No* data) MemFreeIf // data can be 0
+	If data
+		MemFree(data)
+
+\`Str
+`Char[](`Char[] s, `MemAllocator& = MemNormal_) MemStr
+`Char[](`Str s, `MemAllocator& = MemNormal_) MemStr
+`Char[](`Char[] s, `MemAllocator& = MemNormal_) MemStr
+/*
+handleDef(Err)
+extern Err EMemNotEnough
+extern bytes MemOfMemForever;*/
+
+//#define MemNew(class, allocator) *new(*(class*)MemAlloc(sizeof(class), allocator)) class

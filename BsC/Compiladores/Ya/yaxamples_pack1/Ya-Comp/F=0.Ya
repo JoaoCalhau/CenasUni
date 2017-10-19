@@ -1,0 +1,9 @@
+@F=0.Ya
+// simple test for auto copy arg to field
+
+\`XYZ
+	`Int \X, \Y, \Z
+
+`No \G(`XYZ* \__; `Int= \X, \Y, \Z) // simple f
+	`XYZ \xyz
+	G(xyz&; 0; 1; 2)

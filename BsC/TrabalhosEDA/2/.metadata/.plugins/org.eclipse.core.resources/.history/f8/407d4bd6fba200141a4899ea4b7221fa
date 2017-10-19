@@ -1,0 +1,22 @@
+public class Inputs {
+	int hashTabela;
+	int vencedor;
+	String key;
+	JogoDoGalo item;
+	
+	public Inputs(JogoDoGalo j) {
+		this.item=j;
+		
+		this.key=j.hashcode()
+		
+	}
+	
+	public String Builder(int n) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("");
+		sb.append(n);
+		String s = sb.toString();
+		return s;
+	}
+
+}

@@ -1,0 +1,83 @@
+// Search through 1 hash per YId YType YRequ. .Ya with `Bool success + auto loop: try to use new ideas
+@Ya/Search.Ya; // 14 Jan
+
+\`YSearchItem
+		:	;`item*[+]
+	`Make() : `item*[+](10){}
+
+\`YSearcher
+	: public Hash< YSearchItem<item> > { public: // use 1 YSearcher for type, i.e YSearcher<YType>, YSearcher<YId>...
+	typedef YSearchItem<item> Items
+	typedef item* FoundP
+	ArrayDef(FoundP)
+	YSearcher()
+	void Init(item* notFound)
+	void Term(){
+		Hash< YSearchItem<item> > ::Term()
+		Set.Free()
+	}
+	FoundPsA& SearchMulty(YBlock* host, uint8 nStars, YIdents name, charz kind /*#!` */, `Bool mustFind, `Bool isGlobal)
+	item& Search(YBlock* host, uint8 nStars, YIdents name, charz kind /*#!` */, `Bool mustFind, `Bool isGlobal)
+	HashItem<Items>& HI(Items& set)
+
+	FoundPsA Set
+	item NotFound
+}
+YSearcher<item>::YSearcher()
+	: Hash<Items>(9879), Set(20) {
+}
+void YSearcher<item>::Init(item* notFound){
+	Hash< YSearchItem<item> > ::Init()
+}
+SortCmpResult local YSearchCmp(item* const& a, item* const& b){
+  ;Return SortCmpResult(b->Host->Depth - a->Host->Depth)
+}
+`Bool IsParent(YBlock* parent, YBlock* child, `Bool isGlobal)
+ArrayA<item*>& YSearcher<item>::SearchMulty(YBlock* host, uint8 nStars, YIdents name, charz kind /*#!` */, `Bool mustFind, `Bool isGlobal){
+	assert(name && name.First->S())
+	//TrapIf(*name.First->S() == char(_Plus))
+	uint nNames = 0
+	Set.Max = Set.Min
+	loop name
+	//;For(YIdentItems n = name; n; ++n){
+		`Items* set = H()[name]
+		`item** prevMax = Set.Max
+		For(ArrayP<item> eye = set; eye; ++eye)
+			If(IsParent(eye->Host, host, isGlobal))
+				Set.New() = &*eye
+		If(Set.Max != prevMax)
+			++nNames
+	}
+	If(Length(Set) > 1)
+		Set.Sort(YSearchCmp)
+	If(nNames > 1){
+		Array< item* > eye = Set
+		item** out = &*eye
+		For(++eye; eye; ++eye)
+			If(*out != *eye)
+				*++out = *eye
+		Set.Max = out+1
+	}
+	If(mustFind && !Set)
+		ErraErr("Use of undefined '%s%.*s'", kind, C(name))
+	Return Set
+}
+item& YSearcher<item>::Search(YBlock* host, uint8 nStars, YIdents name, charz kind /*#!` */, `Bool mustFind, `Bool isGlobal){
+	FoundPs& set = SearchMulty(host, nStars, name, kind, mustFind, isGlobal)
+	If(Set){
+		//ErrTrapIf(Length(Set) == 2)
+		//Set.Sort(YSearchCmp)
+		Return **Set
+	}
+	If(mustFind){
+		//ErrTrapIf(name == "b")
+		NotFound.Item->Name = name
+	  ;Return NotFound
+	} Else {
+		static item emptyNotFound
+		Return emptyNotFound
+	}
+}
+
+//void SearchInit()
+//void SearchTerm()

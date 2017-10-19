@@ -1,0 +1,484 @@
+Grammar
+
+    0 $accept: input $end
+
+    1 input: %empty
+    2      | seq
+
+    3 seq: exp NL
+    4    | exp NL seq
+
+    5 exp: NUM
+    6    | ID
+    7    | exp ADD exp
+    8    | exp SUB exp
+    9    | exp MUL exp
+   10    | exp DIV exp
+   11    | SUB exp
+   12    | LPAR exp RPAR
+   13    | exp EXP exp
+   14    | LOG LPAR exp RPAR
+   15    | SIN LPAR exp RPAR
+   16    | ID ASSIGN exp
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+NUM (258) 5
+ID (259) 6 16
+NL (260) 3 4
+LOG (261) 14
+SIN (262) 15
+ASSIGN (263) 16
+SUB (264) 8 11
+ADD (265) 7
+MUL (266) 9
+DIV (267) 10
+EXP (268) 13
+NEG (269)
+LPAR (270) 12 14 15
+RPAR (271) 12 14 15
+
+
+Nonterminals, with rules where they appear
+
+$accept (17)
+    on left: 0
+input (18)
+    on left: 1 2, on right: 0
+seq (19)
+    on left: 3 4, on right: 2 4
+exp (20)
+    on left: 5 6 7 8 9 10 11 12 13 14 15 16, on right: 3 4 7 8 9 10
+    11 12 13 14 15 16
+
+
+State 0
+
+    0 $accept: . input $end
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    $default  reduce using rule 1 (input)
+
+    input  go to state 7
+    seq    go to state 8
+    exp    go to state 9
+
+
+State 1
+
+    5 exp: NUM .
+
+    $default  reduce using rule 5 (exp)
+
+
+State 2
+
+    6 exp: ID .
+   16    | ID . ASSIGN exp
+
+    ASSIGN  shift, and go to state 10
+
+    $default  reduce using rule 6 (exp)
+
+
+State 3
+
+   14 exp: LOG . LPAR exp RPAR
+
+    LPAR  shift, and go to state 11
+
+
+State 4
+
+   15 exp: SIN . LPAR exp RPAR
+
+    LPAR  shift, and go to state 12
+
+
+State 5
+
+   11 exp: SUB . exp
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 13
+
+
+State 6
+
+   12 exp: LPAR . exp RPAR
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 14
+
+
+State 7
+
+    0 $accept: input . $end
+
+    $end  shift, and go to state 15
+
+
+State 8
+
+    2 input: seq .
+
+    $default  reduce using rule 2 (input)
+
+
+State 9
+
+    3 seq: exp . NL
+    4    | exp . NL seq
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+
+    NL   shift, and go to state 16
+    SUB  shift, and go to state 17
+    ADD  shift, and go to state 18
+    MUL  shift, and go to state 19
+    DIV  shift, and go to state 20
+    EXP  shift, and go to state 21
+
+
+State 10
+
+   16 exp: ID ASSIGN . exp
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 22
+
+
+State 11
+
+   14 exp: LOG LPAR . exp RPAR
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 23
+
+
+State 12
+
+   15 exp: SIN LPAR . exp RPAR
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 24
+
+
+State 13
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   11    | SUB exp .
+   13    | exp . EXP exp
+
+    $default  reduce using rule 11 (exp)
+
+
+State 14
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   12    | LPAR exp . RPAR
+   13    | exp . EXP exp
+
+    SUB   shift, and go to state 17
+    ADD   shift, and go to state 18
+    MUL   shift, and go to state 19
+    DIV   shift, and go to state 20
+    EXP   shift, and go to state 21
+    RPAR  shift, and go to state 25
+
+
+State 15
+
+    0 $accept: input $end .
+
+    $default  accept
+
+
+State 16
+
+    3 seq: exp NL .
+    4    | exp NL . seq
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    $default  reduce using rule 3 (seq)
+
+    seq  go to state 26
+    exp  go to state 9
+
+
+State 17
+
+    8 exp: exp SUB . exp
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 27
+
+
+State 18
+
+    7 exp: exp ADD . exp
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 28
+
+
+State 19
+
+    9 exp: exp MUL . exp
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 29
+
+
+State 20
+
+   10 exp: exp DIV . exp
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 30
+
+
+State 21
+
+   13 exp: exp EXP . exp
+
+    NUM   shift, and go to state 1
+    ID    shift, and go to state 2
+    LOG   shift, and go to state 3
+    SIN   shift, and go to state 4
+    SUB   shift, and go to state 5
+    LPAR  shift, and go to state 6
+
+    exp  go to state 31
+
+
+State 22
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+   16    | ID ASSIGN exp .
+
+    SUB  shift, and go to state 17
+    ADD  shift, and go to state 18
+    MUL  shift, and go to state 19
+    DIV  shift, and go to state 20
+    EXP  shift, and go to state 21
+
+    $default  reduce using rule 16 (exp)
+
+
+State 23
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+   14    | LOG LPAR exp . RPAR
+
+    SUB   shift, and go to state 17
+    ADD   shift, and go to state 18
+    MUL   shift, and go to state 19
+    DIV   shift, and go to state 20
+    EXP   shift, and go to state 21
+    RPAR  shift, and go to state 32
+
+
+State 24
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+   15    | SIN LPAR exp . RPAR
+
+    SUB   shift, and go to state 17
+    ADD   shift, and go to state 18
+    MUL   shift, and go to state 19
+    DIV   shift, and go to state 20
+    EXP   shift, and go to state 21
+    RPAR  shift, and go to state 33
+
+
+State 25
+
+   12 exp: LPAR exp RPAR .
+
+    $default  reduce using rule 12 (exp)
+
+
+State 26
+
+    4 seq: exp NL seq .
+
+    $default  reduce using rule 4 (seq)
+
+
+State 27
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    8    | exp SUB exp .
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+
+    MUL  shift, and go to state 19
+    DIV  shift, and go to state 20
+    EXP  shift, and go to state 21
+
+    $default  reduce using rule 8 (exp)
+
+
+State 28
+
+    7 exp: exp . ADD exp
+    7    | exp ADD exp .
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+
+    MUL  shift, and go to state 19
+    DIV  shift, and go to state 20
+    EXP  shift, and go to state 21
+
+    $default  reduce using rule 7 (exp)
+
+
+State 29
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+    9    | exp MUL exp .
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+
+    EXP  shift, and go to state 21
+
+    $default  reduce using rule 9 (exp)
+
+
+State 30
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   10    | exp DIV exp .
+   13    | exp . EXP exp
+
+    EXP  shift, and go to state 21
+
+    $default  reduce using rule 10 (exp)
+
+
+State 31
+
+    7 exp: exp . ADD exp
+    8    | exp . SUB exp
+    9    | exp . MUL exp
+   10    | exp . DIV exp
+   13    | exp . EXP exp
+   13    | exp EXP exp .
+
+    EXP  shift, and go to state 21
+
+    $default  reduce using rule 13 (exp)
+
+
+State 32
+
+   14 exp: LOG LPAR exp RPAR .
+
+    $default  reduce using rule 14 (exp)
+
+
+State 33
+
+   15 exp: SIN LPAR exp RPAR .
+
+    $default  reduce using rule 15 (exp)

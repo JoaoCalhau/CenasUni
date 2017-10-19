@@ -1,0 +1,9 @@
+public class Jogadas {
+	private int jogador;
+	private String jogada;
+	
+	public Jogadas(int jogador, String jogada) {
+		this.jogador=jogador;
+		this.jogada=jogada;
+	}
+}

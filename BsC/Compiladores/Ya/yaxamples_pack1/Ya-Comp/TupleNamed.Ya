@@ -1,0 +1,10 @@
+@TupleNamed.Ya
+
+\`XY = `Int X, `Int Y
+`XY gugu = (1024, 768)
+`XY xy(640, 480)
+//xy = 800,600
+xy = xy.Y, xy.X
+
+`(`Int X, `Int Y) xy1 = (1024, 768)
+xy1.X * xy1.Y

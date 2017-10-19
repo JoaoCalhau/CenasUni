@@ -1,0 +1,4 @@
+/*C2*/SET SCHEMA PUBLIC
+CREATE TABLE alunos(\u000aid integer primary key,\u000anome varchar(255)\u000a)
+ROLLBACK
+DISCONNECT

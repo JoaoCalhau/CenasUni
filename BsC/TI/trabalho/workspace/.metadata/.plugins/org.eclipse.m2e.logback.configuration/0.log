@@ -1,0 +1,105 @@
+2015-12-28 14:42:02,298 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not available. Remote download required.
+2015-12-29 16:02:47,663 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2015-12-30 17:19:54,610 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2016-01-02 17:20:57,374 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2016-01-03 18:03:41,378 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2016-01-04 15:11:58,176 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-04 15:21:42,329 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-04 20:04:05,155 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2016-01-04 21:26:20,407 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-05 11:17:28,436 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-05 16:48:50,132 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-05 20:39:51,812 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2016-01-06 19:15:23,205 [main] INFO  o.e.r.s.GitSnippetRepository - Failed to parse query
+org.apache.lucene.queryParser.ParseException: Cannot parse '{ (location:java-statements OR location:java OR location:file)': Encountered " <RANGEEX_GOOP> "location:java "" at line 1, column 31.
+Was expecting:
+    "}" ...
+    
+	at org.apache.lucene.queryParser.QueryParser.parse(QueryParser.java:211) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	at org.eclipse.recommenders.snipmatch.FileSnippetRepository.searchSnippetFiles(FileSnippetRepository.java:347) [org.eclipse.recommenders.snipmatch_2.2.4.v20150914-0857.jar:na]
+	at org.eclipse.recommenders.snipmatch.FileSnippetRepository.doSearch(FileSnippetRepository.java:328) [org.eclipse.recommenders.snipmatch_2.2.4.v20150914-0857.jar:na]
+	at org.eclipse.recommenders.snipmatch.FileSnippetRepository.search(FileSnippetRepository.java:307) [org.eclipse.recommenders.snipmatch_2.2.4.v20150914-0857.jar:na]
+	at org.eclipse.recommenders.internal.snipmatch.rcp.EclipseGitSnippetRepository.search(EclipseGitSnippetRepository.java:280) [org.eclipse.recommenders.snipmatch.rcp_2.2.4.v20150914-0857.jar:na]
+	at org.eclipse.recommenders.internal.snipmatch.rcp.SnipmatchContentAssistProcessor.computeCompletionProposals(SnipmatchContentAssistProcessor.java:150) [org.eclipse.recommenders.snipmatch.rcp_2.2.4.v20150914-0857.jar:na]
+	at org.eclipse.jface.text.contentassist.ContentAssistant$5.run(ContentAssistant.java:1904) [org.eclipse.jface.text_3.10.0.v20150603-1752.jar:na]
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42) [org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:na]
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1902) [org.eclipse.jface.text_3.10.0.v20150603-1752.jar:na]
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:573) [org.eclipse.jface.text_3.10.0.v20150603-1752.jar:na]
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:570) [org.eclipse.jface.text_3.10.0.v20150603-1752.jar:na]
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$14.run(CompletionProposalPopup.java:1610) [org.eclipse.jface.text_3.10.0.v20150603-1752.jar:na]
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.incrementalComplete(CompletionProposalPopup.java:1604) [org.eclipse.jface.text_3.10.0.v20150603-1752.jar:na]
+	at org.eclipse.jface.text.contentassist.ContentAssistant.showPossibleCompletions(ContentAssistant.java:1719) [org.eclipse.jface.text_3.10.0.v20150603-1752.jar:na]
+	at org.eclipse.recommenders.internal.snipmatch.rcp.SnipmatchCompletionEngine$6.modifyText(SnipmatchCompletionEngine.java:251) [org.eclipse.recommenders.snipmatch.rcp_2.2.4.v20150914-0857.jar:na]
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:179) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:788) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.custom.StyledText.modifyContent(StyledText.java:7313) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.custom.StyledText.sendKeyEvent(StyledText.java:8156) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.custom.StyledText.doContent(StyledText.java:2502) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.custom.StyledText.handleKey(StyledText.java:5964) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.custom.StyledText.handleKeyDown(StyledText.java:5995) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.custom.StyledText$7.handleEvent(StyledText.java:5682) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1164) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1160) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1581) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4795) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:343) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4676) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767) [org.eclipse.swt.win32.win32.x86_64_3.104.1.v20150825-0743.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127) [org.eclipse.e4.ui.workbench.swt_0.13.0.v20150504-0621.jar:na]
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337) [org.eclipse.core.databinding.observable_1.5.0.v20150422-0725.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018) [org.eclipse.e4.ui.workbench.swt_0.13.0.v20150504-0621.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156) [org.eclipse.e4.ui.workbench_1.3.0.v20150531-1948.jar:na]
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:654) [org.eclipse.ui.workbench_3.107.0.v20150825-2206.jar:na]
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337) [org.eclipse.core.databinding.observable_1.5.0.v20150422-0725.jar:na]
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:598) [org.eclipse.ui.workbench_3.107.0.v20150825-2206.jar:na]
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150) [org.eclipse.ui.workbench_3.107.0.v20150825-2206.jar:na]
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139) [org.eclipse.ui.ide.application_1.1.0.v20150422-0725.jar:na]
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196) [org.eclipse.equinox.app_1.3.300.v20150423-1356.jar:na]
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134) [org.eclipse.osgi_3.10.101.v20150820-1432.jar:na]
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104) [org.eclipse.osgi_3.10.101.v20150820-1432.jar:na]
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380) [org.eclipse.osgi_3.10.101.v20150820-1432.jar:na]
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235) [org.eclipse.osgi_3.10.101.v20150820-1432.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_65]
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669) [org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar:na]
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608) [org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar:na]
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515) [org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar:na]
+Caused by: org.apache.lucene.queryParser.ParseException: Encountered " <RANGEEX_GOOP> "location:java "" at line 1, column 31.
+Was expecting:
+    "}" ...
+    
+	at org.apache.lucene.queryParser.QueryParser.generateParseException(QueryParser.java:1818) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	at org.apache.lucene.queryParser.QueryParser.jj_consume_token(QueryParser.java:1700) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	at org.apache.lucene.queryParser.QueryParser.Term(QueryParser.java:1510) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	at org.apache.lucene.queryParser.QueryParser.Clause(QueryParser.java:1309) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	at org.apache.lucene.queryParser.QueryParser.Query(QueryParser.java:1237) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	at org.apache.lucene.queryParser.QueryParser.TopLevelQuery(QueryParser.java:1226) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	at org.apache.lucene.queryParser.QueryParser.parse(QueryParser.java:206) ~[org.apache.lucene.core_3.5.0.v20120725-1805.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
+	... 65 common frames omitted
+2016-01-06 20:15:38,629 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-06 22:34:03,586 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2016-01-07 11:30:11,357 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-07 14:32:19,657 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-07 15:20:44,102 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-07 18:48:09,637 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-08 01:50:23,209 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2016-01-08 15:27:11,213 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-08 15:52:43,473 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-01-08 17:04:01,426 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.

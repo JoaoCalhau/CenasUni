@@ -1,0 +1,11 @@
+@Enum0.Ya
+// simple 'enum', no 'bits'
+// 13 Nov
+
+\`IOStatus enum `byte
+	IOOk; IONoFile; IOEOF; IONoOutPlace // ...
+
+`byte b = IOOk
+`IOStatus s = IOOk
+s = IONoFile
+s = 0

@@ -1,0 +1,6 @@
+\select@language {portuguese}
+\contentsline {section}{\numberline {1}Some Interesting Words}{2}
+\contentsline {section}{\numberline {2}Good Bye World}{3}
+\contentsline {subsection}{\numberline {2.1}Here's part of it}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Here's the rest of it}{3}
+\contentsline {section}{\numberline {3}Retards}{4}

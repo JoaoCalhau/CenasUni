@@ -1,0 +1,16 @@
+@`Str1.Ya
+
+\`Str
+	`Char* \Min, \Max
+
+	`Make \_0
+		Min = Max = 0
+	`Make \Z(`Char* \at)
+		Min = at
+		For; *at; ++at {}
+		Max = at
+	`Int+ \Length
+		Ret Max-Min
+
+`Int+ \Length(`Str* \__)
+	Ret Max-Min

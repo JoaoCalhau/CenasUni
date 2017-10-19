@@ -1,0 +1,3 @@
+@Tuple1.Ya
+
+`Int,`Int Pair = (0, 1), Other = (Pair/B, Pair/A)

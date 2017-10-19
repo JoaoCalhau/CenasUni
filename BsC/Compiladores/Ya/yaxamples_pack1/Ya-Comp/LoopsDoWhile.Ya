@@ -1,0 +1,16 @@
+@LoopsDoWhile.Ya
+
+For
+	7
+For 1
+For
+	7
+	7
+For 1
+For
+	`Int i = 3
+	--i
+For i
+For `Int j = 5; --j
+	
+For j

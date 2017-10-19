@@ -1,0 +1,7 @@
+public class Jogadas {
+	JogoDoGalo jg1, jg2, jg3, jg4;
+	
+	public Jogadas(JogoDoGalo j, int n) {
+		
+	}
+}

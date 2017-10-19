@@ -1,0 +1,26 @@
+public class Sequencia{
+  String cor1;
+  String cor2;
+  String cor3;
+  String cor4;
+  String[] ordem = new String[4]
+  
+  public Sequencia(c1,c2,c3,c4){
+    cor1=c1;
+    cor2=c2;
+    cor3=c3;
+    cor4=c4;
+  }
+    
+    public Ordem(c1,c2,c3,c4){
+      ordem[0]=c1;
+      ordem[1]=c2;
+      ordem[2]=c3;
+      ordem[3]=c4;
+      
+    }
+    
+    
+  
+  
+}

@@ -1,0 +1,21 @@
+@ArraySimple.Ya; // 13 July
+
+!any `Lala
+	//
+
+#template !=
+	//`* `* a = `* b
+
+!= `item
+!any `item[]; // [] - cut of another array. Array==Array
+!any `item[^]; // [^] - allocated array with no length change. Move on =. ArrayR
+!any `item[=]; // [=] - allocated array with no length change. Copy on =. ArrayL
+/*
+!any `item[+]; // [+] - full-featured array with length change support. ArrayA
+*/
+!any `item[] // cut of another array. no alloc-dealloc
+	`item* Min, Max
+
+!any `item[^]
+	`Lala _ Lala
+	`item[] _ C

@@ -1,0 +1,108 @@
+public class CartaJogar{
+  int naipe;
+  int valor;
+    
+    
+  public CartaJogar(int v,int n){
+    this.valor=v;
+    this.naipe=n;
+  }
+  
+  public int getNaipe(){
+    return this.naipe;
+  }
+  
+  public int getValor(){
+    return this.valor;
+  }
+  
+  public String toString(){
+    String v ="";
+    String n="";
+    if( this.valor==11){
+      v="D";
+    }
+    if (this.valor==12){
+      v="J";
+    }
+    if (this.valor==13){
+      v="K";
+    }
+    if (this.valor==14){
+      v="A";
+    }
+    else{
+      v = Integer.toString(this.valor);
+    }
+    
+    if (this.naipe==1){
+      n="Copas";
+    }
+    if (this.naipe==2){
+      n="Paus";
+    }
+    if (this.naipe==3){
+      n="Espadas";
+    }
+    if (this.naipe==4){
+      n="Ouros";
+    }
+    
+    if(this.naipe<2 ^this.naipe>14){
+      return "";
+    }
+    if(this.valor<1 ^this.valor>4){
+      return "";
+    }
+    else{
+        
+    return v+'_'+n;
+    }
+    
+  }
+  
+  public boolean equals(CartaJogar x){
+    return this.valor==x.valor && this.naipe==x.naipe;
+  }
+  
+  
+  
+  public int compareTo(CartaJogar y){
+    int x=-100;
+    if (this.naipe==y.naipe){
+      
+      if(this.valor<y.valor){
+        x=-1;
+        
+      }
+      
+      if( this.valor==y.valor){
+        x=0;
+        
+      }
+      
+      else{
+        x=1;
+        
+      }
+      
+    }
+   
+    if(this.naipe!=y.naipe){
+      x=100;
+      
+    }
+    return x;
+  }   
+            
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}

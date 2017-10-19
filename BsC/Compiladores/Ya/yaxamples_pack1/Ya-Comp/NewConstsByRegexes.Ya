@@ -1,0 +1,51 @@
+@NewConstsByRegexes.Ya
+// 13 Aug
+
+!any `Date
+	`Int Year Y
+	`byte Month Mon M, Day D
+
+!any `Time
+	`byte Hour H, Minute Min M, Second Sec S
+
+!any `DateTime
+	`Date Date D _
+	`Time Time T _
+
+newconst `Date
+newconst `Time
+newconst `DateTime
+
+`Int+(`Char[] number) Number
+	number.Length!
+	For `Int+ n = 0; number; ++number
+		n = *number-'0' + n*10
+	Return n
+
+newconst `Date "[0..9][0..9][0..9][0..9].[0..9][0..9].[0..9][0..9]"
+	`Date d
+	d.Year  = Number(lexema[0..4])
+	d.Month = Number(lexema[5..7])
+	d.Day   = Number(lexema[8..10])
+	Return d
+
+newconst `Time "[0..9][0..9]:[0..9][0..9]:[0..9][0..9]"
+	`Time t
+	t.Hour  = Number(lexema[0..2])
+	t.Month = Number(lexema[3..5])
+	t.Day   = Number(lexema[6..8])
+	Return t
+
+/*
+newconst `DateTime "[0..9][0..9][0..9][0..9]:[0..9][0..9]:[0..9][0..9] [0..9][0..9]:[0..9][0..9]:[0..9][0..9]"
+	`DateTime dt
+	dt.Date = `Date(lexema[0..10]); // not ready to implement such a way for first
+	dt.Time = `Time(lexema[11..11+8])
+*/
+
+/*
+// example of ;Use
+`Time t = 17:28:46
+`Date d = 2013.08.13
+//`DateTime dt = 2013.08.13 17:28:46
+*/

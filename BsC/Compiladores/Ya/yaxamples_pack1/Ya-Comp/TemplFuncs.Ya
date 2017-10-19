@@ -1,0 +1,20 @@
+@FuncsTempl.Ya
+
+`item `item* a <-> `item* b
+	`item* ptr
+	`item t = a
+	*a = *b
+	*b = t
+
+`Int i; `Int j
+i <-> j
+"abc" <-> ""
+
+`item max(`item a, `item b)
+	If a > b
+		Return a
+	Else
+		Return b
+
+`Int m = max(2, -2)
+`Char[] n = max("", "abc")

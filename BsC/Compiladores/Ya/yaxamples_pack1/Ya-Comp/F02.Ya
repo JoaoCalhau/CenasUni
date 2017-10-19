@@ -1,0 +1,20 @@
+@F02.Ya
+
+`Int \I = 0
+`Int \I = 1
+
+`Int \AlaVar
+`No \Test
+	AlaVar
+`Int \AlaVar
+	Return 0
+`Int \AlaVar // err: already
+	Return 1
+
+AlaVar
+AlaVar()
+
+`Int \F(`Int \a \b)
+`Int \F(`Int \a)
+	F(1)
+	Return a

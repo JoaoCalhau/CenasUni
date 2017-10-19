@@ -1,0 +1,32 @@
+@TupleF0.Ya; // function returning tuple
+// with output C++
+
+`(`Int,`Int)(`Int a, b) F
+	a, b = b, a
+	Return a, b
+/*
+Tuple0 F(int a,int b){
+	Tuple0(b, a).AssignTo(&a, &b)
+	Return Tuple0(a, b)
+}
+class Tuple0 { public: // the only tuple in ;Use
+	int A
+	int B
+	Tuple2(int a, int b){
+		A = a
+		B = b
+	}
+	Tuple2 AssignTo(int* a, int* b){
+		*a = A
+		*b = B
+	}
+};*/
+
+`Int,`Int Pair = F(0, 1)
+//Tuple0 Pair = F(0, 1)
+
+Pair = F(Pair)
+//Tuple0 Pair = F(Pair.A, Pair.B)
+
+Pair.B, Pair.A = F(0, 1)
+//F(0, 1).AssignTo(&Pair.B, &Pair.A)

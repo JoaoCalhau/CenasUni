@@ -1,0 +1,108 @@
+Avaliação de Projectos de Investimentos
+
+INEVESTIMENTO é toda a aplicação de fundos em activos reais ou fincanceiros com o objectivo de obter um excedente
+que renumere adequadamente a despesa efectuada, num prazo mais ou menos longo.
+
+Dois tipos de aplicações:
+
+INVESTIMENTO - perspectiva de média/longo prazo
+ESPECULAÇÂO - perspectiva de curto prazo
+
+Tipos de investimentos:
+
+INVESTIMENTOS FINANCEIROS - aplicações efectuadas por indivíduos ou por organizações em que a responsabilidade
+pela gestão não está presente. Exemplos: depósitos bancários, compra de obrigações, ect.
+
+INVESTIMENTOS REAIS - existe uma dimensão de controlo ou de capacidade de gestão que influencia a rendibilidade
+futura. Exemplos: edifícios, equipamentos, viaturas, etc.
+
+Investimentos observados sob 3 perspectivas:
+
+ÓPITCA MACROECONÓMICA - relaciona uma função de investimento agregada que afecta a procura efectiva, variando esta
+com a taxa de juro, as expectativas dos empresários em gerarem lucros e factores de risco.
+
+ÓPTICA EMPRESARIAL - decisões estratégicas relativas à afectação de recursos fincanceiros, humanos e materiais com o
+objectivo de criar mais riqueza para os empresários.
+
+ÓPTICA SOCIO-ECONÓMICA - a análise tem como objectivo o apuramento dos benefícios sociais.
+
+Tipologia dos Projectos de Investimentos:
+
+SUBSTITUIÇÃO - destinam-se a repor a capacidade instalada, em condições idênticas aos equipamentos que chegaram ao
+fim da sua vida útil, quer pela utilização quer por obsolescência. Investimentos com nível de risco reduzido.
+
+EXPANSÃO - visam dotar a empresa com maior capacidade permanente de produção. Associados a uma conquista de novos
+mercados. Investimentos com nível de risco elevado.
+
+INOVAÇÃO - fabrico de novos produtos, de novas tecnologias. Investimentos com nível de risco elevado.
+
+ESTRATÉGICOS - servem de suporte e de apoio ás restantes actividades da empresa, pelo que não podem ser facilmente
+avaliados numa óptica de rendibilidade.
+
+Relações entre projectos:
+
+DEPENDENTES - quando o resultado esperado de um deles é afectado pela decisão de efectuar ou rejeitar o outro
+investimento.
+
+INDEPENDENTES - quando não existe dependências entre os projectos.
+
+Nível de Inovação:
+
+INVESTIMENTOS AUTÓNOMOS - resultam de uma diferenciação tecnológica, comercial ou outra que garanta a
+competitividade.
+
+INVESTIMENTOS INDUZIDOS - visam o aproveitamento de factores favoráveis como benefícios fiscais, financeiros,
+subsídios, etc.
+
+Sequência da série de cash-flow:
+
+CONVENCIONAIS - os cash-flow iniciais são negativos seguindo de cash-flow positivos.
+
+NÃO CONVENCIONAIS - ao longo da vida os cash-flow variam para negativos resultantes de substituição de equipamento
+ou grande reparações.
+
+Fases do Estudo de Avaliação de um Projecto de Investimento:
+
+IDENTIFICAÇÃO
+FORMULAÇÃO
+AVALIAÇÃO
+DECISÃO
+
+Conceito de Cash-Flow
+
+Realização do projecto de investimento depende da sua capacidade em gerar fluxos financeiros (receitas) num futuro
+mais ou menos próximo de modo a cobrir as despesas efectuadas na sua realização e funcionamento. Estes fluxos anuais
+ao longo do período de vida do projecto chama-se cash-flows.
+
+Critérios de Avaliação Empresarial de Investimentos
+
+Valor Atualizado Líquido (VAL)
+
+O valor líquido atualizado de um investimento é a diferença entre os valores dos fluxos positivos e dos fluxos
+negativos que o caracterizam, depois de atualizados a uma taxa de atualização conveniente escolhida. É uma medida
+absoluta de rendibilidade.
+
+VAL < 0 - Os Cash-Flows gerados são insuficientes para pagar o investimento feito e o retorno exigido.
+VAL = 0 - Os Cash-Flows gerados correspondem exatamente ao investimento feito mais o retorno exigido.
+VAL > 0 - Os Cash-Flows gerados são superiores ao exigido.
+
+Taxa Interna de Rentabilidade (TIR)
+
+É o rendimento anual produzido durante o período de vida útil do investimento, depois de recuperados os respetivos
+custos (de investimento e de exploração) por unidade de capital nele aplicado. É uma medida de rendibilidade
+relativa.
+
+Período de Recuperação
+
+É dado pelo número de anos do seu período de vida útil necessários para que os fluxos positivos igualem o montante
+total investido.
+
+Relação Custo Benefício
+
+Expressa neste caso pelo quociente entre os benefícios (fluxos positivos) e custos (fluxos negativos) depois de
+actualizados a uma taxa convenientemente escolhida, usualmente a considerada como adequada para a determinação do
+valor líquido atualizado.
+
+RCB < 1 - Os CF gerados são menores que o investimento feito mais o retorno exigido.
+RCB = 1 - Os CF gerados são iguais ao investimento feito mais o retorno exigido.
+RCB > 1 - Os CF gerados são superiores ao investimento feito mais o retorno exigido.

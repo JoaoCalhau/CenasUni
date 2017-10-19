@@ -1,0 +1,62 @@
+﻿@StdOps.Ya; // задаёт стандартные предопределённые операции для выражений, типа присваиваний и сложений
+// не сделано: 0.приоритеты, 1.реализация: код реализации
+
+// assert
+`same `item !
+
+// assign
+`same `item = `same
+// esse ala + = : don't know how to specify
+
+// arithm
+`same + `number
+`same - `number
+`same `number + `same; `same `item* + `number; `item* `number + `item*
+`same `number - `same; `same `item* - `number
+`same `number * `same
+`same `number / `same
+`same `number % `same
+`number `number ** `number; // power
+
+// bitwise
+`same `anyint & `same
+`same `anyint ^ `same
+`same `anyint | `same
+`same ! `anyint; `same ~ `anyint; `same `anyint ~
+// для ~ ! ещо надо esse делать но забыл чего этим хотел
+
+// shifts
+`same `anyint << `Int:8
+`same `anyint >> `Int:8
+
+// '..'
+`range `anyint .. `same; // ??? `range не существует, с ним ваще не ясно тк не делалось ничего
+
+// `Bool
+ops.Sign(YLexs__(_OrOr)); ops.Op(lfese, lfese, YTypeBool, YTypeBool, YTypeBool)
+ops.Sign(YLexs__(_AndAnd)); ops.Op(lfese, lfese, YTypeBool, YTypeBool, YTypeBool)
+ops.Sign(YLexs__(_XorXor), 0, "^"); ops.Op(lfese, lfese, YTypeBool, YTypeBool, YTypeBool); // incorrect, need to convert args to `Bool before ^
+ops.Sign(YLexs__(_NotNot), 0, "!"); ops.Op(lfse, lfse, YTypeBool, 0, YTypeBool); ops.Op(lfes, lfse, YTypeBool, YTypeBool)
+		ops.Op(lfesse, lfesse, YTypeBool, YTypeBool, YTypeBool); ops.SetAfterParse(OpEsseBoolNot)
+ops.Sign(YLexs__(_EqualEqual)); ops.Op(lfese, lfese, YTypeBool, YTypeNumber, YTypeSame)
+ops.Sign(YLexs__(_NotEqual)); ops.Op(lfese, lfese, YTypeBool, YTypeItem, YTypeSame)
+ops.Sign(YLexs__(_More)); ops.Op(lfese, lfese, YTypeBool, YTypeNumber, YTypeSame)
+ops.Sign(YLexs__(_MoreEqual)); ops.Op(lfese, lfese, YTypeBool, YTypeNumber, YTypeSame)
+ops.Sign(YLexs__(_Less)); ops.Op(lfese, lfese, YTypeBool, YTypeNumber, YTypeSame)
+ops.Sign(YLexs__(_LessEqual)); ops.Op(lfese, lfese, YTypeBool, YTypeNumber, YTypeSame)
+// ++ --
+ops.Sign(YLexs__(_PlusPlus)); ops.Op(lfse, lfse, YTypeSame, 0, YTypeAnyInt); ops.SetAfterParse(OpPPMM); ops.Op(lfes, lfes, YTypeSame, YTypeAnyInt)
+		ops.SetAfterParse(OpPPMM); ops.Op(lfse, lfse, YTypeSame, 0, YTypePtr); ops.SetAfterParse(OpPPMM); ops.Op(lfes, lfes, YTypeSame, YTypePtr); ops.SetAfterParse(OpPPMM)
+ops.Sign(YLexs__(_MinusMinus)); ops.Op(lfse, lfse, YTypeSame, 0, YTypeAnyInt); ops.SetAfterParse(OpPPMM); ops.Op(lfes, lfes, YTypeSame, YTypeAnyInt); ops.SetAfterParse(OpPPMM)
+		ops.Op(lfse, lfse, YTypeSame, 0, YTypePtr); ops.SetAfterParse(OpPPMM); ops.Op(lfes, lfse, YTypeSame, YTypePtr); ops.SetAfterParse(OpPPMM)
+// ?: then Else
+ops.Sign(YLexs__(_Question, _Colon)); ops.Op(lfesese, lfesese, YTypeItem, YTypeBool, YTypeItem, YTypeSame)
+ops.Sign(YLexs__(_then), YLexs__(_else), "?", ":"); ops.Op(lfesese, lfesese, YTypeSameAsLast, YTypeBool, YTypeItem, YTypeSame); // should use a search by Keys to use appropriate k_xxxs
+ops.Sign(YLexs__(_else), 0, ":"); ops.Op(lfesese_, lfesese_, YTypeSameAsLast, YTypeBool, YTypeItem, YTypeSame); // need to use spec parser for applying esese instead of ese
+// ptr unptr
+ops.Sign(YLexs__(_Star)); ops.Op(lfse, lfse, YTypeItem, 0, YTypePtr)
+		ops.Op(lfes, lfse, YTypeItem, YTypePtr)
+ops.Sign(YLexs__(_And)); ops.Op(lfse, lfse, YTypePtr, 0, YTypeItem); ops.Op(lfes, lfse, YTypePtr, YTypeItem)
+// brackets
+ops.Sign(YLexs__(_RoundOpen, _RoundClose)); ops.Op(lfses, lfses, YTypeSame, 0, YTypeItem); ops.SetAfterParse(OpBrackets); ops.Op(lfeses, lfeses, YTypeItem, YTypeItem, YTypeItem); //???
+ops.Sign(YLexs__(_SquareOpen, _SquareClose)); ops.Op(lfeses, lfeses, YTypeItem, YTypePtr, YTypeAnyInt); // rettype not speced; no `Char[] str [ `Int ] op

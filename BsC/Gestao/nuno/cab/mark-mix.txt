@@ -1,0 +1,39 @@
+Marketing-mix:
+-Produto
+-Preço
+-Distribuição
+-Comunicação
+
+Produto
+-Benefícios funcionais
+-Benefícios psicológicos
+-Benefícios sociais
+
+Apresentacao do produto
+-Um bem físico
+-Um serviço
+-Uma ideia
+
+Marca-identificar o produto/qualidade
+Embalagem-tecnica(Conservacao/protecao), Marketing(Atrair, informar, imagem).
+
+Preço-Custo/Afeta imagem/influencia decisoes
+
+Alterações no preço
+- Objetivos de vendas não cumpridos
+- Alteração de custos
+- Alteração dos preços da concorrência
+
+Estratégia-preco baixo(Qualidade/preço), preco alto(Psicologica)
+
+Distribuição- Sistema que permite a entrega do produto
+-Certo
+-No momento certo
+-Nas quantidades certas
+-Com os serviços necessários à venda e ao consumo
+
+Comunicação
+-Força de vendas-Qualquer apresentação oral face a face com um ou mais clientes com o objetivo de efetuar uma venda
+-Promoções de vendas-Todos os incentivos de curto prazo que visam estimular as vendas de um produto
+-Relações públicas-Construir boas relações com o público, através de notícias e da construção de uma imagem da organização
+

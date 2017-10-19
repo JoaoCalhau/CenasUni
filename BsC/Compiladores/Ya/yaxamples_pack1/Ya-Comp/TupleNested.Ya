@@ -1,0 +1,7 @@
+@TupleNested.Ya
+
+`(`Int,`Int),`Int Nested = ((0,1),2)
+Nested = (0,1),2
+`Int,`Int Pair = (0,1)
+Nested.A = Pair
+Nested.A.B = 3

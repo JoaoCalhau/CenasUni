@@ -1,0 +1,22 @@
+@ClassParent.Ya
+
+\`Base
+	`Char* Min, Max
+
+	`Char* AlaMin
+		Return Min
+
+\`Child : `Base Base
+	`Char* AlaMin
+		Return Min
+
+\`GrandChild
+	`Child Child _<_
+
+	`Char* Bebe // start arg `_ __ should be auto added
+		`_* gc = __; // test for `_ and __
+		Return AlaMin
+
+`GrandChild GC
+`Char* min = GC/Min
+min = GC/AlaMin

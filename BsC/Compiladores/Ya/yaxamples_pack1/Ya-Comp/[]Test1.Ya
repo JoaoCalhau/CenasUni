@@ -1,0 +1,134 @@
+// Arrays: `item[], `item[^], `item[=], `item[+]
+// 13 May-Mar
+
+@ArrayTest1.Ya
+
+#template !=
+	//`* `* a = `* b
+#template !==
+	//`Bool `* a == `* b
+	//`Bool `* a != `* b
+	//	;Return !! a == b; // for != here is also the implementation. Really it's need to require that the implementation is the same as here defined, but probably it's not that good. Open question.
+
+!= !== `item; // this should be read so: type `item must be so that it satisfies requirements for != and !==
+
+// below: signs after `item is 1 lexema, i.e. [] [^] [=] [+] are lexemas, not groups of lexemas
+!any `item[]; // [] - cut of another array. Array==Array
+//!any `item[^]; // [^] - allocated array with no length change. Move on =. ArrayR
+//!any `item[=]; // [=] - allocated array with no length change. Copy on =. ArrayL
+//!any `item[+]; // [+] - full-featured array with length change support. ArrayA
+
+`No(`item[]* ar) ArrayItemsDestroy
+//`No(`No^* area) MemFree
+//`No(`Char[]* dest, `Char-[]-* src) ArrayCAllocCopy; // free dest before it used
+
+!any `item[] // cut of another array. no alloc-dealloc
+	//`Bool // cast to `Bool - пока не работает
+	//	;Return Min && Max > Min
+	`Make Null
+		Min = Max = 0
+	//`(`destroy|`make)() Null // вот как хотелось бы это писать
+	//	Min = Max = 0
+	`Make(`item* min, `item* max) Set
+		Min = min
+		Max = max
+	`Make(`item* min, `Int nItems) Set
+		Min = min; Max = min + nItems
+	`Make(`item[]* ar) Set
+		Min = ar.Min
+		Max = ar.Max
+	`Bool() FreeIf
+		If Min
+			ArrayItemsDestroy(_)
+			MemFree(Min)
+			Min = Max = 0
+			Return true
+		Else
+			Return false
+	//`item* [`Int index] { ;Return Min + index; }
+	`item*() Last /*const*/ { _ *!; ;Return Max - 1; }
+	//`item* * { ;Return Min; }
+	//`item[]* ++ { ++Min; ;Return _; }
+	//`item[]* -- { --Min; ;Return _; }
+	`Char[]*() b
+		Return _ `Char[]*
+	`Char-[]*() b
+		Return _ `Char-[]*
+
+	`item* Min, Max
+
+`Int+(`item-[]-* _) Size
+	Return Max `Char* - Min `Char*
+	`item-[]-* n = _; // test. Ќадо узнать правильно ли выдаст выход - подозреваю лишний & перед _
+`Int+(`item-[]-* _) Length
+	Return Max - Min
+
+!any `item[^]
+	`item[] _ C
+
+	`No(`item[]-* src) AllocCopy
+		ArrayCAllocCopy(b(), src.b())
+	`Destroy() Free
+		FreeIf()
+	`Make() Null{}
+	`Make(`item[] s) Copy
+		Min = 0
+		AllocCopy(s)
+	`Make(`item[^]* s) Move
+		FreeIf()
+		Min = 0
+		Move(s)
+	`Make(`item[^]-* s) Move
+		Min = 0
+		ArrayCAllocCopy(b(), s.b())
+	`Make(`item* allocedMin, `item* allocedMax) Set
+		Min = allocedMin; Max = allocedMax
+	`Make(`item[] ...) Set
+		AllocCopy(...)
+	`item[^]* = `item[] s
+		AllocCopy(s); ;Return _
+	`item[^]* = `item[^]* s
+		Move(s); ;Return _
+
+!any `item[=]
+	`item[^] _ R
+
+	`Make() Null {}
+	`Make(`item[] s) Copy
+		Min = 0
+		AllocCopy(s)
+	`Make(`item[^]* s) Move
+		FreeIf()
+		Min = 0
+		Move(s)
+
+	`Make(`Int+ size) Alloc; // не могу сделать реализацию из-за sizeof
+	//	Min = `item* MemAlloc(sizeof(item) * size)
+	//	Max = Min + size
+	//`make Copy(`item[] s);// : `item[^](s){}
+	//`make Move(`item[^] s);// : `item[^](s){}
+	//`make Copy(`item[=]- s);// : `item[^](s){}
+	//`make Copy(`item[+] s);// : `item[^](s){}
+
+`No(`Char[+]* a, `Int+ newAlloSize) ArrayARealloc
+`No(`Char[+]* a, `Int+ newSize, `Int+ itemSize) ArrayASetSize
+`Char*(`Char[+]* a, `Int+ deltaSize, `Int+ itemSize) ArrayAChange
+`Bool(`Char[+]-* a) ArrayAIsMaxFull
+`No(`Char[]* dest, `Char[+]* src) ArrayAShrinkMove
+`No(`Char[+]* dest, `Char[+]* src) ArrayAMove
+`No ArrayAAdd
+
+!any `item[+]
+	`item[=] _ L
+	`item* End; // end of allocated area; please don't change
+	// if End == 0 then the data in array is not owned by it, and should not be freed on destr
+
+	`Destroy FreeIf
+		If !! End { Min = 0; } // to prevent free in case of ArrayA = Array
+	`Make Null { End = 0; }
+	`Make(`Int+ allocLength) Init
+	//	End = `item* (- `Int allocLength*sizeof(`item)); /*Realloc(allocLength);*/ }
+	`Make(`item[]-* s) Copy;// : `item[=(s){ End = Max; }
+	`Make(`item[^]* s) Move;// : `item[=(s){ End = Max; }
+	`Make(`item[=]-* s) Copy;// : `item[=(s){ End = Max; }
+	`Make(`item[+]* s) Move;// { ArrayAMove(b(), s.b()); }

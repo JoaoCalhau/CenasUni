@@ -1,0 +1,45 @@
+@IO.Ya; // General Input+Output: from `Char[], to `Char[+], from+to file, stdin-stdout-stderr, from http-https, from+to ftp...
+// 13 Nov
+
+\`IOOps bits
+	IORead, IOWrite, IOOpenRead, IOOpenWrite, IOLength, IOLocate
+
+\`IOStatus enum `byte
+	IOOk, IONoFile, IOEOF, IONoOutPlace // ...
+
+`No(`IOStatus) FailIf; // throws if !IOOk
+
+// Below all ...If + `IOStatus(); must be virtual. Not written yet.
+\`IO
+	// simple funcs: fails==throws exception if problem
+	`Bool() IsEOF
+	`IOStatus; // current status of IO
+	`Bool // for reading: true if there is smth to read, i.e. if not EOF
+		Switch _ `IOStatus
+			IOEOF { ;Return false; }
+			IOOk { ;Return true; }
+			Else { /*throw(case);*/ }
+	`Char[](`Char[] to) Read
+	`No(`Char[] toOut) Write
+	`` `` _ += `Char[] toOut { Write(toOut); ;Return _; }
+	`` `` _ += `Char toOut { Write(`Char[] (&toOut, 1)); ;Return _; } // `Char[](&toOut, 1) is problematic, now not supported and maybe impossible to implement
+	`No(`Char[] ioName, `IOOps requiredOps) Open
+	`Int+:64() Length
+	`Int+:64() Location Where; // current location in IO
+	`No(`Int+ pos) Locate
+	`No() Flush; // flushes buffers of write enabled file
+	// ret status if problem
+	`IOStatus(`Char[] to) ReadIf
+	`IOStatus(`Char[] from) WriteIf
+	`IOStatus(`Char[] ioName, `IOOps requiredOps) OpenIf
+	`(`IOStatus Status, `Int+:64 Length)() LengthIf
+	`(`IOStatus Status, `Int+:64 At)() LocationIf WhereIf
+	`IOStatus(`Int+ pos) LocateIf SetLocationIf
+	`IOStatus() FlushIf
+
+\`IOWritable = `IO
+\`IOReadable = `IO
+\`IOWritableReadable = `IO
+
+`IOWritable* StdOut, StdErr
+`IOReadable* StdIn

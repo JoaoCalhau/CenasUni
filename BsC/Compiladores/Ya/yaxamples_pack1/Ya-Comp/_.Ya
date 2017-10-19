@@ -1,0 +1,18 @@
+// Test for '_' that works as 'With _;'
+@_
+
+\`Some
+	//`make {}
+	`Int _++, I
+	`Int F
+		Return _++; //_++; // no way to place ; immediately after _++
+
+`Some Hehe _; // starts 'With Hehe'
+F();  // _->F()
+_++; // _->_++
+I
+F;  // _->F()
+	`Some** Shushu _; // starts 'With Shushu'
+	_++; // _->_++
+	I
+	F();  // _->F()

@@ -1,0 +1,12 @@
+@TestPrivate
+
+`Int NotSpecifiedI
+%private `Int PrivateI
+%protected:
+`Int ProtectedI
+
+!any `Class
+	`Int ShouldBePublicI
+	%private: `Int PrivateI
+	%protected `Int ProtectedI
+	`Int _1MorePrivateI

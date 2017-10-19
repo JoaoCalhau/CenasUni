@@ -1,0 +1,74 @@
+public class SMS{
+  private int remetente;
+  private int destinatario;
+  private String[] mensagens;
+  private String texto;
+
+
+
+
+
+  public SMS(int rem,int dest,String text){
+     this.remetente=rem;
+     this.destinatario=dest;
+     this.texto="";
+        if(text.length()>160){
+          this.texto=text.substring(0,160-1);
+        }
+        else{
+          this.texto=text;
+        }
+ 
+  }
+
+  public int getDestinatario(){
+     return this.destinatario;
+
+  }
+
+  public String getMensagem(){
+     return this.texto;
+  }
+
+
+
+
+
+
+  public void setMensagem(String mess){
+     if(mess.length()>160){
+       this.texto=mess.substring(0,159);
+     }
+      else{ 
+         this.texto=mess;
+      }
+
+  }
+
+
+
+  public String toString(){
+        return "De: "+ this.remetente + "\n" +
+        "Para: " + this.destinatario + "\n" +
+        this.texto;
+
+  }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

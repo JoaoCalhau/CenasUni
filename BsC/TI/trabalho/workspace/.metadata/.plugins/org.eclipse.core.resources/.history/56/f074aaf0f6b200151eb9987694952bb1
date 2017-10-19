@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Canal {
+	
+	static String word;
+	
+	public static void read() {
+		
+		Scanner in = new Scanner(System.in);
+		String input = in.nextLine();
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(input + ".txt"))) {
+			
+			StringBuffer sb = new StringBuffer();
+			String s;
+			
+			while((s = br.readLine()) != null) {
+				sb.append(s);
+				sb.append(" - ");
+			}
+			
+			word = sb.toString();
+			
+		} catch(IOException e) {
+			System.out.println("Wrong file...");
+		}
+		
+	}
+	
+	public static void main(String[] agrs) {
+		read();
+		System.out.println(word);
+	}
+}

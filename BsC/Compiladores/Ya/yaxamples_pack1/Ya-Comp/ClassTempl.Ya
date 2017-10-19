@@ -1,0 +1,16 @@
+@ClassTempl.Ya
+
+//type %requirement `item
+\`item
+
+\`Te(`item)
+	`item* Min, Max
+	`Make Null
+		Min = Max = 0
+	`Destroy Null__
+		Min = Max = 0
+	`item* AlaMin
+		Return Min
+
+`Int(`Te a) Length
+	Return a.Max - a.Min

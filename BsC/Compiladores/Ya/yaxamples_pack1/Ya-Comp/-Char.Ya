@@ -1,0 +1,8 @@
+﻿@-Char.Ya
+
+`No \Test
+	'a'
+	'lala' + '\n' + '\0'
+	`Char \C = 'C'
+	`Int:64 \I = 'ляля'
+	I = 'lala bebe'

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="psql-9.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/project_repo/so2/rest/psql/9.4/psql-9.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

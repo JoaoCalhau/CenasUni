@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;EDA1(alt)&apos;" deleteContents="false" description="Delete resource &apos;EDA1(alt)&apos;" element1="/EDA1(alt)" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1413496345891"/>
+</session>

@@ -1,0 +1,11 @@
+@Tuple2.Ya
+
+`Int,`Int Pair
+Pair = 0, 1
+`Int Sum = Pair.A + Pair.B
+Pair = Pair
+`Int,`Int,`Int,`Int Quot
+Quot = 1,2,3,4
+Quot = Pair, 2, 3
+Quot = Pair, Pair
+Quot = 2, 3, Pair

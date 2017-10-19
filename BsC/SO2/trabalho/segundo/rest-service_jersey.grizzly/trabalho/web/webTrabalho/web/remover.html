@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Remover um Questionário</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+    </head>
+    <body>
+        <ul>
+            <li><a href="index.html"><font size="5">Menu</font></a></li>
+            <li><a href="Listar"><font size="5">Listar</font></a></li>
+            <li><a href="responder.html"><font size="5">Responder</font></a></li>
+            <li><a href="media.html"><font size="5">Consultar Média</font></a></li>
+            <li><a href="Vezes"><font size="5">Consultar Vezes</font></a></li>
+            <li><a href="criar.html"><font size="5">Criar</font></a></li>
+            <li><a class="active" href="#remover"><font size="5">Remover</font></a></li>
+        </ul>
+        <div Style="margin-left:25%; padding:1px 16px; height: 1000px;">
+            <h1 align="center">Qual o indice do questionário que pretende remover?</h1>
+            <form name="Remover" action="Remover" method="post">
+                Index do Questionário: <p><input type="text" name="index" size="40"></p>
+                <p><input type="submit" value="Proceder"></p>
+            </form>
+            <p></p>
+        </div>
+    </body>
+</html>

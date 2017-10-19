@@ -1,0 +1,8 @@
+public class canal {
+	
+	static double[] markov = {1.00, 0.10, 0.00, 0.90}; 
+	
+	public static void main(String[] args) {
+		
+	}
+}

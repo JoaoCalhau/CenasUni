@@ -1,0 +1,10 @@
+Custo de posse
+Custo de encomenda (+encomendas -custo)
+Custo de rotura (falta de stock -clientes)
+Custo de aquisição (Custo associado a compra das mercadorias)
+
+controlo de stock
+Revisão continua(Quantidade fixa de encomendas) 
+Revisão periódica(Periodo dixo de revisão)
+Modelos deterministicos(procura e aprovisionamento constantes)
+modelos estocásticos(stock de segurança)

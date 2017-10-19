@@ -1,0 +1,6 @@
+public class Cenas {
+	public static void main(String[] args) {
+		String cenas = "87";
+		int x = cenas.hashCode();
+	}
+}

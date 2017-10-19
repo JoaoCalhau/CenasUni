@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static String word;
+	
+	public static void read() throws FileNotFoundException {
+		
+		String in;
+		Scanner scan = new Scanner(System.in);
+		in = scan.nextLine();
+		scan.close();
+		
+		BufferedReader br = new BufferedReader(new FileReader(in + ".txt"));
+		
+		try {
+			
+	        StringBuilder sb = new StringBuilder();
+	        String line = br.readLine();
+
+	        while (line != null) {
+	            sb.append(line);
+	            sb.append("\n");
+	            line = br.readLine();
+	        }
+	        
+	        word = sb.toString();
+		} finally {
+			br.close();
+		}
+	}
+	
+	public static void main(String[] args) {
+		read();
+		System.out.println(word);
+	}
+}

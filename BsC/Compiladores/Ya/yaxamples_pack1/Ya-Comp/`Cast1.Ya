@@ -1,0 +1,35 @@
+@`Cast1.Ya
+
+\`IOStatus enum `Byte
+	IOOk, IONoFile, IOEOF, IONoOutPlace // ...
+
+\`IO
+	`IOStatus Status
+	`Make _0 {}
+	`Destroy __0 {}
+	`IOStatus // current status of IO
+		Return Status
+
+`Bool `IO \io
+	Return io.Status == IOOk
+
+`Int \i
+`Char \c = i `Char
+`Int \d = i + c `Int-+
+
+`IO \io
+`IOStatus \status = io `IOStatus
+status = io
+`IOStatus \status1 = io
+`Bool `Bool = io
+`Bool = io
+io `Bool
+
+/* C++ out
+IOStatus status = io.To_IOStatus()
+status = io.To_IOStatus()
+IOStatus status1 = io.To_IOStatus()
+`Bool `Bool = io.To_bool()
+`Bool = io.To_bool()
+io.To_bool()
+*/

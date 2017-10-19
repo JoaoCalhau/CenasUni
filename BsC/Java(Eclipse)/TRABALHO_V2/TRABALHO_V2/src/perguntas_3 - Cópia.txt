@@ -1,0 +1,49 @@
+2
+P: Qual o nome do primeiro álbum dos Xutos & Pontapés?
+A: 78/82
+B: Circo de Feras
+C: Ao vivo nos "Alunos de Apolo"
+D: Circo de Feras
+R: A
+
+1
+P: Qual a 3ª pessoa do plural do pretérito perfeito do verbo por?
+A: poseram
+B: pozeram
+C: puseram
+D: puserão
+R: C
+
+3
+P: O que se celebra no dia 2 de Abril?
+A: Dia Internacional do Livro
+B: Dia Internacional do Livro Infantil
+C: Dia Internacional do Aninal
+D: Dia Internacional da Criança
+R: B
+
+2
+P: Quanto é 1250 vezes 723?
+A: 907305
+B: 907350
+C: 903750
+D: 907355
+R: C
+
+3
+P: Quem realizou o filme "O Tubarão II"?
+A: Jeannot Szwarc
+B: Oliver Stone
+C: Steven Spielberg
+D: Stephen King
+R: A
+
+3
+P: Em que ano foi tomada Constantinopla e o império Bizantino, pelo império Otomano?
+A: 1823
+B: 1923
+C: 1423
+D: 1623
+R: C
+
+				   

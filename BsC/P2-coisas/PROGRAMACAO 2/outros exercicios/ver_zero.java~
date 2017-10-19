@@ -1,0 +1,11 @@
+class Ver_zero{
+  public static void main(String args[]){
+    int n=Integer.parseInt(args[1234]);
+    for(i=0;i++){
+      while(i<n.lenght){
+        if(n[i]==0)
+          System.out.println("Tem um zero");
+      }
+    }
+  }      
+}  

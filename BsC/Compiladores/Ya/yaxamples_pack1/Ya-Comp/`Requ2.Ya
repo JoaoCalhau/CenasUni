@@ -1,0 +1,17 @@
+﻿@[]Requ.Ya
+
+\`Assign
+	`_ l \= `_ r
+\`CompareEq
+	`Bool `_ l \== `_ r
+	`Bool `_ l \!= `_ r
+		Return !!(l == r)
+
+//\`ArrayA(`Type ty : %Requ `Assign `Compare)
+``_ `?`Item : %Requ `Assign \[] // defines tysign [] which is Ok to apply only to a ty that is parent of `No ie `Void that satisfies the iface of `Assign ie with assignment
+	`No Include(`Item it)
+// нет имени типа базы==арга, ведь его никак не называли. хм
+
+
+
+

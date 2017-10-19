@@ -1,0 +1,35 @@
+﻿@Balanced[]s // each source must be started by specifying its file name; std extension .Ya could be ommitted and auto added by compiler
+
+// All statements are prefixed by sigil ';' and no ';'s after statements are used
+Use @Std/StdIO // because of using function Print
+
+// all types are prefixed by '`'
+// args are written without ()
+`Char[^] MakeNew `Int+ len // `Char[^] and `Char[=] are arrays that owns their items, like it's usally in other langs;
+	// yet in assignment of `Char[^] to `Char[=] the allocated memory is moved from old to new owner, and old string becomes empty
+	// note: there are tabs at starts of many lines; this tabs specify what in C++ is {} blocks, just like in Python
+	len & 1 ==0 ! // it's a call to postfix function '!' which is an assert: len must be even
+	`Char[^] r(len) // allocate new string of length len
+	// most statements are analogous to C++ but written starting by capital letter: For If Switch Return
+	For `Char[] eye = r; eye; ++eye // // `Char[] is a simplest array of chars, which does not hold a memory used by array items
+		*eye = '[' ;*++eye = '[' // fill r by "[][][]..."
+	// below is a shuffle of "[][][]..." array
+	For `Char[] eye = r ;++eye // var eye is already defined, but being the same `Char[] it's Ok by using already exisiting var
+		`Int+ at = Random eye/Length // `Int+ is C++'s unsigned int
+		eye[-1], eye[at]  = eye[at], eye[-1] // swap using tuples
+	Return r
+Bool AreBalanced `Char[] brackets
+	`Int+ extra = 0
+	For ;brackets ;++brackets
+		Switch *brackets
+			'[' // it's a C++'s 'case': both 'case' and ':' are skipped being of no value; but the code for a case are in ala {} specifyed by tabs at line starts
+				++extra
+			']'
+				If !!extra // '!!' is `Bool not, like all other `Bool ops: && || ^^
+					Return False
+				--extra
+	Return extra == 0
+// function ala 'main' is not used: all global code from all modules are executed in an order; so below is what typically is in ala 'main'
+For `Int n=10 ;n ;--n
+	// below note that new var 'brackets' is created inside args of func call
+	Print ;"%s : %s\n" ;`Char[=] brackets = MakeNew 10 /* all bracket strings are of length 10 */;(AreBalanced brackets) ? "Ok" : "bad"

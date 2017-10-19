@@ -1,0 +1,7 @@
+dog - pouca cota de mercado, crescimento baixo. Melhor a fazer, abrir falencia ou mudar de produto
+
+? - pequena cota de mercado, crescimento rapido em pouco tempo. pode tornar-se...
+
+cow - crescimento estavel nao pode crescermuito mais.
+
+star - tecnologia, grande conta, crescimento rapido, tem de estar sempre a invertir

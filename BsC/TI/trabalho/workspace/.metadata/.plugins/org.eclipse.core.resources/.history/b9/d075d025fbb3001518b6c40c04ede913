@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class code {
+	
+	public static String read(String in) {
+		try(BufferedReader br = new BufferedReader(new FileReader(in))) {
+
+			String s = br.readLine();
+
+			return s;
+
+		} catch(IOException e) {
+			System.out.println("Wrong file...");
+		}
+		return null;
+	}
+	
+	public static void hamming() {
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		String original = read(args[0]);
+		
+		List<Integer> l = LZW.compress(original);
+		
+		List<String> compressedCoded = LZW.toCode(l);
+		
+		String appended = LZW.append(compressedCoded);
+		
+		System.out.println(appended);
+	}
+}

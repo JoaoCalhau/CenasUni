@@ -1,0 +1,326 @@
+.data
+#	FICHEIROS:
+	#	nome do ficheiro se tiver na directoria do programa
+	#	caso contrario localizacao exacta:
+	
+		file1: .asciiz "lena512color.rgb" 	#ficheiro input
+	
+	#	output file, directoria de destino
+	#	sem directoria -> o destino e' mesma directoria do programa
+	
+		file2: .asciiz "contornos81.GRAY" 	#ficheiro output
+	
+#	BUFFERS:
+		bufferRGB: .space 786432			#buffer com formato RGB (informaçao extraida do input)
+		bufferGRAY: .space 262144			#buffer com formato GRAY
+		Bhorizontal: .space 262144			#buffer da imagem aplicada com o sobel horizontal
+		Bvertical: .space 262144			#buffer da imagem aplicada com o sobel vertical
+		imagem_final: .space 262144			#buffer que contem a imagem final
+		
+#	SOBELS:
+		sobelH:	.byte	1,0,-1,2,0,-2,1,0,-1 		#sobel horizontal
+		sobelV:	.byte	1,2,1,0,0,0,-1,-2,-1		#sobel vertical
+
+.text
+
+main:
+#	argumento da primeira funcao
+	la $a0,file1 
+	jal READ_RGB_IMAGE 
+	nop
+	
+#	argumentos da segunda funçao
+	la $a1,bufferGRAY 	
+	la $a0,bufferRGB	
+	jal RGB_TO_GRAY
+	nop
+	
+#	argumentos da terceira funçao (1º parte -> sobel horizontal)
+	la $a0,bufferGRAY
+	la $a1,Bhorizontal
+	la $a2,sobelH		
+	jal convolution	
+	nop
+	
+#	argumentos da terceira funçao (2º parte -> sobel vertical)
+	la $a0,bufferGRAY
+	la $a1,Bvertical
+	la $a2,sobelV
+	jal convolution		
+	nop
+
+#	argumentos da quarta funçao (imagem final)
+	la $a0,Bhorizontal
+	la $a1,Bvertical
+	la $a2,imagem_final
+	jal contour
+	nop
+		
+#	argumentos da ultima funçao
+	la $a0,file2	
+	la $a1,imagem_final		
+	li $a2,262144			#comprimento do buffer
+	jal WRITE_TO_GRAY
+	nop
+	
+#	fim do programa
+	beq $zero,$zero,END
+	nop
+
+#first function	
+#esta funçao abre o ficheiro de input e transfere o conteudo para um buffer (bufferRGB)
+
+READ_RGB_IMAGE: 
+#	open file to read:
+	addi $a1,$zero,0 
+	addi $a2,$zero,0
+	addi $v0,$zero,13
+	syscall
+		
+#	read from file:
+	move $a0,$v0 			#copy the file descriptor from v0 to a0
+	la $a1,bufferRGB 		#load buffer adress
+	li $a2,786432	 		#hardcoded buffer length (tratam-se de 3 bytes cada pixel)
+	addi $v0,$zero,14
+	syscall
+	
+	
+	addi $v0,$zero, 16		 # close file, nao e necessario voltar a abrir
+	syscall
+
+	jr $ra 				#volta para o main
+	nop
+
+#second function
+#funçao  com o proposito de percorrer o bufferRGB atraves de um ciclo while
+#e transformar em formato GRAY, aplicando a formula 
+# 0,30R + 0,59G + 0,11B = (30R + 59G + 11B) / 100	
+RGB_TO_GRAY:	
+	addi $sp,$sp,-4
+	sw $ra,0($sp)		#necessario guarda $ra visto que existe uma funcao auxiliar dentro da funcao.
+	addi $t0,$zero,3	#inicializar contador
+	
+	jal CICLO		#funcao auxiliar
+	nop
+	
+	lw $ra,0($sp)
+	addi $sp,$sp,4
+	
+	jr $ra			#volta para main
+	nop
+	
+	CICLO:		
+		lbu $t1,0($a0)		 #primeiro byte = red
+		lbu $t2,1($a0) 		 #segundo byte = green
+		lbu $t3,2($a0)		 #tereiro byte = blue
+	
+		mul $t1,$t1,30		#multiplicaçao do red	
+		mul $t2,$t2,59		#mul do green	
+		mul $t3,$t3,11		#mul do blue
+		
+	#	somas dos valores
+		add $t3,$t3,$t2
+		add $t3,$t3,$t1
+		div $t3,$t3,100
+	#	termina a formula para esse pixel
+	
+		sb $t3,0($a1) 			#guardar o valor final em bufferGRAY
+		addi $a1,$a1,1			#contador do bufferGRAY, (gray e so 1 byte)
+		addi $a0,$a0,3			#contador do bufferRGB (RGB sao 3 bytes = 1 pixel)
+		addi $t0,$t0,3			#contador t0, conta de 3 em 3 bytes (rgb = 3 bytes)
+	
+	#ciclo while
+		blt $t0,786435,CICLO		#786435 para fazer os ultimos 3 bytes, e nao terminar antes
+		nop
+	
+		jr $ra				#volta para RGB_TO_GRAT
+		nop
+		
+#terceira da funçao do programa
+#a funcao ira preparar a funcao auxiliar para percorrer o interior da imagem e aplicar sobel, e transformar a primeira linha mais
+#o primeiro elemento da segunda linha em 0s (ou seja preto) antes de saltar para uma adicional
+convolution:
+	addi $sp,$sp,-4
+	sw   $ra,0($sp)			#ira haver chamamento de outras funçoes, portanto guardar o $ra para nao entrar em ciclo infinito
+	addi $t0,$zero,514		#começa no 514 para ignorar a primeira linha + primeiro elemento da segunda (começa originalmente
+					#no 1)
+	addi $a0,$a0,513		#avançar a primeira linha mais o primeiro pixel da segunda (começa originalmente na poisçao 0)
+	addi $a1,$a1,513		#avançar a primeira linha mais o primeiro pixel da segunda (começa originalmente na posiçao 0)
+	addi $t1,$zero,1024		#detector de margens (primeira restricao)
+	add $t4,$zero,$zero		
+	
+	jal MID				#funçao adicional
+	nop
+	
+	lw $ra,0($sp)
+	addi $sp,$sp,4
+	jr $ra				#volta para main
+	nop
+
+#funçao auxiliar que vai percorrer 510 linhas, aplicar ao bufferGRAY os sobel horizontal e vertical
+#e guardar num novo buffer (bhorizontal e bvertical)
+#usando o somatorio apresentado no enunciado do trabalho
+
+	MID:
+		#inicio dos somatorios		
+		lbu $t2,-513($a0)		#pixel no canto superior esquerdo de uma matriz de 3x3, que a0 actua como centro.
+		lb $t3,8($a2)			#pixel no canto inferior direito do sobelH (1º chamada da funçao a partir do main)
+						#ou sobelV (2º chamada da funçao a partir do main) de acordo com a formula.
+		mul $t3,$t2,$t3			#multiplica os valores
+		add $t4,$t4,$t3			#e adiciona
+		
+#		repete mais 8 vezes para as restantes posiçoes da matriz sobel e da matriz 3x3 em que a0 actua como centro.
+#		respeitando a ordem correcta descrita pelo somatorio.
+		lbu $t2,-512($a0)		##
+		lb $t3,7($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+		
+		lbu $t2,-511($a0)		##
+		lb $t3,6($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+		
+		lbu $t2,-1($a0)			##
+	 	lb $t3,5($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+		
+		lbu $t2,0($a0)			##
+		lb $t3,4($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+		
+		lbu $t2, 1($a0)			##
+		lb $t3,3($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+						
+		lbu $t2, 511($a0)		##
+		lb $t3,2($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+			
+		lbu $t2,512($a0)		##
+		lb $t3,1($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+				
+		lbu $t2, 513($a0)		##
+		lb $t3,0($a2)			##
+		mul $t3,$t2,$t3			#
+		add $t4,$t4,$t3	
+#		termina neste ponto (posicao a0) o somatorio para aquela posiçao do pixel 
+
+		abs $t4,$t4			#transforma em abs (nao existem cores negativas)
+		div $t4,$t4,4			#divide por 4
+						
+		sb $t4,0($a1)			#adiciona ao bhorizontal essa posiçao			
+		
+		addi $t0,$t0,1			#incrementa o contador
+		addi $a1,$a1,1			#incrementa o buffer que contem imagem aplicada com o sobel
+		addi $a0,$a0,1			#incrementa o buffer com a imagem GRAY
+		add $t4,$zero,$zero		#reset ao  registo t4.
+		
+		beq $t0, $t1,MARGENS		#no caso de for detectado uma margem salta para uma funçao auxiliar
+		nop
+		
+		#ciclo while
+		blt $t0,261633,MID		#faz ate a penultima linha + 1 (para conseguir fazer o ultimo pixel da penultima linha, 
+						#fazer com que ultima linha fique a preto
+		nop		
+	
+#esta funçao tem o unico proposito de avançar um pixel para a frente quando detectado margem
+#estes dois pixeis e o primeira da linha seguinte, e a posiçao seguinte que vai ser aplicada o sobel
+#Antes de saltar para esta funçao, o programa ja avançou uma casa para a frente, ou seja, encontra-se no ultimo pixel da linha actual
+#portanto basta avançar mais dois para colocar os dois anteriores a 0 (preto) e ficar na proxima posiçao pronta a ser aplicada com o 
+#sobel
+	MARGENS:				
+		addi $a1,$a1,2			#avança 2 pixeis para a frente
+		addi $a0,$a0,2			#avança 2 pixeis para a frente
+		addi $t1,$t1,512		#proxima restriçao para as margens -> +512 a restricao anterior
+		addi $t0,$t0,2			#incrementa contador
+		add $t4,$zero,$zero		#reset do contador t4
+		bne $t1,261632,MID		#volta para a funçao, caso seja diferente, caso seja igual volta para main
+		nop				#e deixa a ultima linha (linha 512) a preto.
+		
+		jr $ra				#volta pa convolution
+		nop
+		
+#quinta funcao
+ #funçao  com o proposito de fazer a soma entre o bhorizontal e bvertical
+ #inverter a cor 
+ #e guardar o resultado num ultimo buffer -> imagem_final
+ #formula:
+ # C(i,j) = 0.5 * (Bhorizontal(i,j) + bvertical(i,j))
+ 
+contour:	
+
+	addi $sp,$sp,-4
+	sw $ra,0($sp)			#como ha chamada de funcao e' necessario guardar $ra
+	addi $t0,$zero,1		#inicializar contador
+	addi $t4,$zero,255		#constante
+	
+	jal CICLO2			#funcao auxiliar, percorre um ciclo while
+	nop
+	
+	lw $ra,0($sp)
+	addi $sp,$sp,4
+	
+	jr $ra				#volta para main
+	nop
+
+
+	CICLO2:
+	
+		lbu $t1,0($a0)			#chama o pixel do buffer que contem o sobel horizontal
+		lbu $t2,0($a1)			#chama o pixel do buffer que contem o sobel vertical
+			
+		add $t3,$t2,$t1			#altera o valor pixel
+		div $t3,$t3,2			#e divide por 2 (nota: se for divisao por 1 ira dar igual ao enunciado)
+		sub $t3,$t4,$t3			#subtrai por 255 (inverter as cores)
+			
+		sb $t3,0($a2)			#guarda o valor final de t3
+		
+		addi $a0,$a0,1			#incrementa o Bhorizontal
+		addi $a1,$a1,1			#incrementa o Bvertical
+		addi $a2,$a2,1			#incrementa o imagem_final
+		addi $t0,$t0,1			#incrementa o contador geral
+		
+		blt $t0,262145,CICLO2		#so quando for igual e que passa para a funçao main
+		nop				#necessita de ser 262144 + 1 para fazer o ultimo pixel e nao terminar antes
+		
+		jr $ra				#volta para a funcao contour
+		nop
+								
+
+#ultima funcao do programa
+#unico proposito e' abrir o ficheiro para escrita
+#transferir o conteudo de imagem_final para o ficheiro de output
+#e fechar quando terminar a escrita
+WRITE_TO_GRAY: 	#segunda funçao da raiz
+
+	addi $sp,$sp,-8
+	sw $a1,0($sp)
+	sw $a2,4($sp)
+	
+	addi $a1,$zero,1	#open file to write
+	addi $a2,$zero,0
+	addi $v0,$zero,13
+	syscall
+
+	move $a0,$v0		#file descriptor
+	lw $a1,0($sp)
+	lw $a2,4($sp)
+	addi $v0,$zero,15	# para escrita
+	syscall
+	
+	addi $v0,$zero, 16	 # close
+	syscall
+	
+	addi $sp,$sp,8
+	jr $ra		#volta para contour
+	nop
+	
+END:
+#TERMINA O PROGRAMA!	

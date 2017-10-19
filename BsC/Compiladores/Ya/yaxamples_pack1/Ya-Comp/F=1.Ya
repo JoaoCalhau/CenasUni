@@ -1,0 +1,13 @@
+@F=1.Ya
+// simple test for auto copy arg to field
+
+\`XYZ
+	`Int \X, \Y, \Z
+
+	`Make \XYZ(`Int= \X, \Y, \Z){}
+	`No \F(`Int= \X, \Y, \Z)
+
+`No \F(`XYZ* \__ \xyz; `Int= \X, \Y, \Z) // member f outside
+`No \G(`XYZ* \__; `Int= \X, \Y, \Z) // simple f
+	`XYZ \xyz
+	F(xyz; 0; 1; 2)

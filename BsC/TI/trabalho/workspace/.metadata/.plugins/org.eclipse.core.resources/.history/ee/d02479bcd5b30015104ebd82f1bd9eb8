@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static String word;
+	
+	public static void read() {
+		
+		System.out.println("Insert file name (without .txt)");
+		String in;
+		Scanner scan = new Scanner(System.in);
+		in = scan.nextLine();
+		scan.close();
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(in + ".txt"))) {
+			
+			String line = br.readLine();
+
+			word = line;
+		} catch(IOException e) {
+			System.out.println("Ficheiro invalido");
+		}
+	}
+	
+	public static void main(String[] args) {
+		read();
+		
+		String original = LZWv2.read();
+		
+		List<Integer> l = LZWv2.compress(original);
+		System.out.println(l.toString() + "\n");
+		
+		String decompressed = LZWv2.decompress(l);
+		System.out.println(original.equals(decompressed) + "\n");
+		
+		List<String> compressedCoded  = LZWv2.toCode(l);
+		
+		String appended = LZWv2.append(compressedCoded);
+		
+		List<String> unAppended = LZWv2.unAppend(appended);
+		System.out.println("Binary compression size :" + appended.length() + "\n");
+		List<Integer> backAgain = LZWv2.decode(unAppended);
+		String backToBack = LZWv2.decompress(backAgain);
+		System.out.println(backToBack.equals(original) + "\n");
+	}
+}

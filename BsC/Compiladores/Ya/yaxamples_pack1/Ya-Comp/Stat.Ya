@@ -1,0 +1,22 @@
+@Stat
+
+//`statement Fur(`newvars|`No^|`empty pre; `Bool|`empty cond; `No^|`empty inc) `statement body
+`statement Fur(`newvars pre; `Bool cond; `No^ inc) `semiblock body
+	For pre; cond; inc
+		body
+
+Fur(`Int i = 5; i;)
+	--i
+
+/*
+//Fur(`Int ii = 5; ii == 0; --ii)
+Fur(`Int i = 5; !!i; --i)
+	Fur(`Int j = 5; j; --j)
+		`Char* s = i
+*/
+
+Fur(;)
+	--i
+
+
+0

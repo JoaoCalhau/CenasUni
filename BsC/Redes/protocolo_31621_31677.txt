@@ -1,0 +1,538 @@
+PRÓTOCOLO "CHAT DE REDES"
+
+José Pimenta - 31677
+João Calhau  - 31621
+
+
+
+-------------------------------------------------------------------------------
+
+ÍNDICE
+
+
+0. INTRODUÇÃO
+1. AUTENTICAÇÃO
+	1.1. COMANDOS E RESPOSTAS
+		1.1.1. REGISTAR_TEMP
+		1.1.2. REGISTAR_PERM
+		1.1.3. LOGIN
+		1.1.4. RECPASS
+2. CANAIS OU SALAS
+	2.1. COMANDOS E RESPOSTAS
+		2.1.1. CRIAR_SALA
+		2.1.2. ENTRAR_SALA
+		2.1.3. SAIR_SALA
+		2.1.4. MUDAR_TOPICO
+3. MENSAGENS
+	3.1. COMANDOS E RESPOSTAS
+		3.1.1. WHISPER
+		3.1.2. MENSAGEM_SALA
+4. TRANSFERENCIA (ASSÍNCRONA) DE FICHEIROS
+	4.1. COMANDOS E RESPOSTAS
+		4.1.1. SENDFILE
+		4.1.2. RECFILE
+		4.1.3. CANCEL
+5. OUTROS COMANDOS
+6. NOTIFICAÇÕES E MENSAGENS DO SERVIDOR
+
+
+
+
+-------------------------------------------------------------------------------
+
+0. INTRODUÇÃO
+
+O primeiro trabalho prático de Redes é um protocolo que funciona sobre TCP/IP 
+através de um modelo cliente-servidor, permitindo aos clientes enviar 
+mensagens textuais entre eles. O sistema típico compreende um servidor, ao 
+qual se podem ligar vários clientes, sendo o servidor responsável pela 
+recepção e correcta entrega das mensagens ao(s) seu(s) destinatário(s).
+
+O servidor e os clientes comunicam entre si através de mensagens (ou whispers)
+que podem ou não gerar uma resposta. A comunicação entre cliente e servidor 
+deve ser assincrona, isto é, o cliente não deve ficar à espera da resposta 
+do servidor, podendo esta chegar a qualquer altura, ou não chegar de todo.
+
+Os clientes enviam comandos ao servidor, que pode ou não enviar uma resposta.
+
+Vamos seguidamente explicar mais detalhadamente cada procedimento deste 
+modelo de "chat".
+
+
+-------------------------------------------------------------------------------
+
+
+1. AUTENTICAÇÃO
+
+Quando o utilizador inserir um nickname pretendido, primeiro vai-se verificar 
+se o tamanho do nickname é menor ou igual que o tamanho máximo (16) ou maior 
+que 0. Seguidamente vai verificar se a palavra é composta por simbolos 
+permitidos (letras minusculas, maiusculas e números), se sim 
+procura pela inicial do nickname inserido num dicionário que tem como chave o 
+simbolo inicial dos nicknames possiveis e como valor um array com os nicks de 
+todos os utilizadores registados em tuplos com a password, com uma variavel 
+para ver se é permanente, ou não, e com o e-mail.
+Depois de achar a chave no dicionário verifica se o nome inserido se encontra 
+na lista de chaves possiveis (nomes iniciados por essa letra ou número), caso 
+não encontre o nickname é porque ainda não foi inserido anteriormente, logo 
+insere. Caso contrário é porque o nickname já foi registado e é pedido ao 
+utilizador input para inserir um nick diferente, o mesmo se aplica ao usar 
+simbolos não permitidos ou exceder o tamanho máximo.
+
+nota: Os utilizadores não permanentes só podem ser removidos quando fazem log-
+out do chat.
+nota2: Password tem de ter minimo tamanho de 6 caracteres e máximo de 16.
+
+
+
+Quando um utilizador está a ser criado é lhe perguntado se quer ser utilizador 
+permanente ou não, em caso afirmativo é lhe pedida uma password e se pretende 
+registar email para o caso de perder a password.
+Caso o utilizador perca a password, ou se tenha esquecido desta, é lhe enviado 
+um email com a mesma.
+
+
+1.1. COMANDOS E RESPOSTAS
+
+
+	1.1.1. Comando: REGISTAR_TEMP
+	Parametros: <nickname>
+
+	Comando que serve para registar contas temporarias de utilizador.
+
+
+	Respostas do servidor:
+		NICK_VAL <nickname>  -> O nick foi aceite e regista um novo utilizador 
+		temporario com o nick <nickname>. É enviada uma mensagem para o 
+		servidor a informar os outros utilizadores que um utilizador novo 
+		entrou no chat através da mensagem 'NOVO_UTIL <nickname>'.
+
+		NICK_INVAL <nickname>  -> O nick não foi aceite e já está em uso por 
+		outro utilizador ou tem caracteres invalidos. Neste caso o cliente 
+		envia um novo pedido com um nick diferente.
+
+
+
+
+
+	1.1.2. Comando: REGISTAR_PERM
+	Parametros: <nickname> <password> [<e-mail>]
+
+	Comando que serve para registar contas permantentes de utilizador.
+	O e-mail pode, ou não, ser inserido.
+
+	Respostas do servidor:
+		CONTA_VAL <nickname>  -> O nick e password foram aceites e regista um 
+		novo utilizador permanente com o nick <nickname> e password <password> 
+		(e e-mail <e-mail> caso o utilizador tenha inserido e-mail). É enviada 
+		uma mensagem para o servidor default a informar os outros utilizadores 
+		que um utilizador novo entrou no chat através da mensagem 
+		'NOVO_UTIL_PERM <nickname>'.
+
+		NICK_INVAL <nickname>  -> O nick não foi aceite e já está em uso por 
+		outro utilizador ou tem caracteres invalidos. Neste caso o cliente 
+		envia um novo pedido com um nick diferente.
+
+		PASSWORD_INVAL  -> A password não foi aceite pois esta não cumpre com 
+		os requisitos de tamanho mínimo ou máximo. Mensagem só enviada caso o 
+		nickname <nickname> tenha sido validado.
+
+
+	
+	1.1.3. Comando: LOGIN
+	Parametros: <nickname> <password>
+
+	Comando que serve para um utilizador fazer login. Local de login no 
+	servidor default.
+
+	Respostas do servidor:
+		LOGIN_VAL <nickname>  -> O nickname e password foram aceites e 
+		utilizador encontra-se logado no servidor default. É enviada mensagem 
+		aos outros utilizadores que esteja no servidor default do login do 
+		utilizador a partir do comando 'UTIL_LOG <nickname>'. 
+
+		LOGIN_INVAL  -> por motivo ou do nickname não estar registado ou pela 
+		password ser errada o login não foi efectuado, é então chamado um dos 
+		comandos do servidor NICK_ERR ou PASSWORD_ERR
+
+		NICK_ERR <nickname>  -> O nickname não existe. Neste caso o utilizador 
+		tem de fazer novamente login.
+
+		PASSWORD_ERR  -> A password não foi aceite pois esta não está correcta. 
+		Mensagem só enviada caso o nickname <nickname> tenha sido validado.
+
+
+	
+	1.1.4 Comando: RECPASS
+	Parametros: <nickname>
+
+	Comando para recuperar a password enviando um mail para o e-mail inserido 
+	anteriormente na criação de conta, caso tenha sido inserido.
+
+
+	Respostas do servidor:
+		NICK_ERR <nickname>  -> O nickname não existe. É enviada mensagem ao 
+		utilizador a avisar.
+
+		EMAIL_ERR    -> O utilizador não forneceu email ou email não válido. É 
+		enviada mensagem ao utlizador a avisar.
+
+		EMAIL_SENT   -> Mensagem enviada para o e-mail do utilizador com a 
+		password.
+
+
+
+
+--------------------------------------------------------------------------------
+
+
+2. CANAIS OU SALAS
+
+Quando um utlizador faz login no chat, este é transferido para o canal default.
+É lhe permitido depois criar uma sala de conversa dedicada onde as mensagens 
+enviadas serão recebidas por todos os clientes que manifestem interesse em 
+participar nessa sala. Cada sala criada deve ter um nome e um tópico, nome 
+esse que não pode ser repetido, havendo para isso uma lista com os nomes de 
+canais em uso (podendo o tópico ser igual em mais que uma sala). Os 
+utilizadores podem assim entrar ou sair de salas, criar uma sala que ainda não 
+exista e ainda mudar o tópico de uma sala onde ele esteja presente.
+
+nota: Uma sala sem utilizadores deixa automáticamente de existir (à excepção da 
+default), existindo para isso um counter que aumenta ou diminui à entrada/saida 
+de utilizadores, deixando de existir quando esta variável chegue a 0.
+
+
+
+
+
+2.1. COMANDOS E RESPOSTAS
+
+
+	2.1.1. Comando: CRIAR_SALA
+	Parametros: <nome da sala> <tópico>
+
+	Comando para criar uma sala com nome e tópico.
+
+	Respostas do servidor:
+		SALA_VAL <nome da sala>  -> O nome da sala foi aceite, pois não existe 
+		já uma sala com este nome.
+
+		SALA_INVAL <nome da sala>  -> O nome da sala não foi aceite, pois já 
+		existe uma sala com este nome.
+
+
+
+
+	2.1.2. Comando: ENTRAR_SALA
+	Parametros: <nome da sala>
+
+	Comando para entrar numa sala existente.
+
+	Respostas do servidor:
+		SALA_OK <nome da sala>  -> O nome da sala foi aceite, pois não existe 
+		já uma sala com este nome. Manda uma mensagem para a sala a dizer que 
+		um novo utilizador entrou na mesma com o comando: 'NOVO_UTIL <nickname>'
+		.
+
+		SALA_INVAL <nome da sala>  -> O nome da sala não foi aceite, pois não 
+		existe uma sala com este nome.
+
+
+
+
+	2.1.3. Comando: SAIR_SALA
+	Parametros: não tem argumentos
+
+	Comando para sair da sala em que se encontra, o utilizador vai 
+	automaticamente para a sala default.
+
+	Respostas do servidor:
+		SALA_SAIR <nome da sala>  -> O utilizador saiu da sala em que se 
+		encontrava e vai para a sala default. Uma mensagem é enviada para os 
+		utilizadores que se encontravam na sala nesse momento.
+
+
+
+	2.1.4. Comando: MUDAR_TOPICO
+	Parametros: <topico>
+
+	Comando para mudar de tópico, da sala em que se encontra o utilizador.
+
+	Respostas do servidor:
+		TOPICO_MODIFICADO <topico>  -> O tópico foi modificado e é enviada 
+		mensagem para todos os utilizadores que se encontrem na sala.
+
+
+		TOPICO_INVALIDO -> O tópico tentou ser alterado e excedia limite de 
+		caracteres determinado (180 caracteres).
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+
+
+3. MENSAGENS
+
+Um utilizador pode enviar mensagens privadas para outro utilizador ou para uma 
+sala que contenha vários utilizadores. No último caso todos os utilizadores que 
+estejam no momento na sala recebem a mensagem.
+O utilizador só pode enviar mensagem para a sala em que se encontra, e no caso 
+de enviar mensagens para utilizadores que estejam offline, é ocorrido um erro e 
+a mensagem não é enviada. 
+
+nota: Se um utilizador mandar mais de 10 mensagens em menos de 3 segundos, é 
+considerado spam e o servidor manda uma mensagem de aviso (SPAM <mensagem>) a 
+avisar o utilizador que ficou bloqueado do chat durante 10 segundos. 
+
+
+
+
+3.1. COMANDOS E RESPOSTAS
+
+
+	3.1.1. Comando: WHISPER 
+	Parametros: <nickname> <mensagem>
+
+	Comando para mandar mensagens privadas entre utilizadores.
+
+	Respostas do servidor para quem envia:
+
+		NICK_ERR <nickname>  -> O nickname não existe. Neste caso nenhuma 
+		mensagem é enviada devido ao utilizador receptor não existir.
+
+		MENSAGEM_ENVIADA   -> Caso o utilizador receptor seja válido e a 
+		mensagem não exceda o máximo de 180 caracteres, é enviada e o 
+		utilizador é notificado, tanto o que envia como o que recebe a mensagem.
+
+		MENSAGEM_ERR -> Mensagem não enviada devido a exceder máximo de 
+		caracteres (180) ou utilizador para a qual se destina não se encontra 
+		online.
+
+
+	Respostas do servidor para quem recebe:
+
+		MENSAGEM_RECEBIDA <nickname> <mensagem> -> O utilizador que recebe a 
+		mensagem (<mensagem>) consegue ver quem a enviou através do <nickname>.
+
+
+
+	3.1.2. Comando: MENSAGEM_SALA
+	Parametros: <sala> <mensagem>
+
+	Comando para mandar mensagem para uma das salas em que o utilizador se 
+	encontra.
+
+	Respostas do servidor para quem envia:
+
+		MENSAGEM_ENVIADA <sala> -> Caso  a mensagem não exceda o máximo de 180 
+		caracteres, é enviada e os utilizadores são notificado, tanto o que 
+		envia como os que recebem a mensagem.
+
+		MENSAGEM_ERR -> Mensagem não enviada devido a exceder máximo de 
+		caracteres (180).
+
+
+	Respostas do servidor para quem recebe:
+
+		MENSAGEM_RECEBIDA <nickname> <sala> <mensagem> -> O utilizador que 
+		recebe a mensagem (<mensagem>) consegue ver quem a enviou através do 
+		<nickname>.
+
+
+-------------------------------------------------------------------------------
+
+
+
+
+
+4. TRANSFERÊNCIA (ASSÍNCRONA) DE FICHEIROS
+
+Um utilizador pode enviar ficheiros diretamente para outro utilizador, sendo o 
+ficheiro partido em pedaços que serão enviados ao destinatário que os juntará 
+depois pela ordem certa assim que todos sejam recebidos.
+O utilizador receptor pode ou não aceitar a transferência do ficheiro, sendo o 
+utilizador emissor notificado pela aceitação ou não.
+A qualquer momento tanto o utilizador emissor como o receptor podem cancelar a 
+transferência, sendo enviada mensagem ao outro utilizador.
+
+
+
+
+4.1. COMANDOS E RESPOSTAS
+
+
+	4.1.1. Comando: SENDFILE 
+	Parametros: <nickname receptor> <file>
+
+	Comando para enviar um ficheiro a um utilizador.
+
+	Respostas do servidor para quem recebe:
+
+		SEND <nickname receptor> <file> - > manda o ficheiro <file> para o 
+		utilizador <nickname receptor>.
+
+		FILE_COMING <nickname emissor> <file> -> utilizador <nickname emissor>
+		está a tentar enviar o ficheiro <file>, ao qual o utilizador pode 
+		aceitar ou não.
+
+
+
+	4.1.2. Comando: RECFILE
+	Parametros: <nickname emissor> <file> <sim ou nao>
+
+	Comando para aceitar, ou não, um ficheiro.
+
+	Respostas do servidor para quem recebe:
+
+		NICK_ERR <nickname emissor>  -> O nickname <nickname emissor> não existe
+		. Neste caso não recebe ficheiro nenhum.
+
+		SEND_ERR <nickname emissor> <file>   -> este utilizador <nickname 
+		emissor> não tentou enviar este ficheiro <file>, logo dá erro.
+
+		FILE_ERR <nickname emissor> <file>   -> o utilizador <nickname emissor> 
+		não enviou nenhum ficheiro de nome <file> que este utilizador possa 
+		aceitar.
+
+		RECEIVE <nickname emissor> <file> -> o utilizador <nickname emissor> 
+		recebe o ficheiro <file>
+
+		RECEBENDO <nickname emissor> <file>   -> o utilizador receptor aceitou 
+		e começa a receber o ficheiro <file> enviado pelo utilizador <nickname 
+		emissor>.
+
+
+
+	Respostas do servidor para quem envia:
+
+		FILE_ACCEPTED <nickname receptor> <file>   -> utilizador <nickname 
+		receptor> aceitou o envio do ficheiro <file> e o ficheiro é partido em 
+		partes e começa a ser enviado.
+
+		FILE_REJECTED <nickname receptor> <file>   -> utilizador <nickname 
+		receptor> rejeitou o envio do ficheiro <file>.
+
+
+
+
+	4.1.3. Comando: CANCEL
+	Parametros: <nickname emissor> <file>
+
+	Comando para cancelar um envio de ficheiro, ambos os utilizadores podem 
+	utilizar este comando para cancelar o envio a qualquer altura.
+
+	Respostas do servidor para quem tenta enviar:
+
+		FILE_CANCELED <nickname receptor> <file>   -> utilizador que recebia <
+		nickname receptor> cancelou o envio do ficheiro <file>.
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+5. OUTROS COMANDOS
+
+	5.1. LIST_UTIL_GERAL -> mostra quantidade de utilizadores e uma lista com 
+	todos os utilizadores.
+
+	5.2. LIST_UTIL_SALA -> mostra a quantidade de utilizadores na sala em que 
+	se encontra o utilizador que usa o comando e uma lista com os mesmos.
+
+	5.3. LIST_SALA -> lista todas as salas disponiveis para o utilizador.
+
+	5.4. QUIT [<mensagem>] -> permite o utilizador sair do servidor a qualquer 
+	altura, esteja este numa sala ou não. A <mensagem> é uma opção que o 
+	utilizador ao sair pode por ou não, esta mensagem será mostrada ás salas 
+	todas onde o utilizador estivesse.
+
+
+-------------------------------------------------------------------------------
+
+
+6. NOTIFICAÇÕES E MENSAGENS DO SERVIDOR
+
+	As mensagens de servidor podem-se dar nas seguintes situações:
+		Sair do servidor/sala:
+			UTIL_OUT <nickname>
+
+		Criação de conta:
+			E é uma conta temporaria:
+				NICK_VAL <nickname>
+				NICK_INVAL <nickname>
+
+			E é uma conta permanente:
+				CONTA_VAL <nickname>
+				NICK_INVAL <nickname>
+				PASSWORD_INVAL
+
+		Tentativa de login:
+			LOGIN_VAL <nickname>
+			LOGIN_INVAL
+				NICK_INVAL <nickname>
+				PASSWORD_INVAL
+			NICK_ERR <nickname>
+			PASSWORD_ERR
+
+		Utilizador faz login:
+			NOVO_UTIL <nickname>
+			NOVO_UTIL_PERM <nickname>
+			UTIL_LOG <nickname> 
+
+		Recuperação de password:
+			NICK_ERR <nickname>
+			EMAIL_ERR
+			EMAIL_SENT
+
+
+		Operações (do utilizador) com salas:
+			Criação de sala:
+				SALA_VAL <nome da sala>
+				SALA_INVAL <nome da sala>
+
+			Entrar numa sala:
+				SALA_OK <nome da sala>
+				SALA_INVAL <nome da sala>
+
+			Sair de uma sala:
+				SALA_SAIR <nome da sala>
+
+			Mudar de Tópico:
+				TOPICO_MODIFICADO <topico>
+				TOPICO_INVALIDO
+
+
+		Operações utilizador para utilizador:
+			Whisper:
+				NICK_ERR <nickname>
+				MENSAGEM_ENVIADA 
+				MENSAGEM_ERR
+				MENSAGEM_RECEBIDA <nickname> <mensagem>
+				SPAM <mensagem>
+
+			Mensagem de sala:
+				MENSAGEM_ENVIADA <sala>
+				MENSAGEM_ERR
+				MENSAGEM_RECEBIDA <nickname> <sala> <mensagem>
+				SPAM <mensagem>
+
+			Transferencia de ficheiros:
+				Para quem recebe o ficheiro:
+					FILE_COMING <nickname emissor> <file>
+					NICK_ERR <nickname emissor>
+					SEND_ERR <nickname emissor> <file>
+					FILE_ERR <nickname emissor> <file>
+					RECEIVE <nickname emissor> <file>
+					RECEBENDO <nickname emissor> <file>
+
+				Para quem manda o ficheiro:
+					FILE_ACCEPTED <nickname receptor> <file>
+					FILE_REJECTED <nickname receptor> <file>
+					SEND <nickname receptor> <file>
+					FILE_CANCELED <nickname receptor> <file>

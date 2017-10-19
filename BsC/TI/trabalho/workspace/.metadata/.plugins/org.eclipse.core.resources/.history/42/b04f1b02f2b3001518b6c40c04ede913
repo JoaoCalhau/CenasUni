@@ -1,0 +1,151 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class tresATres {
+	String input = "";
+
+	int total = 0;
+	int total3 = 0;
+
+	//total A
+	int totalAAA = 0;
+	int totalAAC = 0;
+	int totalAAG = 0;
+	int totalAAT = 0;
+
+	int totalACA = 0;
+	int totalACC = 0;
+	int totalACG = 0;
+	int totalACT = 0;
+
+	int totalAGA = 0;
+	int totalAGC = 0;
+	int totalAGG = 0;
+	int totalAGT = 0;
+
+	int totalATA = 0;
+	int totalATC = 0;
+	int totalATG = 0;
+	int totalATT = 0;
+
+	//totalC
+	int totalCAA = 0;
+	int totalCAC = 0;
+	int totalCAG = 0;
+	int totalCAT = 0;
+
+	int totalCCA = 0;
+	int totalCCC = 0;
+	int totalCCG = 0;
+	int totalCCT = 0;
+
+	int totalCGA = 0;
+	int totalCGC = 0;
+	int totalCGG = 0;
+	int totalCGT = 0;
+
+	int totalCTA = 0;
+	int totalCTC = 0;
+	int totalCTG = 0;
+	int totalCTT = 0;
+
+
+	//total G
+	int totalGAA = 0;
+	int totalGAC = 0;
+	int totalGAG = 0;
+	int totalGAT = 0;
+
+	int totalGCA = 0;
+	int totalGCC = 0;
+	int totalGCG = 0;
+	int totalGCT = 0;
+
+	int totalGGA = 0;
+	int totalGGC = 0;
+	int totalGGG = 0;
+	int totalGGT = 0;
+
+	int totalGTA = 0;
+	int totalGTC = 0;
+	int totalGTG = 0;
+	int totalGTT = 0;
+
+
+	//total T
+	int totalTAA = 0;
+	int totalTAC = 0;
+	int totalTAG = 0;
+	int totalTAT = 0;
+
+	int totalTCA = 0;
+	int totalTCC = 0;
+	int totalTCG = 0;
+	int totalTCT = 0;
+
+	int totalTGA = 0;
+	int totalTGC = 0;
+	int totalTGG = 0;
+	int totalTGT = 0;
+
+	int totalTTA = 0;
+	int totalTTC = 0;
+	int totalTTG = 0;
+	int totalTTT = 0;
+
+
+	public String read() {
+
+		Scanner sc = new Scanner(System.in);
+		String in = sc.nextLine();
+		sc.close();
+
+		try(BufferedReader br = new BufferedReader(new FileReader(in + ".txt"))) {
+
+			String s = br.readLine();
+
+			return s;
+
+		} catch(IOException e) {
+			System.out.println("Wrong file...");
+		}
+		return null;
+	}
+	
+	
+	public void calc(String s) {
+		for(int i = 0; i < s.length(); i+=3) {
+			if(s.charAt(i) == 'A') {
+				if(s.charAt(i+1) == 'A') {
+					if(s.charAt(i+2) == 'A')
+						totalAAA++;
+					else if(s.charAt(i+2) == 'C')
+						totalAAC++;
+					else if(s.charAt(i+2) == 'G')
+						totalAAG++;
+					else
+						totalAAT++;
+				} else if(s.charAt(i+1) == 'C') {
+					if(s.charAt(i+2) == 'A')
+						totalACA++;
+					else if(s.charAt(i+2) == 'C')
+						totalACC++;
+					else if(s.charAt(i+2) == 'G')
+						totalACG++;
+					else
+						totalACT++;
+				} else if(s.charAt(i+1) == 'G') {
+					if(s.charAt(i+2) == 'A')
+						totalAGA++;
+					else if(s.charAt(i+2) == 'C')
+						totalAGC++;
+					else if(s.charAt(i+2) == 'G')
+						totalAGG++;
+					else
+						totalAGT++;
+				}
+			}
+		}
+	}
+
+}

@@ -1,0 +1,10 @@
+@TemplClass.Ya
+
+#template !No {}
+
+!No `item; // this should be read so: type `item must be so that it satisfies requirements for !_= and !_==
+
+!any `item[]
+	`Int+ Length
+		Return Max - Min
+	`item* Min, Max

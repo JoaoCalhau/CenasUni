@@ -1,0 +1,51 @@
+  0  | ready 
+  1  |  run  | ready 
+  2  | ready |  run  | ready 
+  3  |  run  | ready | ready | ready 
+  4  | ready | ready |  run  | ready | ready 
+  5  | ready |  run  | ready | ready | ready |  new  
+  6  | ready | ready | ready |  run  | ready |  new  |  new  
+  7  |  run  | ready | ready | ready | ready |  new  |  new  |  new  
+  8  | ready | ready | ready | ready |  run  |  new  |  new  |  new  |  new  
+  9  | ready | ready |  run  | ready | ready |  new  |  new  |  new  |  new  
+ 10  | ready |  run  | ready | ready | ready |  new  |  new  |  new  |  new  
+ 11  | ready | ready | ready |  run  | ready |  new  |  new  |  new  |  new  
+ 12  |  run  | ready | ready | ready | ready |  new  |  new  |  new  |  new  
+ 13  | ready | ready | ready | ready |  run  |  new  |  new  |  new  |  new  
+ 14  | ready | ready |  run  | ready | ready |  new  |  new  |  new  |  new  
+ 15  | ready | block | ready |  run  | ready |  new  |  new  |  new  |  new  
+ 16  |  run  | block | ready | ready | ready |  new  |  new  |  new  |  new  
+ 17  | ready |  run  | ready | ready | ready |  new  |  new  |  new  |  new  
+ 18  | ready | ready | ready | ready |  run  |  new  |  new  |  new  |  new  
+ 19  |  run  | ready | block | block | ready |  new  |  new  |  new  |  new  
+ 20  | ready |  run  | block | block | ready |  new  |  new  |  new  |  new  
+ 21  | ready | ready |  run  | block | ready |  new  |  new  |  new  |  new  
+ 22  |  run  | ready | ready | block | block |  new  |  new  |  new  |  new  
+ 23  | ready |  run  | ready | block | block |  new  |  new  |  new  |  new  
+  0  | ready 
+  1  |  run  | ready 
+  2  | ready |  run  | ready 
+  3  |  run  | ready | ready | ready 
+  4  | ready | ready |  run  | ready | ready 
+  5  | ready |  run  | ready | ready | ready |  new  
+  6  | ready | ready | ready |  run  | ready |  new  
+  7  |  run  | ready | ready | ready | ready |  new  |  new  
+  8  | ready | ready | ready | ready |  run  |  new  |  new  |  new  
+  9  | ready | ready |  run  | ready | ready |  new  |  new  |  new  |  new  
+ 10  | ready |  run  | ready | ready | ready |  new  |  new  |  new  |  new  |  new  
+ 11  | ready | ready | ready |  run  | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 12  |  run  | ready | ready | ready | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 13  | ready | ready | ready | ready |  run  |  new  |  new  |  new  |  new  |  new  |  new  
+ 14  | ready | ready |  run  | ready | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 15  | ready | block | ready |  run  | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 16  |  run  | block | ready | ready | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 17  | ready |  run  | ready | ready | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 18  | ready | ready | ready | ready |  run  |  new  |  new  |  new  |  new  |  new  |  new  
+ 19  |  run  | ready | block | block | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 20  | ready |  run  | block | block | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 21  | ready | ready |  run  | block | ready |  new  |  new  |  new  |  new  |  new  |  new  
+ 22  |  run  | ready | ready | block | block |  new  |  new  |  new  |  new  |  new  |  new  
+ 23  | ready |  run  | ready | block | block |  new  |  new  |  new  |  new  |  new  |  new  
+ 24  | ready | ready |  run  | block | block |  new  |  new  |  new  |  new  |  new  |  new  
+ 25  | ready | ready | ready |  run  | block |  new  |  new  |  new  |  new  |  new  |  new  
+ 26  | block |  run  | ready | ready | block |  new  |  new  |  new  |  new  |  new  |  new  

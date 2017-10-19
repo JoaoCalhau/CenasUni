@@ -1,0 +1,44 @@
+'''
+Created on 09/01/2014
+
+@author: Joao
+'''
+
+lista_poss=[(1,0),(0,1),(-1,0),(0,-1)]
+vila=[[1,0,0],[0,0,0],[0,0,1]]
+
+def transposeMatrix(vila):
+    """Calcula a transposta de uma matriz."""
+    transposta=[]
+    for j in range(len(vila[0])):
+        linha=[]
+        for i in range(len(vila)):
+            linha.append(vila[i][j])
+        transposta.append(linha)
+    return transposta
+
+def colunas(vila, i):
+    global coluna
+    coluna=[row[i] for row in vila]
+    return coluna
+
+def linhas(vila,i):
+    global linha
+    linha=[row[i] for row in transposeMatrix(vila)]
+    return linha
+
+
+
+def isValid(vila,linha,coluna):
+    return linha>=0 and coluna>=0 and linha<len(vila) and colunas<len(vila[linha])
+
+def vizinhos(vila,posiçao_atual,posiçao_final,valor,lista_poss):
+    caminho_atual=[]
+    vizinhos2(vila,posiçao_atual,posiçao_final,caminho_atual)
+    return caminho_atual
+
+def vizinhos2(vila,posiçao_atual,posiçao_final,caminho_atual):
+    for d in lista_poss:
+        if not (isValid(vila,linha+d[0],coluna+d[1])):continue
+        for i in range(len(vila)):
+            vizinhos(vila,linha+d[0],coluna+d[1],posiçao_final,caminho_atual.append((linhas(vila,i),colunas(vila,i))))

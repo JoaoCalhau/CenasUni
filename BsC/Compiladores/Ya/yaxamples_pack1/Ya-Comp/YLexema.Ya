@@ -1,0 +1,25 @@
+`YLex = `Int+:8
+`constchar int+:8-
+`Bracket names `Int+ { bNo, bRound = 1, bSquare, bCurly }
+`Strings names `Char[] { sNo = "", sWord = "abcdef", sSquare = "square" }
+`Fix = `Int+:16
+`Priority = `Int+:8
+`Bracket = `Int+:8
+`YLexema
+	`YLex Lex
+	`Char[] Text
+	`Strings S
+	`Fix F
+	`Priority Pr
+	`Bracket Br
+
+	`No Set(`YLex lex, `Char[] text, `Fix f, `Priority pr, `Bracket br)
+		Lex = lex
+		Text = text
+		F = f
+		Pr = pr
+		Br = br
+	`No Set(`Fix f, `Priority pr, `Bracket br = bNo)
+		F = f
+		Pr = pr
+		Br = br

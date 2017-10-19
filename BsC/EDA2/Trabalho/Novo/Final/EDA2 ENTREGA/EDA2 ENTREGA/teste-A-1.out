@@ -1,0 +1,99 @@
++ cesto cesto01 criado
++ sem cestos com idade superior a 1
+LC 1
+cesto01
++ cesto cesto01 criado
++ cesto cesto01 existente
++ cesto cesto01 vazio
++ cesto 2ocesto inexistente
++ cesto cesto00 inexistente
++ 1 unidade(s) de 1111111111 introduzida(s) no cesto cesto01
+VC cesto01
+1111111111   1  1533.01  1533.01
+1533.01
++ 5 unidade(s) de 1111111110 introduzida(s) no cesto cesto01
++ 1 unidade(s) de 1111111112 introduzida(s) no cesto cesto01
+VC cesto01
+1111111110   5    33.33   166.65
+1111111111   1  1533.01  1533.01
+1111111112   1   123.50   123.50
+1823.16
++ 2 unidade(s) de 1111111110 retirada(s) do cesto cesto01
+VC cesto01
+1111111110   3    33.33    99.99
+1111111111   1  1533.01  1533.01
+1111111112   1   123.50   123.50
+1756.50
++ 2 unidade(s) de 8888888888 introduzida(s) no cesto cesto01
++ 9 unidade(s) de 1111111110 introduzida(s) no cesto cesto01
+VC cesto01
+1111111110  12    33.33   399.96
+1111111111   1  1533.01  1533.01
+1111111112   1   123.50   123.50
+8888888888   2    77.99   155.98
+2212.45
++ cesto cesto00 inexistente
++ produto 9999999999 ausente do cesto cesto01
++ quantidade de 1111111110 no cesto cesto01 menor que 111
++ 1 unidade(s) de 8888888888 retirada(s) do cesto cesto01
+VC cesto01
+1111111110  12    33.33   399.96
+1111111111   1  1533.01  1533.01
+1111111112   1   123.50   123.50
+8888888888   1    77.99    77.99
+2134.46
++ 1 unidade(s) de 1111111110 retirada(s) do cesto cesto01
+VC cesto01
+1111111110  11    33.33   366.63
+1111111111   1  1533.01  1533.01
+1111111112   1   123.50   123.50
+8888888888   1    77.99    77.99
+2101.13
++ 1 unidade(s) de 1111111112 retirada(s) do cesto cesto01
+VC cesto01
+1111111110  11    33.33   366.63
+1111111111   1  1533.01  1533.01
+8888888888   1    77.99    77.99
+1977.63
++ cesto cesto02 criado
++ 1 unidade(s) de 5555555555 introduzida(s) no cesto cesto02
++ 7 unidade(s) de 4567890123 introduzida(s) no cesto cesto02
++ 1 unidade(s) de 5555555550 introduzida(s) no cesto cesto02
+VC cesto02
+4567890123   7    12.50    87.50
+5555555550   1  1599.99  1599.99
+5555555555   1    12.57    12.57
+1700.06
++ cesto cesto03 criado
++ 3 unidade(s) de 1111111111 introduzida(s) no cesto cesto03
++ cesto estenao inexistente
++ efectuada venda do cesto cesto01
++ cesto cesto01 inexistente
++ cesto cesto04 criado
++ 123 unidade(s) de 8888888888 introduzida(s) no cesto cesto02
++ 2 unidade(s) de 5555555550 introduzida(s) no cesto cesto02
++ 5 unidade(s) de 4567890123 introduzida(s) no cesto cesto04
++ 900 unidade(s) de 1111111110 introduzida(s) no cesto cesto04
++ cesto cesto04 existente
++ cesto cesto05 criado
++ 1 unidade(s) de 1111111112 introduzida(s) no cesto cesto04
+VC cesto04
+1111111110 900    33.33 29997.00
+1111111112   1   123.50   123.50
+4567890123   5    12.50    62.50
+30183.00
++ efectuada venda do cesto cesto04
++ 35 unidade(s) de 1000000000 introduzida(s) no cesto cesto05
++ 1 unidade(s) de 4567890123 introduzida(s) no cesto cesto05
++ 5 unidade(s) de 1000000000 introduzida(s) no cesto cesto05
++ efectuada venda do cesto cesto02
++ cesto cesto02 inexistente
++ 1 unidade(s) de 4567890123 introduzida(s) no cesto cesto05
+VC cesto05
+1000000000  40     0.10     4.00
+4567890123   2    12.50    25.00
+29.00
++ efectuada venda do cesto cesto05
+VC cesto03
+1111111111   3  1533.01  4599.03
+4599.03

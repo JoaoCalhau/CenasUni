@@ -1,0 +1,57 @@
+@`Signs
+
+// `Ints
+`Int IntMin = `Int.Min
+`Int IntMax = `Int.Max
+`Int IntBitSize = `Int.BitSize
+`Int IntByteSize = `Int.ByteSize
+`Int Int8Min = `Int:8.Min
+`Int Int8Max = `Int:8.Max
+`Int Int8BitSize = `Int:8.BitSize
+`Int Int8ByteSize = `Int:8.ByteSize
+`Char- CharMin = `Char.Min
+`Char- CharMax = `Char.Max
+`Int CharBitSize = `Char.BitSize
+`Int CharByteSize = `Char.ByteSize
+`Int SCharMin = `Char-+.Min
+`Int SCharMax = `Char-+.Max
+`Int SCharBitSize = `Char-+.BitSize
+`Int SCharByteSize = `Char-+.ByteSize
+`Int Int16Min = `Int:16.Min
+`Int Int16Max = `Int:16.Max
+`Int Int16BitSize = `Int:16.BitSize
+`Int Int16ByteSize = `Int:16.ByteSize
+`Int Uint16Min = `Int+:16.Min
+`Int Uint16Max = `Int+:16.Max
+`Int Uint16BitSize = `Int+:16.BitSize
+`Int Uint16ByteSize = `Int+:16.ByteSize
+`Int Int32Min = `Int:32.Min
+`Int Int32Max = `Int:32.Max
+`Int Int32BitSize = `Int:32.BitSize
+`Int Int32ByteSize = `Int:32.ByteSize
+`Int Uint32Min = `Int+:32.Min
+`Int Uint32Max = `Int+:32.Max
+`Int Uint32BitSize = `Int+:32.BitSize
+`Int Uint32ByteSize = `Int+:32.ByteSize
+`Int:64 Int64Min = `Int:64.Min
+`Int:64 Int64Max = `Int:64.Max
+`Int Int64BitSize = `Int:64.BitSize
+`Int Int64ByteSize = `Int:64.ByteSize
+`Int+:64 Uint64Max = `Int+:64.Max
+`Int+:64 Uint64Min = `Int+:64.Min
+`Int Uint64BitSize = `Int+:64.BitSize
+`Int Uint64ByteSize = `Int+:64.ByteSize
+
+// `reals
+`Real RealMin = `Real.Min
+`Real RealMax = `Real.Max
+`Int RealBitSize = `Real.BitSize
+`Int RealByteSize = `Real.ByteSize
+`Real DoubleMin = `double.Min
+`Real DoubleMax = `double.Max
+`Int DoubleBitSize = `double.BitSize
+`Int DoubleByteSize = `double.ByteSize
+`Real FloatMin = `float.Min
+`Real FloatMax = `float.Max
+`Int FloatBitSize = `float.BitSize
+`Int FloatByteSize = `float.ByteSize

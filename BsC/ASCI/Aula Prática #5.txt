@@ -1,0 +1,24 @@
+1- a) bge $t0, $t1, L => slt $at, $t1, $t0
+                         beq $at, $zero, L 
+
+   
+   b) ble $t0, 5, L => slti $at, $t0, 5
+                       beq $at, $zero, L
+
+   
+   c) li $a0, 0x7ffffffc => lui $a0, 0x7fff
+                            ori $a0, $a0, 0xfffc
+
+
+   d) lw $t0, 0x10010014 => lui $at, 0x1001
+                            ori $at, $at, 0x0014
+                            lw $t0, 0($at)
+
+                             ou
+
+                            lui $at, 0x1001
+                            lw $t0, 0x0014($at)
+
+
+
+2- mars

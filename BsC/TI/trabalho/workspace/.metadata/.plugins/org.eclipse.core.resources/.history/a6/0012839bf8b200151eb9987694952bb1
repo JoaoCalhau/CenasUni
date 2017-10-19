@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Canal {
+	
+	static String word;
+	static float[] markov = {1.00, 0.10, 0.00, 0.90}
+	
+	public static void read() {
+		
+		Scanner in = new Scanner(System.in);
+		String input = in.nextLine();
+		in.close();
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(input + ".txt"))) {
+
+			String s = br.readLine();
+			
+			word = s;
+			
+		} catch(IOException e) {
+			System.out.println("Wrong file...");
+		}
+	}
+	
+	
+	
+	public static void main(String[] agrs) {
+		
+	}
+}

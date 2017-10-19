@@ -1,0 +1,8 @@
+public class Picha {
+	
+	public String picha() {
+		Cenas c = new Cenas();
+		
+		return "cenas";
+	}
+}

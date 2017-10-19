@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static String word;
+	
+	public static void read() {
+		
+		System.out.println("Insert file name (without .txt)");
+		String in;
+		Scanner scan = new Scanner(System.in);
+		in = scan.nextLine();
+		scan.close();
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(in + ".txt"))) {
+			
+			String line = br.readLine();
+
+			word = line;
+		} catch(IOException e) {
+			System.out.println("Ficheiro invalido");
+		}
+	}
+	
+	public static void main(String[] args) {
+		read();
+		
+		String coded = LZWv2.code(word);
+		
+		List<Integer> l = LZWv2.compress(coded);
+		System.out.println(l.toString() + "\n");
+		
+		String s = LZWv2.decompress(l);
+		
+		String decoded = LZWv2.decode(s);
+		
+		if(decoded.compareTo(word) == 0)
+			System.out.println(true);
+		else
+			System.out.println(false);
+		
+	}
+}

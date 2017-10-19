@@ -1,0 +1,27 @@
+Conceito de Gestão da Produção
+
+Antigo paradigma: OFERTA E EFICIÊNCIA PRODUTIVA
+Novo paradigma: MERCADO, SATISFAÇÃO DO CLIENTE. EFICIÊNCIA E EFICÁCIA PRODUTIVA
+
+Previsão da procura
+
+O processo de previsão da procura passa por definir o período de previsão, identificar as características do período
+temporal que representa as vendas, escolher o modelo de previsão que melhor se adapta e implementar uma metodologia
+de acompanhamento.
+
+O período de previsão depende das características intrísecas da empresa, dos mercados em que opera e da iniciativa 
+a que está associada.
+
+As características do período temporal determinam a escolha do modelo de previsão:
+- Componente aleatória - Observações sem comportamento identificável.
+- Componente cílcica - Comportamento repetitivo em longos períodos
+- Componente sazonal - Comportamento repetitivo em períodos curtos
+- Componente de tendência - Crescimento ou descréscimo a médio e longo prazo
+
+A escolha do modelo de previsão deve basear-se naquele que apresentar o menor afastamento das previsões
+relativamente ás observações disponíveis (erro de previsão).
+
+Planeamento agregado da produção
+
+O objectivo é optimizar a capacidade produtiva da empresa ao antecipar as necessidades de recursos produtivos para
+garantir a satisfação dos clientes.
