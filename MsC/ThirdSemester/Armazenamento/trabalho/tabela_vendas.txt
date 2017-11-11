@@ -1,0 +1,13 @@
+codigo med
+codigo contra-ind
+codigo ind
+codigo hora
+codigo data
+codigo farmaceutico
+codigo farmacia
+codigo utente (cliente)
+codigo medico
+------------------------
+numero receita (DD)
+preço embalagem
+quantidade
