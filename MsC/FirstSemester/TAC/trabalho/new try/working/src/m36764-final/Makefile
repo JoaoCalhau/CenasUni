@@ -76,6 +76,17 @@ run-save-8 : tacl
 	@echo '[twice.tacl] > [twice.ir]'
 	@./tacl < examples/twice.ast > results/twice.ir
 
+run-save-all : tacl
+	@echo 'ALL OF THEM'
+	@./tacl < examples/example.ast > results/example.ir
+	@./tacl < examples/factorial.ast > results/factorial.ir
+	@./tacl < examples/fibonacci-v2.ast > results/fibonacci-v2.ir
+	@./tacl < examples/fig-9.ast > results/fig-9.ir
+	@./tacl < examples/g.ast > results/g.ir
+	@./tacl < examples/procedure.ast > results/procedure.ir
+	@./tacl < examples/triangular.ast > results/triangular.ir
+	@./tacl < examples/twice.ast > results/twice.ir
+
 clean :
 	@$(RM) tacl
 	@$(RM) tacl.tab.c tacl.tab.h
