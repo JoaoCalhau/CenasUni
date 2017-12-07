@@ -14,11 +14,11 @@ class Point {
 		static Point polar(const float rho, const float theta) {
 			return Point(rho*cos(theta), rho*sin(theta));
 		}
-
+		
 		friend ostream &operator << (ostream &output, Point &that) {
 			return output << "(" << that._x << ", " << that._y << ")";
 		}
-
+	
 		void print_self() {
 			cout << "(" << this->_x << ", " << this->_y << ")" << endl;
 		}

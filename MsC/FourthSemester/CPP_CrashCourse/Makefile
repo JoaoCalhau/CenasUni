@@ -1,4 +1,4 @@
-PP = g++ -Wall -std=c++11
+PP = g++ -Wall -std=c++14
 
 ex : 
 	$(PP) $(file) -o $@
