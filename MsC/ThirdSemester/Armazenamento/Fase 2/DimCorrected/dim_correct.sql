@@ -23,7 +23,7 @@ create table data (
 	"Estação do Ano"				text,
 	"Data de Inicio da Semana"		date,
 	"Data de Final da Semana"		date,
-	"Dada de Inicio do Mês"			date,
+	"Data de Inicio do Mês"			date,
 	"Data de Final do Mês"			date,
 	"Data de Inicio do Trimestre"	date,
 	"Data de Final do Trimestre"	date,
@@ -44,7 +44,6 @@ create table hora (
 
 create table localizacao (
 	"Chave da Localização" 		integer not null,
-	"Coordenadas Geográficas"	text,
 	"Latitude"					text,
 	"Longitude"					text,
 	"Número da Porta"			text,
@@ -66,7 +65,8 @@ create table farmacia (
 	"Hora de Fecho"				time,
 	"E-mail"					text,
 	"Website"					text,
-	"Coordenadas Geográficas"	text,
+	"Latitude"					double precision,
+	"Longitude"					double precision,
 	"Número da Porta"			text,
 	"Rua"						text,
 	"Código Postal"				text,
@@ -193,30 +193,22 @@ create table vendas (
 	foreign key("Chave do Medicamento") references medicamento("Chave do Medicamento")
 );
 
-create table semestre (
-	"Chave do Semestre"				integer not null,
-	"Número do Ano"					text,
-	"Número do Semestre"			text,
-	"Descrição do Semestre"			text,
-	"Data de Inicio do Semestre"	date,
-	"Data de Final do Semestre"		date,
-	primary key("Chave do Semestre")
-);
-
 create table venda_por_semestre (
-	"Chave do Semestre"	integer not null,
-	"Chave da Localização" 					integer not null,
-	"Chave da Farmácia"						integer not null,
-	"Chave do Médico"						integer not null,
-	"Chave do Paciente"						integer not null,
-	"Chave do Medicamento"					integer not null,
-	"Número de Referencia da Factura"		text,
-	"Número de Referencia da Receita (DD)"	text,
-	primary key("Chave do Semestre", "Chave da Localização", "Chave da Farmácia", "Chave do Médico", "Chave do Paciente", "Chave do Medicamento"),
-	foreign key("Chave do Semestre") references semestre("Chave do Semestre"),
+	"Chave da Data"			integer not null,
+	"Chave da Localização" 	integer not null,
+	"Chave da Farmácia"		integer not null,
+	"Chave do Médico"		integer not null,
+	"Chave do Paciente"		integer not null,
+	"Chave do Medicamento"	integer not null,
+	"Valor Acumulado"		double precision,
+	primary key("Chave da Data", "Chave da Localização", "Chave da Farmácia", "Chave do Médico", "Chave do Paciente", "Chave do Medicamento"),
+	foreign key("Chave da Data") references data("Chave da Data"),
 	foreign key("Chave da Localização") references localizacao("Chave da Localização"),
 	foreign key("Chave da Farmácia") references farmacia("Chave da Farmácia"),
 	foreign key("Chave do Médico") references medico("Chave do Médico"),
 	foreign key("Chave do Paciente") references paciente("Chave do Paciente"),
 	foreign key("Chave do Medicamento") references medicamento("Chave do Medicamento")
 );
+
+
+insert into farmacia values(1, 'Farmácia Avó', '123456789', '09:00:00', '20:00:00', 'cenas@cenas.cenas', 'www.cenas.com', 38.566439, -7.926881, '5', 'Aqui', '7000-fuck-off', 'Esta', 'Este', 'Also Este', 'Also Esta');
