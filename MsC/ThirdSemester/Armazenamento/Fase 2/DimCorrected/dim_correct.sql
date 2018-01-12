@@ -46,13 +46,10 @@ create table localizacao (
 	"Chave da Localização" 		integer not null,
 	"Latitude"					text,
 	"Longitude"					text,
-	"Número da Porta"			text,
-	"Rua"						text,
-	"Código Postal"				text,
 	"Freguesia"					text,
 	"Concelho"					text,
 	"Distrito"					text,
-	"Região"					text,
+	"Região do País"			text,
 	"País"						text,
 	primary key("Chave da Localização")
 );
@@ -65,8 +62,6 @@ create table farmacia (
 	"Hora de Fecho"				time,
 	"E-mail"					text,
 	"Website"					text,
-	"Latitude"					double precision,
-	"Longitude"					double precision,
 	"Número da Porta"			text,
 	"Rua"						text,
 	"Código Postal"				text,
@@ -83,14 +78,12 @@ create table laboratorio (
 	"Número de Telefone"		text,
 	"Número de Fax"				text,
 	"E-mail"					text,
-	"Coordenadas Geográficas"	text,
 	"Número da Porta"			text,
 	"Rua"						text,
 	"Código Postal"				text,
 	"Freguesia"					text,
 	"Concelho"					text,
 	"Distrito"					text,
-	"Região"					text,
 	"País"						text,
 	primary key("Chave do Laboratório")
 );
@@ -102,6 +95,7 @@ create table medico (
 	"Número da Cédula"				text,
 	"Nacionalidade"					text,
 	"Data de Nascimento"			date,
+	"Idade do Médico"				text,
 	"Sexo"							text,
 	"Número de Telefone"			text,
 	"Número de Telemóvel"			text,
@@ -121,6 +115,7 @@ create table paciente (
 	"Nome do Subsistema de Saúde"		text,
 	"Nacionalidade"						text,
 	"Data de Nascimento"				date,
+	"Idade"								text,
 	"Sexo"								text,
 	"Altura"							text,
 	"Filiação"							text,
@@ -142,12 +137,13 @@ create table medicamento (
 	"Nome do Medicamento"							text,
 	"Número de Registo"								text,
 	"Composição"									text,
+	"Dosagem"										text
 	"Unidades"										text,
 	"Forma Farmaceútica"							text,
 	"É Genérico"									text,
 	"Nome do Laboratório"							text,
-	"Estado da Autorização"							text,
 	"Data da Autorização"							date,
+	"Estado da Autorização"							text,
 	"Tamanho da Embalagem"							text,
 	"CNPEM"											text,
 	"CHNM"											text,
@@ -163,7 +159,7 @@ create table medicamento (
 	"Início do Efeíto"								text,
 	"Eliminação"									text,
 	"Descrição"										text,
-	"Data de Validade do Medicamento"				date,
+	"Prazo de Validade"								date,
 	"Comparticipação do SNS"						text,
 	"Comparticipação da ADSE"						text,
 	"Comparticipação da ADME"						text,
@@ -209,6 +205,3 @@ create table venda_por_semestre (
 	foreign key("Chave do Paciente") references paciente("Chave do Paciente"),
 	foreign key("Chave do Medicamento") references medicamento("Chave do Medicamento")
 );
-
-
-insert into farmacia values(1, 'Farmácia Avó', '123456789', '09:00:00', '20:00:00', 'cenas@cenas.cenas', 'www.cenas.com', 38.566439, -7.926881, '5', 'Aqui', '7000-fuck-off', 'Esta', 'Este', 'Also Este', 'Also Esta');
