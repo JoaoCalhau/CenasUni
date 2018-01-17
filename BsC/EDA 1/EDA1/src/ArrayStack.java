@@ -59,6 +59,3 @@ public class ArrayStack<E> implements Stack<E>{
 		   return out.toString();
 	   }
 }
-
-//l31621 - João Calhau
-//l31643 - Ricardo Benedito

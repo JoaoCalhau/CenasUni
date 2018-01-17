@@ -6,6 +6,3 @@ public interface Stack<E>{
 	public boolean empty();
 	public void clear();
 }
-
-//l31621 - João Calhau
-//l31643 - Ricardo Benedito

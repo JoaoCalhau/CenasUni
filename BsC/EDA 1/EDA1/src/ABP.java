@@ -1,44 +1,45 @@
 import java.util.Iterator;
 
 
-public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E> {
-	NoABP<E> raiz;
+public class ABP {
+	NoABP raiz;
 	
 	public ABP() {
 		raiz=null;
 	}
 	
-	private static class NoABP<E> {
-		E elemento;
-		NoABP<E> esq;
-		NoABP<E> dir;
+	private static class NoABP {
+		contacto elemento;
+		NoABP esq;
+		NoABP dir;
 		
-		NoABP(E x, NoABP<E> direita, NoABP<E> esquerda) {
+		NoABP(contacto x, NoABP direita, NoABP esquerda) {
 			elemento=x;
 			dir=direita;
 			esq=esquerda;	
 		}
 
-		public E elem() {
+		public contacto elem() {
 			return elemento;
 		}
 		
-		public NoABP<E> dir() {
+		public NoABP dir() {
 			return dir;
 		}
 		
-		public NoABP<E> esq() {
+		public NoABP esq() {
 			return esq;
 		}
 	}
 	
-	private static class IteradorEmOrdem<E> implements java.util.Iterator<E> {
-		NoABP<E> atual;
-		ArrayStack<NoABP<E>> choice_points;
+	/*
+	private static class IteradorEmOrdem implements java.util.Iterator {
+		NoABP atual;
+		ArrayStack<NoABP> choice_points;
 		
-		public IteradorEmOrdem(NoABP<E> n) {
+		public IteradorEmOrdem(NoABP n) {
 			atual = n;
-			choice_points = new ArrayStack<NoABP<E>>();
+			choice_points = new ArrayStack<NoABP>();
 		}
 
 		@Override
@@ -47,11 +48,11 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 		}
 
 		@Override
-		public E next() {
+		public contacto next() {
 			if (!hasNext()) {
 				throw new java.util.NoSuchElementException();
 			}
-			E to_return = atual.elem();
+			contacto to_return = atual.elem();
 			if (atual.esq()!=null) {
 				try {
 					choice_points.push(atual.esq());
@@ -73,7 +74,7 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 		}
 
 	}
-	
+	*/
 	
 	public boolean isEmpty() {
 		if(raiz==null) return true;
@@ -82,11 +83,11 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 	
 	
 	
-	public boolean contains(E x) {
+	public boolean contains(contacto x) {
 		return contains(x,raiz);
 	}
 	
-	private boolean contains(E x, NoABP<E> n) {
+	private boolean contains(contacto x, NoABP n) {
 		if (n==null) return false;
 		else {
 			if (n.elemento.compareTo(x)<0) return contains(x,n.dir);
@@ -99,36 +100,36 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 	
 	
 	
-	public E findMin() {
+	public contacto findMin() {
 		if (isEmpty()) return null;
 		return findMin(raiz);
 	}
 	
-	private E findMin(NoABP<E> n) {
+	private contacto findMin(NoABP n) {
 		if (n.esq==null) return n.elemento;
 		else return findMin(n.esq);
 	}
 	
 	
 	
-	public E findMax() {
+	public contacto findMax() {
 		if (isEmpty()) return null;
 		return findMax(raiz);
 	}
 	
-	private E findMax(NoABP<E> n) {
+	private contacto findMax(NoABP n) {
 		if (n.dir==null) return n.elemento;
 		else return findMax(n.dir);
 	}
 	
 	
-	public void insere(E x) {
+	public void insere(contacto x) {
 		raiz=insere(x,raiz);
 	}
 	
-	private NoABP<E> insere(E x, NoABP<E> n) {
+	private NoABP insere(contacto x, NoABP n) {
 		if (n==null)
-			n=new NoABP<E>(x,null,null);
+			n=new NoABP(x,null,null);
 		else if ((n.elemento).compareTo(x)>0)
 			n.esq=insere(x,n.esq);
 		else if ((n.elemento).compareTo(x)<0)
@@ -137,7 +138,7 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 	}
 	
 	
-	public String findPath(E x) {
+	public String findPath(contacto x) {
 		if (isEmpty()) {return null;}
 		else if(!contains(x)) {return null;}
 		else {
@@ -146,10 +147,10 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 		}
 	}
 	
-	public String findPath(E x, NoABP<E> n) {
+	public String findPath(contacto x, NoABP n) {
 		String s = "";
 		if (x.compareTo(n.elemento)==0) {
-			s = s + "; " + (String) n.elemento;
+			s = s + "; " + n.elemento.toString();
 			return s;
 		}else if(x.compareTo(n.elemento)>0) {
 			s = s + "; " + findPath(x,n.dir);
@@ -163,7 +164,7 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 		
 	}
 	
-	private NoABP<E> remove(E x, NoABP<E> n) {
+	private NoABP remove(E x, NoABP n) {
 		
 	}
 	*/
@@ -178,22 +179,52 @@ public class ABP<E extends Comparable<? super E>> implements ABPi<E>, Iterable<E
 	}
 	
 	public void printPreOrdem() {//(no,esq,dir)
-		
 	}
 
 
 
+/*
 	@Override
-	public Iterator<E> iterator() {
-		return new IteradorEmOrdem<E>(raiz);
+	public Iterator iterator() {
+		return new IteradorEmOrdem(raiz);
 	}
-	
-	
+*/
+	public static class contacto {
+		private String nome;
+		private int numero;
+
+		public contacto(String x, int num) {
+			this.nome = x;
+			this.numero = num;
+		}
+
+		public String getNome() {
+			return this.nome;
+		}
+
+		public int compareTo(contacto c) {
+			return this.getNome().compareTo(c.getNome());
+		}
+
+		public String toString() {
+			return "" + nome + ": " + numero;
+		}
+	}
+
+/*
+	public int compareTo(NoABP n) {
+		return compareTo(n.elemento);
+	}
+	*/
+
 	public static void main(String[] args) {
-		ABP<Integer> abp = new ABP<Integer>();
-		abp.insere(10);
-		abp.insere(20);
-		abp.insere(5);
-		abp.iterator();
+		ABP cenas = new ABP();
+		cenas.insere(new contacto("eu",123));
+		cenas.insere(new contacto("tu",321));
+		cenas.insere(new contacto("nois",321123));
+
+		System.out.println(cenas.findMax().toString());
+		System.out.println(cenas.findMin().toString());
 	}
 }
+
