@@ -1,0 +1,102 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.ZeroR 
+Relation:     student-por
+Instances:    649
+Attributes:   33
+              school
+              sex
+              age
+              address
+              famsize
+              pstatus
+              medu
+              fedu
+              mjob
+              fjob
+              reason
+              guardian
+              traveltime
+              studytime
+              failures
+              schoolsup
+              famsup
+              paid
+              activities
+              nursery
+              higher
+              internet
+              romantic
+              famrel
+              freetime
+              goout
+              dalc
+              walc
+              health
+              absences
+              g1
+              g2
+              g3
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+ZeroR predicts class value: 11
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         104               16.0247 %
+Incorrectly Classified Instances       545               83.9753 %
+Kappa statistic                          0     
+Mean absolute error                      0.1056
+Root mean squared error                  0.2296
+Relative absolute error                100      %
+Root relative squared error            100      %
+Total Number of Instances              649     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.415     0.021     0
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.049     0.002     1
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.049     0.002     5
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.149     0.005     6
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.499     0.015     7
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.461     0.050     8
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.462     0.051     9
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.488     0.146     10
+                 1.000    1.000    0.160      1.000    0.276      0.000    0.485     0.156     11
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.487     0.108     12
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.488     0.124     13
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.481     0.094     14
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.489     0.074     15
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.464     0.052     16
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.484     0.044     17
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.414     0.020     18
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.099     0.003     19
+Weighted Avg.    0.160    0.160    0.026      0.160    0.044      0.000    0.475     0.101     
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   g   h   i   j   k   l   m   n   o   p   q   <-- classified as
+   0   0   0   0   0   0   0   0  15   0   0   0   0   0   0   0   0 |   a = 0
+   0   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0   0 |   b = 1
+   0   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0   0 |   c = 5
+   0   0   0   0   0   0   0   0   3   0   0   0   0   0   0   0   0 |   d = 6
+   0   0   0   0   0   0   0   0  10   0   0   0   0   0   0   0   0 |   e = 7
+   0   0   0   0   0   0   0   0  35   0   0   0   0   0   0   0   0 |   f = 8
+   0   0   0   0   0   0   0   0  35   0   0   0   0   0   0   0   0 |   g = 9
+   0   0   0   0   0   0   0   0  97   0   0   0   0   0   0   0   0 |   h = 10
+   0   0   0   0   0   0   0   0 104   0   0   0   0   0   0   0   0 |   i = 11
+   0   0   0   0   0   0   0   0  72   0   0   0   0   0   0   0   0 |   j = 12
+   0   0   0   0   0   0   0   0  82   0   0   0   0   0   0   0   0 |   k = 13
+   0   0   0   0   0   0   0   0  63   0   0   0   0   0   0   0   0 |   l = 14
+   0   0   0   0   0   0   0   0  49   0   0   0   0   0   0   0   0 |   m = 15
+   0   0   0   0   0   0   0   0  36   0   0   0   0   0   0   0   0 |   n = 16
+   0   0   0   0   0   0   0   0  29   0   0   0   0   0   0   0   0 |   o = 17
+   0   0   0   0   0   0   0   0  15   0   0   0   0   0   0   0   0 |   p = 18
+   0   0   0   0   0   0   0   0   2   0   0   0   0   0   0   0   0 |   q = 19
+

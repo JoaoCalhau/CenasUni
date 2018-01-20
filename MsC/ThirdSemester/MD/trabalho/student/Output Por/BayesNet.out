@@ -1,0 +1,144 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.BayesNet -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     student-por
+Instances:    649
+Attributes:   33
+              school
+              sex
+              age
+              address
+              famsize
+              pstatus
+              medu
+              fedu
+              mjob
+              fjob
+              reason
+              guardian
+              traveltime
+              studytime
+              failures
+              schoolsup
+              famsup
+              paid
+              activities
+              nursery
+              higher
+              internet
+              romantic
+              famrel
+              freetime
+              goout
+              dalc
+              walc
+              health
+              absences
+              g1
+              g2
+              g3
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Bayes Network Classifier
+not using ADTree
+#attributes=33 #classindex=32
+Network structure (nodes followed by parents)
+school(2): g3 
+sex(2): g3 
+age(1): g3 
+address(2): g3 
+famsize(2): g3 
+pstatus(2): g3 
+medu(1): g3 
+fedu(1): g3 
+mjob(5): g3 
+fjob(5): g3 
+reason(4): g3 
+guardian(3): g3 
+traveltime(1): g3 
+studytime(1): g3 
+failures(2): g3 
+schoolsup(2): g3 
+famsup(2): g3 
+paid(2): g3 
+activities(2): g3 
+nursery(2): g3 
+higher(2): g3 
+internet(2): g3 
+romantic(2): g3 
+famrel(1): g3 
+freetime(1): g3 
+goout(1): g3 
+dalc(1): g3 
+walc(1): g3 
+health(1): g3 
+absences(1): g3 
+g1(17): g3 
+g2(16): g3 
+g3(17): 
+LogScore Bayes: -11923.699092133555
+LogScore BDeu: -16646.86485439146
+LogScore MDL: -15560.93735616116
+LogScore ENTROPY: -12316.745565092411
+LogScore AIC: -13318.74556509241
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         286               44.0678 %
+Incorrectly Classified Instances       363               55.9322 %
+Kappa statistic                          0.3737
+Mean absolute error                      0.0738
+Root mean squared error                  0.2071
+Relative absolute error                 69.8358 %
+Root relative squared error             90.1813 %
+Total Number of Instances              649     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.467    0.005    0.700      0.467    0.560      0.564    0.929     0.653     0
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.142     0.002     1
+                 0.000    0.002    0.000      0.000    0.000      -0.002   0.878     0.013     5
+                 0.000    0.002    0.000      0.000    0.000      -0.003   0.651     0.021     6
+                 0.000    0.014    0.000      0.000    0.000      -0.015   0.943     0.159     7
+                 0.343    0.044    0.308      0.343    0.324      0.284    0.934     0.325     8
+                 0.286    0.033    0.333      0.286    0.308      0.272    0.856     0.271     9
+                 0.505    0.098    0.476      0.505    0.490      0.397    0.879     0.425     10
+                 0.519    0.099    0.500      0.519    0.509      0.414    0.889     0.515     11
+                 0.319    0.094    0.299      0.319    0.309      0.219    0.847     0.294     12
+                 0.537    0.086    0.473      0.537    0.503      0.427    0.903     0.469     13
+                 0.286    0.055    0.360      0.286    0.319      0.257    0.862     0.321     14
+                 0.612    0.038    0.566      0.612    0.588      0.554    0.941     0.501     15
+                 0.556    0.028    0.541      0.556    0.548      0.521    0.942     0.495     16
+                 0.414    0.021    0.480      0.414    0.444      0.422    0.934     0.386     17
+                 0.467    0.009    0.538      0.467    0.500      0.490    0.985     0.492     18
+                 0.000    0.000    0.000      0.000    0.000      0.000    0.219     0.003     19
+Weighted Avg.    0.441    0.067    0.436      0.441    0.437      0.373    0.891     0.413     
+
+=== Confusion Matrix ===
+
+  a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q   <-- classified as
+  7  0  0  0  3  3  1  1  0  0  0  0  0  0  0  0  0 |  a = 0
+  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0 |  b = 1
+  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0 |  c = 5
+  1  0  1  0  0  0  0  0  1  0  0  0  0  0  0  0  0 |  d = 6
+  1  0  0  0  0  8  1  0  0  0  0  0  0  0  0  0  0 |  e = 7
+  0  0  0  0  6 12  9  8  0  0  0  0  0  0  0  0  0 |  f = 8
+  0  0  0  0  0  8 10 12  3  2  0  0  0  0  0  0  0 |  g = 9
+  0  0  0  0  0  8  8 49 27  4  0  1  0  0  0  0  0 |  h = 10
+  0  0  0  0  0  0  1 30 54 19  0  0  0  0  0  0  0 |  i = 11
+  0  0  0  0  0  0  0  1 20 23 23  5  0  0  0  0  0 |  j = 12
+  0  0  0  0  0  0  0  0  3 18 44 17  0  0  0  0  0 |  k = 13
+  0  0  0  0  0  0  0  0  0 11 23 18  8  2  1  0  0 |  l = 14
+  1  0  0  0  0  0  0  0  0  0  3  7 30  8  0  0  0 |  m = 15
+  0  0  0  0  0  0  0  1  0  0  0  2  9 20  4  0  0 |  n = 16
+  0  0  0  0  0  0  0  0  0  0  0  0  6  7 12  4  0 |  o = 17
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  8  7  0 |  p = 18
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  2  0 |  q = 19
+
