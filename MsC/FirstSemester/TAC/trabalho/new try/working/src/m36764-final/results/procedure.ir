@@ -1,0 +1,17 @@
+
+function @p:
+	fp0 <- r_gload @x
+	fp1 <- r_aload @y
+	fp2 <- r_mul fp0, fp1
+	@x <- r_gstore fp2
+	return
+
+function @main:
+	fp0 <- r_value 1.5
+	@x <- r_gstore fp0
+	t0 <- i_value 3
+	fp1 <- itor t0
+	call @p, [fp1]
+	fp2 <- r_gload @x
+	r_print fp2
+	return

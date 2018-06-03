@@ -288,6 +288,7 @@ int deal_expression(exp *expression, int nil) {
 		default:
 			return 0;
 	}
+	return 0;
 }
 
 //trata o no 'expressions' usado pelo no 'fun_call'
